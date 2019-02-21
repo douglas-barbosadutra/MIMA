@@ -24,7 +24,8 @@ public class TaskManagementView implements View{
 		System.out.println("");
 		System.out.println("1)Visualizza Tasks");
 		System.out.println("2)Inserisci Task");
-		System.out.println("3)Torna Indietro");
+		System.out.println("3)Gestione Istruzioni");
+		System.out.println("4)Torna Indietro");
 		choice=Integer.parseInt(getInput());
 		
 	}
@@ -43,6 +44,8 @@ public class TaskManagementView implements View{
 		if(choice<1 || choice>3)
 			MainDispatcher.getInstance().callView("TaskManagement",null);
 		else if(choice==3)
+			MainDispatcher.getInstance().callView("Istruzione",null);
+		else if(choice==4)
 			MainDispatcher.getInstance().callView("HomeUser",null);
 		else {
 			Request request=new Request();
@@ -50,7 +53,5 @@ public class TaskManagementView implements View{
 			MainDispatcher.getInstance().callAction("Task","doControl",request);
 		}
 	}
-	
-	
 	
 }
