@@ -6,23 +6,28 @@ public class MachineController implements Controller{
 	
 	@Override
 	public void doControl(Request request) {
+		
+		if(request != null) {
+			int choice = (int) request.get("choice");
+	        switch (choice) {
+	            case 1:
+	            	MainDispatcher.getInstance().callView("InsertMachine", null);
+	               break;
+	            case 2:
+	            	MainDispatcher.getInstance().callView("UpdateMachine", null);
+	               break;
+	            case 3:
+	            	MainDispatcher.getInstance().callView("DeleteMachine", null);
+	               break;
+	            case 4:
+	            	MainDispatcher.getInstance().callAction("ShowMachines","doControl", null);
+	               break;
+	        }
+		}
     	
-    	int choice = (int) request.get("choice");
-        switch (choice) {
-            case 1:
-               request.put("mode", "insert");
-               break;
-            case 2:
-               request.put("mode", "update");
-               break;
-            case 3:
-               request.put("mode", "delete");
-               break;
-            case 4:
-               request.put("mode", "all");
-               break;
-        }
-        MainDispatcher.getInstance().callView("Machine", request);
+		else
+			MainDispatcher.getInstance().callView("MachineManagement", null);
+        
         
     }
 	
