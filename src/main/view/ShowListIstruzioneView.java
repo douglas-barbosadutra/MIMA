@@ -2,19 +2,19 @@ package main.view;
 
 import java.util.List;
 
+import dto.IstruzioneDTO;
 import main.MainDispatcher;
 import main.controller.Request;
-import main.model.Istruzione;
 
 public class ShowListIstruzioneView implements View{
 	
 	
 	@Override
 	public void showResults(Request request) {
-		List<Istruzione> istruzioni = (List<Istruzione>)request.get("istruzioni");
+		List<IstruzioneDTO> istruzioni = (List<IstruzioneDTO>)request.get("istruzioni");
 		System.out.println("----- Istruzioni -----");
 		System.out.println("Nome	durata");
-        istruzioni.forEach(istruzione -> System.out.println(istruzione.getNome() + " " + istruzione.getDurata()));
+        istruzioni.forEach(istruzione -> System.out.println(istruzione.getNomeIstruzione() + " " + istruzione.getDurata()));
 	}
 
 	@Override

@@ -2,8 +2,8 @@ package main.controller;
 
 import java.util.List;
 
+import dto.IstruzioneDTO;
 import main.MainDispatcher;
-import main.model.Istruzione;
 import main.service.IstruzioneService;
 
 public class ShowIstruzioneController implements Controller{
@@ -19,7 +19,7 @@ public class ShowIstruzioneController implements Controller{
 				MainDispatcher.getInstance().callView("ShowIstruzione", null);
 			}
 			IstruzioneService istruzioneService = new IstruzioneService();
-			List<Istruzione> istruzioni = istruzioneService.getAllIstruzioni(idTask);
+			List<IstruzioneDTO> istruzioni = istruzioneService.getAllIstruzioni(idTask);
 			Request result = new Request();
 			result.put("istruzioni", istruzioni);
 			MainDispatcher.getInstance().callView("ShowListIstruzione", result);

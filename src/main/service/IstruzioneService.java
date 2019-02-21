@@ -5,6 +5,9 @@ import main.model.Istruzione;
 
 import java.util.*;
 
+import converter.IstruzioneConverter;
+import dto.IstruzioneDTO;
+
 public class IstruzioneService {
 	
 	private IstruzioneDAO istruzioneDAO;
@@ -13,8 +16,13 @@ public class IstruzioneService {
 		this.istruzioneDAO = new IstruzioneDAO();
 	}
 	
-	public List<Istruzione> getAllIstruzioni(int idTask){
-		return this.istruzioneDAO.getAllIstruzioni(idTask);
+	public List<IstruzioneDTO> getAllIstruzioni(int idTask){
+		List<Istruzione> istruzioni = this.istruzioneDAO.getAllIstruzioni(idTask);
+		List<IstruzioneDTO> istruzioniDTO = new ArrayList<>();
+		for(Istruzione istruzione: istruzioni) {
+			istruzioniDTO.add(IstruzioneConverter.convertToDto(istruzione));
+		}
+		return istruzioniDTO;
 	}
 	
 	public boolean insertIstruzione(Istruzione istruzione, int idTask) {
