@@ -3,3 +3,6 @@
 
 #Project
 config.properties
+
+#Eclipse
+/bin
