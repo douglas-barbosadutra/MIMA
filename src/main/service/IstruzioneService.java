@@ -24,4 +24,8 @@ public class IstruzioneService {
 	public boolean deleteIstruzione(String nome, int idTask) {
 		return this.istruzioneDAO.deleteIstruzione(nome, idTask);
 	}
+	
+	public boolean modifyIstruzione(Istruzione istruzione, int idTask) {
+		return this.istruzioneDAO.modifyIstruzione(istruzione, idTask);
+	}
 }

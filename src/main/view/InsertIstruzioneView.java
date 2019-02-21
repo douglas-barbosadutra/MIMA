@@ -7,8 +7,8 @@ import main.controller.Request;
 public class InsertIstruzioneView implements View{
 
 	private String nomeIstruzione;
-	private int durata;
-	private int idTask;
+	private String durata;
+	private String idTask;
 	
 	public void showResults(Request request) {
 
@@ -17,11 +17,11 @@ public class InsertIstruzioneView implements View{
 	public void showOptions() {
         System.out.println("");
         System.out.println("Inserisci l'id del task a cui vuoi aggiungere l'istruzione:");
-        idTask = Integer.parseInt(getInput());
+        idTask = getInput();
         System.out.println("Inserisci la nuova istruzione:");
         nomeIstruzione = getInput();
         System.out.println("Inserisci la durata:");
-        durata = Integer.parseInt(getInput());
+        durata = getInput();
     }
 	
 	public void submit() {

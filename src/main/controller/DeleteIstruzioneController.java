@@ -15,13 +15,16 @@ public class DeleteIstruzioneController implements Controller{
 	public void doControl(Request request) {
 		if(request != null) {
 			String nomeIstruzione = request.get("nomeIstruzione").toString();
-			int idTask = Integer.parseInt(request.get("idTask").toString());
-			if(istruzioneService.deleteIstruzione(nomeIstruzione, idTask)) {
-				MainDispatcher.getInstance().callView("Istruzione", null);
+			int idTask = 0;
+			try {
+				idTask = Integer.parseInt(request.get("idTask").toString());
 			}
-			else {
-				MainDispatcher.getInstance().callView("Istruzione", null);
+			catch(NumberFormatException e) {
+				System.out.println("Inserisci un idTask valido");
+				MainDispatcher.getInstance().callView("DeleteIstruzione", null);
 			}
+			istruzioneService.deleteIstruzione(nomeIstruzione, idTask);
+			MainDispatcher.getInstance().callView("Istruzione", null);
 		}
 		else
 	    	MainDispatcher.getInstance().callView("DeleteIstruzione", request);

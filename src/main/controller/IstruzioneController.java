@@ -16,7 +16,7 @@ public class IstruzioneController implements Controller{
 			}
 			switch (choice) {
 				case 1: {
-					MainDispatcher.getInstance().callAction("Istruzione", "doControl", null); 	//modificare questo comando
+					MainDispatcher.getInstance().callAction("ShowIstruzione", "doControl", null);
 					break;
 				}
 				case 2: {
@@ -24,10 +24,14 @@ public class IstruzioneController implements Controller{
 			        break;
 					}
 				case 3: {
+					MainDispatcher.getInstance().callAction("ModifyIstruzione", "doControl", null);
+					break;
+				}
+				case 4: {
 					MainDispatcher.getInstance().callAction("DeleteIstruzione", "doControl", null);
 					break;
 					}
-				case 4: {
+				case 5: {
 					MainDispatcher.getInstance().callAction("TaskManagement", "doControl", null);
 					break;
 				}

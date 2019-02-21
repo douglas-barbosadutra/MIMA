@@ -12,6 +12,7 @@ public class IstruzioneDAO {
 	private final String QUERY_SELECT = "select * from istruzioni where id_tasks = ? ";
 	private final String QUERY_INSERT = "insert into istruzioni (id_tasks, nome_istruzioni, durata) values (?,?,?)";
 	private final String QUERY_DELETE = "DELETE FROM istruzioni WHERE id_tasks = ? && nome_istruzioni = ?";
+	private final String QUERY_UPDATE = "UPDATE istruzioni SET durata = ? WHERE id_tasks = ? AND nome_istruzioni = ?";
 	
 	public IstruzioneDAO() {
 		
@@ -64,7 +65,21 @@ public class IstruzioneDAO {
             GestoreEccezioni.getInstance().gestisciEccezione(e);
             return false;
         }
-
     }
 	
+	public boolean modifyIstruzione(Istruzione istruzione, int idTask) {
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_UPDATE);
+			preparedStatement.setInt(1, istruzione.getDurata());
+			preparedStatement.setInt(2, idTask);
+			preparedStatement.setString(3, istruzione.getNome());
+			preparedStatement.executeUpdate();
+			return true;
+		}
+		catch(SQLException e) {
+			GestoreEccezioni.getInstance().gestisciEccezione(e);
+			return false;
+		}
+	}
 }

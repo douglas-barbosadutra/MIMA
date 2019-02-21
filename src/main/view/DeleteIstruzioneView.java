@@ -8,7 +8,7 @@ import main.controller.Request;
 public class DeleteIstruzioneView implements View{
 
 	private String nomeIstruzione;
-	private int idTask;
+	private String idTask;
 	
 	public void showResults(Request request) {
 
@@ -17,7 +17,7 @@ public class DeleteIstruzioneView implements View{
     public void showOptions() {
         System.out.println("");
         System.out.println("Inserisci l'id del Task dal quale si vuole eliminare l'istruzione:");
-        idTask = Integer.parseInt(getInput());
+        idTask = getInput();
         System.out.println("Inserisci il nome dell'istruzione da eliminare:");
         nomeIstruzione = getInput();
     }

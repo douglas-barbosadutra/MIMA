@@ -17,9 +17,7 @@ public class IstruzioneView implements View{
     }
     
     @Override
-    public void showResults(Request request) {
-    	//mostro la lista
-    }
+    public void showResults(Request request) {}
     
     @Override
     public void showOptions() {
@@ -28,8 +26,9 @@ public class IstruzioneView implements View{
         System.out.println("");
         System.out.println("1) Visualizza istruzioni di un determinato task");
         System.out.println("2) Inserisci una nuova istruzione");
-        System.out.println("3) Elimina un istruzione");
-        System.out.println("4) Torna indietro");
+        System.out.println("3) Modifica un istruzione");
+        System.out.println("4) Elimina un istruzione");
+        System.out.println("5) Torna indietro");
         this.choice = getInput();
     }
     
