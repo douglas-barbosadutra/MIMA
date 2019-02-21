@@ -19,6 +19,7 @@
 -- Dumping data for table `istruzioni`
 --
 
+use mima;
 LOCK TABLES `istruzioni` WRITE;
 /*!40000 ALTER TABLE `istruzioni` DISABLE KEYS */;
 INSERT INTO `istruzioni` VALUES (3,2,'test',20),(4,2,'terza',5),(5,2,'ciao',5),(6,2,'pippo',50),(9,2,'gggg',3);

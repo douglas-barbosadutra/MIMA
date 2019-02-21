@@ -6,20 +6,25 @@ public class UserController implements Controller{
 
 	@Override
 	public void doControl(Request request) {
+		
+		if(request != null) {
+			
+			int choice = (int) request.get("choice");
+	        switch (choice) {
+	            case 1:
+	            	MainDispatcher.getInstance().callView("InsertUser", null);
+	               break;
+	            case 2:
+	            	MainDispatcher.getInstance().callView("DeleteUser", null);
+	               break;
+	            case 3:
+	            	MainDispatcher.getInstance().callAction("ShowUsers","doControl", request);
+	               break;
+	        }
+		}
     	
-    	int choice = (int) request.get("choice");
-        switch (choice) {
-            case 1:
-               request.put("mode", "insert");
-               break;
-            case 2:
-               request.put("mode", "delete");
-               break;
-            case 3:
-               request.put("mode", "all");
-               break;
-        }
-        MainDispatcher.getInstance().callView("User", request);
+		else
+			MainDispatcher.getInstance().callView("HomeAdmin", null);
         
     }
 	

@@ -9,29 +9,56 @@ import java.util.ArrayList;
 public class TaskDAO {
 	private final String QUERY_INSERT = "insert into tasks(descrizione,id_macchinario,data) values(?,?,?)";
 	private final String QUERY_ALL = "select * from tasks where id_macchinario = ? ";
+	private final String QUERY_UPDATE = "update tasks set descrizione = ?,data = ? where id = ?";
+	private final String QUERY_DELETE = "delete from tasks where id = ?";
 	
 	public TaskDAO() {
 		
 	}
 	
-	public boolean insertTask(Task task) {
+	public void deleteTask(int id) {
+		Connection connection = ConnectionSingleton.getInstance();
+		
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETE);
+			
+			preparedStatement.setInt(1, id);
+			preparedStatement.executeUpdate();
+			
+		} catch(SQLException e) {
+			GestoreEccezioni.getInstance().gestisciEccezione(e);
+		}
+	}
+	
+	public void updateTask(String descrizione, int id) {
+		Connection connection = ConnectionSingleton.getInstance();
+		
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_UPDATE);
+			
+			preparedStatement.setString(1, descrizione);
+			preparedStatement.setTimestamp(2, new  Timestamp (System.currentTimeMillis ()));
+			preparedStatement.setInt(3, id);
+			preparedStatement.executeUpdate();
+			
+		} catch(SQLException e) {
+			GestoreEccezioni.getInstance().gestisciEccezione(e);
+		}
+	}
+	
+	public boolean insertTask(String descrizione, int macchinario) {
 		Connection connection = ConnectionSingleton.getInstance();
 		
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_INSERT);
 			
-			String descrizione = task.getDescrizione();
-			int macchinario = task.getMacchinario();
-			Timestamp data = task.getData();
-			
 			preparedStatement.setString(1, descrizione);
 			preparedStatement.setInt(2, macchinario);
-			preparedStatement.setTimestamp(3, data);
+			preparedStatement.setTimestamp(3, new  Timestamp (System.currentTimeMillis ()));
 			return preparedStatement.execute();
 			
 			
 		} catch(SQLException e) {
-			System.out.println("Errore");
 			GestoreEccezioni.getInstance().gestisciEccezione(e);
 			return false;
 		}

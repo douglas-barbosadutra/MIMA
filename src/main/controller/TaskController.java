@@ -6,17 +6,33 @@ public class TaskController implements Controller{
 	
 	@Override
 	public void doControl(Request request) {
-		int choice=(int)request.get("choice");
 		
-		if(choice==1)
-			request.put("mode", "all");
+		if(request != null) {
+			int choice=(int)request.get("choice");
+			
+			switch(choice) {
+				
+				case 1:{
+					MainDispatcher.getInstance().callView("ShowTasksManagement", null);
+				} break;
+				
+				case 2:{
+					MainDispatcher.getInstance().callView("InsertTask", null);
+				} break;
+				
+				case 3:{
+					MainDispatcher.getInstance().callView("UpdateTask", null);
+				} break;
+				
+				case 4:{
+					MainDispatcher.getInstance().callView("DeleteTask", null);
+				} break;
+			}
+		}
+		
 		else
-			request.put("mode","insert");
+			MainDispatcher.getInstance().callView("TaskManagement", null);
 		
-		MainDispatcher.getInstance().callView("Task", request);
 	}
-	
-	
-
 
 }
