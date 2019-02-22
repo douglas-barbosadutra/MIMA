@@ -1,15 +1,15 @@
-package main.model;
+package dto;
 
 import java.sql.Timestamp;
 
-public class Task {
+public class TaskDTO {
 
 	private int id;
 	private String descrizione;
 	private int macchinario;
 	private Timestamp data;
 	
-	public Task(int id, String descrizione,int macchinario,Timestamp data) {
+	public TaskDTO(int id, String descrizione,int macchinario,Timestamp data) {
 		
 		this.id=id;
 		this.descrizione=descrizione;
@@ -41,7 +41,7 @@ public class Task {
 		this.macchinario=macchinario;
 		
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Descrizione: "+descrizione+ "\n Macchinario: "+macchinario+ "\n Data: "+data;

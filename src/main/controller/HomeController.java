@@ -1,9 +1,9 @@
 package main.controller;
 
 import main.MainDispatcher;
-import main.model.Session;
 import main.model.User;
 import main.service.LoginService;
+import main.service.UserService;
 
 public class HomeController implements Controller {
 
@@ -23,7 +23,7 @@ public class HomeController implements Controller {
 	        //System.out.println(user);
 	        
 	        if (user != null) {
-	        	Session.setUserSession(user);
+	        	UserService.setUserSession(user);
 	        	if(user.isAdmin()) {
 		            MainDispatcher.getInstance().callView("HomeAdmin", null);
 		        	//System.out.println("amministraotre");
@@ -38,7 +38,7 @@ public class HomeController implements Controller {
         
     	}else {    
     		
-    		if(!Session.getUserSession().isAdmin()) {
+    		if(!UserService.getUserSession().isAdmin()) {
     			MainDispatcher.getInstance().callView("HomeUser", null);
     		}else {
     			MainDispatcher.getInstance().callView("HomeAdmin", null);

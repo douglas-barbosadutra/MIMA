@@ -8,6 +8,7 @@ import main.model.User;
 public class UserService {
 
     private UserDAO userDAO;
+    private static User user = null;
 
     public UserService() {
         this.userDAO = new UserDAO();
@@ -24,5 +25,13 @@ public class UserService {
     public List<User> getAllUsers() {
     	return this.userDAO.getAllUsers();
     }
+    
+	public static void setUserSession(User u) {
+		user = u;
+	}
+	
+	public static User getUserSession() {
+		return user;
+	}
 	
 }

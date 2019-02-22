@@ -1,8 +1,8 @@
 package main.controller;
 
 import main.MainDispatcher;
-import main.model.Session;
 import main.service.MachineService;
+import main.service.UserService;
 
 public class UpdateMachineController implements Controller {
 
@@ -26,7 +26,7 @@ public class UpdateMachineController implements Controller {
 		if(id==0)
 			MainDispatcher.getInstance().callView("MachineManagement", null);
 		else {
-			machineService.updateMachine(nome, modello, id, Session.getUserSession().getID());
+			machineService.updateMachine(nome, modello, id, UserService.getUserSession().getID());
 			MainDispatcher.getInstance().callView("MachineManagement", null);
 			
 		}

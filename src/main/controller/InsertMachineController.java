@@ -1,8 +1,8 @@
 package main.controller;
 
 import main.MainDispatcher;
-import main.model.Session;
 import main.service.MachineService;
+import main.service.UserService;
 
 public class InsertMachineController implements Controller {
 
@@ -21,7 +21,7 @@ public class InsertMachineController implements Controller {
 		String nome=request.get("nome").toString();
 		String modello=request.get("modello").toString();
 		
-		machineService.insertMachine(nome, modello, Session.getUserSession().getID());
+		machineService.insertMachine(nome, modello, UserService.getUserSession().getID());
 		MainDispatcher.getInstance().callView("MachineManagement", null);
 		
 	}

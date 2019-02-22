@@ -1,8 +1,8 @@
 package main.controller;
 
 import main.MainDispatcher;
-import main.model.Session;
 import main.service.MachineService;
+import main.service.UserService;
 
 public  class DeleteMachineController implements Controller {
 
@@ -22,7 +22,7 @@ public  class DeleteMachineController implements Controller {
 		if(id==0)
 			MainDispatcher.getInstance().callView("MachineManagement", null);
 		else {
-			machineService.deleteMachine(id, Session.getUserSession().getID());
+			machineService.deleteMachine(id, UserService.getUserSession().getID());
 			MainDispatcher.getInstance().callView("MachineManagement", null);
 			
 			
