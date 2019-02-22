@@ -4,8 +4,8 @@ import main.service.MachineService;
 
 import java.util.List;
 
-import dto.MachineDTO;
 import main.MainDispatcher;
+import main.dto.MachineDTO;
 
 public class ShowMachinesController implements Controller {
 	private MachineService machineService;

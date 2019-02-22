@@ -1,12 +1,11 @@
 package main.service;
 
+import main.converter.InstructionConverter;
 import main.dao.InstructionDAO;
+import main.dto.InstructionDTO;
 import main.model.Instruction;
 
 import java.util.*;
-
-import converter.InstructionConverter;
-import dto.InstructionDTO;
 
 public class InstructionService {
 	

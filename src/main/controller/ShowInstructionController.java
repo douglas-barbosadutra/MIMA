@@ -2,8 +2,8 @@ package main.controller;
 
 import java.util.List;
 
-import dto.InstructionDTO;
 import main.MainDispatcher;
+import main.dto.InstructionDTO;
 import main.service.InstructionService;
 
 public class ShowInstructionController implements Controller{

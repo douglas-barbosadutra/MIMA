@@ -2,8 +2,8 @@ package main.controller;
 
 import java.util.List;
 
-import dto.UserDTO;
 import main.MainDispatcher;
+import main.dto.UserDTO;
 import main.service.UserService;
 
 public class ShowUsersController implements Controller{

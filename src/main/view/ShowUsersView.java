@@ -2,9 +2,9 @@ package main.view;
 
 import java.util.List;
 
-import dto.UserDTO;
 import main.MainDispatcher;
 import main.controller.Request;
+import main.dto.UserDTO;
 
 public class ShowUsersView implements View{
 	private List<UserDTO> users;

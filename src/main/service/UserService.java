@@ -3,9 +3,9 @@ package main.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import converter.UserConverter;
-import dto.UserDTO;
+import main.converter.UserConverter;
 import main.dao.UserDAO;
+import main.dto.UserDTO;
 import main.model.User;
 
 public class UserService {

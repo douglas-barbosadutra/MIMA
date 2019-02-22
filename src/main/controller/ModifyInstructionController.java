@@ -1,7 +1,7 @@
 package main.controller;
 
-import dto.InstructionDTO;
 import main.MainDispatcher;
+import main.dto.InstructionDTO;
 import main.service.InstructionService;
 
 public class ModifyInstructionController implements Controller{

@@ -1,6 +1,6 @@
-package converter;
+package main.converter;
 
-import dto.*;
+import main.dto.*;
 import main.model.Task;
 
 public class TaskConverter{

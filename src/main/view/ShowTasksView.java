@@ -2,9 +2,9 @@ package main.view;
 
 import java.util.List;
 
-import dto.TaskDTO;
 import main.MainDispatcher;
 import main.controller.Request;
+import main.dto.TaskDTO;
 
 public class ShowTasksView implements View{
 	private List<TaskDTO> tasks;

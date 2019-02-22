@@ -2,8 +2,8 @@ package main.controller;
 
 import java.util.List;
 
-import dto.TaskDTO;
 import main.MainDispatcher;
+import main.dto.TaskDTO;
 import main.service.TaskService;
 
 public class ShowTasksController implements Controller{

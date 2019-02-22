@@ -2,9 +2,9 @@ package main.view;
 
 import java.util.List;
 
-import dto.MachineDTO;
 import main.MainDispatcher;
 import main.controller.Request;
+import main.dto.MachineDTO;
 
 public class ShowMachinesView implements View {
 

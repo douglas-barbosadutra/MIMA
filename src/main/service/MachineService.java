@@ -3,9 +3,9 @@ package main.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import converter.MachineConverter;
-import dto.MachineDTO;
+import main.converter.MachineConverter;
 import main.dao.MachineDAO;
+import main.dto.MachineDTO;
 import main.model.Machine;
 
 public class MachineService {

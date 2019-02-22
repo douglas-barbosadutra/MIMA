@@ -2,9 +2,9 @@ package main.view;
 
 import java.util.List;
 
-import dto.InstructionDTO;
 import main.MainDispatcher;
 import main.controller.Request;
+import main.dto.InstructionDTO;
 
 public class ShowListInstructionView implements View{
 	

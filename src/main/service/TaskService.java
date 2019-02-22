@@ -3,9 +3,9 @@ package main.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import converter.TaskConverter;
-import dto.TaskDTO;
+import main.converter.TaskConverter;
 import main.dao.TaskDAO;
+import main.dto.TaskDTO;
 import main.model.Task;
 
 public class TaskService {
