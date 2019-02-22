@@ -2,8 +2,8 @@ package main.controller;
 
 import java.util.List;
 
+import dto.TaskDTO;
 import main.MainDispatcher;
-import main.model.Task;
 import main.service.TaskService;
 
 public class ShowTasksController implements Controller{
@@ -21,7 +21,7 @@ public class ShowTasksController implements Controller{
 		
 		if(macchinario != 0) {
 			
-			List<Task> tasks = taskService.getAllTasks(macchinario);
+			List<TaskDTO> tasks = taskService.getAllTasks(macchinario);
 			request.put("tasks", tasks);
 			MainDispatcher.getInstance().callView("ShowTasks", request);
 		}

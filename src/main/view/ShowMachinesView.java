@@ -2,18 +2,18 @@ package main.view;
 
 import java.util.List;
 
+import dto.MachineDTO;
 import main.MainDispatcher;
 import main.controller.Request;
-import main.model.Machine;
 
 public class ShowMachinesView implements View {
 
-	private List<Machine> machines;
+	private List<MachineDTO> machines;
 	
 	@Override
 	public void showResults(Request request) {
 		// TODO Auto-generated method stub
-		machines=(List<Machine>) request.get("machines");
+		machines=(List<MachineDTO>) request.get("machines");
 	}
 
 	@Override

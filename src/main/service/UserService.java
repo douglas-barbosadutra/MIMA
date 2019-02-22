@@ -1,7 +1,10 @@
 package main.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import converter.UserConverter;
+import dto.UserDTO;
 import main.dao.UserDAO;
 import main.model.User;
 
@@ -22,8 +25,14 @@ public class UserService {
         this.userDAO.deleteUser(id);
     }
     
-    public List<User> getAllUsers() {
-    	return this.userDAO.getAllUsers();
+    public List<UserDTO> getAllUsers() {
+    	List<User> utenti = this.userDAO.getAllUsers();
+    	List<UserDTO> utentidto = new ArrayList<>();
+    	
+		for(User utente: utenti) {
+			utentidto.add(UserConverter.convertToDto(utente));
+		}
+		return utentidto;
     }
     
 	public static void setUserSession(User u) {

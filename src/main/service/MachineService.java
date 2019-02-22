@@ -1,7 +1,10 @@
 package main.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import converter.MachineConverter;
+import dto.MachineDTO;
 import main.dao.MachineDAO;
 import main.model.Machine;
 
@@ -25,8 +28,18 @@ public class MachineService {
         this.machineDAO.updateMachine(nome, modello, id, id_utente);
     }
     
-    public List<Machine> getAllMachines() {
-    	return this.machineDAO.getAllMachines();
+    public List<MachineDTO> getAllMachines() {
+    	List<Machine> macchine = this.machineDAO.getAllMachines();
+    	List<MachineDTO> machinedto = new ArrayList<>();
+    	
+		for(Machine macchina: macchine) {
+			machinedto.add(MachineConverter.convertToDto(macchina));
+		}
+		return machinedto;
     }
+    
+
+
+    
 	
 }

@@ -2,24 +2,24 @@ package main.view;
 
 import java.util.List;
 
+import dto.TaskDTO;
 import main.MainDispatcher;
 import main.controller.Request;
-import main.model.Task;
 
 public class ShowTasksView implements View{
-	private List<Task> tasks;
+	private List<TaskDTO> tasks;
 
 	@Override
 	public void showResults(Request request) {
 		// TODO Auto-generated method stub
-		tasks = (List<Task>) request.get("tasks");
+		tasks = (List<TaskDTO>) request.get("tasks");
 	}
 
 	@Override
 	public void showOptions() {
 		// TODO Auto-generated method stub
 		System.out.println("---LISTA TASKS---");
-		for(Task t : tasks)
+		for(TaskDTO t : tasks)
 			System.out.println(t);
 	}
 

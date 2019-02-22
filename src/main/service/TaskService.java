@@ -1,7 +1,10 @@
 package main.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import converter.TaskConverter;
+import dto.TaskDTO;
 import main.dao.TaskDAO;
 import main.model.Task;
 
@@ -21,11 +24,20 @@ public class TaskService {
 		return this.taskDAO.insertTask(descrizione,macchinario);
 	}
 	
-	public ArrayList<Task> getAllTasks(int macchinario){
-		return this.taskDAO.getAllTasks(macchinario);
+	public List<TaskDTO> getAllTasks(int macchinario){
+		
+    	List<Task> tasks = this.taskDAO.getAllTasks(macchinario);;
+    	List<TaskDTO> taskdto = new ArrayList<>();
+    	
+		for(Task task: tasks) {
+			taskdto.add(TaskConverter.convertToDto(task));
+		}
+		return taskdto;
+		
 	}
 	
 	public void updateTask(String descrizione, int id) {
 		this.taskDAO.updateTask(descrizione, id);
 	}
+	
 }

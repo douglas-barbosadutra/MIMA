@@ -2,8 +2,8 @@ package main.controller;
 
 import java.util.List;
 
+import dto.UserDTO;
 import main.MainDispatcher;
-import main.model.User;
 import main.service.UserService;
 
 public class ShowUsersController implements Controller{
@@ -17,7 +17,7 @@ public class ShowUsersController implements Controller{
 	public void doControl(Request request) {
 		// TODO Auto-generated method stub
 		
-		List<User> users = userService.getAllUsers();
+		List<UserDTO> users = userService.getAllUsers();
 		request.put("users", users);
 		MainDispatcher.getInstance().callView("ShowUsers", request);
 	}
