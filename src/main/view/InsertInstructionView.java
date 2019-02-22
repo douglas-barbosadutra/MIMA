@@ -4,7 +4,7 @@ import java.util.Scanner;
 import main.MainDispatcher;
 import main.controller.Request;
 
-public class InsertIstruzioneView implements View{
+public class InsertInstructionView implements View{
 
 	private String nomeIstruzione;
 	private String durata;
@@ -29,7 +29,7 @@ public class InsertIstruzioneView implements View{
         request.put("nomeIstruzione", nomeIstruzione);
         request.put("durata", durata);
         request.put("idTask", idTask);
-        MainDispatcher.getInstance().callAction("InsertIstruzione", "doControl", request);
+        MainDispatcher.getInstance().callAction("InsertInstruction", "doControl", request);
    }
 	
 	public String getInput() {

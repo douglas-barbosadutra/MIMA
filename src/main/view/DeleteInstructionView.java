@@ -5,7 +5,7 @@ import java.util.Scanner;
 import main.MainDispatcher;
 import main.controller.Request;
 
-public class DeleteIstruzioneView implements View{
+public class DeleteInstructionView implements View{
 
 	private String nomeIstruzione;
 	private String idTask;
@@ -26,7 +26,7 @@ public class DeleteIstruzioneView implements View{
     	 Request request = new Request();
          request.put("nomeIstruzione", nomeIstruzione);
          request.put("idTask", idTask);
-         MainDispatcher.getInstance().callAction("DeleteIstruzione", "doControl", request);
+         MainDispatcher.getInstance().callAction("DeleteInstruction", "doControl", request);
     }
 
 

@@ -1,10 +1,10 @@
 package dto;
 
-public class IstruzioneDTO {
+public class InstructionDTO {
 	private String nomeIstruzione;
 	private int durata;
 	
-	public IstruzioneDTO(String nomeIstruzione, int durata) {
+	public InstructionDTO(String nomeIstruzione, int durata) {
 		this.nomeIstruzione = nomeIstruzione;
 		this.durata = durata;
 	}

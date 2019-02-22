@@ -5,7 +5,7 @@ import java.util.Scanner;
 import main.MainDispatcher;
 import main.controller.Request;
 
-public class ShowIstruzioneView implements View{
+public class ShowInstructionView implements View{
 
 	private String choice;
 	
@@ -30,7 +30,7 @@ public class ShowIstruzioneView implements View{
 	public void submit() {
 		Request request = new Request();
     	request.put("choice", choice);
-    	MainDispatcher.getInstance().callAction("ShowIstruzione", "doControl", request);
+    	MainDispatcher.getInstance().callAction("ShowInstruction", "doControl", request);
 	}
 	
 }

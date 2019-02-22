@@ -1,11 +1,11 @@
 package main.model;
 
-public class Istruzione {
+public class Instruction {
 	
 	private String nome;
 	private int durata;
 	
-	public Istruzione(String nome, int durata) {
+	public Instruction(String nome, int durata) {
 		this.nome = nome;
 		this.durata = durata;
 	}

@@ -2,7 +2,7 @@ package main.controller;
 
 import main.MainDispatcher;
 
-public class IstruzioneController implements Controller{
+public class InstructionController implements Controller{
 
 	public void doControl(Request request) {
 		if(request != null) {
@@ -12,23 +12,23 @@ public class IstruzioneController implements Controller{
 			}
 			catch(NumberFormatException e) {
 				System.out.println("Inserisci un comando valido");
-				MainDispatcher.getInstance().callView("Istruzione", null);
+				MainDispatcher.getInstance().callView("Instruction", null);
 			}
 			switch (choice) {
 				case 1: {
-					MainDispatcher.getInstance().callAction("ShowIstruzione", "doControl", null);
+					MainDispatcher.getInstance().callAction("ShowInstruction", "doControl", null);
 					break;
 				}
 				case 2: {
-					MainDispatcher.getInstance().callAction("InsertIstruzione", "doControl", null);
+					MainDispatcher.getInstance().callAction("InsertInstruction", "doControl", null);
 			        break;
 					}
 				case 3: {
-					MainDispatcher.getInstance().callAction("ModifyIstruzione", "doControl", null);
+					MainDispatcher.getInstance().callAction("ModifyInstruction", "doControl", null);
 					break;
 				}
 				case 4: {
-					MainDispatcher.getInstance().callAction("DeleteIstruzione", "doControl", null);
+					MainDispatcher.getInstance().callAction("DeleteInstruction", "doControl", null);
 					break;
 					}
 				case 5: {
@@ -37,12 +37,12 @@ public class IstruzioneController implements Controller{
 				}
 				default: {
 					System.out.println("Inserisci un comando valido");
-					MainDispatcher.getInstance().callView("Istruzione", null);
+					MainDispatcher.getInstance().callView("Instruction", null);
 				}
 			}
 		}
 		else {
-			MainDispatcher.getInstance().callView("Istruzione", null);
+			MainDispatcher.getInstance().callView("Instruction", null);
 		}
 	}
 	

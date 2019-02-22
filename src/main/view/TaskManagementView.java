@@ -46,7 +46,7 @@ public class TaskManagementView implements View{
 		if(choice<1 || choice>6)
 			MainDispatcher.getInstance().callAction("TaskManagement","doControl",null);
 		else if(choice==5)
-			MainDispatcher.getInstance().callAction("Istruzione","doControl",null);
+			MainDispatcher.getInstance().callAction("Instruction","doControl",null);
 		else if(choice==6)
 			MainDispatcher.getInstance().callAction("Home","doControl",null);
 		else {

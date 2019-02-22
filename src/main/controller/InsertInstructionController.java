@@ -1,15 +1,15 @@
 package main.controller;
 
+import dto.InstructionDTO;
 import main.MainDispatcher;
-import main.model.Istruzione;
-import main.service.IstruzioneService;
+import main.service.InstructionService;
 
-public class InsertIstruzioneController implements Controller{
+public class InsertInstructionController implements Controller{
 
-	private IstruzioneService istruzioneService;
+	private InstructionService istruzioneService;
 	
-	public InsertIstruzioneController() {
-		this.istruzioneService = new IstruzioneService();
+	public InsertInstructionController() {
+		this.istruzioneService = new InstructionService();
 	}
 	
 	@Override
@@ -24,13 +24,13 @@ public class InsertIstruzioneController implements Controller{
 			}
 			catch(NumberFormatException e) {
 				System.out.println("Inserisci dei valori validi");
-				MainDispatcher.getInstance().callView("InsertIstruzione", null);
+				MainDispatcher.getInstance().callView("InsertInstruction", null);
 			}
-			Istruzione istruzione = new Istruzione(nomeIstruzione, durata);
+			InstructionDTO istruzione = new InstructionDTO(nomeIstruzione, durata);
 			istruzioneService.insertIstruzione(istruzione, idTask);
-			MainDispatcher.getInstance().callView("Istruzione", null);
+			MainDispatcher.getInstance().callView("Instruction", null);
 		}
 		else
-	    	MainDispatcher.getInstance().callView("InsertIstruzione", request);
+	    	MainDispatcher.getInstance().callView("InsertInstruction", request);
 	}
 }

@@ -1,14 +1,14 @@
 package main.controller;
 
 import main.MainDispatcher;
-import main.service.IstruzioneService;
+import main.service.InstructionService;
 
-public class DeleteIstruzioneController implements Controller{
+public class DeleteInstructionController implements Controller{
 	
-	private IstruzioneService istruzioneService;
+	private InstructionService istruzioneService;
 	
-	public DeleteIstruzioneController() {
-		this.istruzioneService = new IstruzioneService();
+	public DeleteInstructionController() {
+		this.istruzioneService = new InstructionService();
 	}
 	
 	@Override
@@ -21,12 +21,12 @@ public class DeleteIstruzioneController implements Controller{
 			}
 			catch(NumberFormatException e) {
 				System.out.println("Inserisci un idTask valido");
-				MainDispatcher.getInstance().callView("DeleteIstruzione", null);
+				MainDispatcher.getInstance().callView("DeleteInstruction", null);
 			}
 			istruzioneService.deleteIstruzione(nomeIstruzione, idTask);
-			MainDispatcher.getInstance().callView("Istruzione", null);
+			MainDispatcher.getInstance().callView("Instruction", null);
 		}
 		else
-	    	MainDispatcher.getInstance().callView("DeleteIstruzione", request);
+	    	MainDispatcher.getInstance().callView("DeleteInstruction", request);
 	}
 }

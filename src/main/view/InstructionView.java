@@ -2,18 +2,18 @@ package main.view;
 
 import main.MainDispatcher;
 import main.controller.Request;
-import main.model.Istruzione;
-import main.service.IstruzioneService;
+import main.model.Instruction;
+import main.service.InstructionService;
 
 import java.util.List;
 import java.util.Scanner;
 
-public class IstruzioneView implements View{
-	private IstruzioneService istruzioneService;
+public class InstructionView implements View{
+	private InstructionService istruzioneService;
 	String choice;
     
-    public IstruzioneView () {
-        this.istruzioneService = new IstruzioneService();
+    public InstructionView () {
+        this.istruzioneService = new InstructionService();
     }
     
     @Override
@@ -42,6 +42,6 @@ public class IstruzioneView implements View{
     public void submit() {
     	Request request = new Request();
     	request.put("choice", choice);
-    	MainDispatcher.getInstance().callAction("Istruzione", "doControl", request);
+    	MainDispatcher.getInstance().callAction("Instruction", "doControl", request);
     }
 }
