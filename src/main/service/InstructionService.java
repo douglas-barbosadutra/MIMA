@@ -26,7 +26,7 @@ public class InstructionService {
 	}
 	
 	public boolean insertIstruzione(InstructionDTO istruzionedto, int idTask) {
-		return this.istruzioneDAO.insertIstruzione(InstructionConverter.convertToIstruzione(istruzionedto), idTask);
+		return this.istruzioneDAO.insertIstruzione(InstructionConverter.convertToIstruzione(istruzionedto, idTask));
 	}
 	
 	public boolean deleteIstruzione(String nome, int idTask) {
@@ -34,6 +34,6 @@ public class InstructionService {
 	}
 	
 	public boolean modifyIstruzione(InstructionDTO istruzionedto, int idTask) {
-		return this.istruzioneDAO.modifyIstruzione(InstructionConverter.convertToIstruzione(istruzionedto), idTask);
+		return this.istruzioneDAO.modifyIstruzione(InstructionConverter.convertToIstruzione(istruzionedto, idTask));
 	}
 }

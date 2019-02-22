@@ -16,4 +16,8 @@ public class InstructionDTO {
 	public int getDurata() {
 		return durata;
 	}
+	
+	public String toString() {
+		return "Nome Istruzione: " + nomeIstruzione + "\nDurata: " + durata + "\n";
+	}
 }

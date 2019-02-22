@@ -11,7 +11,6 @@ public class InstructionController implements Controller{
 				choice = Integer.parseInt(request.get("choice").toString());
 			}
 			catch(NumberFormatException e) {
-				System.out.println("Inserisci un comando valido");
 				MainDispatcher.getInstance().callView("Instruction", null);
 			}
 			switch (choice) {

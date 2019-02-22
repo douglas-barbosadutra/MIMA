@@ -13,8 +13,8 @@ public class ShowListInstructionView implements View{
 	public void showResults(Request request) {
 		List<InstructionDTO> istruzioni = (List<InstructionDTO>)request.get("istruzioni");
 		System.out.println("----- Istruzioni -----");
-		System.out.println("Nome	durata");
-        istruzioni.forEach(istruzione -> System.out.println(istruzione.getNomeIstruzione() + " " + istruzione.getDurata()));
+		System.out.println("");
+        istruzioni.forEach(istruzione -> System.out.println(istruzione.toString()));
 	}
 
 	@Override

@@ -23,7 +23,6 @@ public class InsertInstructionController implements Controller{
 				durata = Integer.parseInt(request.get("durata").toString());
 			}
 			catch(NumberFormatException e) {
-				System.out.println("Inserisci dei valori validi");
 				MainDispatcher.getInstance().callView("InsertInstruction", null);
 			}
 			InstructionDTO istruzione = new InstructionDTO(nomeIstruzione, durata);

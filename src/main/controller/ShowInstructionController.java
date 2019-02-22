@@ -15,7 +15,6 @@ public class ShowInstructionController implements Controller{
 				idTask = Integer.parseInt(request.get("choice").toString());
 			}
 			catch(NumberFormatException e) {
-				System.out.println("Inserisci un idTask valido");
 				MainDispatcher.getInstance().callView("ShowInstruction", null);
 			}
 			InstructionService istruzioneService = new InstructionService();

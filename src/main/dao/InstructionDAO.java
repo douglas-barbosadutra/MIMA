@@ -28,7 +28,7 @@ public class InstructionDAO {
 	        while (resultSet.next()) {
 	            String nome = resultSet.getString("nome_istruzioni");
 	            int durata = resultSet.getInt("durata");
-	            istruzioni.add(new Instruction(nome, durata));
+	            istruzioni.add(new Instruction(nome, durata, idTask));
 	           }
 		}
 		catch (SQLException e) {
@@ -37,11 +37,11 @@ public class InstructionDAO {
 		return istruzioni;
 	}
 	
-	public boolean insertIstruzione(Instruction istruzione, int idTask) {
+	public boolean insertIstruzione(Instruction istruzione) {
         Connection connection = ConnectionSingleton.getInstance();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(QUERY_INSERT);
-            preparedStatement.setInt(1, idTask);
+            preparedStatement.setInt(1, istruzione.getIdTask());
             preparedStatement.setString(2, istruzione.getNome());
             preparedStatement.setInt(3, istruzione.getDurata());
             return preparedStatement.execute();
@@ -67,12 +67,12 @@ public class InstructionDAO {
         }
     }
 	
-	public boolean modifyIstruzione(Instruction istruzione, int idTask) {
+	public boolean modifyIstruzione(Instruction istruzione) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_UPDATE);
 			preparedStatement.setInt(1, istruzione.getDurata());
-			preparedStatement.setInt(2, idTask);
+			preparedStatement.setInt(2, istruzione.getIdTask());
 			preparedStatement.setString(3, istruzione.getNome());
 			preparedStatement.executeUpdate();
 			return true;

@@ -20,7 +20,6 @@ public class DeleteInstructionController implements Controller{
 				idTask = Integer.parseInt(request.get("idTask").toString());
 			}
 			catch(NumberFormatException e) {
-				System.out.println("Inserisci un idTask valido");
 				MainDispatcher.getInstance().callView("DeleteInstruction", null);
 			}
 			istruzioneService.deleteIstruzione(nomeIstruzione, idTask);
