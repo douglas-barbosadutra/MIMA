@@ -17,8 +17,8 @@ public class UserService {
         this.userDAO = new UserDAO();
     }
 
-    public void insertUser (String username, String password) {
-       this.userDAO.insertUser(username, password);
+    public void insertUser (String username, String password, String name, String surname, String email, String phone, int rank) {
+       this.userDAO.insertUser(username, password, name, surname, email, phone, rank);
     }
     
     public void deleteUser (int id) {
@@ -26,6 +26,7 @@ public class UserService {
     }
     
     public List<UserDTO> getAllUsers() {
+    	
     	List<User> utenti = this.userDAO.getAllUsers();
     	List<UserDTO> utentidto = new ArrayList<>();
     	

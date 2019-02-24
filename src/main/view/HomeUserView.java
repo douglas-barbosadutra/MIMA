@@ -25,6 +25,7 @@ public class HomeUserView implements View {
     }
 
     public void submit() {
+    	
         if (choice == 1)
             MainDispatcher.getInstance().callAction("MachineManagement", "doControl", null);
         else if (choice == 2)
@@ -38,6 +39,4 @@ public class HomeUserView implements View {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
-
-
 }

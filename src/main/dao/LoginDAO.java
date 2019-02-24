@@ -24,7 +24,7 @@ public class LoginDAO {
             ResultSet rs = statement.executeQuery();
             
             if(rs.next()) {          	
-            	return new User(rs.getInt("id"),rs.getString("username"),rs.getString("password"),rs.getInt("rank"));
+            	return new User(rs.getInt("id"),rs.getString("username"),rs.getString("password"),rs.getString("name"),rs.getString("surname"),rs.getString("email"),rs.getString("phone"),rs.getInt("rank"));
             }else {
             	return null;
             }
