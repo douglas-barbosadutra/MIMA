@@ -13,22 +13,24 @@ public class HomeUserView implements View {
 
     }
 
-
     public void showOptions() {
         System.out.println("");
         System.out.println("-------MENU UTENTE-------");
         System.out.println("");
-        System.out.println("1) Gestione macchinari");
-        System.out.println("2) Gestione task");
-        System.out.println("3) Logout");
+        System.out.println("1) Gestione profilo"); 
+        System.out.println("2) Gestione macchinari");
+        System.out.println("3) Gestione task");
+        System.out.println("4) Logout");
         this.choice = Integer.parseInt(getInput());
     }
 
     public void submit() {
     	
-        if (choice == 1)
+    	if(choice == 1)
+    		MainDispatcher.getInstance().callAction("UpdateUserManagement", "doControl", null);
+    	else if (choice == 2)
             MainDispatcher.getInstance().callAction("MachineManagement", "doControl", null);
-        else if (choice == 2)
+        else if (choice == 3)
             MainDispatcher.getInstance().callAction("TaskManagement", "doControl", null);
         else
             MainDispatcher.getInstance().callAction("Login", "doControl", null);

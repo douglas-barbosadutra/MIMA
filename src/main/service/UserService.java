@@ -35,6 +35,10 @@ public class UserService {
 		}
 		return utentidto;
     }
+
+    public void updateUser(String attribute, String value) {
+    	userDAO.updateUser(attribute, value, user.getID());
+    }
     
 	public static void setUserSession(User u) {
 		user = u;
