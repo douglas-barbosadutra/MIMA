@@ -1,53 +1,50 @@
 package com.virtualpairprogrammers.servlets;
 
-import com.virtualpairprogrammers.services.LoginService;
+import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.io.PrintWriter;
 
-public class LoginServlet extends HttpServlet
-{
+import com.virtualpairprogrammers.domain.User;
+import com.virtualpairprogrammers.services.LoginService;
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException
-    {
+public class LoginServlet extends HttpServlet {
+	
+	private final LoginService loginService = new LoginService();;
 
+	@Override
+	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		final HttpSession session = request.getSession();
+		session.setAttribute("utente", null);
 
-    }
+		if (request != null) {
+			final String username = request.getParameter("username").toString();
+			final String password = request.getParameter("password").toString();
 
-    public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
-        String scelta=request.getParameter("bott");
+			final User user = loginService.login(username, password);
+			
+			if (user != null) {
+				session.setAttribute("utente", user.getName());
 
-        switch (scelta)
-        {
+				switch (user.getRank()) {
+				case 1:
+					getServletContext().getRequestDispatcher("/homeUser.jsp").forward(request, response);
+					break;
+				case 0:
+					getServletContext().getRequestDispatcher("/homeAdmin.jsp").forward(request, response);
+					break;
+				default:
+					getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+					break;
+				}
+			}
+			
+			
+		}
+	}
 
-            case "Login":
-            {
-
-                HttpSession session = request.getSession(true);
-                session.setAttribute("servlet","Home");
-                session.setAttribute("role",null);
-                session.setAttribute("firstname",null);
-                MainDispatcherServlet.getInstance(request).callAction(request,response);
-            }
-            break;
-            case "Registrati":
-            {
-                HttpSession session = request.getSession(true);
-                session.setAttribute("mode","reg");
-                session.setAttribute("view","UserView.jsp");
-                MainDispatcherServlet.getInstance(request).callView(request,response);
-            }
-        }
-    }
 }
-
-
-

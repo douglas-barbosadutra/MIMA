@@ -32,9 +32,9 @@ public class ConnectionSingleton {
                 String driver="com.mysql.jdbc.Driver";
                 String host="127.0.0.1";
                 String port="3306";
-                String dbName="contrader";
+                String dbName="mima";
                 String username="root";
-                String password ="root";
+                String password ="00000000";
                 /*String vendor = properties.getProperty("db.vendor");
                 String driver = properties.getProperty("db.driver");
                 String host = properties.getProperty("db.host");

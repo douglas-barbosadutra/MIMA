@@ -1,20 +1,16 @@
-package com.virtualpairprogrammers.domain;
+package com.virtualpairprogrammers.dto;
 
-public class User {
+public class UserDTO {
 
 	private int id;
-    private String username;
-    private String password;
     private String name;
     private String surname;
     private String email;
     private String phone;
     private int rank;
 
-    public User(int id, String username, String password,String name, String surname, String email, String phone, int rank) {
+    public UserDTO(int id, String name, String surname, String email, String phone, int rank) {
     	this.id = id;
-        this.username = username;
-        this.password = password;
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -30,22 +26,6 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    
     public String getName() {
     	return this.name;
     }
@@ -91,6 +71,7 @@ public class User {
     }
     @Override
     public String toString() {
-        return "ID: " + id + "\nNome: "+name+"\nCognome: "+surname+"\nEmail: "+email+"\nTelefono: "+phone+"\nRank: "+rank+"\n";
+        return "ID: " + id +"\nNome: "+name+"\nCognome: "+surname+"\nEmail: "+email+"\nTelefono: "+phone+ "\nRank: "+rank+"\n";
+
     }
 }

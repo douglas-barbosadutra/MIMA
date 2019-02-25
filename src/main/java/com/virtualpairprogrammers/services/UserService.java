@@ -1,37 +1,51 @@
 package com.virtualpairprogrammers.services;
 
-
-
-import com.virtualpairprogrammers.dao.UserDao;
-import com.virtualpairprogrammers.domain.User;
-
+import java.util.ArrayList;
 import java.util.List;
 
-public class UserService
-{
-    private UserDao userDao;
-    private static UserService reference;
+import com.virtualpairprogrammers.converter.UserConverter;
+import com.virtualpairprogrammers.dao.UserDAO;
+import com.virtualpairprogrammers.domain.User;
+import com.virtualpairprogrammers.dto.UserDTO;
 
-    public static UserService getService() {
-        if (reference == null)
-            reference = new UserService();
-        return reference;
+public class UserService {
+
+    private UserDAO userDAO;
+    private static User user = null;
+
+    public UserService() {
+        this.userDAO = new UserDAO();
     }
 
-
-
-    public UserService()
-    {
-        this.userDao = new UserDao();
+    public void insertUser (String username, String password, String name, String surname, String email, String phone, int rank) {
+       this.userDAO.insertUser(username, password, name, surname, email, phone, rank);
+    }
+    
+    public void deleteUser (int id) {
+        this.userDAO.deleteUser(id);
+    }
+    
+    public List<UserDTO> getAllUsers() {
+    	
+    	List<User> utenti = this.userDAO.getAllUsers();
+    	List<UserDTO> utentidto = new ArrayList<>();
+    	
+		for(User utente: utenti) {
+			utentidto.add(UserConverter.convertToDto(utente));
+		}
+		return utentidto;
     }
 
-    public List<User> getAllUser ()
-    {
-        return this.userDao.getAllUser();
+    public void updateUser(String attribute, String value) {
+    	userDAO.updateUser(attribute, value, user.getID());
     }
-
-    public boolean insertUser (User user) {
-        return this.userDao.insertUser(user);
-    }
-
+    
+	public static void setUserSession(User u) {
+		user = u;
+	}
+	
+	public static User getUserSession() {
+		return user;
+	}
+	
 }
