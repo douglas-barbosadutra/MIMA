@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `mima` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
 USE `mima`;
--- MySQL dump 10.13  Distrib 8.0.11, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.15, for macos10.14 (x86_64)
 --
--- Host: 127.0.0.1    Database: mima
+-- Host: localhost    Database: mima
 -- ------------------------------------------------------
--- Server version	8.0.11
+-- Server version	8.0.15
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -28,11 +28,12 @@ CREATE TABLE `istruzioni` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_tasks` int(11) NOT NULL,
   `nome_istruzioni` varchar(45) NOT NULL,
-  `durata` int(11) NOT NULL,
+  `durata` int(11) NOT NULL DEFAULT '0',
+  `codice` varchar(10) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idx_task` (`id_tasks`),
   CONSTRAINT `fk_task` FOREIGN KEY (`id_tasks`) REFERENCES `tasks` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,8 +42,62 @@ CREATE TABLE `istruzioni` (
 
 LOCK TABLES `istruzioni` WRITE;
 /*!40000 ALTER TABLE `istruzioni` DISABLE KEYS */;
-INSERT INTO `istruzioni` VALUES (3,12,'Taglia il legno spesso 2 cm',50);
+INSERT INTO `istruzioni` VALUES (3,12,'input',2,'AA772'),(4,12,'verniciatura laterale',50,'AA773'),(5,12,'verniciatura posteriore',40,'AA773'),(6,12,'output',2,'AA774');
 /*!40000 ALTER TABLE `istruzioni` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `items`
+--
+
+DROP TABLE IF EXISTS `items`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `items` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `descrizione` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `items`
+--
+
+LOCK TABLES `items` WRITE;
+/*!40000 ALTER TABLE `items` DISABLE KEYS */;
+INSERT INTO `items` VALUES (1,'telaio');
+/*!40000 ALTER TABLE `items` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `lavorazioni`
+--
+
+DROP TABLE IF EXISTS `lavorazioni`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `lavorazioni` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_item` int(11) NOT NULL,
+  `id_istruzione` int(11) NOT NULL,
+  `durata` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `id_item` (`id_item`),
+  KEY `id_istruzione` (`id_istruzione`),
+  CONSTRAINT `fk_istruzione` FOREIGN KEY (`id_istruzione`) REFERENCES `istruzioni` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `fk_item` FOREIGN KEY (`id_item`) REFERENCES `items` (`id`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lavorazioni`
+--
+
+LOCK TABLES `lavorazioni` WRITE;
+/*!40000 ALTER TABLE `lavorazioni` DISABLE KEYS */;
+INSERT INTO `lavorazioni` VALUES (1,1,3,2),(2,1,4,50),(3,1,5,40),(4,1,6,2);
+/*!40000 ALTER TABLE `lavorazioni` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -69,7 +124,7 @@ CREATE TABLE `macchinari` (
 
 LOCK TABLES `macchinari` WRITE;
 /*!40000 ALTER TABLE `macchinari` DISABLE KEYS */;
-INSERT INTO `macchinari` VALUES (5,'bordatrice','1.5',9);
+INSERT INTO `macchinari` VALUES (5,'Verniciatrice','AK22',9);
 /*!40000 ALTER TABLE `macchinari` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,9 +139,8 @@ CREATE TABLE `tasks` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descrizione` varchar(45) NOT NULL,
   `id_macchinario` int(11) NOT NULL,
-  `data` timestamp NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `descrizione` (`descrizione`,`id_macchinario`,`data`),
+  UNIQUE KEY `descrizione` (`descrizione`,`id_macchinario`),
   KEY `idx_macchinario` (`id_macchinario`),
   CONSTRAINT `tasks_ibfk_1` FOREIGN KEY (`id_macchinario`) REFERENCES `macchinari` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -98,7 +152,7 @@ CREATE TABLE `tasks` (
 
 LOCK TABLES `tasks` WRITE;
 /*!40000 ALTER TABLE `tasks` DISABLE KEYS */;
-INSERT INTO `tasks` VALUES (12,'Taglia la legna',5,'2019-02-25 08:33:20');
+INSERT INTO `tasks` VALUES (12,'verniciatura',5);
 /*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -120,7 +174,7 @@ CREATE TABLE `users` (
   `password` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -129,7 +183,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (8,'pluto','pippo','pippo','pippo',1,'pippo','pippo'),(9,'prova','prova','email2','yeyeeyrysrd',0,'prova','prova'),(10,'prova2','prova2','prova2','prova2',1,'prova2','prova2');
+INSERT INTO `users` VALUES (8,'pluto','pippo','pippo','pippo',1,'pippo','pippo'),(9,'prova','prova','email2','yeyeeyrysrd',0,'prova','prova'),(10,'prova','prova','prova2','prova2',1,'prova2','prova2');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -142,4 +196,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-25  9:35:21
+-- Dump completed on 2019-02-26 16:26:30
