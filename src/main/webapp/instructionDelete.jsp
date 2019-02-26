@@ -7,15 +7,9 @@
 <title>Elimina istruzione</title>
 </head>
 <body>
-	<form action="UserServlet" method="post">
-	    Nome istruzione: <input type="text" name="nomeIstruzione"><br>
-	    Id Task: <input type="text" name="idTask"><br>
-	    <input type="hidden" name="action" value="deleteInstruction"><br><br>
-		<input type="submit" value="Elimina">
-	</form>
-	
-	<form action="UserServlet" method="post">
-		 <button type="submit" name="action" value="indietro">Indietro</button>
+	<h1>Istruzione eliminata</h1>
+	<form action="InstructionServlet" method="post">
+		 <button type="submit" name="action" value="showInstruction">Indietro</button>
 	</form>
 </body>
 </html>

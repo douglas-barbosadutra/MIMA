@@ -4,11 +4,13 @@ public class InstructionDTO {
 	private String nomeIstruzione;
 	private int durata;
 	private int id;
+	private String codice;
 	
-	public InstructionDTO(String nomeIstruzione, int durata, int id) {
+	public InstructionDTO(String nomeIstruzione, int durata, int id, String codice) {
 		this.nomeIstruzione = nomeIstruzione;
 		this.durata = durata;
 		this.id = id;
+		this.codice = codice;
 	}
 	
 	public String getNomeIstruzione() {
@@ -21,6 +23,10 @@ public class InstructionDTO {
 	
 	public int getId() {
 		return id;
+	}
+	
+	public String getCodice() {
+		return codice;
 	}
 	
 	public String toString() {

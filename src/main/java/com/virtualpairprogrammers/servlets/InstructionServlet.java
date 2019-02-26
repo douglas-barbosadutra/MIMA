@@ -38,7 +38,8 @@ public class InstructionServlet extends HttpServlet {
 					case "insertInstruction":{
 						String nomeIstruzione = request.getParameter("nomeIstruzione").toString();
 						int durata = Integer.parseInt(request.getParameter("durata").toString());
-						InstructionDTO istruzione = new InstructionDTO(nomeIstruzione, durata, idTask);
+						String codice = request.getParameter("codice").toString();
+						InstructionDTO istruzione = new InstructionDTO(nomeIstruzione, durata, idTask, codice);
 						istruzioneService.insertIstruzione(istruzione, idTask);
 						getServletContext().getRequestDispatcher("/homeUser.jsp").forward(request, response);
 						break;

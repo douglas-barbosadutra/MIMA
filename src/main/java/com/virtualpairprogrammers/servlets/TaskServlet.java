@@ -32,7 +32,7 @@ public class TaskServlet extends HttpServlet{
 					case "deleteTask":{
 						int id = Integer.parseInt(request.getParameter("id").toString());
 						taskService.deleteTask(id);
-						getServletContext().getRequestDispatcher("/taskShow.jsp").forward(request, response);
+						getServletContext().getRequestDispatcher("/homeUser.jsp").forward(request, response);
 						break;
 					}
 					case "insertTask":{
@@ -54,7 +54,7 @@ public class TaskServlet extends HttpServlet{
 						break;
 					}
 					case "indietro":{
-						
+						getServletContext().getRequestDispatcher("/homeUser.jsp").forward(request, response);
 						break;
 					}
 				}

@@ -10,6 +10,7 @@
 	<form action="InstructionServlet" method="post">
 	    Nome Istruzione: <input type="text" name="nomeIstruzione"><br>
 	    durata: <input type="text" name="durata"><br>
+	    codice: <input type="text" name="codice"><br>
   		<input type="hidden" name="action" value="insertInstruction">
   		<input type="submit" value="Inserisci">
 	</form>

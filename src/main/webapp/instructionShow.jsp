@@ -15,7 +15,7 @@ List<InstructionDTO> istruzioni = (List<InstructionDTO>)session.getAttribute("li
 
 for(int i = 0; i < istruzioni.size(); i++)
 {
-	%><p><%out.println(istruzioni.get(i));%> - <a href="InstructionServlet?action=deleteInstruction&nomeIstruzione=<%=istruzioni.get(i).getNomeIstruzione()%>">elimina</a> - <a href="InstructionServlet?action=modifyInstruction&id=<%=istruzioni.get(i).getId()%>">modifica</a></p><%
+	%><p><%out.println(istruzioni.get(i));%> - <a href="InstructionServlet?action=deleteInstruction&nomeIstruzione=<%=istruzioni.get(i).getNomeIstruzione()%>">elimina</a></p><%
 }
 %>
 	<form action="InstructionServlet" method="post">

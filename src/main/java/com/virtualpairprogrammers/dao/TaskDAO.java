@@ -8,7 +8,7 @@ import com.virtualpairprogrammers.utils.ConnectionSingleton;
 import com.virtualpairprogrammers.utils.GestoreEccezioni;
 
 public class TaskDAO {
-	private final String QUERY_INSERT = "insert into tasks(descrizione,id_macchinario,data) values(?,?,?)";
+	private final String QUERY_INSERT = "insert into tasks(descrizione,id_macchinario) values(?,?)";
 	private final String QUERY_ALL = "select * from tasks where id_macchinario = ? ";
 	private final String QUERY_UPDATE = "update tasks set descrizione = ?,data = ? where id = ?";
 	private final String QUERY_DELETE = "delete from tasks where id = ?";
@@ -38,7 +38,6 @@ public class TaskDAO {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_UPDATE);
 			
 			preparedStatement.setString(1, descrizione);
-			preparedStatement.setTimestamp(2, new  Timestamp (System.currentTimeMillis ()));
 			preparedStatement.setInt(3, id);
 			preparedStatement.executeUpdate();
 			
@@ -55,7 +54,6 @@ public class TaskDAO {
 			
 			preparedStatement.setString(1, descrizione);
 			preparedStatement.setInt(2, macchinario);
-			preparedStatement.setTimestamp(3, new  Timestamp (System.currentTimeMillis ()));
 			return preparedStatement.execute();
 			
 			
@@ -79,8 +77,7 @@ public class TaskDAO {
 				
 				int id = resultSet.getInt("id");
 				String descrizione = resultSet.getString("descrizione");
-				Timestamp data = resultSet.getTimestamp("data");
-				tasks.add(new Task(id,descrizione,macchinario,data));
+				tasks.add(new Task(id,descrizione,macchinario));
 			}
 			
 		} catch(SQLException e) {
