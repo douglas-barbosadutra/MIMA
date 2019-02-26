@@ -27,15 +27,6 @@ public class UserServlet extends HttpServlet {
 			if(action != null) {
 			
 			switch(action) {
-			
-				case "showUser":
-					
-					List<UserDTO> users = userService.getAllUsers();
-					session.setAttribute("users_list", users);
-					
-					getServletContext().getRequestDispatcher("/userShow.jsp").forward(request, response);
-					
-					break;
 					
 				case "openInsertUser":
 					
@@ -58,14 +49,14 @@ public class UserServlet extends HttpServlet {
 					
 					break;
 					
-				case "openDeleteUser":
+				case "showUser":
 					
-					List<UserDTO> users1 = userService.getAllUsers();
-					session.setAttribute("users_list", users1);
+					List<UserDTO> users = userService.getAllUsers();
+					session.setAttribute("users_list", users);
 					
-					getServletContext().getRequestDispatcher("/userDelete.jsp").forward(request, response);
+					getServletContext().getRequestDispatcher("/userShow.jsp").forward(request, response);
 					
-				break;
+					break;
 				
 				case "deleteUser":
 					

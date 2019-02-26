@@ -8,12 +8,11 @@
 </head>
 <body>
 
-<h1>Benvenuto: ${utente}</h1>
+<h1>Benvenuto ${utente}</h1>
 
 	<form action="UserServlet" method="post">
 	  <button type="submit" name="action" value="openInsertUser">Inserisci utente</button>
-	  <button type="submit" name="action" value="openDeleteUser">Elimina utente</button>
-	  <button type="submit" name="action" value="showUser">Visualizza utenti</button>
+	  <button type="submit" name="action" value="showUser">Gestione utenti</button>
 	  <button type="submit" name="action" value="logout">Logout</button>
 	</form>
 	

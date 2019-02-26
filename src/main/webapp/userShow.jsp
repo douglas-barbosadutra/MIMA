@@ -16,7 +16,7 @@ List<UserDTO> users = (List<UserDTO>)session.getAttribute("users_list");
 
 for(int i = 0; i < users.size(); i++)
 {
-	%><p><%out.println(users.get(i));%></p><%
+	%><p><%out.println(users.get(i));%> - <a href="UserServlet?action=deleteUser&id=<%=users.get(i).getID()%>">elimina</a></p><%
 }
 %>
 
