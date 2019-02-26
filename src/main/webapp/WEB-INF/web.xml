@@ -27,6 +27,16 @@
 		<url-pattern>/UserServlet</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>MachineServlet</servlet-name>
+		<servlet-class>com.virtualpairprogrammers.servlets.MachineServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>MachineServlet</servlet-name>
+		<url-pattern>/MachineServlet</url-pattern>
+	</servlet-mapping>
+
 	<session-config>
 		<session-timeout>4000</session-timeout>
 	</session-config>

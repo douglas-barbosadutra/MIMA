@@ -6,10 +6,10 @@ import com.virtualpairprogrammers.dto.MachineDTO;
 public class MachineConverter{
 
 	public static Machine convertToMachine(MachineDTO machinedto) {
-		return (new Machine(machinedto.getId(), machinedto.getNome(), machinedto.getModello(), machinedto.getUtente()));
+		return (new Machine(machinedto.getId(), machinedto.getNome(), machinedto.getModello(), 0));
 	}
 
 	public static MachineDTO convertToDto(Machine machine) {
-		return (new MachineDTO(machine.getId(), machine.getNome(), machine.getModello(), machine.getUtente()));
+		return (new MachineDTO(machine.getId(), machine.getNome(), machine.getModello()));
 	}
 }

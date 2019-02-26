@@ -17,20 +17,16 @@ public class MachineService {
         this.machineDAO = new MachineDAO();
     }
 
-    public void insertMachine (String nome, String modello, int id_utente) {
-       this.machineDAO.insertMachine(nome, modello, id_utente);
+    public void insertMachine (String nome, String modello) {
+       this.machineDAO.insertMachine(nome, modello, UserService.getUserSession().getID());
     }
     
-    public void deleteMachine (int id, int id_utente) {
-        this.machineDAO.deleteMachine(id, id_utente);
-    }
-    
-    public void updateMachine (String nome, String modello, int id, int id_utente) {
-        this.machineDAO.updateMachine(nome, modello, id, id_utente);
+    public void deleteMachine (int id) {
+        this.machineDAO.deleteMachine(id);
     }
     
     public List<MachineDTO> getAllMachines() {
-    	List<Machine> macchine = this.machineDAO.getAllMachines();
+    	List<Machine> macchine = this.machineDAO.getAllMachines(UserService.getUserSession().getID());
     	List<MachineDTO> machinedto = new ArrayList<>();
     	
 		for(Machine macchina: macchine) {

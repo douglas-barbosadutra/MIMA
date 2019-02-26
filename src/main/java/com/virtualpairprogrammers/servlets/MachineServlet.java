@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.virtualpairprogrammers.dto.UserDTO;
+import com.virtualpairprogrammers.dto.MachineDTO;
 import com.virtualpairprogrammers.services.MachineService;
 
 public class MachineServlet extends HttpServlet{
@@ -27,6 +27,48 @@ public class MachineServlet extends HttpServlet{
 			if(action != null) {
 			
 			switch(action) {
+			
+				case "openManagementMachine":{
+					
+					getServletContext().getRequestDispatcher("/machineManagement.jsp").forward(request, response);
+					
+				}break;
+				
+				case "openInsertMachine":{
+					
+					getServletContext().getRequestDispatcher("/machineInsert.jsp").forward(request, response);
+					
+					
+				}break;
+				
+				case "insertMachine":{
+					
+					String nome = request.getParameter("nome").toString();
+					String modello = request.getParameter("modello").toString();
+					
+					machineService.insertMachine(nome, modello);
+					getServletContext().getRequestDispatcher("/machineManagement.jsp").forward(request, response);
+					
+					
+				} break;
+				
+				case "showMachine":{
+					
+					List<MachineDTO> users = machineService.getAllMachines();
+					session.setAttribute("machines_list", users);
+					
+					getServletContext().getRequestDispatcher("/machineShow.jsp").forward(request, response);
+					
+				} break;
+				
+				case "deleteMachine":{
+					
+					int id = Integer.parseInt(request.getParameter("id").toString());
+					machineService.deleteMachine(id);
+					
+					getServletContext().getRequestDispatcher("/homeUser.jsp").forward(request, response);
+					
+				} break;
 					
 				case "indietro":
 					
