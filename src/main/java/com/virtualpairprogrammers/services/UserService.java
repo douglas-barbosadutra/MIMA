@@ -36,10 +36,9 @@ public class UserService {
 		return utentidto;
     }
 
-    public void updateUser(String email, String phone, String username, String password) {
-    	if(user == null)
-    		System.out.println("null");
-    	userDAO.updateUser(email, phone, username, password, user.getID());
+    public void updateUser(String name, String surname, String email, String phone, String username, String password) {
+    	
+    	userDAO.updateUser(name, surname, email, phone, username, password, user.getID());
     }
     
 	public static void setUserSession(User u) {

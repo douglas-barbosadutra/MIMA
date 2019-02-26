@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<h1>Benvenuto ${utente}</h1>
+<h1>Benvenuto ${utente.getName()}</h1>
 
 	<form action="UserServlet" method="post">
 	  <button type="submit" name="action" value="openInsertUser">Inserisci utente</button>

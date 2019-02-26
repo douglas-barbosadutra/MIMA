@@ -29,7 +29,7 @@ public class LoginServlet extends HttpServlet {
 			
 			if (user != null) {
 				UserService.setUserSession(user);
-				session.setAttribute("utente", user.getName());
+				session.setAttribute("utente", user);
 
 				switch (user.getRank()) {
 					case 1:

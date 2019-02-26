@@ -18,7 +18,7 @@ public class UserDAO {
 	private final String QUERY_ALL = "SELECT * FROM users";
 	private final String QUERY_INSERT_USER = "INSERT INTO users (`name`, `surname`, `email`, `phone`, `rank`, `username`, `password`) VALUES (?, ?, ?, ?, ?, ?, ?)";
 	private final String QUERY_DELETE_USER = "DELETE FROM users WHERE id = ?";
-	private final String QUERY_UPDATE_USER = "update users set email = ?, phone = ?, username = ?, password = ? where id = ?";
+	private final String QUERY_UPDATE_USER = "update users set name = ?, surname = ?, email = ?, phone = ?, username = ?, password = ? where id = ?";
 	
 	 public void insertUser (String username, String password, String name, String surname, String email, String phone, int rank) {
 		 
@@ -85,18 +85,19 @@ public class UserDAO {
         return users;
     }
 	 
-	 public void updateUser(String email, String phone, String username, String password, int id) {
+	 public void updateUser(String name, String surname, String email, String phone, String username, String password, int id) {
 		 
 		 Connection connection = ConnectionSingleton.getInstance();
 		 
 		 try {
 			 PreparedStatement statement = connection.prepareStatement(QUERY_UPDATE_USER);
-	            
-			 statement.setString(1, email);
-			 statement.setString(2, phone);
-			 statement.setString(3, username);
-			 statement.setString(4, password);
-			 statement.setInt(5, id);
+			 statement.setString(1, name);
+			 statement.setString(2, surname);
+			 statement.setString(3, email);
+			 statement.setString(4, phone);
+			 statement.setString(5, username);
+			 statement.setString(6, password);
+			 statement.setInt(7, id);
             
 			 statement.executeUpdate();
 	        }
