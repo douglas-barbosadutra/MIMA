@@ -60,6 +60,9 @@ public class UserServlet extends HttpServlet {
 					
 				case "openDeleteUser":
 					
+					List<UserDTO> users1 = userService.getAllUsers();
+					session.setAttribute("users_list", users1);
+					
 					getServletContext().getRequestDispatcher("/userDelete.jsp").forward(request, response);
 					
 				break;
