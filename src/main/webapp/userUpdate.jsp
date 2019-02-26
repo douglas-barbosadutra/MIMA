@@ -14,7 +14,7 @@
 		Nome: <input type="text" name="nome" value="${utente.getName()}"><br>
 	    Cognome: <input type="text" name="cognome" value="${utente.getSurname()}"><br>
 	    Email: <input type="email" name="email" value="${utente.getEmail()}"><br>
-	    Telefono: <input type="tel" name="telefono" value="${utente.getPhone()}"><br>
+	    Telefono: <input type="number" name="telefono" value="${utente.getPhone()}"><br>
 	    Username: <input type="text" name="username" value="${utente.getUsername()}"><br>
 	    Password: <input type="password" name="password" value="${utente.getPassword()}"><br>
   		
