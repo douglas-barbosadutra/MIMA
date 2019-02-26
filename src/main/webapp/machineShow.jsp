@@ -18,7 +18,8 @@
 		
 		for(int i = 0; i < machines.size(); i++)
 		{
-			%><p><%out.println(machines.get(i));%> - <a href="MachineServlet?action=deleteMachine&id=<%=machines.get(i).getId()%>">elimina</a> - <a href="TaskServlet?action=insertTask&id_macchinario=<%=machines.get(i).getId()%>">inserisci task</a></p><%
+			%><p><%out.println(machines.get(i));%> - <a href="MachineServlet?action=deleteMachine&id=<%=machines.get(i).getId()%>">elimina</a> - <a href="TaskServlet?action=openInsertTask&id_macchinario=<%=machines.get(i).getId()%>">inserisci task</a> - <a href="TaskServlet?action=showTask&id_macchinario=<%=machines.get(i).getId()%>">visualizza task</a></p><%
+			
 		}
 	%>
 	

@@ -16,6 +16,16 @@
 	<servlet-name>UserServlet</servlet-name>
 	<servlet-class>com.virtualpairprogrammers.servlets.UserServlet</servlet-class>
 	</servlet>
+	
+	<servlet>
+	<servlet-name>TaskServlet</servlet-name>
+	<servlet-class>com.virtualpairprogrammers.servlets.TaskServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+	<servlet-name>InstructionServlet</servlet-name>
+	<servlet-class>com.virtualpairprogrammers.servlets.InstructionServlet</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>LoginServlet</servlet-name>
@@ -35,6 +45,16 @@
 	<servlet-mapping>
 		<servlet-name>MachineServlet</servlet-name>
 		<url-pattern>/MachineServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>TaskServlet</servlet-name>
+		<url-pattern>/TaskServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>InstructionServlet</servlet-name>
+		<url-pattern>/InstructionServlet</url-pattern>
 	</servlet-mapping>
 
 	<session-config>

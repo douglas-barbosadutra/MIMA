@@ -28,7 +28,8 @@ public class InstructionDAO {
 	        while (resultSet.next()) {
 	            String nome = resultSet.getString("nome_istruzioni");
 	            int durata = resultSet.getInt("durata");
-	            istruzioni.add(new Instruction(nome, durata, idTask));
+	            int id = resultSet.getInt("id");
+	            istruzioni.add(new Instruction(nome, durata, idTask, id));
 	           }
 		}
 		catch (SQLException e) {
