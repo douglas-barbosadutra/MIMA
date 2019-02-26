@@ -34,7 +34,7 @@ public class UserServlet extends HttpServlet {
 					
 				break;
 					
-				case "insertUser":
+				case "insertUser":{
 					
 					String username = request.getParameter("username").toString();
 					String password = request.getParameter("password").toString();
@@ -47,7 +47,7 @@ public class UserServlet extends HttpServlet {
 					
 					getServletContext().getRequestDispatcher("/homeAdmin.jsp").forward(request, response);
 					
-					break;
+				} break;
 					
 				case "showUser":
 					
@@ -66,6 +66,31 @@ public class UserServlet extends HttpServlet {
 					getServletContext().getRequestDispatcher("/homeAdmin.jsp").forward(request, response);
 					
 				break;
+				
+				case "openUpdateUser":{
+					
+					getServletContext().getRequestDispatcher("/userUpdate.jsp").forward(request, response);
+					
+				} break;
+				
+				case "updateUser": {
+					
+					String username = request.getParameter("username").toString();
+					String password = request.getParameter("password").toString();
+					String email = request.getParameter("email").toString();
+					String telefono = request.getParameter("telefono").toString();
+					
+					
+					if(username.equals("") || password.equals("") || email.equals("") || telefono.equals("")) {
+						getServletContext().getRequestDispatcher("/userUpdate.jsp").forward(request, response);
+					}
+					
+					else {
+						userService.updateUser(email, telefono, username, password);
+						getServletContext().getRequestDispatcher("/homeUser.jsp").forward(request, response);
+					}
+					
+				}break;
 					
 				case "indietro":
 					

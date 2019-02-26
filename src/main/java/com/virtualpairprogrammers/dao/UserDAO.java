@@ -18,10 +18,7 @@ public class UserDAO {
 	private final String QUERY_ALL = "SELECT * FROM users";
 	private final String QUERY_INSERT_USER = "INSERT INTO users (`name`, `surname`, `email`, `phone`, `rank`, `username`, `password`) VALUES (?, ?, ?, ?, ?, ?, ?)";
 	private final String QUERY_DELETE_USER = "DELETE FROM users WHERE id = ?";
-	private final String QUERY_UPDATE_EMAIL = "update users set email = ? where id = ?";
-	private final String QUERY_UPDATE_PHONE = "update users set phone = ? where id = ?";
-	private final String QUERY_UPDATE_USERNAME = "update users set username = ? where id = ?";
-	private final String QUERY_UPDATE_PASSWORD = "update users set password = ? where id = ?";
+	private final String QUERY_UPDATE_USER = "update users set email = ?, phone = ?, username = ?, password = ? where id = ?";
 	
 	 public void insertUser (String username, String password, String name, String surname, String email, String phone, int rank) {
 		 
@@ -88,35 +85,20 @@ public class UserDAO {
         return users;
     }
 	 
-	 public void updateUser(String attribute, String value, int id) {
+	 public void updateUser(String email, String phone, String username, String password, int id) {
 		 
 		 Connection connection = ConnectionSingleton.getInstance();
 		 
-	        try {
-	            PreparedStatement statement = null;
+		 try {
+			 PreparedStatement statement = connection.prepareStatement(QUERY_UPDATE_USER);
 	            
-	            switch(attribute) {
-		            case "email":{
-		            	statement = connection.prepareStatement(QUERY_UPDATE_EMAIL);
-		            }break;
-		            
-		            case "phone":{
-		            	statement = connection.prepareStatement(QUERY_UPDATE_PHONE);
-		            }break;
-		            
-		            case "username":{
-		            	statement = connection.prepareStatement(QUERY_UPDATE_USERNAME);
-		            }break;
-		            
-		            case "password":{
-		            	statement = connection.prepareStatement(QUERY_UPDATE_PASSWORD);
-		            }break;
-	            }
-	            
-	            statement.setString(1, value);
-	            statement.setInt(2, id);
-	            
-	            statement.executeUpdate();
+			 statement.setString(1, email);
+			 statement.setString(2, phone);
+			 statement.setString(3, username);
+			 statement.setString(4, password);
+			 statement.setInt(5, id);
+            
+			 statement.executeUpdate();
 	        }
 	        catch (SQLException e) {
 	            GestoreEccezioni.getInstance().gestisciEccezione(e);

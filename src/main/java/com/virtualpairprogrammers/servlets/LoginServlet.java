@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.virtualpairprogrammers.domain.User;
 import com.virtualpairprogrammers.services.LoginService;
+import com.virtualpairprogrammers.services.UserService;
 
 public class LoginServlet extends HttpServlet {
 	
@@ -27,6 +28,7 @@ public class LoginServlet extends HttpServlet {
 			final User user = loginService.login(username, password);
 			
 			if (user != null) {
+				UserService.setUserSession(user);
 				session.setAttribute("utente", user.getName());
 
 				switch (user.getRank()) {
