@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert machine</title>
+<title>Inserimento macchinario</title>
 </head>
 <body>
 
-	<h1>Inserisci macchinario</h1>
+	<h1>Inserimento macchinario</h1>
 	
 	<form action="MachineServlet" method="post">
 	    Nome: <input type="text" name="nome"><br>
@@ -17,6 +17,11 @@
   		<input type="hidden" name="action" value="insertMachine">
   		<input type="submit" value="Inserisci">
 	</form>
+	
+	<form action="MachineServlet" method="post">
+  		<button type="submit" name="action" value="openManagementMachine">Indietro</button>
+	</form>
+	
 
 </body>
 </html>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Machine Management</title>
+<title>Gestione macchinari</title>
 </head>
 <body>
 
