@@ -19,7 +19,6 @@ public class LoginServlet extends HttpServlet {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		final HttpSession session = request.getSession();
-		session.setAttribute("utente", null);
 
 		if (request != null) {
 			final String username = request.getParameter("username").toString();
@@ -31,19 +30,16 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("utente", user.getName());
 
 				switch (user.getRank()) {
-				case 1:
-					getServletContext().getRequestDispatcher("/homeUser.jsp").forward(request, response);
-					break;
-				case 0:
-					getServletContext().getRequestDispatcher("/homeAdmin.jsp").forward(request, response);
-					break;
-				default:
-					getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-					break;
+					case 1:
+						getServletContext().getRequestDispatcher("/homeAdmin.jsp").forward(request, response);
+						break;
+					case 0:
+						getServletContext().getRequestDispatcher("/homeUser.jsp").forward(request, response);
+						break;
 				}
+			}else {
+				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 			}
-			
-			
 		}
 	}
 

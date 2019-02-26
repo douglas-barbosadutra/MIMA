@@ -13,8 +13,8 @@
 	</servlet>
 
 	<servlet>
-	<servlet-name>DispatcherServlet</servlet-name>
-	<servlet-class>com.virtualpairprogrammers.servlets.DispatcherServlet</servlet-class>
+	<servlet-name>UserServlet</servlet-name>
+	<servlet-class>com.virtualpairprogrammers.servlets.UserServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
@@ -23,8 +23,8 @@
 	</servlet-mapping>
 
 	<servlet-mapping>
-		<servlet-name>DispatcherServlet</servlet-name>
-		<url-pattern>/DispatcherServlet</url-pattern>
+		<servlet-name>UserServlet</servlet-name>
+		<url-pattern>/UserServlet</url-pattern>
 	</servlet-mapping>
 
 	<session-config>

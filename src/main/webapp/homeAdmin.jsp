@@ -10,12 +10,11 @@
 
 <h1>Benvenuto: ${utente}</h1>
 
-	<form action="DispatcherServlet" method="post">
-	  <input type="radio" name="page" value="userInsert"> Inserisci utente<br>
-	  <input type="radio" name="page" value="index"> Elimina utente<br>
-	  <input type="radio" name="page" value="index"> Visualizza utenti<br>  
-	  <input type="radio" name="page" value="index"> Logout<br>  
-	  <input type="submit" value="Submit">
+	<form action="UserServlet" method="post">
+	  <button type="submit" name="action" value="openInsertUser">Inserisci utente</button>
+	  <button type="submit" name="action" value="openDeleteUser">Elimina utente</button>
+	  <button type="submit" name="action" value="showUser">Visualizza utenti</button>
+	  <button type="submit" name="action" value="logout">Logout</button>
 	</form>
 	
 </body>
