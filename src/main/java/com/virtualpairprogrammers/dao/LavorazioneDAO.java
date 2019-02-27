@@ -13,6 +13,7 @@ import com.virtualpairprogrammers.utils.GestoreEccezioni;
 public class LavorazioneDAO {
 
 	private final String QUERY_ALL_FROM_ID = "SELECT lavorazioni.* FROM ((lavorazioni INNER JOIN istruzioni ON istruzioni.id = lavorazioni.id_istruzione) INNER JOIN tasks ON tasks.id = istruzioni.id_tasks) WHERE tasks.id = ?";
+	private final String QUERY_ALL_FROM_ID_ISTRUZIONE = "SELECT * FROM lavorazioni WHERE id_istruzione = ?";
 	private final String QUERY_INSERT = "INSERT INTO lavorazioni(id_item,id_istruzione,durata) values(?,?,?)";
 	private final String QUERY_UPDATE = "UPDATE lavorazioni SET durata = ? WHERE id = ?";
 	private final String QUERY_DELETE = "DELETE FROM lavorazioni WHERE id = ?";
@@ -94,5 +95,26 @@ public class LavorazioneDAO {
 		return lavorazioni;
 	}
 
-	
+	public ArrayList<Lavorazione> getAllLavorazioniByIdIstruzione(int idIstruzione){
+		ArrayList<Lavorazione> lavorazioni = new ArrayList<>();
+		Connection connection = ConnectionSingleton.getInstance();
+		
+		try {
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_ALL_FROM_ID_ISTRUZIONE);
+			preparedStatement.setInt(1, idIstruzione);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				int id = resultSet.getInt("id");
+				int idItem = resultSet.getInt("id_item");
+				int durata = resultSet.getInt("durata");
+				lavorazioni.add(new Lavorazione(id,idItem,idIstruzione,durata));
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return lavorazioni;
+	}
+		
 }

@@ -50,4 +50,8 @@ public class LavorazioneDTO {
 	public int getDurata() {
 		return this.durata;
 	}
+	
+	public String toString() {
+		return "id: " + id + "\nitem: " + item + "\nistruzione: " + istruzione + "\ndurata: " + durata;
+	}
 }

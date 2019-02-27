@@ -1,6 +1,7 @@
 package com.virtualpairprogrammers.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,9 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.virtualpairprogrammers.dto.InstructionDTO;
-import com.virtualpairprogrammers.dto.MachineDTO;
+import com.virtualpairprogrammers.dto.TimeDTO;
 import com.virtualpairprogrammers.services.InstructionService;
-import com.virtualpairprogrammers.services.UserService;
+import com.virtualpairprogrammers.services.TempiLavorazioniService;
 
 public class InstructionServlet extends HttpServlet {
 
@@ -60,6 +61,13 @@ public class InstructionServlet extends HttpServlet {
 					case "indietro":
 						getServletContext().getRequestDispatcher("/homeUser.jsp").forward(request, response);
 						break;
+					case "showTime":{
+						List<TimeDTO> listaTempi = new ArrayList<>();
+						TempiLavorazioniService tempiLavorazioneService = new TempiLavorazioniService();
+						listaTempi = tempiLavorazioneService .getAllTempi(idTask);
+						session.setAttribute("listaTempi", listaTempi);
+						getServletContext().getRequestDispatcher("/timeShow.jsp").forward(request, response);
+					}
 				}
 			}
 		}

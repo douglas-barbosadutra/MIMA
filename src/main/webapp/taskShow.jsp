@@ -15,7 +15,7 @@ List<TaskDTO> tasks = (List<TaskDTO>)session.getAttribute("taskList");
 
 for(int i = 0; i < tasks.size(); i++)
 {
-	%><p><%out.println(tasks.get(i));%> - <a href="TaskServlet?action=deleteTask&id=<%=tasks.get(i).getID()%>">elimina</a> - <a href="InstructionServlet?action=insertInstructionOpen&idTask=<%=tasks.get(i).getID()%>">inserisci istruzione</a> - <a href="InstructionServlet?action=showInstruction&idTask=<%=tasks.get(i).getID()%>">visualizza istruzioni</a></p>
+	%><p><%out.println(tasks.get(i));%> - <a href="TaskServlet?action=deleteTask&id=<%=tasks.get(i).getID()%>">elimina</a> - <a href="InstructionServlet?action=insertInstructionOpen&idTask=<%=tasks.get(i).getID()%>">inserisci istruzione</a> - <a href="InstructionServlet?action=showInstruction&idTask=<%=tasks.get(i).getID()%>">visualizza istruzioni</a> - <a href="LavorazioniServlet?action=showTime&idTask=<%=tasks.get(i).getID()%>">visualizza tempi</a> </p>
 	<%
 }
 %>

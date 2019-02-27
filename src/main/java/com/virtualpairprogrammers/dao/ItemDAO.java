@@ -13,6 +13,7 @@ import com.virtualpairprogrammers.utils.GestoreEccezioni;
 public class ItemDAO {
 	
 	private final String QUERY_ALL = "SELECT * FROM items";
+	private final String QUERY_FROM_ID = "SELECT * FROM items WHERE id = ?";
 	private final String QUERY_INSERT = "INSERT INTO items(descrizione) values(?)";
 	private final String QUERY_UPDATE = "UPDATE items SET descrizione = ? WHERE id = ?";
 	private final String QUERY_DELETE = "DELETE FROM items WHERE id = ?";
@@ -88,5 +89,26 @@ public class ItemDAO {
 		
 		return items;
 	}
+	
+	
+	public Item getItemById(int id) {
+		Connection connection = ConnectionSingleton.getInstance();
+		Item item = null;
+		try {
+	
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_FROM_ID);
+			preparedStatement.setInt(1, id);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()) {
 
+				String descrizione = resultSet.getString("descrizione");
+				item = new Item(id,descrizione);
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return item;
+	}
 }

@@ -8,6 +8,7 @@ public class Instruction {
 	private int id;
 	private String codice;
 	
+	
 	public Instruction(String nome, int durata, int idTask, int id, String codice) {
 		this.nomeIstruzione = nome;
 		this.durata = durata;

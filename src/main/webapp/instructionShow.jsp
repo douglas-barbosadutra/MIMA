@@ -21,5 +21,6 @@ for(int i = 0; i < istruzioni.size(); i++)
 	<form action="TaskServlet" method="post">
 		<button type="submit" name="action" value="showTask">Indietro</button>
 	</form>
+
 </body>
 </html>
