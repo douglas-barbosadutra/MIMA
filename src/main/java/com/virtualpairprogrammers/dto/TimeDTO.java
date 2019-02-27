@@ -13,7 +13,7 @@ public class TimeDTO {
 		this.item = item;
 		this.durataEffettiva = durataEffettiva;
 		this.durataPrevista = durataPrevista;
-		this.risultato = (durataEffettiva <= durataPrevista) ? "GREEN" : "RED";
+		this.risultato = (durataEffettiva <= durataPrevista) ? "#79fc00" : "RED";
 	}
 	
 	public String getNomeIstruzione() {

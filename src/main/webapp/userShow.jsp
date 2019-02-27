@@ -52,14 +52,12 @@
 			    </tbody>
 			    
 		  </table>
+		  
+		  	<form action="UserServlet" method="post">
+				<button style="margin-left:40%;" class="btn btn-primary" type="submit" name="action" value="indietro">Indietro</button>
+			</form>
 					
 		</div>
 		
-			
-	
-	<form action="UserServlet" method="post">
-		<button class="btn btn-primary" type="submit" name="action" value="indietro">Indietro</button>
-	</form>
-	
 	</body>
 </html>

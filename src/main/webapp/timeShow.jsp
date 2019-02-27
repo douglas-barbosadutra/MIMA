@@ -4,35 +4,55 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Visualizzazione tempi</title>
-</head>
-<body>
-
-<table>
-  <caption>Tempi lavorazioni</caption>
-  <tr>
-  	<th>Nome Istruzione</th>
-    <th>Tempi effettivi</th>
-    <th>Tempi previsti</th>
-  </tr>
-<%
-List<TimeDTO> gestioneTempiDTO = (List<TimeDTO>)session.getAttribute("listaTempi");
-for(int i = 0; i < gestioneTempiDTO.size(); i++){
-%>
-  	<tr bgcolor="<%out.println(gestioneTempiDTO.get(i).getRisultato().toString());%>" >
-	  	<td><%out.println(gestioneTempiDTO.get(i).getNomeIstruzione().toString());%></td>
-    	<td><%out.println(gestioneTempiDTO.get(i).getDurataEffettiva());%></td>
-    	<td><%out.println(gestioneTempiDTO.get(i).getDurataPrevista());%></td>
-	</tr>
-<%	  	
-  }
-  %>
-  
-  	<form action="LavorazioniServlet" method="post">
-		<button type="submit" name="action" value="indietro">Indietro</button>
-	</form>
-</table>
-</body>
+	<head>
+		<meta charset="ISO-8859-1">
+		<link href = "Stile.css" rel = "stylesheet" media = "screen">
+		<title>Lista tempi</title>
+	</head>
+	
+	<body>
+	
+		<h1 class="title">Lista tempi</h1>
+		
+		<div style="padding-left:10%; padding-right:10%">
+			
+			<table class="table">
+			    <thead>
+			      
+			      <tr>
+			        <th>Nome Istruzione</th>
+			        <th>Tempi effettivi</th>
+			        <th>Tempi previsti</th>
+			      </tr>
+			      
+			    </thead>
+			    
+			    <tbody>
+			    
+			    	<%
+						List<TimeDTO> gestioneTempiDTO = (List<TimeDTO>)session.getAttribute("listaTempi");
+						
+						for(int i = 0; i < gestioneTempiDTO.size(); i++)
+						{
+							%>
+								<tr bgcolor="<%out.println(gestioneTempiDTO.get(i).getRisultato().toString());%>" >
+								  	<td><%out.println(gestioneTempiDTO.get(i).getNomeIstruzione().toString());%></td>
+							    	<td><%out.println(gestioneTempiDTO.get(i).getDurataEffettiva());%></td>
+							    	<td><%out.println(gestioneTempiDTO.get(i).getDurataPrevista());%></td>
+								</tr>
+							<%
+						}
+					%>
+			      
+			    </tbody>
+			    
+		  </table>
+		  
+		  	<form action="LavorazioniServlet" method="post">
+				<button style="margin-left:40%;" class="btn btn-primary" type="submit" name="action" value="indietro">Indietro</button>
+			</form>
+					
+		</div>
+	
+	</body>
 </html>

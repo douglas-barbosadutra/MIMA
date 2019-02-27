@@ -6,11 +6,11 @@ import com.virtualpairprogrammers.dto.TaskDTO;
 public class TaskConverter{
 
 	public static Task convertToUser(TaskDTO taskdto) {
-		return (new Task(taskdto.getID(), taskdto.getDescrizione(), taskdto.getMacchinario()));
+		return (new Task(taskdto.getID(), taskdto.getDescrizione(), 0));
 	}
 
 	public static TaskDTO convertToDto(Task task) {
-		return (new TaskDTO(task.getID(), task.getDescrizione(), task.getMacchinario()));
+		return (new TaskDTO(task.getID(), task.getDescrizione()));
 	}
 }
 
