@@ -2,15 +2,37 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Login</title>
-</head>
-<body>
-	<form action="LoginServlet" method="post">
-		<div>username: <input type="text" name="username"></div>
-		<div>password: <input type="password" name="password"></div>
-		<button type="submit" value="Login">Login</button>
-	</form>
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<link href = "Stile.css" rel = "stylesheet" media = "screen">
+		<title>Login</title>
+	</head>
+	
+	<body background="Sfondo.png">
+		
+		<h1 class="title" style="text-align:left;">Benvenuto in MIMA!</h1>
+		
+		
+		
+		<div style="width:25%">
+			
+			<form action="LoginServlet" method="post">
+		
+				<div class="form-group">
+					<label class="col-form-label">Username</label>
+					<input type="text" class="form-control" name="username">
+					
+					<label class="col-form-label">Password</label>
+					<input type="password" class="form-control" name="password">
+				</div>
+				
+				<div class="form-group">
+					<button style="margin-top:2%" class="btn btn-primary" type="submit" value="Login">Login</button>
+				</div>
+			
+			</form>
+			
+		</div>		
+		
+	</body>
 </html>
