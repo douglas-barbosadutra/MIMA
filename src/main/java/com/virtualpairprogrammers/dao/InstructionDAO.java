@@ -10,7 +10,7 @@ import com.virtualpairprogrammers.utils.GestoreEccezioni;
 public class InstructionDAO {
 	
 	private final String QUERY_SELECT = "select * from istruzioni where id_tasks = ? ";
-	private final String QUERY_INSERT = "insert into istruzioni (id_tasks, nome_istruzioni, durata, codice) values (?,?,?,?)";
+	private final String QUERY_INSERT = "insert into istruzioni (id_tasks, nome_istruzioni, durata, gcode_file) values (?,?,?,?)";
 	private final String QUERY_DELETE = "DELETE FROM istruzioni WHERE id_tasks = ? && nome_istruzioni = ?";
 	private final String QUERY_UPDATE = "UPDATE istruzioni SET durata = ? WHERE id_tasks = ? AND nome_istruzioni = ?";
 	
@@ -29,8 +29,8 @@ public class InstructionDAO {
 	            String nome = resultSet.getString("nome_istruzioni");
 	            int durata = resultSet.getInt("durata");
 	            int id = resultSet.getInt("id");
-	            String codice = resultSet.getString("codice");
-	            istruzioni.add(new Instruction(nome, durata, idTask, id, codice));
+	            String gcode_file = resultSet.getString("gcode_file");
+	            istruzioni.add(new Instruction(nome, durata, idTask, id, gcode_file));
 	           }
 		}
 		catch (SQLException e) {
@@ -46,7 +46,7 @@ public class InstructionDAO {
             preparedStatement.setInt(1, istruzione.getIdTask());
             preparedStatement.setString(2, istruzione.getNome());
             preparedStatement.setInt(3, istruzione.getDurata());
-            preparedStatement.setString(4, istruzione.getCodice());
+            preparedStatement.setString(4, istruzione.getGCode());
             return preparedStatement.execute();
         }
         catch (SQLException e) {

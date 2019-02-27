@@ -10,6 +10,6 @@ public class InstructionConverter{
 	}
 
 	public static InstructionDTO convertToDto(Instruction istruzione) {
-		return (new InstructionDTO(istruzione.getNome(), istruzione.getDurata(), istruzione.getId(), istruzione.getCodice()));
+		return (new InstructionDTO(istruzione.getNome(), istruzione.getDurata(), istruzione.getId(), istruzione.getGCode()));
 	}
 }

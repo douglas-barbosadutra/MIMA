@@ -6,15 +6,15 @@ public class Instruction {
 	private int durata;
 	private int idTask;
 	private int id;
-	private String codice;
+	private String gcode;
 	
 	
-	public Instruction(String nome, int durata, int idTask, int id, String codice) {
+	public Instruction(String nome, int durata, int idTask, int id, String gcode) {
 		this.nomeIstruzione = nome;
 		this.durata = durata;
 		this.idTask = idTask;
 		this.id = id;
-		this.codice = codice;
+		this.gcode = gcode;
 	}
 	
 	public String getNome() {
@@ -33,7 +33,7 @@ public class Instruction {
 		return id;
 	}
 	
-	public String getCodice() {
-		return codice;
+	public String getGCode() {
+		return gcode;
 	}
 }

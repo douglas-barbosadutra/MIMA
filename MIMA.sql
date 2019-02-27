@@ -29,10 +29,10 @@ CREATE TABLE `istruzioni` (
   `id_tasks` int(11) NOT NULL,
   `nome_istruzioni` varchar(45) NOT NULL,
   `durata` int(11) NOT NULL DEFAULT '0',
-  `codice` varchar(10) NOT NULL,
+  `gcode_file` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idx_task` (`id_tasks`),
-  CONSTRAINT `fk_task` FOREIGN KEY (`id_tasks`) REFERENCES `tasks` (`id`) ON UPDATE CASCADE
+  CONSTRAINT `fk_task` FOREIGN KEY (`id_tasks`) REFERENCES `tasks` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -42,7 +42,7 @@ CREATE TABLE `istruzioni` (
 
 LOCK TABLES `istruzioni` WRITE;
 /*!40000 ALTER TABLE `istruzioni` DISABLE KEYS */;
-INSERT INTO `istruzioni` VALUES (3,12,'input',2,'AA772'),(4,12,'verniciatura laterale',50,'AA773'),(5,12,'verniciatura posteriore',40,'AA773'),(6,12,'output',2,'AA774');
+INSERT INTO `istruzioni` VALUES (3,12,'input',2,'file1232'),(4,12,'verniciatura laterale',50,'file3244'),(5,12,'verniciatura posteriore',40,'file2312'),(6,12,'output',2,'file2311');
 /*!40000 ALTER TABLE `istruzioni` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -85,7 +85,7 @@ CREATE TABLE `lavorazioni` (
   PRIMARY KEY (`id`),
   KEY `id_item` (`id_item`),
   KEY `id_istruzione` (`id_istruzione`),
-  CONSTRAINT `fk_istruzione` FOREIGN KEY (`id_istruzione`) REFERENCES `istruzioni` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `fk_istruzione` FOREIGN KEY (`id_istruzione`) REFERENCES `istruzioni` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_item` FOREIGN KEY (`id_item`) REFERENCES `items` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -114,8 +114,8 @@ CREATE TABLE `macchinari` (
   `id_utente` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idx_utente` (`id_utente`),
-  CONSTRAINT `fk_utente` FOREIGN KEY (`id_utente`) REFERENCES `users` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `fk_utente` FOREIGN KEY (`id_utente`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,8 +124,61 @@ CREATE TABLE `macchinari` (
 
 LOCK TABLES `macchinari` WRITE;
 /*!40000 ALTER TABLE `macchinari` DISABLE KEYS */;
-INSERT INTO `macchinari` VALUES (5,'Verniciatrice','AK22',9);
+INSERT INTO `macchinari` VALUES (5,'Verniciatrice','AK22',9),(6,'Fresatrice','J4453',9);
 /*!40000 ALTER TABLE `macchinari` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `operazioni_schedulazione`
+--
+
+DROP TABLE IF EXISTS `operazioni_schedulazione`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `operazioni_schedulazione` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ordine` int(3) NOT NULL DEFAULT '0',
+  `id_task` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_task` (`id_task`),
+  CONSTRAINT `fk2_task` FOREIGN KEY (`id_task`) REFERENCES `tasks` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `operazioni_schedulazione`
+--
+
+LOCK TABLES `operazioni_schedulazione` WRITE;
+/*!40000 ALTER TABLE `operazioni_schedulazione` DISABLE KEYS */;
+INSERT INTO `operazioni_schedulazione` VALUES (1,1,12),(2,2,13);
+/*!40000 ALTER TABLE `operazioni_schedulazione` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schedulazione`
+--
+
+DROP TABLE IF EXISTS `schedulazione`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `schedulazione` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(45) NOT NULL,
+  `timestamp_inizio` int(11) NOT NULL,
+  `timestamp_fine` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schedulazione`
+--
+
+LOCK TABLES `schedulazione` WRITE;
+/*!40000 ALTER TABLE `schedulazione` DISABLE KEYS */;
+INSERT INTO `schedulazione` VALUES (1,'Schedulazione 1',1547724209,1547725000),(2,'Schedulazione 2',1547725000,1547726050);
+/*!40000 ALTER TABLE `schedulazione` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -142,8 +195,8 @@ CREATE TABLE `tasks` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `descrizione` (`descrizione`,`id_macchinario`),
   KEY `idx_macchinario` (`id_macchinario`),
-  CONSTRAINT `tasks_ibfk_1` FOREIGN KEY (`id_macchinario`) REFERENCES `macchinari` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `tasks_ibfk_1` FOREIGN KEY (`id_macchinario`) REFERENCES `macchinari` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -152,7 +205,7 @@ CREATE TABLE `tasks` (
 
 LOCK TABLES `tasks` WRITE;
 /*!40000 ALTER TABLE `tasks` DISABLE KEYS */;
-INSERT INTO `tasks` VALUES (12,'verniciatura',5);
+INSERT INTO `tasks` VALUES (13,'asciugatura',5),(12,'verniciatura',5);
 /*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -196,4 +249,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-26 16:26:30
+-- Dump completed on 2019-02-27 16:31:34
