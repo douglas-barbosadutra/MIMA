@@ -139,10 +139,13 @@ CREATE TABLE `operazioni_schedulazione` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ordine` int(3) NOT NULL DEFAULT '0',
   `id_task` int(11) NOT NULL,
+  `id_schedulazione` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idx_task` (`id_task`),
+  KEY `idx_schedulazione` (`id_schedulazione`),
+  CONSTRAINT `fk2_schedulazione` FOREIGN KEY (`id_schedulazione`) REFERENCES `schedulazione` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk2_task` FOREIGN KEY (`id_task`) REFERENCES `tasks` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,7 +154,6 @@ CREATE TABLE `operazioni_schedulazione` (
 
 LOCK TABLES `operazioni_schedulazione` WRITE;
 /*!40000 ALTER TABLE `operazioni_schedulazione` DISABLE KEYS */;
-INSERT INTO `operazioni_schedulazione` VALUES (1,1,12),(2,2,13);
 /*!40000 ALTER TABLE `operazioni_schedulazione` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -167,8 +169,11 @@ CREATE TABLE `schedulazione` (
   `nome` varchar(45) NOT NULL,
   `timestamp_inizio` int(11) NOT NULL,
   `timestamp_fine` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id_macchinario` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_macchinario` (`id_macchinario`),
+  CONSTRAINT `fk_macchinario` FOREIGN KEY (`id_macchinario`) REFERENCES `macchinari` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -177,7 +182,6 @@ CREATE TABLE `schedulazione` (
 
 LOCK TABLES `schedulazione` WRITE;
 /*!40000 ALTER TABLE `schedulazione` DISABLE KEYS */;
-INSERT INTO `schedulazione` VALUES (1,'Schedulazione 1',1547724209,1547725000),(2,'Schedulazione 2',1547725000,1547726050);
 /*!40000 ALTER TABLE `schedulazione` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -249,4 +253,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-27 16:31:34
+-- Dump completed on 2019-02-27 17:35:05
