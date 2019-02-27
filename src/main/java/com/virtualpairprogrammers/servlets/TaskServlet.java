@@ -42,7 +42,10 @@ public class TaskServlet extends HttpServlet{
 						break;
 					}
 					case "showTask":{
-						int idMacchinario = Integer.parseInt(request.getParameter("id_macchinario").toString());
+						try {
+						idMacchinario = Integer.parseInt(request.getParameter("id_macchinario").toString());
+						}
+						catch(NullPointerException e) {}
 						List<TaskDTO> tasks = taskService.getAllTasks(idMacchinario);
 						session.setAttribute("taskList", tasks);
 						getServletContext().getRequestDispatcher("/taskShow.jsp").forward(request, response);

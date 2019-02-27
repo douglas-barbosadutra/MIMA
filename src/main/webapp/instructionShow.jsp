@@ -18,8 +18,8 @@ for(int i = 0; i < istruzioni.size(); i++)
 	%><p><%out.println(istruzioni.get(i));%> - <a href="InstructionServlet?action=deleteInstruction&nomeIstruzione=<%=istruzioni.get(i).getNomeIstruzione()%>">elimina</a></p><%
 }
 %>
-	<form action="InstructionServlet" method="post">
-		<button type="submit" name="action" value="indietro">Indietro</button>
+	<form action="TaskServlet" method="post">
+		<button type="submit" name="action" value="showTask">Indietro</button>
 	</form>
 </body>
 </html>

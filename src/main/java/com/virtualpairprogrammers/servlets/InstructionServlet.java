@@ -28,13 +28,13 @@ public class InstructionServlet extends HttpServlet {
 			if(action != null) {
 				
 				switch(action) {
-					case "showInstruction":
+					case "showInstruction":{
 						idTask = Integer.parseInt(request.getParameter("idTask").toString());
 						List<InstructionDTO> istruzioni = istruzioneService.getAllIstruzioni(idTask);
 						session.setAttribute("listaIstruzioni", istruzioni);
 						getServletContext().getRequestDispatcher("/instructionShow.jsp").forward(request, response);
 						break;
-						
+					}	
 					case "insertInstruction":{
 						String nomeIstruzione = request.getParameter("nomeIstruzione").toString();
 						int durata = Integer.parseInt(request.getParameter("durata").toString());
@@ -52,7 +52,9 @@ public class InstructionServlet extends HttpServlet {
 					case "deleteInstruction":{
 						String nomeIstruzione = request.getParameter("nomeIstruzione").toString();
 						istruzioneService.deleteIstruzione(nomeIstruzione, idTask);
-						getServletContext().getRequestDispatcher("/homeUser.jsp").forward(request, response);
+						List<InstructionDTO> istruzioni = istruzioneService.getAllIstruzioni(idTask);
+						session.setAttribute("listaIstruzioni", istruzioni);
+						getServletContext().getRequestDispatcher("/instructionShow.jsp").forward(request, response);
 						break;
 					}
 					case "indietro":
