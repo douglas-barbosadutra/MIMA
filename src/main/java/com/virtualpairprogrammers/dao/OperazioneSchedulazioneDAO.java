@@ -12,7 +12,7 @@ import com.virtualpairprogrammers.utils.GestoreEccezioni;
 
 public class OperazioneSchedulazioneDAO {
 	
-	private final String QUERY_FROM_ID = "SELECT operazioni_schedulazione.* FROM operazioni_schedulazione INNER JOIN schedulazione on schedulazione.id = operazioni_schedulazione.id_schedulazione WHERE schedulazione.id = ?";
+	private final String QUERY_FROM_ID = "SELECT operazioni_schedulazione.* FROM operazioni_schedulazione INNER JOIN schedulazione on schedulazione.id = operazioni_schedulazione.id_schedulazione WHERE schedulazione.id = ? ORDER BY ordine ASC";
 	private final String QUERY_INSERT = "INSERT INTO operazioni_schedulazione(id_schedulazione,id_task,ordine) values(?,?,?)";
 	private final String QUERY_UPDATE = "UPDATE operazioni_schedulazione SET ordine = ? WHERE id = ?";
 	private final String QUERY_DELETE = "DELETE FROM operazioni_schedulazione WHERE id = ?";
