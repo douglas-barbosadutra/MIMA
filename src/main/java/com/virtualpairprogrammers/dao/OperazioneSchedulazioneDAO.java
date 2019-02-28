@@ -26,7 +26,6 @@ public class OperazioneSchedulazioneDAO {
 		
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETE);
-			
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
 			
@@ -35,16 +34,13 @@ public class OperazioneSchedulazioneDAO {
 		}
 	}
 	
-	public void updateOperazioneSchedulazione(String ordine, int id) {
+	public void updateOperazioneSchedulazione(int ordine, int id) {
 		Connection connection = ConnectionSingleton.getInstance();
-		
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_UPDATE);
-			
-			preparedStatement.setString(1, ordine);
+			preparedStatement.setInt(1, ordine);
 			preparedStatement.setInt(2, id);
 			preparedStatement.executeUpdate();
-			
 		} catch(SQLException e) {
 			GestoreEccezioni.getInstance().gestisciEccezione(e);
 		}

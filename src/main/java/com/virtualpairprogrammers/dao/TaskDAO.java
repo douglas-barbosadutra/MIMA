@@ -12,6 +12,7 @@ public class TaskDAO {
 	private final String QUERY_ALL = "select * from tasks where id_macchinario = ? ";
 	private final String QUERY_UPDATE = "update tasks set descrizione = ?,data = ? where id = ?";
 	private final String QUERY_DELETE = "delete from tasks where id = ?";
+	private final String QUERY_SELECT_BY_ID_SCHEDULAZIONE = "SELECT a.* FROM tasks AS a INNER JOIN operazioni_schedulazione AS b ON b.id_task = a.id AND b.id_schedulazione = ? ORDER BY b.ordine;";
 	
 	public TaskDAO() {
 		
@@ -78,6 +79,28 @@ public class TaskDAO {
 				int id = resultSet.getInt("id");
 				String descrizione = resultSet.getString("descrizione");
 				tasks.add(new Task(id,descrizione,macchinario));
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return tasks;
+	}
+	
+	public ArrayList<Task> getAllTasksByIdScheduling(int IdScheduling){ 
+		ArrayList<Task> tasks = new ArrayList<>();
+		Connection connection = ConnectionSingleton.getInstance();
+		
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_SELECT_BY_ID_SCHEDULAZIONE);
+			preparedStatement.setInt(1, IdScheduling);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				int id = resultSet.getInt("id");
+				String descrizione = resultSet.getString("descrizione");
+				int idMacchinario = resultSet.getInt("id_macchinario");
+				tasks.add(new Task(id,descrizione,idMacchinario));
 			}
 			
 		} catch(SQLException e) {

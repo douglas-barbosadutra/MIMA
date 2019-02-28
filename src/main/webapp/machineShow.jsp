@@ -41,7 +41,7 @@
 								<th><%out.println(machines.get(i).getId()); %></th>
 								<th><%out.println(machines.get(i).getNome()); %></th>
 								<th><%out.println(machines.get(i).getModello()); %></th>
-								<th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="MachineServlet?action=deleteMachine&id=<%=machines.get(i).getId()%>">Elimina</a><a style="text-decoration:none; text-align:center; margin-left:2%;" class="btn btn-primary" href="TaskServlet?action=openInsertTask&id_macchinario=<%=machines.get(i).getId()%>">Inserisci task</a><a style="text-decoration:none; text-align:center; margin-left:2%;" class="btn btn-primary" href="TaskServlet?action=showTask&id_macchinario=<%=machines.get(i).getId()%>">Visualizza task</a></th>
+								<th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="MachineServlet?action=deleteMachine&id=<%=machines.get(i).getId()%>">Elimina</a><a style="text-decoration:none; text-align:center; margin-left:2%;" class="btn btn-primary" href="TaskServlet?action=openInsertTask&id_macchinario=<%=machines.get(i).getId()%>">Inserisci task</a><a style="text-decoration:none; text-align:center; margin-left:2%;" class="btn btn-primary" href="TaskServlet?action=showTask&id_macchinario=<%=machines.get(i).getId()%>">Visualizza task</a><a style="text-decoration:none; text-align:center; margin-left:2%;" class="btn btn-primary" href="SchedulingServlet?action=showScheduling&idMacchinario=<%=machines.get(i).getId()%>">Visualizza Scheduling</a></th>
 							</tr><%
 						}
 					%>
