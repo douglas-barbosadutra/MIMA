@@ -18,7 +18,7 @@ import com.virtualpairprogrammers.services.TempiLavorazioniService;
 public class InstructionServlet extends HttpServlet {
 
 	private final InstructionService istruzioneService = new InstructionService();
-	private static int idTask;
+	private static int idTask = 0;
 	
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,45 +29,107 @@ public class InstructionServlet extends HttpServlet {
 			if(action != null) {
 				
 				switch(action) {
-					case "showInstruction":{
-						idTask = Integer.parseInt(request.getParameter("idTask").toString());
+				
+					case "chooseTask":{
+						
+						idTask = Integer.parseInt(request.getParameter("id").toString());
+						session.setAttribute("idTaskScelto", idTask);
+						
+						session.setAttribute("showInstruction", "list");
+						
 						List<InstructionDTO> istruzioni = istruzioneService.getAllIstruzioni(idTask);
 						session.setAttribute("listaIstruzioni", istruzioni);
 						getServletContext().getRequestDispatcher("/instructionShow.jsp").forward(request, response);
-						break;
-					}	
+						
+					} break;
+					
+					case "showInstruction":{
+						
+						if(idTask == 0) {	
+							getServletContext().getRequestDispatcher("/TaskServlet?action=chooseTask").forward(request, response);
+						}
+							
+						else {
+							
+							session.setAttribute("showInstruction", "list");
+							
+							List<InstructionDTO> istruzioni = istruzioneService.getAllIstruzioni(idTask);
+							session.setAttribute("listaIstruzioni", istruzioni);
+							getServletContext().getRequestDispatcher("/instructionShow.jsp").forward(request, response);
+						}
+						
+					} break;
+					
 					case "insertInstruction":{
-						String nomeIstruzione = request.getParameter("nomeIstruzione").toString();
-						int durata = Integer.parseInt(request.getParameter("durata").toString());
-						String codice = request.getParameter("codice").toString();
-						InstructionDTO istruzione = new InstructionDTO(nomeIstruzione, durata, idTask, codice);
-						istruzioneService.insertIstruzione(istruzione, idTask);
-						getServletContext().getRequestDispatcher("/homeUser.jsp").forward(request, response);
-						break;
-					}
+						
+							String nomeIstruzione = request.getParameter("nome").toString();
+							int durata = Integer.parseInt(request.getParameter("durata").toString());
+							String codice = request.getParameter("codice").toString();
+							
+							InstructionDTO istruzione = new InstructionDTO(nomeIstruzione, durata, idTask, codice);
+							istruzioneService.insertIstruzione(istruzione, idTask);
+							
+							session.setAttribute("showInstruction", "list");
+							
+							List<InstructionDTO> istruzioni = istruzioneService.getAllIstruzioni(idTask);
+							session.setAttribute("listaIstruzioni", istruzioni);
+							getServletContext().getRequestDispatcher("/instructionShow.jsp").forward(request, response);
+												
+					}break;
+					
 					case "insertInstructionOpen":{
-						idTask = Integer.parseInt(request.getParameter("idTask").toString());
-						getServletContext().getRequestDispatcher("/instructionInsert.jsp").forward(request, response);
-						break;
-					}
+						
+						if(idTask == 0)
+							getServletContext().getRequestDispatcher("/TaskServlet?action=chooseTask").forward(request, response);
+						
+						else 
+							getServletContext().getRequestDispatcher("/instructionInsert.jsp").forward(request, response);
+							
+					}break;
+					
+					case "deleteInstructionManagement":{
+						
+						if(idTask == 0)
+							getServletContext().getRequestDispatcher("/TaskServlet?action=chooseTask").forward(request, response);
+						
+						else {
+							
+							session.setAttribute("showInstruction", "delete");
+							
+							List<InstructionDTO> istruzioni = istruzioneService.getAllIstruzioni(idTask);
+							session.setAttribute("listaIstruzioni", istruzioni);
+							getServletContext().getRequestDispatcher("/instructionShow.jsp").forward(request, response);
+						}
+						
+					} break;
+					
 					case "deleteInstruction":{
+						
 						String nomeIstruzione = request.getParameter("nomeIstruzione").toString();
 						istruzioneService.deleteIstruzione(nomeIstruzione, idTask);
+						
+						session.setAttribute("showInstruction", "list");
 						List<InstructionDTO> istruzioni = istruzioneService.getAllIstruzioni(idTask);
 						session.setAttribute("listaIstruzioni", istruzioni);
 						getServletContext().getRequestDispatcher("/instructionShow.jsp").forward(request, response);
 						break;
 					}
-					case "indietro":
-						getServletContext().getRequestDispatcher("/homeUser.jsp").forward(request, response);
-						break;
+						
 					case "showTime":{
-						List<TimeDTO> listaTempi = new ArrayList<>();
-						TempiLavorazioniService tempiLavorazioneService = new TempiLavorazioniService();
-						listaTempi = tempiLavorazioneService .getAllTempi(idTask);
-						session.setAttribute("listaTempi", listaTempi);
-						getServletContext().getRequestDispatcher("/timeShow.jsp").forward(request, response);
-					}
+						
+						if(idTask == 0)
+							getServletContext().getRequestDispatcher("/TaskServlet?action=chooseTask").forward(request, response);
+						
+						else {
+							
+							List<TimeDTO> listaTempi = new ArrayList<>();
+							TempiLavorazioniService tempiLavorazioneService = new TempiLavorazioniService();
+							listaTempi = tempiLavorazioneService .getAllTempi(idTask);
+							session.setAttribute("listaTempi", listaTempi);
+							getServletContext().getRequestDispatcher("/timeShow.jsp").forward(request, response);
+						}
+				
+					} break;
 				}
 			}
 		}

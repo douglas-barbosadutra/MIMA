@@ -49,14 +49,27 @@ public class UserServlet extends HttpServlet {
 					
 				} break;
 					
-				case "showUser":
+				case "showUser":{
+					
+					session.setAttribute("showUser", "list");
 					
 					List<UserDTO> users = userService.getAllUsers();
 					session.setAttribute("users_list", users);
 					
 					getServletContext().getRequestDispatcher("/userShow.jsp").forward(request, response);
 					
-					break;
+				}break;
+					
+				case "deleteUserManagement":{
+					
+					session.setAttribute("showUser", "delete");
+					
+					List<UserDTO> users = userService.getAllUsers();
+					session.setAttribute("users_list", users);
+					
+					getServletContext().getRequestDispatcher("/userShow.jsp").forward(request, response);
+					
+				}break;
 				
 				case "deleteUser":
 					
@@ -87,19 +100,7 @@ public class UserServlet extends HttpServlet {
 				
 					
 				}break;
-					
-				case "indietro":
-					
-					getServletContext().getRequestDispatcher("/homeAdmin.jsp").forward(request, response);
-					
-				break;
-				
-				case "indietroUser":{
-					
-					getServletContext().getRequestDispatcher("/homeUser.jsp").forward(request, response);
-	
-				}break;
-				
+									
 				case "logout":
 					
 					getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);

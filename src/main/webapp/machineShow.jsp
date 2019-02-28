@@ -12,6 +12,76 @@
 	</head>
 	
 	<body>
+		
+		<% String mode = session.getAttribute("showMachine").toString(); %>
+		
+		<ul>
+		  <li>
+	  		<div class="dropdown">
+				<button class="dropbtn">Macchinari</button>
+				
+				<div class="dropdown-content"> 
+					<a href="MachineServlet?action=openInsertMachine">Inserisci</a>
+					<a href="MachineServlet?action=deleteMachineManagement">Elimina</a>
+					<a href="MachineServlet?action=showMachine">Lista</a>
+					<a href="SchedulingServlet?action=showScheduling">Scheduling</a>
+					<a href="MachineServlet?action=chooseMachineManagement">Seleziona</a>
+				</div>
+			</div>
+		  </li>
+		  
+		  <li>
+	  		<div class="dropdown">
+				<button class="dropbtn">Scheduling</button>
+				
+				<div class="dropdown-content"> 
+					<a href="SchedulingServlet?action=insertSchedulingOpen">Inserisci</a>
+					<a href="SchedulingServlet?action=deleteSchedulingManagement">Elimina</a>
+					<a href="SchedulingServlet?action=showScheduling">Lista</a>
+					<a href="SchedulingServlet?action=managementScheduling">Gestione</a>
+				</div>
+			</div>
+		  </li>
+		  
+		  <li>
+	  		<div class="dropdown">
+				<button class="dropbtn">Task</button>
+				
+				<div class="dropdown-content"> 
+					<a href="TaskServlet?action=openInsertTask">Inserisci</a>
+					<a href="TaskServlet?action=deleteTaskManagement">Elimina</a>
+					<a href="TaskServlet?action=showTask">Lista</a>
+					<a href="InstructionServlet?action=showTime">Tempi</a>
+					<a href="TaskServlet?action=chooseTask">Seleziona</a>
+				</div>
+			</div>
+		  </li>
+		  
+		  <li>
+	  		<div class="dropdown">
+				<button class="dropbtn">Istruzioni</button>
+				
+				<div class="dropdown-content"> 
+					<a href="InstructionServlet?action=insertInstructionOpen">Inserisci</a>
+					<a href="InstructionServlet?action=deleteInstructionManagement">Elimina</a>
+					<a href="InstructionServlet?action=showInstruction">Lista</a>
+				</div>
+			</div>
+		  </li>
+		  
+		  <li>
+	  		<div class="dropdown">
+				<a href="UserServlet?action=openUpdateUser" class="dropbtn">Profilo</a>				
+			</div>
+		  </li>
+		  
+		  <li>
+	  		<div class="dropdown">
+				<a href="UserServlet?action=logout" class="dropbtn">Logout</a>				
+			</div>
+		  </li>
+
+		</ul>
 	
 		<h1 class="title">Lista macchinari</h1>
 		
@@ -24,7 +94,13 @@
 			        <th>ID</th>
 			        <th>Nome</th>
 			        <th>Modello</th>
-			        <th>Opzioni</th>
+			        
+			        <%if(!mode.equals("list")){
+			        	
+			        	%><th>Opzioni</th><%
+			        	
+			        } %>
+			         
 			      </tr>
 			      
 			    </thead>
@@ -41,7 +117,16 @@
 								<th><%out.println(machines.get(i).getId()); %></th>
 								<th><%out.println(machines.get(i).getNome()); %></th>
 								<th><%out.println(machines.get(i).getModello()); %></th>
-								<th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="MachineServlet?action=deleteMachine&id=<%=machines.get(i).getId()%>">Elimina</a><a style="text-decoration:none; text-align:center; margin-left:2%;" class="btn btn-primary" href="TaskServlet?action=openInsertTask&id_macchinario=<%=machines.get(i).getId()%>">Inserisci task</a><a style="text-decoration:none; text-align:center; margin-left:2%;" class="btn btn-primary" href="TaskServlet?action=showTask&id_macchinario=<%=machines.get(i).getId()%>">Visualizza task</a><a style="text-decoration:none; text-align:center; margin-left:2%;" class="btn btn-primary" href="SchedulingServlet?action=showScheduling&idMacchinario=<%=machines.get(i).getId()%>">Visualizza Scheduling</a></th>
+								
+								<%if(mode.equals("delete")){
+									
+									%><th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="MachineServlet?action=deleteMachine&id=<%=machines.get(i).getId()%>">Elimina</a></th><%
+								
+								} else if(mode.equals("choose")){
+									
+									%><th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="SchedulingServlet?action=chooseMachine&id=<%=machines.get(i).getId()%>">Seleziona</a></th><%
+									
+								}%>
 							</tr><%
 						}
 					%>
@@ -49,11 +134,7 @@
 			    </tbody>
 			    
 		  </table>
-		  
-		  	<form action="MachineServlet" method="post">
-				<button style="margin-left:40%;" class="btn btn-primary" type="submit" name="action" value="openManagementMachine">Indietro</button>
-			</form>
-					
+		  	
 		</div>
 		
 		

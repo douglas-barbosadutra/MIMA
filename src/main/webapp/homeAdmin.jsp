@@ -7,15 +7,35 @@
 		<link href = "Stile.css" rel = "stylesheet" media = "screen">
 		<title>Amministratore</title>
 	</head>
+	
 	<body>
+		<h1 class="title">Benvenuto ${utente.getName()}</h1>
 	
-	<h1 class="title">Benvenuto ${utente.getName()}</h1>
-	
-		<form style="margin-left:30%; margin-top: 15%;" class="form-inline" action="UserServlet" method="post">
-		  <button class="btn btn-primary" type="submit" name="action" value="openInsertUser">Inserisci utente</button>
-		  <button class="btn btn-primary" type="submit" name="action" value="showUser">Gestione utenti</button>
-		  <button class="btn btn-primary" type="submit" name="action" value="logout">Logout</button>
-		</form>
+		<ul>
+			<li>
+		  		<div class="dropdown">
+					<a href="UserServlet?action=openInsertUser" class="dropbtn">Inserisci utente</a>				
+				</div>
+	  		</li>
+	  		
+	  		<li>
+		  		<div class="dropdown">
+					<a href="UserServlet?action=deleteUserManagement" class="dropbtn">Elimina utente</a>				
+				</div>
+	  		</li>
+	  		
+	  		<li>
+		  		<div class="dropdown">
+					<a href="UserServlet?action=showUser" class="dropbtn">Lista utenti</a>				
+				</div>
+	  		</li>
+	  		
+	  		<li>
+		  		<div class="dropdown">
+					<a href="UserServlet?action=logout" class="dropbtn">Logout</a>				
+				</div>
+	  		</li>
+		</ul>
 		
 	</body>
 </html>

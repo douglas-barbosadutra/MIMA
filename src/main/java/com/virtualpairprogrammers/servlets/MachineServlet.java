@@ -10,11 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.virtualpairprogrammers.dto.MachineDTO;
+import com.virtualpairprogrammers.dto.TaskDTO;
 import com.virtualpairprogrammers.services.MachineService;
 
 public class MachineServlet extends HttpServlet{
 	
-	private final MachineService machineService = new MachineService();
+	private final MachineService machineService = new MachineService();	
 
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,12 +28,6 @@ public class MachineServlet extends HttpServlet{
 			if(action != null) {
 			
 			switch(action) {
-			
-				case "openManagementMachine":{
-					
-					getServletContext().getRequestDispatcher("/machineManagement.jsp").forward(request, response);
-					
-				}break;
 				
 				case "openInsertMachine":{
 					
@@ -47,34 +42,62 @@ public class MachineServlet extends HttpServlet{
 					String modello = request.getParameter("modello").toString();
 					
 					machineService.insertMachine(nome, modello);
-					getServletContext().getRequestDispatcher("/machineManagement.jsp").forward(request, response);
+					session.setAttribute("showMachine", "list");
+					List<MachineDTO> machines = machineService.getAllMachines();
+					session.setAttribute("machines_list", machines);
+					
+					getServletContext().getRequestDispatcher("/machineShow.jsp").forward(request, response);
 					
 					
 				} break;
 				
 				case "showMachine":{
 					
-					List<MachineDTO> users = machineService.getAllMachines();
-					session.setAttribute("machines_list", users);
+					session.setAttribute("showMachine", "list");
+					
+					List<MachineDTO> machines = machineService.getAllMachines();
+					session.setAttribute("machines_list", machines);
 					
 					getServletContext().getRequestDispatcher("/machineShow.jsp").forward(request, response);
 					
 				} break;
+				
+				case "chooseMachineManagement":{
+					
+					session.setAttribute("showMachine", "choose");
+					
+					List<MachineDTO> machines = machineService.getAllMachines();
+					session.setAttribute("machines_list", machines);
+					
+					getServletContext().getRequestDispatcher("/machineShow.jsp").forward(request, response);
+					
+				} break;
+				
+				case "deleteMachineManagement":{
+					
+					session.setAttribute("showMachine", "delete");
+					
+					List<MachineDTO> machines = machineService.getAllMachines();
+					session.setAttribute("machines_list", machines);
+					
+					getServletContext().getRequestDispatcher("/machineShow.jsp").forward(request, response);
+					
+				}break;
 				
 				case "deleteMachine":{
 					
 					int id = Integer.parseInt(request.getParameter("id").toString());
 					machineService.deleteMachine(id);
 					
-					getServletContext().getRequestDispatcher("/homeUser.jsp").forward(request, response);
+					session.setAttribute("showMachine", "list");
+					
+					List<MachineDTO> machines = machineService.getAllMachines();
+					session.setAttribute("machines_list", machines);
+					
+					getServletContext().getRequestDispatcher("/machineShow.jsp").forward(request, response);
 					
 				} break;
 					
-				case "indietro":
-					
-					getServletContext().getRequestDispatcher("/homeUser.jsp").forward(request, response);
-					
-				break;
 					
 				}
 			
