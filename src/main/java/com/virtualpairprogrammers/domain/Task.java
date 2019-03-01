@@ -1,6 +1,5 @@
 package com.virtualpairprogrammers.domain;
 
-import java.sql.Timestamp;
 
 public class Task {
 

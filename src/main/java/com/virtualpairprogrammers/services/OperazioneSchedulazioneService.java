@@ -1,7 +1,6 @@
 package com.virtualpairprogrammers.services;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import com.virtualpairprogrammers.converter.OperazioneSchedulazioneConverter;
@@ -14,12 +13,15 @@ import com.virtualpairprogrammers.dto.TaskSchedulatiDTO;
 public class OperazioneSchedulazioneService {
 	
 	private OperazioneSchedulazioneDAO operazioneSchedulazioneDAO;
+	private TaskService taskService;
 	
 	public OperazioneSchedulazioneService() {
 		this.operazioneSchedulazioneDAO = new OperazioneSchedulazioneDAO();
+		this.taskService = new TaskService();
 	}
 	
-	public void deleteOperazioneSchedulazione(int id, List<TaskSchedulatiDTO> listaTaskSchedultatiDTO) {
+	public void deleteOperazioneSchedulazione(int id, int idSchedulazione, int idMacchinario) {
+		List<TaskSchedulatiDTO> listaTaskSchedultatiDTO = getTaskSchedulati(idSchedulazione, idMacchinario);
 		int i = 0;
 		while(listaTaskSchedultatiDTO.get(i).getIdOperazioneSchedulazione() != id)
 			i++;
@@ -40,17 +42,16 @@ public class OperazioneSchedulazioneService {
 	}
 
 	public List<OperazioneSchedulazioneDTO> getOperazioniSchedulazioneByIdSchedulazione(int idSchedulazione){
-		
     	List<OperazioneSchedulazione> oss = this.operazioneSchedulazioneDAO.getOperazioniSchedulazioneByIdSchedulazione(idSchedulazione);;
     	List<OperazioneSchedulazioneDTO> osdto = new ArrayList<>();
-    	
 		for(OperazioneSchedulazione os: oss) {
 			osdto.add(OperazioneSchedulazioneConverter.convertToDto(os));
 		}
 		return osdto;
 	}
 	
-	public List<TaskSchedulatiDTO> getTaskSchedulati(int idSchedulazione, List<TaskDTO> listaTask){
+	public List<TaskSchedulatiDTO> getTaskSchedulati(int idSchedulazione, int idMacchinario){
+		List<TaskDTO> listaTask = taskService.getAllTasks(idMacchinario);
 		List<TaskSchedulatiDTO> listaTaskSchedulati = new ArrayList<>();
 		List<OperazioneSchedulazioneDTO> oss = this.getOperazioniSchedulazioneByIdSchedulazione(idSchedulazione);
 		for(OperazioneSchedulazioneDTO os: oss) {
@@ -64,14 +65,13 @@ public class OperazioneSchedulazioneService {
 		return listaTaskSchedulati;
 	}
 	
-	public List<TaskSchedulatiDTO> modifyPosition(List<TaskSchedulatiDTO> listaTaskSchedulati, int oldPosition, int newPosition) {
+	public void modifyPosition(int idSchedulazione, int idMacchinario, int oldPosition, int newPosition) {
+		List<TaskSchedulatiDTO> listaTaskSchedulati = getTaskSchedulati(idSchedulazione, idMacchinario);
 		if(newPosition < 1 || (newPosition > listaTaskSchedulati.size()))
-			return listaTaskSchedulati;
+			return;
 		updateOperazioneSchedulazione(newPosition, listaTaskSchedulati.get(oldPosition-1).getIdOperazioneSchedulazione());
 		updateOperazioneSchedulazione(oldPosition, listaTaskSchedulati.get(newPosition-1).getIdOperazioneSchedulazione());
 		listaTaskSchedulati.get(oldPosition-1).setOrdine(newPosition);
 		listaTaskSchedulati.get(newPosition-1).setOrdine(oldPosition);
-		Collections.swap(listaTaskSchedulati, oldPosition-1, newPosition-1);
-		return listaTaskSchedulati;
 	}
 }

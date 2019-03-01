@@ -4,11 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.virtualpairprogrammers.converter.LavorazioneConverter;
-import com.virtualpairprogrammers.dao.InstructionDAO;
 import com.virtualpairprogrammers.dao.LavorazioneDAO;
-import com.virtualpairprogrammers.domain.Instruction;
 import com.virtualpairprogrammers.domain.Lavorazione;
-import com.virtualpairprogrammers.dto.InstructionDTO;
 import com.virtualpairprogrammers.dto.LavorazioneDTO;
 
 public class LavorazioneService {

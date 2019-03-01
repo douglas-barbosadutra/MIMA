@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.virtualpairprogrammers.dto.MachineDTO;
-import com.virtualpairprogrammers.dto.TaskDTO;
 import com.virtualpairprogrammers.services.MachineService;
 
 public class MachineServlet extends HttpServlet{
