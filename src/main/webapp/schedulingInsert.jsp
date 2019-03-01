@@ -90,13 +90,13 @@
 				</div>
 				
 				<div class="form-group">
-					<label class="col-form-label">Data Inizio(formato gg-mm-aaaa)</label>
-					<input type="text" class="form-control" name="dataInizio">				
+					<label class="col-form-label">Data Inizio</label>
+					<input type="datetime-local" class="form-control" name="dataInizio">				
 				</div>
 				
 				<div class="form-group">
-					<label class="col-form-label">Data Fine(formato gg-mm-aaaa)</label>
-					<input type="text" class="form-control" name="dataFine">				
+					<label class="col-form-label">Data Fine</label>
+					<input type="datetime-local" class="form-control" name="dataFine">				
 				</div>
 
 				<input type="hidden" name="action" value="insertScheduling">
