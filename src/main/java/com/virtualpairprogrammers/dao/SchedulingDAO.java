@@ -17,6 +17,7 @@ public class SchedulingDAO {
 	private final String QUERY_DELETE = "DELETE FROM schedulazione WHERE id = ?";
 	private final String QUERY_ALL_BY_MACCHINARIO = "SELECT * FROM schedulazione WHERE id_macchinario = ?";
 	private final String QUERY_SELECT = "SELECT * FROM schedulazione WHERE id = ?";
+	private final String QUERY_UPDATE = "UPDATE schedulazione SET timestamp_inizio = ?, timestamp_fine = ? WHERE id = ?";
 
 	public SchedulingDAO() {
 		
@@ -89,4 +90,17 @@ public class SchedulingDAO {
 		return scheduling;
 	}
 	
+	public void updateScheduling(int id, Timestamp inizio, Timestamp fine) {
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+			PreparedStatement preparedstatement = connection.prepareStatement(QUERY_UPDATE);
+			preparedstatement.setTimestamp(1, inizio);
+			preparedstatement.setTimestamp(2, fine);
+			preparedstatement.setInt(3, id);
+			preparedstatement.executeUpdate();
+		}
+		catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	}
 }

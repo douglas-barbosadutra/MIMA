@@ -1,5 +1,6 @@
 package com.virtualpairprogrammers.services;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,5 +33,9 @@ public class SchedulingService {
 			schedulingDTO.add(SchedulingConverter.convertToSchedulingDTO(scheduling));
 		}
 		return schedulingDTO;
+	}
+	
+	public void updateScheduling(int idSchedulazione, Timestamp inizio, Timestamp fine) {
+		schedulingDAO.updateScheduling(idSchedulazione, inizio, fine);
 	}
 }

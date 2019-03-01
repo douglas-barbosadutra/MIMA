@@ -6,11 +6,11 @@ public class SchedulingDTO {
 
 	private int id;
 	private String nome;
-	private String dataInizio;
-	private String dataFine;
+	private Timestamp dataInizio;
+	private Timestamp dataFine;
 	private int idMacchinario;
 	
-	public SchedulingDTO(int id, String nome, String dataInizio, String dataFine, int idMacchinario) {
+	public SchedulingDTO(int id, String nome, Timestamp dataInizio, Timestamp dataFine, int idMacchinario) {
 		this.id = id;
 		this.nome = nome;
 		this.dataInizio = dataInizio;
@@ -18,11 +18,12 @@ public class SchedulingDTO {
 		this.idMacchinario = idMacchinario;
 	}
 	
-	public SchedulingDTO(String nome, String dataInizio, String dataFine, int idMacchinario) {
+	public SchedulingDTO(String nome, Timestamp dataInizio, Timestamp dataFine, int idMacchinario) {
 		this.nome = nome;
 		this.dataInizio = dataInizio;
 		this.dataFine = dataFine;
 		this.idMacchinario = idMacchinario;
+		id = 0;
 	}
 	
 	public int getId() {
@@ -33,12 +34,12 @@ public class SchedulingDTO {
 		return nome;
 	}
 	
-	public String getInizio() {
+	public Timestamp getInizio() {
 		return dataInizio;
 	}
 	
-	public String getFine() {
-		return dataInizio;
+	public Timestamp getFine() {
+		return dataFine;
 	}
 	
 	public int getIdMacchinario() {

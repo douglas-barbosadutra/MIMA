@@ -17,10 +17,12 @@ public class Scheduling {
 		this.idMacchinario = idMacchinario;
 	}
 	
-	public Scheduling(String nome, Timestamp inizio, Timestamp fine) {
+	public Scheduling(String nome, Timestamp inizio, Timestamp fine, int idMacchinario) {
 		this.nome = nome;
 		this.inizio = inizio;
 		this.fine = fine;
+		this.idMacchinario = idMacchinario;
+		id = 0;
 	}
 	
 	public int getId() {
