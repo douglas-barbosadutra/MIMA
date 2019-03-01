@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `mima` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
 USE `mima`;
--- MySQL dump 10.13  Distrib 8.0.15, for macos10.14 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.11, for Win64 (x86_64)
 --
 -- Host: localhost    Database: mima
 -- ------------------------------------------------------
--- Server version	8.0.15
+-- Server version	8.0.11
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -145,7 +145,7 @@ CREATE TABLE `operazioni_schedulazione` (
   KEY `idx_schedulazione` (`id_schedulazione`),
   CONSTRAINT `fk2_schedulazione` FOREIGN KEY (`id_schedulazione`) REFERENCES `schedulazione` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk2_task` FOREIGN KEY (`id_task`) REFERENCES `tasks` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -167,13 +167,13 @@ DROP TABLE IF EXISTS `schedulazione`;
 CREATE TABLE `schedulazione` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) NOT NULL,
-  `timestamp_inizio` int(11) NOT NULL,
-  `timestamp_fine` int(11) NOT NULL,
+  `timestamp_inizio` timestamp NOT NULL,
+  `timestamp_fine` timestamp NOT NULL,
   `id_macchinario` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_macchinario` (`id_macchinario`),
   CONSTRAINT `fk_macchinario` FOREIGN KEY (`id_macchinario`) REFERENCES `macchinari` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -182,6 +182,7 @@ CREATE TABLE `schedulazione` (
 
 LOCK TABLES `schedulazione` WRITE;
 /*!40000 ALTER TABLE `schedulazione` DISABLE KEYS */;
+INSERT INTO `schedulazione` VALUES (3,'marco','2000-01-01 10:11:00','2001-11-11 10:11:00',5),(4,'marco','2020-04-30 22:00:00','2020-04-30 22:00:00',5),(5,'giorgio','2019-12-31 23:00:00','2019-12-31 23:00:00',5),(6,'rino','2029-12-31 23:00:00','2029-12-31 23:00:00',5),(7,'gino','2024-04-03 22:00:00','2024-04-03 22:00:00',5),(8,'dino','2027-07-06 22:00:00','2027-07-06 22:00:00',5),(9,'tino','2027-07-06 22:00:00','2027-07-06 22:00:00',5),(10,'lino','1999-12-31 23:00:00','1999-12-31 23:00:00',5),(11,'pino','2011-11-10 23:00:00','2011-11-10 23:00:00',5),(14,'marco','1979-12-31 23:00:00','2011-11-10 23:00:00',5),(15,'gigi','2008-12-31 23:00:00','2011-11-10 23:00:00',5);
 /*!40000 ALTER TABLE `schedulazione` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -200,7 +201,7 @@ CREATE TABLE `tasks` (
   UNIQUE KEY `descrizione` (`descrizione`,`id_macchinario`),
   KEY `idx_macchinario` (`id_macchinario`),
   CONSTRAINT `tasks_ibfk_1` FOREIGN KEY (`id_macchinario`) REFERENCES `macchinari` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -209,7 +210,7 @@ CREATE TABLE `tasks` (
 
 LOCK TABLES `tasks` WRITE;
 /*!40000 ALTER TABLE `tasks` DISABLE KEYS */;
-INSERT INTO `tasks` VALUES (13,'asciugatura',5),(12,'verniciatura',5);
+INSERT INTO `tasks` VALUES (13,'asciugatura',5),(17,'bordinatura',5),(15,'cottura',5),(14,'cucinatura',5),(16,'levigatura',5),(12,'verniciatura',5);
 /*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -253,4 +254,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-27 17:35:05
+-- Dump completed on 2019-03-01 12:39:18
