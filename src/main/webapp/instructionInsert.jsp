@@ -78,7 +78,7 @@
 
 		</ul>
 	
-		<h1>Inserimento istruzione al task n. ${idTaskScelto}</h1>
+		<h1 class="title">Inserimento istruzione al task n. ${idTaskScelto}</h1>
 		
 		<div style="padding-left: 20%; padding-right: 20%;">
 		
@@ -92,7 +92,7 @@
 				
 				<div class="form-group">
 					<label class="col-form-label">Durata in secondi</label>
-					<input type="text" class="form-control" name="durata">				
+					<input type="number" class="form-control" name="durata">				
 					
 				</div>
 				

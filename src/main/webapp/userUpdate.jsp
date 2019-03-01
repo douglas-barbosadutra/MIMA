@@ -116,7 +116,7 @@
 				
 				<div class="form-group">
 					<label class="col-form-label">Telefono</label>
-					<input type="text" class="form-control" name="telefono" value="${utente.getPhone()}">				
+					<input type="number" class="form-control" name="telefono" value="${utente.getPhone()}">				
 				</div>
 				
 				<input type="hidden" name="action" value="updateUser">

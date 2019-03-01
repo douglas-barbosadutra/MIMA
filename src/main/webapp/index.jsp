@@ -10,11 +10,8 @@
 	
 	<body background="Sfondo.png">
 		
-		<h1 class="title" style="text-align:left;">Benvenuto in MIMA!</h1>
+		<div style="width:25%; margin-top:15%; margin-left:35%;">
 		
-		
-		
-		<div style="width:25%">
 			
 			<form action="LoginServlet" method="post">
 		
