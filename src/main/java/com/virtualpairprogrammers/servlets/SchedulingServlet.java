@@ -136,9 +136,11 @@ public class SchedulingServlet extends HttpServlet {
 					}
 					
 					case "modifyScheduling":{
+						
 						SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
 						String dataInizio = request.getParameter("dataInizio");
 						String dataFine = request.getParameter("dataFine");
+						
 						Date date1 = new Date();
 						Date date2 = new Date();
 						try {
@@ -153,21 +155,41 @@ public class SchedulingServlet extends HttpServlet {
 							e.printStackTrace();
 						}
 						Timestamp fine = new Timestamp(date2.getTime());
+						
 						schedulingService.updateScheduling(idSchedulazione, inizio, fine);
+						
+						session.setAttribute("showScheduling", "list");
 						List<SchedulingDTO> listaScheduling = schedulingService.getAllScheduling(idMacchinario);
 						session.setAttribute("listaScheduling", listaScheduling);
 						getServletContext().getRequestDispatcher("/schedulingList.jsp").forward(request, response);
 						break;
 					}
-					case "modifySchedulingOpen":{
+					
+					case "updateSchedulingManagement":{
+						
 						idSchedulazione = Integer.parseInt(request.getParameter("id").toString());
 						getServletContext().getRequestDispatcher("/schedulingModify.jsp").forward(request, response);
+						
+					} break;
+					
+					case "modifySchedulingOpen":{
+						
+						if(idMacchinario == 0)
+							getServletContext().getRequestDispatcher("/MachineServlet?action=chooseMachineManagement").forward(request, response);
+						
+						else {
+							
+							session.setAttribute("showScheduling", "update");
+							
+							List<SchedulingDTO> listaScheduling = schedulingService.getAllScheduling(idMacchinario);
+							session.setAttribute("listaScheduling", listaScheduling);
+							getServletContext().getRequestDispatcher("/schedulingList.jsp").forward(request, response);
+						}
+							
 						break;
+						
 					}
-					case "indietro":{
-						getServletContext().getRequestDispatcher("/homeUser.jsp").forward(request, response);
-						break;
-					}
+					
 				}
 			}
 		}

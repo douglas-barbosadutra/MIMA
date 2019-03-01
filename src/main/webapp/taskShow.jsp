@@ -36,6 +36,7 @@
 				<div class="dropdown-content"> 
 					<a href="SchedulingServlet?action=insertSchedulingOpen">Inserisci</a>
 					<a href="SchedulingServlet?action=deleteSchedulingManagement">Elimina</a>
+					<a href="SchedulingServlet?action=modifySchedulingOpen">Modifica</a>
 					<a href="SchedulingServlet?action=showScheduling">Lista</a>
 					<a href="SchedulingServlet?action=managementScheduling">Gestione</a>
 				</div>
