@@ -19,7 +19,6 @@
 					<a href="MachineServlet?action=openInsertMachine">Inserisci</a>
 					<a href="MachineServlet?action=deleteMachineManagement">Elimina</a>
 					<a href="MachineServlet?action=showMachine">Lista</a>
-					<a href="SchedulingServlet?action=showScheduling">Scheduling</a>
 					<a href="MachineServlet?action=chooseMachineManagement">Seleziona</a>
 				</div>
 			</div>
@@ -103,9 +102,7 @@
 					
 				</div>
 				
-				<input type="hidden" name="action" value="insertInstruction">
-				
-				<button style="margin-top:2%; margin-left:40%;" type="submit" class="btn btn-primary" value="Inserisci">Inserisci</button>	
+				<button style="margin-top:2%; margin-left:40%;" type="submit" class="btn btn-primary" name="action" value="insertInstruction">Inserisci</button>	
 			
 			</form>
 			

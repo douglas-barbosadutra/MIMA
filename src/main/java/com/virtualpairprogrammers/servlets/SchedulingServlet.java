@@ -36,8 +36,7 @@ public class SchedulingServlet extends HttpServlet {
 				case "chooseMachine": {
 
 					idMacchinario = Integer.parseInt(request.getParameter("id").toString());
-					getServletContext().getRequestDispatcher("/TaskServlet?action=chooseMachine&id=" + idMacchinario)
-							.forward(request, response);
+					getServletContext().getRequestDispatcher("/TaskServlet?action=chooseMachine&id=" + idMacchinario).forward(request, response);
 
 				}
 					break;
@@ -45,13 +44,11 @@ public class SchedulingServlet extends HttpServlet {
 				case "showScheduling": {
 
 					if (idMacchinario == 0)
-						getServletContext().getRequestDispatcher("/MachineServlet?action=chooseMachineManagement")
-								.forward(request, response);
+						getServletContext().getRequestDispatcher("/MachineServlet?action=chooseMachineManagement").forward(request, response);
 
 					else {
 
 						session.setAttribute("showScheduling", "list");
-
 						callShowView(session, request, response);
 					}
 					break;
@@ -59,8 +56,7 @@ public class SchedulingServlet extends HttpServlet {
 				case "insertSchedulingOpen": {
 
 					if (idMacchinario == 0)
-						getServletContext().getRequestDispatcher("/MachineServlet?action=chooseMachineManagement")
-								.forward(request, response);
+						getServletContext().getRequestDispatcher("/MachineServlet?action=chooseMachineManagement").forward(request, response);
 
 					else
 						getServletContext().getRequestDispatcher("/schedulingInsert.jsp").forward(request, response);
@@ -69,11 +65,14 @@ public class SchedulingServlet extends HttpServlet {
 					break;
 
 				case "insertScheduling": {
+					
 					String nome = request.getParameter("nome");
 					String dataInizio = request.getParameter("dataInizio");
 					String dataFine = request.getParameter("dataFine");
+					
 					schedulingService.insertScheduling(new SchedulingDTO(nome, getTimestampByString(dataInizio),
 							getTimestampByString(dataFine), idMacchinario));
+					
 					callShowView(session, request, response);
 					break;
 				}

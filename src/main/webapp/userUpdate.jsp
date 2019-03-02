@@ -122,7 +122,7 @@
 				
 				<input type="hidden" name="action" value="updateUser">
 				
-				<button style="margin-top:2%" type="submit" class="btn btn-primary" >Aggiorna</button>	
+				<button style="margin-top:2%" type="submit" class="btn btn-primary" name="action" value="updateUser" >Aggiorna</button>	
 			
 			</form>
 			

@@ -19,12 +19,17 @@ public class LavorazioniServlet extends HttpServlet {
 
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		final HttpSession session = request.getSession();
+		
 		if (request != null) {
+			
 			final String action = request.getParameter("action").toString();
 
 			if (action != null) {
+				
 				switch (action) {
+				
 				case "showTime":
 					int idTask = Integer.parseInt(request.getParameter("idTask").toString());
 					List<TimeDTO> listaTempi = new ArrayList<>();
@@ -32,6 +37,7 @@ public class LavorazioniServlet extends HttpServlet {
 					session.setAttribute("listaTempi", listaTempi);
 					getServletContext().getRequestDispatcher("/timeShow.jsp").forward(request, response);
 					break;
+				
 				case "indietro":
 					getServletContext().getRequestDispatcher("/homeUser.jsp").forward(request, response);
 					break;

@@ -19,7 +19,6 @@
 					<a href="MachineServlet?action=openInsertMachine">Inserisci</a>
 					<a href="MachineServlet?action=deleteMachineManagement">Elimina</a>
 					<a href="MachineServlet?action=showMachine">Lista</a>
-					<a href="SchedulingServlet?action=showScheduling">Scheduling</a>
 					<a href="MachineServlet?action=chooseMachineManagement">Seleziona</a>
 				</div>
 			</div>

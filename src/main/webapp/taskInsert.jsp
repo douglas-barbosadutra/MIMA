@@ -90,10 +90,8 @@
 					<input type="text" class="form-control" name="descrizione">				
 					
 				</div>
-								
-				<input type="hidden" name="action" value="insertTask">
 				
-				<button style="margin-top:2%; margin-left:40%;" type="submit" class="btn btn-primary" >Inserisci</button>	
+				<button style="margin-top:2%; margin-left:40%;" type="submit" class="btn btn-primary" name="action" value="insertTask" >Inserisci</button>	
 			
 			</form>
 			

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.virtualpairprogrammers.dto.TaskDTO;
 import com.virtualpairprogrammers.dto.UserDTO;
 import com.virtualpairprogrammers.services.UserService;
 
@@ -45,29 +46,22 @@ public class UserServlet extends HttpServlet {
 					int rank = Integer.parseInt(request.getParameter("rank").toString());
 					userService.insertUser(username, password, nome, cognome, email, telefono, rank);
 					
-					getServletContext().getRequestDispatcher("/homeAdmin.jsp").forward(request, response);
+					session.setAttribute("showUser", "list");
+					callShowView(session, request, response);
 					
 				} break;
 					
 				case "showUser":{
 					
 					session.setAttribute("showUser", "list");
-					
-					List<UserDTO> users = userService.getAllUsers();
-					session.setAttribute("users_list", users);
-					
-					getServletContext().getRequestDispatcher("/userShow.jsp").forward(request, response);
+					callShowView(session, request, response);
 					
 				}break;
 					
 				case "deleteUserManagement":{
 					
 					session.setAttribute("showUser", "delete");
-					
-					List<UserDTO> users = userService.getAllUsers();
-					session.setAttribute("users_list", users);
-					
-					getServletContext().getRequestDispatcher("/userShow.jsp").forward(request, response);
+					callShowView(session, request, response);
 					
 				}break;
 				
@@ -76,7 +70,8 @@ public class UserServlet extends HttpServlet {
 					int id = Integer.parseInt(request.getParameter("id").toString());
 					userService.deleteUser(id);
 					
-					getServletContext().getRequestDispatcher("/homeAdmin.jsp").forward(request, response);
+					session.setAttribute("showUser", "delete");
+					callShowView(session, request, response);
 					
 				break;
 				
@@ -112,6 +107,14 @@ public class UserServlet extends HttpServlet {
 			}
 			
 		}
+	}
+	
+	private void callShowView(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		List<UserDTO> users = userService.getAllUsers();
+		session.setAttribute("users_list", users);
+		
+		getServletContext().getRequestDispatcher("/userShow.jsp").forward(request, response);
 	}
 
 }

@@ -19,7 +19,6 @@
 					<a href="MachineServlet?action=openInsertMachine">Inserisci</a>
 					<a href="MachineServlet?action=deleteMachineManagement">Elimina</a>
 					<a href="MachineServlet?action=showMachine">Lista</a>
-					<a href="SchedulingServlet?action=showScheduling">Scheduling</a>
 					<a href="MachineServlet?action=chooseMachineManagement">Seleziona</a>
 				</div>
 			</div>
@@ -99,10 +98,8 @@
 					<label class="col-form-label">Data Fine</label>
 					<input type="datetime-local" class="form-control" name="dataFine">				
 				</div>
-
-				<input type="hidden" name="action" value="insertScheduling">
 				
-				<button style="margin-top:2%" type="submit" class="btn btn-primary" >Inserisci</button>	
+				<button style="margin-top:2%" type="submit" class="btn btn-primary" name="action" value="insertScheduling" >Inserisci</button>	
 			
 			</form>
 			

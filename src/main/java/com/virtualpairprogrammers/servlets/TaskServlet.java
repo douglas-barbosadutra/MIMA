@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.virtualpairprogrammers.dto.MachineDTO;
 import com.virtualpairprogrammers.dto.TaskDTO;
 import com.virtualpairprogrammers.services.TaskService;
 
@@ -37,9 +38,7 @@ public class TaskServlet extends HttpServlet{
 						session.setAttribute("idMacchinarioScelto", idMacchinario);
 						
 						session.setAttribute("showTask", "list");
-						List<TaskDTO> tasks = taskService.getAllTasks(idMacchinario);
-						session.setAttribute("taskList", tasks);
-						getServletContext().getRequestDispatcher("/taskShow.jsp").forward(request, response);
+						callShowView(session, request, response);
 						
 					} break;
 					
@@ -51,10 +50,7 @@ public class TaskServlet extends HttpServlet{
 						else {
 							
 							session.setAttribute("showTask", "choose");
-							
-							List<TaskDTO> tasks = taskService.getAllTasks(idMacchinario);
-							session.setAttribute("taskList", tasks);
-							getServletContext().getRequestDispatcher("/taskShow.jsp").forward(request, response);
+							callShowView(session, request, response);
 							
 						}
 						
@@ -68,10 +64,7 @@ public class TaskServlet extends HttpServlet{
 						else {
 							
 							session.setAttribute("showTask", "delete");
-							
-							List<TaskDTO> tasks = taskService.getAllTasks(idMacchinario);
-							session.setAttribute("taskList", tasks);
-							getServletContext().getRequestDispatcher("/taskShow.jsp").forward(request, response);
+							callShowView(session, request, response);
 						}						
 						
 					}break;
@@ -81,11 +74,8 @@ public class TaskServlet extends HttpServlet{
 						int id = Integer.parseInt(request.getParameter("id").toString());
 						taskService.deleteTask(id);
 						
-						session.setAttribute("showTask", "list");
-						
-						List<TaskDTO> tasks = taskService.getAllTasks(idMacchinario);
-						session.setAttribute("taskList", tasks);
-						getServletContext().getRequestDispatcher("/taskShow.jsp").forward(request, response);
+						session.setAttribute("showTask", "delete");
+						callShowView(session, request, response);
 								
 					}break;
 					
@@ -94,9 +84,7 @@ public class TaskServlet extends HttpServlet{
 						taskService.insertTask(descrizione, idMacchinario);
 						
 						session.setAttribute("showTask", "list");
-						List<TaskDTO> tasks = taskService.getAllTasks(idMacchinario);
-						session.setAttribute("taskList", tasks);
-						getServletContext().getRequestDispatcher("/taskShow.jsp").forward(request, response);
+						callShowView(session, request, response);
 						
 					} break;
 					
@@ -108,10 +96,7 @@ public class TaskServlet extends HttpServlet{
 						else {
 							
 							session.setAttribute("showTask", "list");
-							
-							List<TaskDTO> tasks = taskService.getAllTasks(idMacchinario);
-							session.setAttribute("taskList", tasks);
-							getServletContext().getRequestDispatcher("/taskShow.jsp").forward(request, response);
+							callShowView(session, request, response);
 						}
 						
 					}break;
@@ -129,5 +114,12 @@ public class TaskServlet extends HttpServlet{
 				}
 			}
 		}
+	}
+	
+	private void callShowView(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		List<TaskDTO> tasks = taskService.getAllTasks(idMacchinario);
+		session.setAttribute("taskList", tasks);
+		getServletContext().getRequestDispatcher("/taskShow.jsp").forward(request, response);
 	}
 }

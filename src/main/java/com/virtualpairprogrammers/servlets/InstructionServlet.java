@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.virtualpairprogrammers.dto.InstructionDTO;
+import com.virtualpairprogrammers.dto.SchedulingDTO;
 import com.virtualpairprogrammers.dto.TimeDTO;
 import com.virtualpairprogrammers.services.InstructionService;
 import com.virtualpairprogrammers.services.TempiLavorazioniService;
@@ -22,8 +23,11 @@ public class InstructionServlet extends HttpServlet {
 	
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		final HttpSession session = request.getSession();
+		
 		if (request != null) {
+			
 			final String action = request.getParameter("action").toString();
 			
 			if(action != null) {
@@ -36,10 +40,7 @@ public class InstructionServlet extends HttpServlet {
 						session.setAttribute("idTaskScelto", idTask);
 						
 						session.setAttribute("showInstruction", "list");
-						
-						List<InstructionDTO> istruzioni = istruzioneService.getAllIstruzioni(idTask);
-						session.setAttribute("listaIstruzioni", istruzioni);
-						getServletContext().getRequestDispatcher("/instructionShow.jsp").forward(request, response);
+						callShowView(session, request, response);
 						
 					} break;
 					
@@ -52,10 +53,7 @@ public class InstructionServlet extends HttpServlet {
 						else {
 							
 							session.setAttribute("showInstruction", "list");
-							
-							List<InstructionDTO> istruzioni = istruzioneService.getAllIstruzioni(idTask);
-							session.setAttribute("listaIstruzioni", istruzioni);
-							getServletContext().getRequestDispatcher("/instructionShow.jsp").forward(request, response);
+							callShowView(session, request, response);
 						}
 						
 					} break;
@@ -70,10 +68,7 @@ public class InstructionServlet extends HttpServlet {
 							istruzioneService.insertIstruzione(istruzione, idTask);
 							
 							session.setAttribute("showInstruction", "list");
-							
-							List<InstructionDTO> istruzioni = istruzioneService.getAllIstruzioni(idTask);
-							session.setAttribute("listaIstruzioni", istruzioni);
-							getServletContext().getRequestDispatcher("/instructionShow.jsp").forward(request, response);
+							callShowView(session, request, response);
 												
 					}break;
 					
@@ -95,10 +90,7 @@ public class InstructionServlet extends HttpServlet {
 						else {
 							
 							session.setAttribute("showInstruction", "delete");
-							
-							List<InstructionDTO> istruzioni = istruzioneService.getAllIstruzioni(idTask);
-							session.setAttribute("listaIstruzioni", istruzioni);
-							getServletContext().getRequestDispatcher("/instructionShow.jsp").forward(request, response);
+							callShowView(session, request, response);
 						}
 						
 					} break;
@@ -108,10 +100,9 @@ public class InstructionServlet extends HttpServlet {
 						String nomeIstruzione = request.getParameter("nomeIstruzione").toString();
 						istruzioneService.deleteIstruzione(nomeIstruzione, idTask);
 						
-						session.setAttribute("showInstruction", "list");
-						List<InstructionDTO> istruzioni = istruzioneService.getAllIstruzioni(idTask);
-						session.setAttribute("listaIstruzioni", istruzioni);
-						getServletContext().getRequestDispatcher("/instructionShow.jsp").forward(request, response);
+						session.setAttribute("showInstruction", "delete");
+						callShowView(session, request, response);
+						
 						break;
 					}
 						
@@ -133,5 +124,12 @@ public class InstructionServlet extends HttpServlet {
 				}
 			}
 		}
+	}
+	
+	private void callShowView(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		List<InstructionDTO> istruzioni = istruzioneService.getAllIstruzioni(idTask);
+		session.setAttribute("listaIstruzioni", istruzioni);
+		getServletContext().getRequestDispatcher("/instructionShow.jsp").forward(request, response);
 	}
 }

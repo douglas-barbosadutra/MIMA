@@ -92,9 +92,7 @@
 						
 					</div>
 					
-					<input type="hidden" name="action" value="insertUser">
-					
-					<button style="margin-top:2%; margin-left:40%;" type="submit" class="btn btn-primary" >Inserisci</button>	
+					<button style="margin-top:2%; margin-left:40%;" type="submit" class="btn btn-primary" name="action" value="insertUser" >Inserisci</button>	
 				
 				</form>
 				
