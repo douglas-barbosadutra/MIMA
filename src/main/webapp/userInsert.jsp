@@ -80,15 +80,17 @@
 						
 					</div>
 					
-					<div class="form-group">
+					<div class="form-check" style="margin-top:2%;">
 						
-						<input type="radio" name="rank" value="0" checked="checked">Utente					
+						<input class="form-check-input" type="radio" name="rank" value="0" checked="checked">					
+						<label class="form-check-label">Utente</label>
 						
 					</div>
 					
-					<div class="form-group">
+					<div class="form-check">
 						
-						<input type="radio" name="rank" value="1">Admin			
+						<input class="form-check-input" type="radio" name="rank" value="1">					
+						<label class="form-check-label">Admin</label>
 						
 					</div>
 					

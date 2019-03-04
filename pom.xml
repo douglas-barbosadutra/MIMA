@@ -9,7 +9,7 @@
     <groupId>com.virtualpairprogrammers</groupId>
 
     <!--  ArtifactId - the name of this project -->
-    <artifactId>gommastore</artifactId>
+    <artifactId>MIMA</artifactId>
 
     <!--  The current version -->
     <version>1.0</version>
@@ -21,7 +21,7 @@
     <name>Hartley's Bookstore</name>
 
     <!--  The website for the project -->
-    <url>http://gommastore.virtualpairprogrammers.com</url>
+    <url>http://MIMA.virtualpairprogrammers.com</url>
 
     <!--  And now, a list of Maven projects that we depend upon -->
     <dependencies>
@@ -59,14 +59,14 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>gommastore</finalName>
+        <finalName>MIMA</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.4</version>
                 <configuration>
-                    <warName>gommastore</warName>
+                    <warName>MIMA</warName>
                     <outputDirectory>apache-tomcat-8.5.24/webapps</outputDirectory>
                 </configuration>
             </plugin>

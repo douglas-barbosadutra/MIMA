@@ -12,6 +12,7 @@
 		
 		<div style="width:25%; margin-top:15%; margin-left:35%;">
 		
+			<h1 class="title">MIMA</h1>
 			
 			<form action="LoginServlet" method="post">
 		
