@@ -10,7 +10,7 @@ public class OperationSchedulingConverter {
 		if(osdto != null) {
 			os = new OperationScheduling();
 			os.setId(osdto.getId());
-			os.setOrder(osdto.getOrdine());
+			os.setOrderTask(osdto.getOrdine());
 		}
 		return os;
 	}
@@ -22,7 +22,7 @@ public class OperationSchedulingConverter {
 			osdto.setId(os.getId());
 			osdto.setId_schedulazione(os.getScheduling().getId());
 			osdto.setId_task(os.getTask().getId());
-			osdto.setOrdine(os.getOrder());
+			osdto.setOrdine(os.getOrderTask());
 		}
 		return osdto;
 	}

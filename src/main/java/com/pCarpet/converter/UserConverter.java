@@ -12,7 +12,7 @@ public class UserConverter{
 			userDTO.setId(user.getId());
 			userDTO.setName(user.getName());
 			userDTO.setEmail(user.getEmail());
-			userDTO.setRank(user.getRank());
+			userDTO.setRank(user.getRankUser());
 			userDTO.setSurname(user.getSurname());
 			userDTO.setPhone(user.getPhone());
 		}
@@ -26,7 +26,7 @@ public class UserConverter{
 			user.setId(userDTO.getId());
 			user.setName(userDTO.getName());
 			user.setEmail(userDTO.getEmail());
-			user.setRank(userDTO.getRank());
+			user.setRankUser(userDTO.getRank());
 			user.setSurname(userDTO.getSurname());
 			user.setPhone(userDTO.getPhone());
 		}

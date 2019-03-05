@@ -36,8 +36,6 @@ public class Task {
 	@NotNull
 	private String description;
 	
-	//@Column(name = "id_machine")
-	//@NotNull
 	@ManyToOne
 	@JoinColumn(name="id_machine")
 	private Machine machine;

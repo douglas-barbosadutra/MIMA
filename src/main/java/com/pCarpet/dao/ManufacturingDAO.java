@@ -11,6 +11,6 @@ import com.pCarpet.model.Manufacturing;
 
 public interface ManufacturingDAO extends CrudRepository<Manufacturing, Integer>{
 	public List<Manufacturing> findAllByInstruction(Instruction i);
-	public List<Manufacturing> findAllByItem(Item i);
-	public Manufacturing findByItem(Item i);
+	public List<Manufacturing> findAllByItems(Item i);
+	public Manufacturing findByItems(Item i);
 }

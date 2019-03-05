@@ -29,16 +29,14 @@ public class OperationScheduling {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name = "order")
+	@Column(name = "order_task")
 	@NotNull
-	private Integer order;
+	private Integer orderTask;
 	
-	//@Column(name = "id_task")
 	@ManyToOne
 	@JoinColumn(name="id_task")
 	private Task task;
 	
-	//@Column(name = "id_scheduling")
 	@ManyToOne
 	@JoinColumn(name="id_scheduling")
 	private Scheduling scheduling;

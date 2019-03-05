@@ -36,7 +36,7 @@ public class WBS {
 	private String name;
 	
 	//@Column(name = "id_user")
-	//@NotNull
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name="id_user")
 	private User user;

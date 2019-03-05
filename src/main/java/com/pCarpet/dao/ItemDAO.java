@@ -8,8 +8,8 @@ import com.pCarpet.model.WBS;
 import java.util.List;
 
 public interface ItemDAO extends CrudRepository<Item, Integer>{
-	public List<Item> findAllByWBS(WBS wbs);
-	public List<Item> findAllByManufacturing(Manufacturing m);
-	public Item findByItem(Item i);
-	public Item findByManufacturing(Manufacturing m);
+	public List<Item> findAllByWbs(WBS wbs);
+	public List<Item> findAllByManufacturings(Manufacturing manufacturings);
+	public Item findByFather(Item i);
+	public Item findByManufacturings(Manufacturing m);
 }

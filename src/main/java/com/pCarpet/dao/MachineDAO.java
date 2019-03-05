@@ -12,6 +12,6 @@ import com.pCarpet.model.User;
 
 public interface MachineDAO extends CrudRepository<Machine, Integer>{
 	public List<Machine> findAllByUser(User u);
-	public Machine findByTask(Task t);
-	public Machine findByScheduling(Scheduling s);
+	public Machine findByTasks(Task tasks);
+	public Machine findBySchedulings(Scheduling s);
 }

@@ -44,11 +44,13 @@ public class Manufacturing {
 		inverseJoinColumns= {@JoinColumn(name="id_manufacturing")})
 	private List<Item> items;
 	
-	//@Column(name = "id_item_output")
-	//@NotNull
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name="id_item")
 	private Item output;
 	
-	
+	@NotNull
+	@ManyToOne
+	@JoinColumn(name="id_instruction")
+	private Instruction instruction;
 }

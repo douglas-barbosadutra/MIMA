@@ -26,7 +26,6 @@ public class UserService {
 	   
 
 	    public void updateUser(String name, String surname, String email, String phone, String username, String password) {
-	    	
 	    	//userDAO.updateUser(name, surname, email, phone, username, password, user.getID());
 	    }
 	    

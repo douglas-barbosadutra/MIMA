@@ -45,10 +45,10 @@ public class User {
 	private String phone;
 
 	@NotNull
-	@Column(name = "rank")
-	private int rank;
+	@Column(name = "rank_user")
+	private Integer rankUser;
 
-	@Column(name = "username",unique=true)
+	@Column(name = "username")
 	@NotNull
 	private String username;
 

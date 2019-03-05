@@ -11,6 +11,6 @@ import com.pCarpet.model.User;
 public interface UserDAO extends CrudRepository<User, Integer>{
 	public User findUserByUsernameAndPassword(String username, String password);
 	public User findUserById(int id);
-	public User findByMachine(Machine m);
+	public User findUserByMachines(Machine machine);
 	public List<User> findAll();
 }
