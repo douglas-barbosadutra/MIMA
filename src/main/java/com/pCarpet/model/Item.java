@@ -37,14 +37,14 @@ public class Item {
 	@NotNull
 	private String name;
 	
-	@Column(name = "id_wbs")
-	@NotNull
+	//@Column(name = "id_wbs")
+	//@NotNull
 	@ManyToOne
 	@JoinColumn(name="id_wbs")
 	private WBS wbs;
 	
 	@OneToMany(mappedBy="output")
-	private List<Manufactoring> manufactorings;
+	private List<Manufacturing> manufacturings;
 	
 	@ManyToOne(cascade= {CascadeType.ALL})
 	@JoinColumn(name="id_father")

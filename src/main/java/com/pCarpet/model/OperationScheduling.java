@@ -27,18 +27,18 @@ public class OperationScheduling {
 	@Id
 	@Column(name = "id_operation_scheduling")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id_operation_scheduling;
+	private Integer id;
 	
 	@Column(name = "order")
 	@NotNull
 	private Integer order;
 	
-	@Column(name = "id_task")
+	//@Column(name = "id_task")
 	@ManyToOne
 	@JoinColumn(name="id_task")
 	private Task task;
 	
-	@Column(name = "id_scheduling")
+	//@Column(name = "id_scheduling")
 	@ManyToOne
 	@JoinColumn(name="id_scheduling")
 	private Scheduling scheduling;

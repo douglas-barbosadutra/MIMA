@@ -24,13 +24,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="manufactorings")
+@Table(name="manufacturings")
 
 
-public class Manufactoring {
+public class Manufacturing {
 
 	@Id
-	@Column(name = "id_manufactoring")
+	@Column(name = "id_manufacturing")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
@@ -39,13 +39,13 @@ public class Manufactoring {
 	private Integer duration;
 	
 	@ManyToMany
-	@JoinTable(name="items_manufactorings",
+	@JoinTable(name="items_manufacturings",
 		joinColumns={@JoinColumn(name="id_item")},
-		inverseJoinColumns= {@JoinColumn(name="id_manufactoring")})
+		inverseJoinColumns= {@JoinColumn(name="id_manufacturing")})
 	private List<Item> items;
 	
-	@Column(name = "id_item_output")
-	@NotNull
+	//@Column(name = "id_item_output")
+	//@NotNull
 	@ManyToOne
 	@JoinColumn(name="id_item")
 	private Item output;

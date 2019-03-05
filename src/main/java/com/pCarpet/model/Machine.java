@@ -39,8 +39,7 @@ public class Machine {
 	@NotNull
 	private String model;
 	
-	@Column(name = "id_user")
-	@NotNull
+	//@git Column(name = "id_user")
 	@ManyToOne
 	@JoinColumn(name="id_user")
 	private User user;
