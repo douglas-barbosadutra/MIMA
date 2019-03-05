@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: pCarpet
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: Contrader
+Built-By: Contrader18012
 Implementation-Vendor-Id: com
-Build-Jdk: 1.8.0_201
+Build-Jdk: 1.8.0_171
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
  ot-starter-parent/pCarpet
 Created-By: Maven Integration for Eclipse
