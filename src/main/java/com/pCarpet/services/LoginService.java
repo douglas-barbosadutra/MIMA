@@ -1,8 +1,11 @@
 package com.pCarpet.services;
 
+import org.springframework.stereotype.Service;
+
 import com.pCarpet.dao.UserDAO;
 import com.pCarpet.model.User;
 
+@Service
 public class LoginService {
 
     private UserDAO userDAO;

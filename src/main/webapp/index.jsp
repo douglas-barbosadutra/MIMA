@@ -14,7 +14,7 @@
 		
 			<h1 class="title">MIMA</h1>
 			
-			<form action="LoginServlet" method="post">
+			<form action="/Login/authentication" method="post">
 		
 				<div class="form-group">
 					<label class="col-form-label">Username</label>

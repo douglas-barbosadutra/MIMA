@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<link href = "Stile.css" rel = "stylesheet" media = "screen">
+		<link href = "/css/Stile.css" rel = "stylesheet" media = "screen">
 		<title>Amministratore</title>
 	</head>
 	
@@ -14,7 +14,7 @@
 		<ul>
 			<li>
 		  		<div class="dropdown">
-					<a href="UserServlet?action=openInsertUser" class="dropbtn">Inserisci utente</a>				
+					<a href="/User/openInsertUser" class="dropbtn">Inserisci utente</a>				
 				</div>
 	  		</li>
 	  		
