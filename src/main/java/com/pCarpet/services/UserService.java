@@ -33,6 +33,10 @@ public class UserService {
 	public List<UserDTO> getAllUsers(){
 		return UserConverter.toListDTO(userDAO.findAll());
 	}
+	
+	public User findUserById(int id) {
+		return userDAO.findUserById(id);
+	}
 
 	public static void setUserSession(User u) {
 		user = u;

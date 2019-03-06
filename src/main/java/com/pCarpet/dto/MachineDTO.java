@@ -15,6 +15,6 @@ public class MachineDTO {
 	private int id;
 	private String nome;
 	private String modello;
-	
+	private int idUser;
 }
 	
