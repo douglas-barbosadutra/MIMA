@@ -120,7 +120,7 @@
 								
 								<%if(mode.equals("delete")){
 									
-									%><th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="MachineServlet?action=deleteMachine&id=<%=machines.get(i).getId()%>">Elimina</a></th><%
+									%><th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="/Machine/deleteMachine?id=<%=machines.get(i).getId()%>">Elimina</a></th><%
 								
 								} else if(mode.equals("choose")){
 									

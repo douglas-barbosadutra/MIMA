@@ -42,6 +42,15 @@ public class MachineController {
 		return "homeUser";
 	}
 	
+	@RequestMapping(value="/deleteMachine" , method= RequestMethod.GET)
+	public String deleteMachine(HttpServletRequest request) {		
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		machineService.deleteMachine(id);
+		
+		return "homeUser";
+	}
+	
 	@RequestMapping(value="/showMachine" , method= RequestMethod.GET)
 	public String showMachine(HttpServletRequest request) {
 		
