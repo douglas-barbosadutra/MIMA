@@ -49,7 +49,7 @@
 							%>
 							<tr>
 								<th><%out.println(schedulingList.get(i).getId()); %></th>
-								<th><%out.println(schedulingList.get(i).getNome()); %></th>
+								<th><%out.println(schedulingList.get(i).getName()); %></th>
 								<th><%out.println(schedulingList.get(i).getDataInizio()); %></th>
 								<th><%out.println(schedulingList.get(i).getDataFine()); %></th>
 								

@@ -13,8 +13,7 @@ import lombok.ToString;
 public class ManufacturingDTO {
 
 	private int id;
-	private int item;
-	private int istruzione;
 	private int durata;
-	
+	private int item;
+	private int istruzione;	
 }

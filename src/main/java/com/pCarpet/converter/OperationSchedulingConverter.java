@@ -2,6 +2,8 @@ package com.pCarpet.converter;
 
 import com.pCarpet.dto.OperationSchedulingDTO;
 import com.pCarpet.model.OperationScheduling;
+import com.pCarpet.model.Scheduling;
+import com.pCarpet.model.Task;
 
 public class OperationSchedulingConverter {
 
@@ -10,7 +12,13 @@ public class OperationSchedulingConverter {
 		if(osdto != null) {
 			os = new OperationScheduling();
 			os.setId(osdto.getId());
-			os.setOrderTask(osdto.getOrdine());
+			os.setOrderTask(osdto.getOrder());
+			Task task = new Task();
+			task.setId(osdto.getIdTask());
+			Scheduling scheduling = new Scheduling();
+			scheduling.setId(osdto.getIdScheduling());
+			os.setTask(task);
+			os.setScheduling(scheduling);
 		}
 		return os;
 	}
@@ -20,9 +28,9 @@ public class OperationSchedulingConverter {
 		if(os != null) {
 			osdto = new OperationSchedulingDTO();
 			osdto.setId(os.getId());
-			osdto.setId_schedulazione(os.getScheduling().getId());
-			osdto.setId_task(os.getTask().getId());
-			osdto.setOrdine(os.getOrderTask());
+			osdto.setIdScheduling(os.getScheduling().getId());
+			osdto.setIdTask(os.getTask().getId());
+			osdto.setOrder(os.getOrderTask());
 		}
 		return osdto;
 	}

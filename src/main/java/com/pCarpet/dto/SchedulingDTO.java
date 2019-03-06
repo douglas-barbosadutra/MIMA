@@ -16,7 +16,7 @@ import java.sql.Timestamp;
 public class SchedulingDTO {
 
 	private int id;
-	private String nome;
+	private String name;
 	private Timestamp dataInizio;
 	private Timestamp dataFine;
 	private int idMacchinario;
