@@ -1,15 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
+		<meta charset="ISO-8859-1">
 		<link href = "/css/Stile.css" rel = "stylesheet" media = "screen">
-		<title>Utente</title>
+		<title>Inserimento WBS</title>
 	</head>
-	<body>
 	
-		<h1 class="title">Benvenuto ${utente.getName()}</h1>
+	<body>
 		
 		<ul>
 		  <li>
@@ -90,6 +89,23 @@
 		  </li>
 
 		</ul>
-        
+	
+		<h1 class="title">Inserimento WBS</h1>
+		
+		<div style="padding-left: 20%; padding-right: 20%;">
+		
+			<form action="/WBS/insertWbs" method="post">
+		
+				<div class="form-group">
+					<label class="col-form-label">Nome</label>
+					<input type="text" class="form-control" name="nome">				
+				</div>
+				
+				<button style="margin-top:2%" type="submit" class="btn btn-primary">Inserisci</button>	
+			
+			</form>
+			
+		</div>
+	
 	</body>
 </html>

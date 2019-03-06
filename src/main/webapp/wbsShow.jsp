@@ -1,15 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="com.pCarpet.dto.WBSDTO" %>
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
+		<meta charset="ISO-8859-1">
 		<link href = "/css/Stile.css" rel = "stylesheet" media = "screen">
-		<title>Utente</title>
+		<title>Lista wbs</title>
 	</head>
-	<body>
 	
-		<h1 class="title">Benvenuto ${utente.getName()}</h1>
+	<body>
 		
 		<ul>
 		  <li>
@@ -90,6 +92,53 @@
 		  </li>
 
 		</ul>
-        
+		
+		<h1 class="title">Lista wbs</h1>
+		
+		<% String mode = session.getAttribute("showWbs").toString(); %>
+		
+		<table class="table table-striped">
+			    <thead>
+			      
+			      <tr>
+			        <th>ID</th>
+			        <th>Nome</th>
+			        
+			        <%if(!mode.equals("list")){
+			        	
+			        	%><th>Opzioni</th><%
+			        	
+			        } %>
+			         
+			      </tr>
+			      
+			    </thead>
+			    
+			    <tbody>
+			    
+			    	<%
+						List<WBSDTO> wbs = (List<WBSDTO>)session.getAttribute("listWbs");
+						
+				    	for(int i = 0; i < wbs.size(); i++)
+						{
+							%>
+							<tr>
+								<th><%out.println(wbs.get(i).getId()); %></th>
+								<th><%out.println(wbs.get(i).getName()); %></th>
+								
+								<%if(mode.equals("delete")){
+									
+									%><th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="/WBS/deleteWbs/?id=<%=wbs.get(i).getId()%>">Elimina</a></th><%
+								
+								} %>
+								
+							</tr><%
+						}
+					%>
+			      
+			    </tbody>
+			    
+		  </table>
+	
 	</body>
 </html>
