@@ -12,7 +12,7 @@ public class TimeConverter {
 		if(instructionDTO != null && manufacturingDTO != null && itemDTO != null) {
 			timeDTO = new TimeDTO();
 			timeDTO.setNomeIstruzione(instructionDTO.getNomeIstruzione());
-			timeDTO.setItem(itemDTO.getDescrizione());
+			timeDTO.setItem(itemDTO.getName());
 			timeDTO.setDurataEffettiva(manufacturingDTO.getDurata());
 			timeDTO.setDurataPrevista(instructionDTO.getDurata());
 			String risultato = (timeDTO.getDurataEffettiva() <= timeDTO.getDurataPrevista()) ? "#79fc00" : "RED";

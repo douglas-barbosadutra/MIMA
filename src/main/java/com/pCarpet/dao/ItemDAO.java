@@ -12,4 +12,5 @@ public interface ItemDAO extends CrudRepository<Item, Integer>{
 	public List<Item> findAllByManufacturings(Manufacturing manufacturings);
 	public Item findByFather(Item i);
 	public Item findByManufacturings(Manufacturing m);
+	public Item findItemById(int id);
 }

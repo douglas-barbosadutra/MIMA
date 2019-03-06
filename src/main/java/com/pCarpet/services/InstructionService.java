@@ -4,33 +4,30 @@ import java.util.*;
 
 import org.springframework.stereotype.Service;
 
+import com.pCarpet.converter.InstructionConverter;
+import com.pCarpet.converter.TaskConverter;
+import com.pCarpet.dao.InstructionDAO;
+import com.pCarpet.dto.InstructionDTO;
+import com.pCarpet.dto.TaskDTO;
+
 @Service
 public class InstructionService {
 	
 	private InstructionDAO istruzioneDAO;
 	
-	public InstructionService() {
-		this.istruzioneDAO = new InstructionDAO();
+	public InstructionService(InstructionDAO istruzioneDAO) {
+		this.istruzioneDAO = istruzioneDAO;
 	}
 	
-	public List<InstructionDTO> getAllIstruzioni(int idTask){
-		List<Instruction> istruzioni = this.istruzioneDAO.getAllIstruzioni(idTask);
-		List<InstructionDTO> istruzioniDTO = new ArrayList<>();
-		for(Instruction istruzione: istruzioni) {
-			istruzioniDTO.add(InstructionConverter.convertToDto(istruzione));
-		}
-		return istruzioniDTO;
+	public List<InstructionDTO> getAllIstruzioni(TaskDTO task){
+		return (InstructionConverter.toListDTO(istruzioneDAO.findAllByTask(TaskConverter.convertToEntity(task))));
 	}
 	
-	public boolean insertIstruzione(InstructionDTO istruzionedto, int idTask) {
-		return this.istruzioneDAO.insertIstruzione(InstructionConverter.convertToIstruzione(istruzionedto, idTask));
+	public void insertIstruzione(InstructionDTO istruzionedto) {
+		this.istruzioneDAO.save(InstructionConverter.convertToEntity(istruzionedto));
 	}
 	
-	public boolean deleteIstruzione(String nome, int idTask) {
-		return this.istruzioneDAO.deleteIstruzione(nome, idTask);
-	}
-	
-	public boolean modifyIstruzione(InstructionDTO istruzionedto, int idTask) {
-		return this.istruzioneDAO.modifyIstruzione(InstructionConverter.convertToIstruzione(istruzionedto, idTask));
+	public void deleteIstruzione(int idIstruzione) {
+		istruzioneDAO.deleteById(idIstruzione);
 	}
 }
