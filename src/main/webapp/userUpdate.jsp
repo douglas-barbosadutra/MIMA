@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<link href = "Stile.css" rel = "stylesheet" media = "screen">
+		<link href = "/css/Stile.css" rel = "stylesheet" media = "screen">
 		<title>User update</title>
 	</head>
 	
@@ -83,7 +83,9 @@
 		
 		<div style="padding-left: 20%; padding-right: 20%;">
 		
-			<form action="UserServlet" method="post">
+			<form action="/User/updateUser" method="post">
+			
+				<input type="hidden" name="id" value="${utente.getId()}">
 		
 				<div class="form-group">
 					<label class="col-form-label">Username</label>

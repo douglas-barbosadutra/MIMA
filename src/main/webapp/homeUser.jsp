@@ -67,13 +67,13 @@
 		  
 		  <li>
 	  		<div class="dropdown">
-				<a href="UserServlet?action=openUpdateUser" class="dropbtn">Profilo</a>				
+				<a href="/User/openUpdateUser" class="dropbtn">Profilo</a>				
 			</div>
 		  </li>
 		  
 		  <li>
 	  		<div class="dropdown">
-				<a href="UserServlet?action=logout" class="dropbtn">Logout</a>				
+				<a href="/User/logout" class="dropbtn">Logout</a>				
 			</div>
 		  </li>
 
