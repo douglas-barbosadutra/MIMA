@@ -17,10 +17,10 @@
 				<button class="dropbtn">Macchinari</button>
 				
 				<div class="dropdown-content"> 
-					<a href="MachineServlet?action=openInsertMachine">Inserisci</a>
-					<a href="MachineServlet?action=deleteMachineManagement">Elimina</a>
-					<a href="MachineServlet?action=showMachine">Lista</a>
-					<a href="MachineServlet?action=chooseMachineManagement">Seleziona</a>
+					<a href="/Machine/openInsertMachine">Inserisci</a>
+					<a href="/Machine/showMachine?showMachine=delete">Elimina</a>
+					<a href="/Machine/showMachine?showMachine=list">Lista</a>
+					<a href="/Machine/showMachine?showMachine=choose">Seleziona</a>
 				</div>
 			</div>
 		  </li>
@@ -79,13 +79,13 @@
 		  
 		  <li>
 	  		<div class="dropdown">
-				<a href="UserServlet?action=openUpdateUser" class="dropbtn">Profilo</a>				
+				<a href="/User/openUpdateUser" class="dropbtn">Profilo</a>				
 			</div>
 		  </li>
 		  
 		  <li>
 	  		<div class="dropdown">
-				<a href="UserServlet?action=logout" class="dropbtn">Logout</a>				
+				<a href="/User/logout" class="dropbtn">Logout</a>			
 			</div>
 		  </li>
 

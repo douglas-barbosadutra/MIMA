@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<link href = "Stile.css" rel = "stylesheet" media = "screen">
+		<link href = "/css/Stile.css" rel = "stylesheet" media = "screen">
 		<title>Inserimento macchinario</title>
 	</head>
 	
@@ -78,7 +78,7 @@
 			
 			<div style="padding-left: 20%; padding-right: 20%;">
 		
-				<form action="MachineServlet" method="post">
+				<form action="/Machine/insertMachine" method="post">
 			
 					<div class="form-group">
 						<label class="col-form-label">Nome</label>
