@@ -2,6 +2,7 @@ package com.pCarpet.services;
 
 import java.util.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pCarpet.converter.InstructionConverter;
@@ -15,6 +16,7 @@ public class InstructionService {
 	
 	private InstructionDAO istruzioneDAO;
 	
+	@Autowired
 	public InstructionService(InstructionDAO istruzioneDAO) {
 		this.istruzioneDAO = istruzioneDAO;
 	}

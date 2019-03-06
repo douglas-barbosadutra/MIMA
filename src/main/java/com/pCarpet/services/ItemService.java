@@ -2,6 +2,7 @@ package com.pCarpet.services;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pCarpet.converter.ItemConverter;
@@ -17,6 +18,7 @@ public class ItemService {
 	
 	private ItemDAO itemDAO;
 	
+	@Autowired
 	public ItemService(ItemDAO itemDAO) {
 		this.itemDAO = itemDAO;
 	}

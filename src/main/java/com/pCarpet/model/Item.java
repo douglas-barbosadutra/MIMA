@@ -43,6 +43,10 @@ public class Item {
 	@JoinColumn(name="id_wbs")
 	private WBS wbs;
 	
+	@Column(name = "level")
+	@NotNull
+	private Integer level;
+	
 	@OneToMany(mappedBy="output")
 	private List<Manufacturing> manufacturings;
 	

@@ -15,6 +15,7 @@ public class ItemConverter {
 			itemDTO.setId(item.getId());
 			itemDTO.setName(item.getName());
 			itemDTO.setIdFather(item.getFather().getId());
+			itemDTO.setLevel(item.getLevel());
 			itemDTO.setItemChildrenDTO(ItemConverter.toListDTO(item.getChildsList()));
 		}
 		return itemDTO;
@@ -27,6 +28,7 @@ public class ItemConverter {
 			item.setId(itemDTO.getId());
 			item.setName(itemDTO.getName());
 			Item father = new Item();
+			item.setLevel(itemDTO.getLevel());
 			father.setId(itemDTO.getIdFather());
 			item.setFather(father);
 		}

@@ -1,5 +1,6 @@
 package com.pCarpet.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pCarpet.dao.UserDAO;
@@ -10,6 +11,7 @@ public class LoginService {
 
     private UserDAO userDAO;
 
+    @Autowired
     public LoginService(UserDAO userDAO) {
         this.userDAO = userDAO;
     }

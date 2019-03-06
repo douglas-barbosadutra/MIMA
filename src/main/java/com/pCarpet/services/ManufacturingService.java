@@ -2,6 +2,7 @@ package com.pCarpet.services;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pCarpet.converter.InstructionConverter;
@@ -14,6 +15,7 @@ import com.pCarpet.dto.ManufacturingDTO;
 public class ManufacturingService {
 	ManufacturingDAO manufacturingDAO;
 	
+	@Autowired
 	public ManufacturingService(ManufacturingDAO manufacturingDAO) {
 		this.manufacturingDAO = manufacturingDAO;
 	}

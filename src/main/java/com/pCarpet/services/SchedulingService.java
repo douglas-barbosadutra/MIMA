@@ -2,6 +2,7 @@ package com.pCarpet.services;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pCarpet.converter.MachineConverter;
@@ -15,6 +16,7 @@ public class SchedulingService {
 	
 	private SchedulingDAO schedulingDAO;
 	
+	@Autowired
 	public SchedulingService(SchedulingDAO schedulingDAO) {
 		this.schedulingDAO = schedulingDAO;
 	}
