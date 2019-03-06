@@ -15,7 +15,7 @@ public class TaskDTO {
 
 	private int id;
 	private String descrizione;
-
+	private int idMachine;
 }
 
 

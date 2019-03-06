@@ -1,7 +1,11 @@
 package com.pCarpet.converter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.pCarpet.dto.InstructionDTO;
 import com.pCarpet.model.Instruction;
+import com.pCarpet.model.Task;
 
 public class InstructionConverter{
 
@@ -10,9 +14,10 @@ public class InstructionConverter{
 		if(instruction != null) {
 			instructionDTO = new InstructionDTO();
 			instructionDTO.setId(instruction.getId());
-			instructionDTO.setNomeIstruzione(instruction.getName());
 			instructionDTO.setDurata(instruction.getDuration());
 			instructionDTO.setCodice(instruction.getGcodeFile());
+			instructionDTO.setNomeIstruzione(instruction.getName());
+			instructionDTO.setIdTask(instruction.getTask().getId());
 		}
 		return instructionDTO;
 	}
@@ -25,7 +30,20 @@ public class InstructionConverter{
 			instruction.setDuration(instructionDTO.getDurata());
 			instruction.setGcodeFile(instructionDTO.getCodice());
 			instruction.setName(instructionDTO.getNomeIstruzione());
+			Task task = new Task();
+			task.setId(instructionDTO.getIdTask());
+			instruction.setTask(task);
 		}
 		return instruction;
+	}
+	
+	public static List<InstructionDTO> toListDTO(List<Instruction> list){
+		List<InstructionDTO> listInstructionDTO = new ArrayList<>();
+		if (!list.isEmpty()) {
+			for(Instruction instruction : list) {
+				listInstructionDTO.add(InstructionConverter.convertToDto(instruction));
+			}
+		}
+		return listInstructionDTO;
 	}
 }

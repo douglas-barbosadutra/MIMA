@@ -11,9 +11,9 @@ import lombok.ToString;
 @ToString
 
 public class InstructionDTO {
-	private String nomeIstruzione;
-	private int durata;
 	private int id;
+	private int durata;
 	private String codice;
-	
+	private String nomeIstruzione;
+	private int idTask;
 }
