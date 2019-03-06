@@ -3,6 +3,7 @@
 
 #Eclipse
 /bin
+/target
 
 ### STS ###
 .apt_generated
