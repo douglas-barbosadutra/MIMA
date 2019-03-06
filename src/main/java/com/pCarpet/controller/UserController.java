@@ -46,6 +46,29 @@ public class UserController {
 		return "homeAdmin";
 	}
 	
+	@RequestMapping(value="/openUpdateUser")
+	public String openUpdateUser(HttpServletRequest request) {
+		return "userUpdate";
+	}
+	
+	@RequestMapping(value="/updateUser", method= RequestMethod.POST)
+	public String updateUser(HttpServletRequest request) {
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		String nome = request.getParameter("nome");
+		String cognome = request.getParameter("cognome");
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		String email = request.getParameter("email");
+		String telefono = request.getParameter("telefono");
+		
+		UserDTO userdto = new UserDTO(id, username, password, nome, cognome, email, telefono, 0);
+		
+		userService.insertUser(userdto);
+		
+		return "homeUser";
+	}
+	
 	@RequestMapping(value="/deleteUser" , method= RequestMethod.GET)
 	public String deleteUser(HttpServletRequest request) {		
 		
