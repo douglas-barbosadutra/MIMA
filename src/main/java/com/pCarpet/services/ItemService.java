@@ -12,7 +12,6 @@ import com.pCarpet.dto.ItemDTO;
 import com.pCarpet.dto.WBSDTO;
 
 
-
 @Service
 public class ItemService {
 	
@@ -38,4 +37,5 @@ public class ItemService {
 	public List<ItemDTO> getItemByWBS(WBSDTO wbs){
 		return (ItemConverter.toListDTO(itemDAO.findAllByWbs(WBSConverter.convertToEntity(wbs))));
 	}
+	
 }
