@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import com.pCarpet.dao.UserDAO;
 import com.pCarpet.dto.UserDTO;
 import com.pCarpet.model.User;
+import com.pCarpet.converter.UserConverter;
+
 
 @Service
 public class UserService {
@@ -22,9 +24,8 @@ public class UserService {
 		this.userDAO.deleteById(id);
 	}
 
-	public void updateUser(UserDTO userDTO) {
-		// userDAO.updateUser(name, surname, email, phone, username, password,
-		// user.getID());
+	public void insertUser(UserDTO userdto) {
+		userDAO.save(UserConverter.toEntity(userdto));
 	}
 
 	public static void setUserSession(User u) {
