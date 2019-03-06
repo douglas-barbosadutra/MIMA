@@ -1,5 +1,8 @@
 package com.pCarpet.converter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.pCarpet.dto.UserDTO;
 import com.pCarpet.model.User;
 
@@ -29,9 +32,21 @@ public class UserConverter{
 			user.setRankUser(userDTO.getRank());
 			user.setSurname(userDTO.getSurname());
 			user.setPhone(userDTO.getPhone());
+			user.setPassword(userDTO.getPassword());
+			user.setUsername(userDTO.getUsername());
 		}
 		return user;
 	}
 	
+	
+	public static List<UserDTO> toListDTO(List<User> list) {
+		List<UserDTO> listUserDTO = new ArrayList<>();
+		if (!list.isEmpty()) {
+			for (User user : list) {
+				listUserDTO.add(UserConverter.toDTO(user));
+			}
+		}
+		return listUserDTO;
+	}
 }
 

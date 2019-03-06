@@ -20,19 +20,19 @@
 	  		
 	  		<li>
 		  		<div class="dropdown">
-					<a href="UserServlet?action=deleteUserManagement" class="dropbtn">Elimina utente</a>				
+					<a href="/User/showUser?showUser=delete" class="dropbtn">Elimina utente</a>				
 				</div>
 	  		</li>
 	  		
 	  		<li>
 		  		<div class="dropdown">
-					<a href="UserServlet?action=showUser" class="dropbtn">Lista utenti</a>				
+					<a href="/User/showUser?showUser=list" class="dropbtn">Lista utenti</a>				
 				</div>
 	  		</li>
 	  		
 	  		<li>
 		  		<div class="dropdown">
-					<a href="UserServlet?action=logout" class="dropbtn">Logout</a>				
+					<a href="/User/logout" class="dropbtn">Logout</a>				
 				</div>
 	  		</li>
 		</ul>

@@ -1,5 +1,7 @@
 package com.pCarpet.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +28,10 @@ public class UserService {
 
 	public void insertUser(UserDTO userdto) {
 		userDAO.save(UserConverter.toEntity(userdto));
+	}
+	
+	public List<UserDTO> getAllUsers(){
+		return UserConverter.toListDTO(userDAO.findAll());
 	}
 
 	public static void setUserSession(User u) {

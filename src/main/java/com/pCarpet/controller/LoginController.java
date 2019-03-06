@@ -33,7 +33,7 @@ public class LoginController {
 		if (user != null) {
 			UserService.setUserSession(user);
 			request.getSession().setAttribute("utente", user);
-
+			
 			switch (user.getRankUser()) {
 				case 1:
 					return "homeAdmin";

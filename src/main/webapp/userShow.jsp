@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<link href = "Stile.css" rel = "stylesheet" media = "screen">
+		<link href = "/css/Stile.css" rel = "stylesheet" media = "screen">
 		<title>Visualizza Utenti</title>
 	</head>
 	
@@ -17,25 +17,25 @@
 		<ul>
 			<li>
 		  		<div class="dropdown">
-					<a href="UserServlet?action=openInsertUser" class="dropbtn">Inserisci utente</a>				
+					<a href="/User/openInsertUser" class="dropbtn">Inserisci utente</a>				
 				</div>
 	  		</li>
 	  		
 	  		<li>
 		  		<div class="dropdown">
-					<a href="UserServlet?action=deleteUserManagement" class="dropbtn">Elimina utente</a>				
+					<a href="/User/showUser?showUser=delete" class="dropbtn">Elimina utente</a>				
 				</div>
 	  		</li>
 	  		
 	  		<li>
 		  		<div class="dropdown">
-					<a href="UserServlet?action=showUser" class="dropbtn">Lista utenti</a>				
+					<a href="/User/showUser?showUser=list" class="dropbtn">Lista utenti</a>				
 				</div>
 	  		</li>
 	  		
 	  		<li>
 		  		<div class="dropdown">
-					<a href="UserServlet?action=logout" class="dropbtn">Logout</a>				
+					<a href="/User/logout" class="dropbtn">Logout</a>				
 				</div>
 	  		</li>
 		</ul>
@@ -79,7 +79,7 @@
 									<th><%out.println(users.get(i).getPhone()); %></th>
 									
 									<%if(mode.equals("delete")){
-										%><th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="UserServlet?action=deleteUser&id=<%=users.get(i).getId()%>">elimina</a></th><%
+										%><th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="/User/deleteUser?id=<%=users.get(i).getId()%>">elimina</a></th><%
 									} %>
 									
 								</tr><%
