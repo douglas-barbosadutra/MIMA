@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<link href = "Stile.css" rel = "stylesheet" media = "screen">
+		<link href = "/css/Stile.css" rel = "stylesheet" media = "screen">
 		<title>Lista tempi</title>
 	</head>
 	

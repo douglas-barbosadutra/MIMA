@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<link href = "Stile.css" rel = "stylesheet" media = "screen">
+		<link href = "/css/Stile.css" rel = "stylesheet" media = "screen">
 		<title>Lista istruzioni</title>
 	</head>
 	
@@ -55,7 +55,7 @@
 								
 								<%if(mode.equals("delete")){
 									
-									%><th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="InstructionServlet?action=deleteInstruction&nomeIstruzione=<%=instructions.get(i).getNomeIstruzione()%>">Elimina</a></th><%
+									%><th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="/Instruction/deleteInstruction?id=<%=instructions.get(i).getId()%>">Elimina</a></th><%
 								
 								} %>
 								

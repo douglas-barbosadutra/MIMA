@@ -15,7 +15,10 @@ import com.pCarpet.converter.UserConverter;
 public class UserService {
 
 	private UserDAO userDAO;
+	
 	private static User user = null;
+	public static int idMacchinario = 0;
+	public static int idTask = 0;
 
 	@Autowired
 	public UserService(UserDAO userDAO) {

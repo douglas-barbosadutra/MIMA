@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>Inserimento istruzione</title>
-		<link href = "Stile.css" rel = "stylesheet" media = "screen">
+		<link href = "/css/Stile.css" rel = "stylesheet" media = "screen">
 	</head>
 	
 	<body>
@@ -16,7 +16,7 @@
 		
 		<div style="padding-left: 20%; padding-right: 20%;">
 		
-			<form action="InstructionServlet" method="post">
+			<form action="/Instruction/insertInstruction" method="post">
 		
 				<div class="form-group">
 					<label class="col-form-label">Nome istruzione</label>

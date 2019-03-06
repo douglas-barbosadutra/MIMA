@@ -13,6 +13,7 @@ import com.pCarpet.dto.MachineDTO;
 import com.pCarpet.dto.TaskDTO;
 import com.pCarpet.services.MachineService;
 import com.pCarpet.services.TaskService;
+import com.pCarpet.services.UserService;
 
 @Controller
 @RequestMapping("/Task")
@@ -20,8 +21,6 @@ public class TaskController {
 	
 	private TaskService taskService;
 	private MachineService machineService;
-	
-	private static int idMacchinario = 0;
 	
 	@Autowired
 	public TaskController(TaskService ts, MachineService ms) {
@@ -32,15 +31,15 @@ public class TaskController {
 	@RequestMapping(value="/chooseMachine" , method= RequestMethod.GET)
 	public String chooseMachine(HttpServletRequest request) {		
 		
-		idMacchinario = Integer.parseInt(request.getParameter("id"));
-		request.getSession().setAttribute("idMacchinarioScelto", idMacchinario);
+		UserService.idMacchinario = Integer.parseInt(request.getParameter("id"));
+		request.getSession().setAttribute("idMacchinarioScelto", UserService.idMacchinario);
 		
 		return "homeUser";
 	}
 	
 	@RequestMapping(value="/openInsertTask")
 	public String openInsertTask(HttpServletRequest request) {
-		if(idMacchinario == 0) {
+		if(UserService.idMacchinario == 0) {
 			
 			List<MachineDTO> machines = machineService.getAllMachines();
 			
@@ -59,7 +58,7 @@ public class TaskController {
 		
 		String descrizione = request.getParameter("descrizione");
 		
-		TaskDTO taskdto = new TaskDTO(0, descrizione, idMacchinario);
+		TaskDTO taskdto = new TaskDTO(0, descrizione, UserService.idMacchinario);
 		
 		taskService.insertTask(taskdto);
 		
@@ -78,7 +77,7 @@ public class TaskController {
 	@RequestMapping(value="/showTask" , method= RequestMethod.GET)
 	public String showTask(HttpServletRequest request) {
 		
-		if(idMacchinario == 0) {
+		if(UserService.idMacchinario == 0) {
 		
 			List<MachineDTO> machines = machineService.getAllMachines();
 			
@@ -91,7 +90,7 @@ public class TaskController {
 			
 			String showTask = request.getParameter("showTask");
 			
-			List<TaskDTO> tasks = taskService.getAllTasks(idMacchinario);
+			List<TaskDTO> tasks = taskService.getAllTasks(UserService.idMacchinario);
 			
 			request.getSession().setAttribute("taskList", tasks);
 			request.getSession().setAttribute("showTask", showTask);

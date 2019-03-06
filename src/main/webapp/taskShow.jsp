@@ -53,7 +53,7 @@
 								
 								} else if(mode.equals("choose")){
 									
-									%><th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="InstructionServlet?action=chooseTask&id=<%=tasks.get(i).getId()%>">Seleziona</a></th><%
+									%><th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="/Instruction/chooseTask?id=<%=tasks.get(i).getId()%>">Seleziona</a></th><%
 									
 								}%>
 								
