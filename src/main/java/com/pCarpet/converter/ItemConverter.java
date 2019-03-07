@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.pCarpet.dto.ItemDTO;
 import com.pCarpet.model.Item;
-import com.pCarpet.model.WBS;
 
 public class ItemConverter {
 	
@@ -16,15 +15,13 @@ public class ItemConverter {
 			itemDTO.setId(item.getId());
 			itemDTO.setName(item.getName());
 			
-			if(item.getFather() != null) {
-				Item father = item.getFather();
-				ItemDTO fatherDTO = ItemConverter.convertToDto(father);
-				itemDTO.setFather(fatherDTO);	
+			if(item.getFather() == null) {
+				itemDTO.setIdFather(0);
+			}else {
+				itemDTO.setIdFather(item.getFather().getId());
 			}
-			
 			itemDTO.setLevel(item.getLevel());
 			itemDTO.setItemChildrenDTO(ItemConverter.toListDTO(item.getChildsList()));
-			itemDTO.setIdWBS(item.getWbs().getId());
 		}
 		return itemDTO;
 	}
@@ -35,19 +32,10 @@ public class ItemConverter {
 			item = new Item();
 			item.setId(itemDTO.getId());
 			item.setName(itemDTO.getName());
-			
-			if(itemDTO.getFather() != null) {
-				
-				ItemDTO fatherDTO = itemDTO.getFather();
-				Item father = ItemConverter.convertToEntity(fatherDTO);
-				item.setFather(father);
-			}
-			
+			Item father = new Item();
 			item.setLevel(itemDTO.getLevel());
-			WBS wbs = new WBS();
-			wbs.setId(itemDTO.getIdWBS());
-			item.setWbs(wbs);
-			
+			father.setId(itemDTO.getIdFather());
+			item.setFather(father);
 		}
 		return item;
 	}

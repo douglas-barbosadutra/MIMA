@@ -27,18 +27,16 @@ public class ItemController {
 	@RequestMapping(value="/test")
 	public String test(HttpServletRequest request) {
 
-		ItemDTO father = itemService.getItemById(8);
+		WBSDTO wbs = new WBSDTO();
+		wbs.setId(1);
+		
+		List<ItemDTO> items = itemService.getItemByWBS(wbs);
+			
+		for (ItemDTO element : items) {
+		    System.out.println(element);
+		}
 
-		ItemDTO item = new ItemDTO();
-		item.setId(0);
-		item.setFather(father);
-		item.setIdWBS(1);
-		item.setLevel(2);
-		item.setName("prova2");
-		
-		itemService.insertItem(item);
-		
-		return "";
+		return "index";
 	}
 	
 	@RequestMapping(value="/showNodes", method= RequestMethod.GET)

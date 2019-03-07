@@ -28,9 +28,7 @@ public class ItemService {
 	}
 	
 	public void insertItem(ItemDTO itemDTO) {
-		Item item = ItemConverter.convertToEntity(itemDTO);
-		System.out.println(item);
-		itemDAO.save(item);
+		itemDAO.save(ItemConverter.convertToEntity(itemDTO));
 	}
 	
 	public void deleteItem(int id) {

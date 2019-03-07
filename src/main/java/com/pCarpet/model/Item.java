@@ -36,6 +36,7 @@ public class Item {
 	private Integer id;
 	
 	@Column(name = "name")
+	@NotNull
 	private String name;
 	
 	@ManyToOne
@@ -43,6 +44,7 @@ public class Item {
 	private WBS wbs;
 	
 	@Column(name = "level")
+	@NotNull
 	private Integer level;
 	
 	@OneToMany(mappedBy="output")
@@ -53,7 +55,7 @@ public class Item {
 	@JoinColumn(name="id_father")
 	private Item father;
 	
-	@OneToMany(mappedBy="father", cascade=CascadeType.PERSIST)
+	@OneToMany(mappedBy="father")
 	@OnDelete(action=OnDeleteAction.CASCADE)
 	private List<Item> childsList=new ArrayList<>();
 	
