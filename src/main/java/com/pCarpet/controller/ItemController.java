@@ -67,13 +67,21 @@ public class ItemController {
 	  int id_nodo = Integer.parseInt(request.getParameter("id_nodo"));
 	  String nome = request.getParameter("nome");
 	  
-	  //ItemDTO itemdto_padre = itemService.getItemById(id_nodo);	
+	  ItemDTO itemdto_padre = itemService.getItemById(id_nodo);	
 	  //System.out.println(itemdto_padre);
 	  
-	  //ItemDTO itemdto = new ItemDTO(0, nome, id_nodo, itemdto_padre.getIdWBS(), null, itemdto_padre.getLevel()+1);
-	  //System.out.println(itemdto);
+	  itemService.insertItem(nome, itemdto_padre.getId(), itemdto_padre.getIdWBS(), itemdto_padre.getLevel()+1);
 	  
-	  //itemService.insertItem(itemdto);
+	  return "homeUser";
+	  
+	}
+	
+	@RequestMapping(value="/removeNode", method= RequestMethod.GET)
+	public String removeNode(HttpServletRequest request) {
+	  
+	  int id = Integer.parseInt(request.getParameter("id"));
+	  
+	  itemService.deleteItem(id);	
 	  
 	  return "homeUser";
 	  

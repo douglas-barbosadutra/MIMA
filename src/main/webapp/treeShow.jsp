@@ -24,7 +24,7 @@
 			%><div style="text-align:center; width:100%; margin-bottom:1%;">
 				
 				<%for(int k=0; k<size; k++){
-					%><span> <% out.println(items.get(k).getName()); %> <a style="text-decoration: none;" href="/Item/openAddNode?id=<% out.println(items.get(k).getId()); %>">+</a> </span><%
+					%><span> <% out.println(items.get(k).getName()); %> <a style="text-decoration: none;" href="/Item/removeNode?id=<% out.println(items.get(k).getId()); %>">-</a> <a style="text-decoration: none;" href="/Item/openAddNode?id=<% out.println(items.get(k).getId()); %>">+</a> </span><%
 				} %>
 				
 			</div><%

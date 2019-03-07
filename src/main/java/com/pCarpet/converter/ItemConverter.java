@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.pCarpet.dto.ItemDTO;
 import com.pCarpet.model.Item;
+import com.pCarpet.model.WBS;
 
 public class ItemConverter {
 	
@@ -20,6 +21,7 @@ public class ItemConverter {
 			}else {
 				itemDTO.setIdFather(item.getFather().getId());
 			}
+			itemDTO.setIdWBS(item.getWbs().getId());
 			itemDTO.setLevel(item.getLevel());
 			itemDTO.setItemChildrenDTO(ItemConverter.toListDTO(item.getChildsList()));
 		}
@@ -35,6 +37,9 @@ public class ItemConverter {
 			Item father = new Item();
 			item.setLevel(itemDTO.getLevel());
 			father.setId(itemDTO.getIdFather());
+			WBS wbs = new WBS();
+			wbs.setId(itemDTO.getId());
+			item.setWbs(wbs);
 			item.setFather(father);
 		}
 		return item;

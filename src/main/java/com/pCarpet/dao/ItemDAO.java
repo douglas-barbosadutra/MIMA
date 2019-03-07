@@ -1,5 +1,6 @@
 package com.pCarpet.dao;
 
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -9,6 +10,8 @@ import com.pCarpet.model.Manufacturing;
 import com.pCarpet.model.WBS;
 
 import java.util.List;
+
+import javax.transaction.Transactional;
 
 public interface ItemDAO extends CrudRepository<Item, Integer>{
 	
@@ -24,5 +27,10 @@ public interface ItemDAO extends CrudRepository<Item, Integer>{
 	
 	@Query(value = "select max(level) from items where id_wbs = :wbs", nativeQuery=true)
 	public int findMaxLevelByWbs(@Param("wbs") int wbs);
+
+	@Modifying
+	@Transactional
+	@Query(value = "INSERT INTO items (name,id_father,id_wbs,level) VALUES (:name,:id_father,:id_wbs,:level)", nativeQuery=true)
+	public void insertItem(@Param("name") String name, @Param("id_father") Integer id_father, @Param("id_wbs") Integer id_wbs, @Param("level") Integer level);
 	
 }
