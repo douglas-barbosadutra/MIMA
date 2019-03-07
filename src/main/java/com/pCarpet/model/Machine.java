@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -44,9 +46,11 @@ public class Machine {
 	private User user;
 	
 	@OneToMany(mappedBy="machine")
+	@OnDelete(action=OnDeleteAction.CASCADE)
 	private List<Task> tasks;
 	
 	@OneToMany(mappedBy="machine")
+	@OnDelete(action=OnDeleteAction.CASCADE)
 	private List<Scheduling> schedulings;
 	
 	

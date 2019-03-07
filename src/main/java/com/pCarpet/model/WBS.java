@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,13 +37,13 @@ public class WBS {
 	@NotNull
 	private String name;
 	
-	//@Column(name = "id_user")
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name="id_user")
 	private User user;
 	
 	@OneToMany(mappedBy="wbs")
+	@OnDelete(action=OnDeleteAction.CASCADE)
 	private List<Item> items;
 
 }

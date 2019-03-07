@@ -11,6 +11,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -57,9 +59,11 @@ public class User {
 	private String password;
 
 	@OneToMany(mappedBy="user")
+	@OnDelete(action=OnDeleteAction.CASCADE)
 	private List<Machine> machines;
 	
 	@OneToMany(mappedBy="user")
+	@OnDelete(action=OnDeleteAction.CASCADE)
 	private List<WBS> wbs;
 	
 

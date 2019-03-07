@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -37,8 +39,6 @@ public class Item {
 	@NotNull
 	private String name;
 	
-	//@Column(name = "id_wbs")
-	//@NotNull
 	@ManyToOne
 	@JoinColumn(name="id_wbs")
 	private WBS wbs;
@@ -48,6 +48,7 @@ public class Item {
 	private Integer level;
 	
 	@OneToMany(mappedBy="output")
+	@OnDelete(action=OnDeleteAction.CASCADE)
 	private List<Manufacturing> manufacturings;
 	
 	@ManyToOne(cascade= {CascadeType.ALL})
@@ -55,6 +56,7 @@ public class Item {
 	private Item father;
 	
 	@OneToMany(mappedBy="father")
+	@OnDelete(action=OnDeleteAction.CASCADE)
 	private List<Item> childsList=new ArrayList<>();
 	
 }
