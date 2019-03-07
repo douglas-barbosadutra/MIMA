@@ -21,6 +21,10 @@ public class SchedulingService {
 		this.schedulingDAO = schedulingDAO;
 	}
 	
+	public SchedulingDTO getSchedulingById(int id) {
+		return (SchedulingConverter.convertToDTO(schedulingDAO.findById(id)));
+	}
+	
 	public void insertScheduling(SchedulingDTO schedulingDTO) {
 		schedulingDAO.save(SchedulingConverter.convertToEntity(schedulingDTO));
 	}

@@ -72,11 +72,11 @@
 							{
 								%>
 								<tr>
-									<th><%out.println(taskSchedulati.get(i).getId()); %></th>
-									<th><%out.println(taskSchedulati.get(i).getDescrizione()); %></th>
-									<th><%out.println(taskSchedulati.get(i).getOrdine()); %></th>
-									<th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="OperazioneSchedulazioneServlet?action=modifyOrderScheduling&oldPosition=<%=taskSchedulati.get(i).getOrdine()%>&newPosition=<%=taskSchedulati.get(i).getOrdine()-1%>">Su</a><a style="text-decoration:none; text-align:center; margin-left:2%;" class="btn btn-primary" href="OperazioneSchedulazioneServlet?action=modifyOrderScheduling&oldPosition=<%=taskSchedulati.get(i).getOrdine()%>&newPosition=<%=taskSchedulati.get(i).getOrdine()+1%>">Giu</a></th>
-									<th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="OperazioneSchedulazioneServlet?action=deleteOperazioneScheduling&id=<%=taskSchedulati.get(i).getIdOperazioneSchedulazione()%>">Elimina</a></th>
+									<th><%out.println(taskSchedulati.get(i).getIdTask()); %></th>
+									<th><%out.println(taskSchedulati.get(i).getName()); %></th>
+									<th><%out.println(taskSchedulati.get(i).getOrder()); %></th>
+									<th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="OperazioneSchedulazioneServlet?action=modifyOrderScheduling&oldPosition=<%=taskSchedulati.get(i).getOrder()%>&newPosition=<%=taskSchedulati.get(i).getOrder()-1%>">Su</a><a style="text-decoration:none; text-align:center; margin-left:2%;" class="btn btn-primary" href="OperazioneSchedulazioneServlet?action=modifyOrderScheduling&oldPosition=<%=taskSchedulati.get(i).getOrder()%>&newPosition=<%=taskSchedulati.get(i).getOrder()+1%>">Giu</a></th>
+									<th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="OperazioneSchedulazioneServlet?action=deleteOperazioneScheduling&id=<%=taskSchedulati.get(i).getIdOperationScheduling()%>">Elimina</a></th>
 								</tr><%
 							}
 						%>

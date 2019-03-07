@@ -32,6 +32,7 @@ public class SchedulingConverter {
 			scheduling.setFinish(schedulingDTO.getDataFine());
 			Machine machine = new Machine();
 			machine.setId(schedulingDTO.getIdMacchinario());
+			scheduling.setMachine(machine);
 		}
 		return scheduling;
 	}

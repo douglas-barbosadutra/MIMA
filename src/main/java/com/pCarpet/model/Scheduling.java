@@ -45,7 +45,6 @@ public class Scheduling {
 	@NotNull
 	private Timestamp finish;
 	
-	//@Column(name="id_machine")
 	@ManyToOne
 	@JoinColumn(name="id_machine")
 	private Machine machine;

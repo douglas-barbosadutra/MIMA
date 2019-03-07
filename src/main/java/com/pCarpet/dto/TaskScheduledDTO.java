@@ -11,11 +11,10 @@ import lombok.ToString;
 @ToString
 
 public class TaskScheduledDTO {
-	private int id;
-	private String descrizione;
-	private int ordine;
-	private int idOperazioneSchedulazione;
-	
+	private int idTask;
+	private String name;
+	private int order;
+	private int idOperationScheduling;
 }
 
 

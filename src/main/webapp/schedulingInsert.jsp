@@ -16,11 +16,11 @@
 		
 		<div style="padding-left: 20%; padding-right: 20%;">
 		
-			<form action="SchedulingServlet" method="post">
+			<form action="/Scheduling/insertScheduling" method="post">
 		
 				<div class="form-group">
 					<label class="col-form-label">Nome</label>
-					<input type="text" class="form-control" name="nome">				
+					<input type="text" class="form-control" name="name">				
 				</div>
 				
 				<div class="form-group">

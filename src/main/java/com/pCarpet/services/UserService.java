@@ -19,6 +19,7 @@ public class UserService {
 	private static User user = null;
 	public static int idMacchinario = 0;
 	public static int idTask = 0;
+	public static int idScheduling = 0;
 
 	@Autowired
 	public UserService(UserDAO userDAO) {

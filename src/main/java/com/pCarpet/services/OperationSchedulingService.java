@@ -28,17 +28,15 @@ public class OperationSchedulingService {
 	public void deleteOperationScheduling(int id, int idSchedulazione, int idMacchinario) {
 		List<TaskScheduledDTO> listaTaskSchedultatiDTO = getTaskSchedulati(idSchedulazione, idMacchinario);
 		int i = 0;
-		while (listaTaskSchedultatiDTO.get(i).getIdOperazioneSchedulazione() != id)
+		while (listaTaskSchedultatiDTO.get(i).getIdOperationScheduling() != id)
 			i++;
 		i++;
 		for (; i < listaTaskSchedultatiDTO.size(); i++) {
 			OperationSchedulingDTO osdto = new OperationSchedulingDTO(
-					listaTaskSchedultatiDTO.get(i).getIdOperazioneSchedulazione(),
-					listaTaskSchedultatiDTO.get(i).getIdOperazioneSchedulazione(),
-					listaTaskSchedultatiDTO.get(i).getIdOperazioneSchedulazione(),
-					listaTaskSchedultatiDTO.get(i).getIdOperazioneSchedulazione());
+					listaTaskSchedultatiDTO.get(i).getIdOperationScheduling(),
+					listaTaskSchedultatiDTO.get(i).getIdTask(), idSchedulazione, i);
 			updateOperazioneSchedulazione(osdto);
-			listaTaskSchedultatiDTO.get(i).setOrdine(i);
+			listaTaskSchedultatiDTO.get(i).setOrder(i);
 		}
 		this.operationSchedulingDAO.deleteById(id);
 	}
@@ -55,7 +53,8 @@ public class OperationSchedulingService {
 	public List<OperationSchedulingDTO> getOperazioniSchedulazioneByIdSchedulazione(int idSchedulazione) {
 		Scheduling scheduling = new Scheduling();
 		scheduling.setId(idSchedulazione);
-		List<OperationSchedulingDTO> osdto = OperationSchedulingConverter.toListDTO(this.operationSchedulingDAO.findAllByScheduling(scheduling));
+		List<OperationSchedulingDTO> osdto = OperationSchedulingConverter
+				.toListDTO(this.operationSchedulingDAO.findAllByScheduling(scheduling));
 		return osdto;
 	}
 
@@ -70,7 +69,8 @@ public class OperationSchedulingService {
 		for (OperationSchedulingDTO os : oss) {
 			for (TaskDTO task : listaTask) {
 				if (task.getId() == os.getIdTask()) {
-					listaTaskSchedulati.add(new TaskScheduledDTO(task.getId(), task.getDescrizione(), os.getOrder(), os.getId()));
+					listaTaskSchedulati
+							.add(new TaskScheduledDTO(task.getId(), task.getDescrizione(), os.getOrder(), os.getId()));
 					break;
 				}
 			}
@@ -82,11 +82,14 @@ public class OperationSchedulingService {
 		List<TaskScheduledDTO> listaTaskSchedulati = getTaskSchedulati(idSchedulazione, idMacchinario);
 		if (newPosition < 1 || (newPosition > listaTaskSchedulati.size()))
 			return;
-		//OperationSchedulingDTO osdto = listaTaskSchedulati.get(oldPosition - 1);
-		
-		//updateOperazioneSchedulazione(newPosition, listaTaskSchedulati.get(oldPosition - 1).getIdOperazioneSchedulazione());
-		//updateOperazioneSchedulazione(oldPosition, listaTaskSchedulati.get(newPosition - 1).getIdOperazioneSchedulazione());
-		listaTaskSchedulati.get(oldPosition - 1).setOrdine(newPosition);
-		listaTaskSchedulati.get(newPosition - 1).setOrdine(oldPosition);
+		OperationSchedulingDTO osdto = new OperationSchedulingDTO(
+				listaTaskSchedulati.get(oldPosition - 1).getIdOperationScheduling(),
+				listaTaskSchedulati.get(oldPosition - 1).getIdTask(), idSchedulazione, newPosition);// listaTaskSchedulati.get(oldPosition
+		insertOperationScheduling(osdto);
+		osdto = new OperationSchedulingDTO(listaTaskSchedulati.get(newPosition - 1).getIdOperationScheduling(),
+				listaTaskSchedulati.get(newPosition - 1).getIdTask(), idSchedulazione, oldPosition);
+		insertOperationScheduling(osdto);
+		listaTaskSchedulati.get(oldPosition - 1).setOrder(newPosition);
+		listaTaskSchedulati.get(newPosition - 1).setOrder(oldPosition);
 	}
 }

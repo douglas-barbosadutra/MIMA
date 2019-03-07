@@ -16,7 +16,7 @@
 	
 		<%@ include file="menu_user.html" %>
 		
-		<h1 class="title">Lista Scheduling del macchinario n. ${idMacchinarioScelto}</h1>
+		<h1 class="title">Lista Scheduling del macchinario n. </h1> 
 		
 		<div style="padding-left:10%; padding-right:10%">
 			
@@ -42,7 +42,7 @@
 			    <tbody>
 			    
 			    	<%
-						List<SchedulingDTO> schedulingList = (List<SchedulingDTO>)session.getAttribute("listaScheduling");
+						List<SchedulingDTO> schedulingList = (List<SchedulingDTO>)session.getAttribute("schedulingList");
 						
 						for(int i = 0; i < schedulingList.size(); i++)
 						{
@@ -55,15 +55,15 @@
 								
 								<%if(mode.equals("delete")){
 									
-									%><th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="SchedulingServlet?action=deleteScheduling&id=<%=schedulingList.get(i).getId()%>">Elimina</a></th><%
-								
+									%><th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="/Scheduling/deleteScheduling?id=<%=schedulingList.get(i).getId()%>">Elimina</a></th><%
+																															
 								} else if(mode.equals("management")){
 									
-									%><th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="OperazioneSchedulazioneServlet?action=showOperazioni&idSchedulazione=<%=schedulingList.get(i).getId()%>&idMacchinario=<%=schedulingList.get(i).getIdMacchinario()%>">Gestisci</a><%
+									%><th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="/OperationScheduling/showOperazionScheduling?idScheduling=<%=schedulingList.get(i).getId()%>&idMacchinario=<%=schedulingList.get(i).getIdMacchinario()%>">Gestisci</a><%
 									
-								} else if(mode.equals("update")){
+								} else if(mode.equals("modify")){
 									
-									%><th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="SchedulingServlet?action=updateSchedulingManagement&id=<%=schedulingList.get(i).getId()%>">Modifica</a></th><%
+									%><th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="/Scheduling/modifySchedulingOpen?id=<%=schedulingList.get(i).getId()%>&name=<%=schedulingList.get(i).getName()%>">Modifica</a></th><%
 								}%>
 								
 							</tr><%

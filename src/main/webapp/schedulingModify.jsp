@@ -12,13 +12,12 @@
 	
 		<%@ include file="menu_user.html" %>
 	
-		<h1 class="title">Modifica Scheduling del macchinario ${idMacchinarioScelto}</h1>
+		
 		
 		<div style="padding-left: 20%; padding-right: 20%;">
 		
-			<form action="SchedulingServlet" method="post">
-		
-				
+			<form action="/Scheduling/modifyScheduling" method="post">
+						
 				<div class="form-group">
 					<label class="col-form-label">Data Inizio</label>
 					<input type="datetime-local" class="form-control" name="dataInizio">				
