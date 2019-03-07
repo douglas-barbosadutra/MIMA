@@ -14,6 +14,7 @@ public class ItemConverter {
 			itemDTO = new ItemDTO();
 			itemDTO.setId(item.getId());
 			itemDTO.setName(item.getName());
+			
 			if(item.getFather() == null) {
 				itemDTO.setIdFather(0);
 			}else {
