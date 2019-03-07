@@ -65,4 +65,33 @@ public class ItemController {
 		
 	}
 	
+	@RequestMapping(value="/openAddNode", method= RequestMethod.GET)
+	public String openAddNode(HttpServletRequest request) {
+	  
+	  int id_nodo = Integer.parseInt(request.getParameter("id"));
+	  
+	  request.getSession().setAttribute("id_nodo", id_nodo);
+	  
+	  return "itemInsert";
+	  
+	}
+
+	@RequestMapping(value="/addNode", method= RequestMethod.POST)
+	public String addNode(HttpServletRequest request) {
+	  
+	  int id_nodo = Integer.parseInt(request.getParameter("id_nodo"));
+	  String nome = request.getParameter("nome");
+	  
+	  //ItemDTO itemdto_padre = itemService.getItemById(id_nodo);	
+	  //System.out.println(itemdto_padre);
+	  
+	  //ItemDTO itemdto = new ItemDTO(0, nome, id_nodo, itemdto_padre.getIdWBS(), null, itemdto_padre.getLevel()+1);
+	  //System.out.println(itemdto);
+	  
+	  //itemService.insertItem(itemdto);
+	  
+	  return "homeUser";
+	  
+	}
+	
 }
