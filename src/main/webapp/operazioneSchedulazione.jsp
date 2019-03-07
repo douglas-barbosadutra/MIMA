@@ -41,7 +41,7 @@
 							<tr>
 								<th><%out.println(taskDisponibili.get(i).getId()); %></th>
 								<th><%out.println(taskDisponibili.get(i).getDescrizione()); %></th>
-								<th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="OperazioneSchedulazioneServlet?action=insertOperazione&id=<%=taskDisponibili.get(i).getId()%>">Aggiungi</a></th>
+								<th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="/OperationScheduling/insertOperazionScheduling?id=<%=taskDisponibili.get(i).getId()%>">Aggiungi</a></th>
 							</tr><%
 						}
 					%>
@@ -72,11 +72,11 @@
 							{
 								%>
 								<tr>
-									<th><%out.println(taskSchedulati.get(i).getIdTask()); %></th>
+									<th><%out.println(taskSchedulati.get(i).getIdOperationScheduling()); %></th>
 									<th><%out.println(taskSchedulati.get(i).getName()); %></th>
 									<th><%out.println(taskSchedulati.get(i).getOrder()); %></th>
-									<th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="OperazioneSchedulazioneServlet?action=modifyOrderScheduling&oldPosition=<%=taskSchedulati.get(i).getOrder()%>&newPosition=<%=taskSchedulati.get(i).getOrder()-1%>">Su</a><a style="text-decoration:none; text-align:center; margin-left:2%;" class="btn btn-primary" href="OperazioneSchedulazioneServlet?action=modifyOrderScheduling&oldPosition=<%=taskSchedulati.get(i).getOrder()%>&newPosition=<%=taskSchedulati.get(i).getOrder()+1%>">Giu</a></th>
-									<th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="OperazioneSchedulazioneServlet?action=deleteOperazioneScheduling&id=<%=taskSchedulati.get(i).getIdOperationScheduling()%>">Elimina</a></th>
+									<th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="/OperationScheduling/modifyOperazionScheduling?oldPosition=<%=taskSchedulati.get(i).getOrder()%>&newPosition=<%=taskSchedulati.get(i).getOrder()-1%>">Su</a><a style="text-decoration:none; text-align:center; margin-left:2%;" class="btn btn-primary" href="/OperationScheduling/modifyOperazionScheduling?oldPosition=<%=taskSchedulati.get(i).getOrder()%>&newPosition=<%=taskSchedulati.get(i).getOrder()+1%>">Giu</a></th>
+									<th><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="/OperationScheduling/deleteOperationScheduling?id=<%=taskSchedulati.get(i).getIdOperationScheduling()%>">Elimina</a></th>
 								</tr><%
 							}
 						%>

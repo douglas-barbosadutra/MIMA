@@ -37,8 +37,8 @@ public class OperationSchedulingController {
 		return callShowView(request);
 	}
 	
-	@RequestMapping(value = "/deleteOperazionScheduling", method = RequestMethod.GET)
-	public String deleteOperazionScheduling(HttpServletRequest request) {
+	@RequestMapping(value = "/deleteOperationScheduling", method = RequestMethod.GET)
+	public String deleteOperationScheduling(HttpServletRequest request) {
 		int id = Integer.parseInt(request.getParameter("id").toString());
 		operationSchedulingService.deleteOperationScheduling(id, UserService.idScheduling, UserService.idMacchinario);
 		return callShowView(request);

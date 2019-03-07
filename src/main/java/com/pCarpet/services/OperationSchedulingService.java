@@ -51,10 +51,8 @@ public class OperationSchedulingService {
 	}
 
 	public List<OperationSchedulingDTO> getOperazioniSchedulazioneByIdSchedulazione(int idSchedulazione) {
-		Scheduling scheduling = new Scheduling();
-		scheduling.setId(idSchedulazione);
 		List<OperationSchedulingDTO> osdto = OperationSchedulingConverter
-				.toListDTO(this.operationSchedulingDAO.findAllByScheduling(scheduling));
+				.toListDTO(this.operationSchedulingDAO.findAllBySchedulingOrdered(idSchedulazione));
 		return osdto;
 	}
 
