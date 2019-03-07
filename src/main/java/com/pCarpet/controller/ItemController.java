@@ -24,21 +24,6 @@ public class ItemController {
 		itemService = is;
 	}
 	
-	@RequestMapping(value="/test")
-	public String test(HttpServletRequest request) {
-
-		WBSDTO wbs = new WBSDTO();
-		wbs.setId(1);
-		
-		List<ItemDTO> items = itemService.getItemByWBS(wbs);
-			
-		for (ItemDTO element : items) {
-		    System.out.println(element);
-		}
-
-		return "index";
-	}
-	
 	@RequestMapping(value="/showNodes", method= RequestMethod.GET)
 	public String showNodes(HttpServletRequest request) {
 		
@@ -61,7 +46,7 @@ public class ItemController {
 			}
 		}
 		
-		return "test";
+		return "treeShow";
 		
 	}
 	
