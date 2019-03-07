@@ -1,3 +1,4 @@
+<%@ page import="com.pCarpet.services.UserService" %>
 		<ul>
 		  <li>
 	  		<div class="dropdown">
@@ -34,7 +35,7 @@
 					<a href="/Task/openInsertTask">Inserisci</a>
 					<a href="/Task/showTask?showTask=delete">Elimina</a>
 					<a href="/Task/showTask?showTask=list">Lista</a>
-					<a href="InstructionServlet?action=showTime">Tempi</a>
+					<a href="/Manufacturing/showTime?idTask=<% out.println(UserService.idTask); %>">Tempi</a>
 					<a href="/Task/showTask?showTask=choose">Seleziona</a>
 				</div>
 			</div>
@@ -66,12 +67,6 @@
 		  
 		  <li>
 	  		<div class="dropdown">
-				<a href="/Item/showNodes?id=1" class="dropbtn">Profilo</a>				
-			</div>
-		  </li>
-		  
-		  <li>
-	  		<div class="dropdown">
 				<a href="/User/openUpdateUser" class="dropbtn">Profilo</a>				
 			</div>
 		  </li>
@@ -84,7 +79,7 @@
 		  
 		  		  <li>
 	  		<div class="dropdown">
-				<a href="/Item/test" class="dropbtn">Test</a>			
+				<a href="/Item/showNodes?id=1" class="dropbtn">Test</a>			
 			</div>
 		  </li>
 

@@ -16,7 +16,7 @@
 	
 		<%@ include file="menu_user.html" %>
 		
-		<h1 class="title">Lista Scheduling del macchinario n. </h1> 
+		<h1 class="title">Lista Scheduling del macchinario n. ${idTaskScelto}</h1> 
 		
 		<div style="padding-left:10%; padding-right:10%">
 			
