@@ -18,73 +18,101 @@ import com.pCarpet.services.ItemService;
 public class ItemController {
 
 	private ItemService itemService;
-	
+
 	@Autowired
 	public ItemController(ItemService is) {
 		itemService = is;
 	}
-	
-	@RequestMapping(value="/showNodes", method= RequestMethod.GET)
-	public String showNodes(HttpServletRequest request) {
-		
-		int id_wbs = Integer.parseInt(request.getParameter("id").toString());
-		
-		WBSDTO wbs = new WBSDTO();
-		wbs.setId(id_wbs);
-		
-		List<ItemDTO> itemList = itemService.getItemByWBS(wbs);
 
-		if(!itemList.isEmpty()) {
-			
-			int maxLevel = itemService.getMaxLevelByWbs(wbs);
-			request.getSession().setAttribute("levels", maxLevel);
-			
-			for(int i=1; i<=maxLevel; i++) {
-				
-				List<ItemDTO> items = itemService.getItemByLevelAndWbs(i, wbs);
-				request.getSession().setAttribute("level"+i, items);
+	@RequestMapping(value = "/showNodes", method = RequestMethod.GET)
+	public String showNodes(HttpServletRequest request) {
+		/*
+		 * int id_wbs = Integer.parseInt(request.getParameter("id").toString());
+		 * 
+		 * WBSDTO wbs = new WBSDTO(); wbs.setId(id_wbs);
+		 * 
+		 * List<ItemDTO> itemList = itemService.getItemByWBS(wbs);
+		 * 
+		 * if(!itemList.isEmpty()) {
+		 * 
+		 * int maxLevel = itemService.getMaxLevelByWbs(wbs);
+		 * request.getSession().setAttribute("levels", maxLevel);
+		 * 
+		 * for(int i=1; i<=maxLevel; i++) {
+		 * 
+		 * List<ItemDTO> items = itemService.getItemByLevelAndWbs(i, wbs);
+		 * request.getSession().setAttribute("level"+i, items); } }
+		 */
+		WBSDTO wbs = new WBSDTO();
+		wbs.setId(1);
+		List<ItemDTO> items = itemService.getItemByWBS(wbs);
+		ItemDTO padre = null;
+		for (ItemDTO item : items) {
+			if (item.getIdFather() == 0) {
+				padre = item;
+				break;
 			}
 		}
-		
+		if(padre == null)
+			return "homeUser";
+		String prova = creaAlbero(padre);
+		request.getSession().setAttribute("prova", prova);
 		return "treeShow";
-		
-	}
-	
-	@RequestMapping(value="/openAddNode", method= RequestMethod.GET)
-	public String openAddNode(HttpServletRequest request) {
-	  
-	  int id_nodo = Integer.parseInt(request.getParameter("id"));
-	  
-	  request.getSession().setAttribute("id_nodo", id_nodo);
-	  
-	  return "itemInsert";
-	  
+
 	}
 
-	@RequestMapping(value="/addNode", method= RequestMethod.POST)
+	@RequestMapping(value = "/openAddNode", method = RequestMethod.GET)
+	public String openAddNode(HttpServletRequest request) {
+
+		int id_nodo = Integer.parseInt(request.getParameter("id"));
+
+		request.getSession().setAttribute("id_nodo", id_nodo);
+
+		return "itemInsert";
+
+	}
+
+	@RequestMapping(value = "/addNode", method = RequestMethod.POST)
 	public String addNode(HttpServletRequest request) {
-	  
-	  int id_nodo = Integer.parseInt(request.getParameter("id_nodo"));
-	  String nome = request.getParameter("nome");
-	  
-	  ItemDTO itemdto_padre = itemService.getItemById(id_nodo);	
-	  //System.out.println(itemdto_padre);
-	  
-	  itemService.insertItem(nome, itemdto_padre.getId(), itemdto_padre.getIdWBS(), itemdto_padre.getLevel()+1);
-	  
-	  return "homeUser";
-	  
+
+		int id_nodo = Integer.parseInt(request.getParameter("id_nodo"));
+		String nome = request.getParameter("nome");
+
+		ItemDTO itemdto_padre = itemService.getItemById(id_nodo);
+		// System.out.println(itemdto_padre);
+
+		itemService.insertItem(nome, itemdto_padre.getId(), itemdto_padre.getIdWBS(), itemdto_padre.getLevel() + 1);
+
+		return "homeUser";
+
 	}
-	
-	@RequestMapping(value="/removeNode", method= RequestMethod.GET)
+
+	@RequestMapping(value = "/removeNode", method = RequestMethod.GET)
 	public String removeNode(HttpServletRequest request) {
-	  
-	  int id = Integer.parseInt(request.getParameter("id"));
-	  
-	  itemService.deleteItem(id);	
-	  
-	  return "homeUser";
-	  
+
+		int id = Integer.parseInt(request.getParameter("id"));
+
+		itemService.deleteItem(id);
+
+		return "homeUser";
+
 	}
-	
+
+	private String creaAlbero(ItemDTO item) {
+		String result = "";
+		if (item.itemChildrenDTO != null) {
+			result = result + "<ul class = 'tree'>";
+		}
+		result = result + "<li>" + item.getName() + " <a style=\"text-decoration: none;\" href=\"/Item/removeNode?id=" + item.getId() + "\">-</a> <a style=\"text-decoration: none;\" href=\"/Item/openAddNode?id=" + item.getId() + "\">+</a></li>";
+				
+		if (item.itemChildrenDTO != null) {
+			for (ItemDTO child : item.itemChildrenDTO) {
+				result = result + creaAlbero(child);
+			}
+		}
+		if (item.itemChildrenDTO != null) {
+			result = result + "</ul>";
+		}
+		return result;
+	}
 }

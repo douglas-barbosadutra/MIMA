@@ -33,4 +33,9 @@ public interface ItemDAO extends CrudRepository<Item, Integer>{
 	@Query(value = "INSERT INTO items (name,id_father,id_wbs,level) VALUES (:name,:id_father,:id_wbs,:level)", nativeQuery=true)
 	public void insertItem(@Param("name") String name, @Param("id_father") Integer id_father, @Param("id_wbs") Integer id_wbs, @Param("level") Integer level);
 	
+	
+	@Modifying
+	@Transactional
+	@Query(value = "DELETE FROM items WHERE id_item = :id_item", nativeQuery=true)
+	public void deleteItem(@Param("id_item") Integer idItem);
 }

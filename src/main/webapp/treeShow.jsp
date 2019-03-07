@@ -13,23 +13,10 @@
 	<body>
 		
 		<h1 class="title">Test</h1>
-		
-		<% int levels = Integer.parseInt(session.getAttribute("levels").toString()); %>
-		
-		<%for(int i=1; i<=levels; i++){
-			
-			List<ItemDTO> items = (List<ItemDTO>)session.getAttribute("level"+i);
-			int size = items.size();
-			
-			%><div style="text-align:center; width:100%; margin-bottom:1%;">
-				
-				<%for(int k=0; k<size; k++){
-					%><span> <% out.println(items.get(k).getName()); %> <a style="text-decoration: none;" href="/Item/removeNode?id=<% out.println(items.get(k).getId()); %>">-</a> <a style="text-decoration: none;" href="/Item/openAddNode?id=<% out.println(items.get(k).getId()); %>">+</a> </span><%
-				} %>
-				
-			</div><%
-			
-		} %>
-	
+		<div>
+		<%
+		String prova = (String) session.getAttribute("prova");
+		out.println(prova);
+	%></div>
 	</body>
 </html>

@@ -18,6 +18,6 @@ public class ItemDTO {
 	private String name;
 	private int idFather;
 	private int idWBS;
-	private List<ItemDTO> itemChildrenDTO;
+	public List<ItemDTO> itemChildrenDTO;
 	private int level;
 }

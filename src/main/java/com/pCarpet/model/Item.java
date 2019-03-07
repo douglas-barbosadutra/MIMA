@@ -21,12 +21,14 @@ import org.hibernate.annotations.OnDeleteAction;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name="items")
+@ToString
 
 public class Item {
 	
@@ -36,7 +38,6 @@ public class Item {
 	private Integer id;
 	
 	@Column(name = "name")
-	@NotNull
 	private String name;
 	
 	@ManyToOne
@@ -44,7 +45,6 @@ public class Item {
 	private WBS wbs;
 	
 	@Column(name = "level")
-	@NotNull
 	private Integer level;
 	
 	@OneToMany(mappedBy="output")

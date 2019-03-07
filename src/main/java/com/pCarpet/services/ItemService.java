@@ -32,7 +32,7 @@ public class ItemService {
 	}
 	
 	public void deleteItem(int id) {
-		itemDAO.deleteById(id);
+		itemDAO.deleteItem(id);
 	}
 	
 	public List<ItemDTO> getItemByWBS(WBSDTO wbs){
