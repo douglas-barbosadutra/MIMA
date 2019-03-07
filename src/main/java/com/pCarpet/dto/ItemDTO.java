@@ -16,7 +16,7 @@ public class ItemDTO {
 	
 	private int id;
 	private String name;
-	private int idFather;
+	private ItemDTO father;
 	private int idWBS;
 	private List<ItemDTO> itemChildrenDTO;
 	private int level;
