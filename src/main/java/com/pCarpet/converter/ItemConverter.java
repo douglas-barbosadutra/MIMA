@@ -34,13 +34,16 @@ public class ItemConverter {
 			item = new Item();
 			item.setId(itemDTO.getId());
 			item.setName(itemDTO.getName());
-			Item father = new Item();
-			item.setLevel(itemDTO.getLevel());
-			father.setId(itemDTO.getIdFather());
+			item.setFather(null);
+			if(itemDTO.getIdFather() != 0) {
+				Item father = new Item();
+				item.setLevel(itemDTO.getLevel());
+				father.setId(itemDTO.getIdFather());
+				item.setFather(father);
+			}			
 			WBS wbs = new WBS();
 			wbs.setId(itemDTO.getId());
 			item.setWbs(wbs);
-			item.setFather(father);
 		}
 		return item;
 	}

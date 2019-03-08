@@ -7,16 +7,27 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<link href = "/css/Stile.css" rel = "stylesheet" media = "screen">
-		<title>Test</title>
+		<title>Albero</title>
 	</head>
 	
 	<body>
 		
-		<h1 class="title">Test</h1>
-		<div>
+		<h1 class="title">${name}</h1>
+		<div class = "tree">
 		<%
-		String prova = (String) session.getAttribute("prova");
-		out.println(prova);
+		String action = (String) session.getAttribute("action");
+		if(action == "alberoVuoto"){
+			%>
+			<form action="/Item/openAddNode" method="get">
+			<button style="margin-top:2%; margin-left:40%;" type="submit" class="btn btn-primary" name="action" value="openAddNode" >Inserisci Radice</button>	
+			</form>
+			<%
+		}
+		else {
+			String prova = (String) session.getAttribute("prova");
+			out.println(prova);
+		}
+		
 	%></div>
 	</body>
 </html>

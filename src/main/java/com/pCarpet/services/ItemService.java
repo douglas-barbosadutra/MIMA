@@ -52,9 +52,13 @@ public class ItemService {
 		return itemDAO.findMaxLevelByWbs(wbs.getId());
 	}
 	
-	public void insertItem(String name, int id_father, int id_wbs, int level) {
-		
-		itemDAO.insertItem(name, id_father, id_wbs, level);
+	public void insertItem(String name, Integer id_father, int id_wbs, int level) {
+		if(id_father == 0) {
+			itemDAO.insertItem(name, null, id_wbs, level);
+		}
+		else {
+			itemDAO.insertItem(name, id_father, id_wbs, level);
+		}	
 	}
 	
 }

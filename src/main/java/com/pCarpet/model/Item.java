@@ -17,6 +17,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.lang.Nullable;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -51,6 +52,7 @@ public class Item {
 	@OnDelete(action=OnDeleteAction.CASCADE)
 	private List<Manufacturing> manufacturings;
 	
+	@Nullable
 	@ManyToOne(cascade= {CascadeType.ALL})
 	@JoinColumn(name="id_father")
 	private Item father;
