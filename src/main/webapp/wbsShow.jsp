@@ -25,13 +25,7 @@
 			      <tr>
 			        <th>ID</th>
 			        <th>Nome</th>
-			        
-			        <%if(!mode.equals("list")){
-			        	
-			        	%><th>Opzioni</th><%
-			        	
-			        } %>
-			         
+			       	<th>Opzioni</th> 
 			      </tr>
 			      
 			    </thead>
@@ -49,16 +43,9 @@
 								<th><%out.println(wbs.get(i).getName()); %></th>
 								
 								<th>
-								
-								
 									<a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="/Item/showNodes?id=<%=wbs.get(i).getId()%>&name=<%=wbs.get(i).getName()%>">Inserisci Nodi</a>
-								
-								<%if(mode.equals("delete")){
-									
-									%><a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="/WBS/deleteWbs/?id=<%=wbs.get(i).getId()%>">Elimina</a><%
-								
-								} %>
-							</th>	
+									<a style="text-decoration:none; text-align:center;" class="btn btn-primary" href="/WBS/deleteWbs/?id=<%=wbs.get(i).getId()%>">Elimina</a>
+								</th>	
 							</tr><%
 						}
 					%>

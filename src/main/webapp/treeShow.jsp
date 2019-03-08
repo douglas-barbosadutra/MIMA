@@ -13,6 +13,7 @@
 	<body>
 		
 		<h1 class="title">${name}</h1>
+		<%@ include file="menu_user.html" %>
 		<div class = "tree">
 		<%
 		String action = (String) session.getAttribute("action");
