@@ -1,0 +1,79 @@
+<%@ page import="com.pCarpet.services.UserService" %>
+		<ul class ="menu">
+		  <li>
+	  		<div class="dropdown">
+				<button class="dropbtn">Macchinari</button>
+				
+				<div class="dropdown-content"> 
+					<a href="/Machine/openInsertMachine">Inserisci</a>
+					<a href="/Machine/showMachine?showMachine=delete">Elimina</a>
+					<a href="/Machine/showMachine?showMachine=list">Lista</a>
+					<a href="/Machine/showMachine?showMachine=choose">Seleziona</a>
+				</div>
+			</div>
+		  </li>
+		  
+		  <li>
+	  		<div class="dropdown">
+				<button class="dropbtn">Scheduling</button>
+				
+				<div class="dropdown-content"> 
+					<a href="/Scheduling/openInsertScheduling">Inserisci</a>
+					<a href="/Scheduling/showScheduling?showScheduling=delete">Elimina</a>
+					<a href="/Scheduling/showScheduling?showScheduling=modify">Modifica</a>
+					<a href="/Scheduling/showScheduling?showScheduling=list">Lista</a>
+					<a href="/Scheduling/showScheduling?showScheduling=management">Gestione</a>
+				</div>
+			</div>
+		  </li>
+		  
+		  <li>
+	  		<div class="dropdown">
+				<button class="dropbtn">Task</button>
+				
+				<div class="dropdown-content"> 
+					<a href="/Task/openInsertTask">Inserisci</a>
+					<a href="/Task/showTask?showTask=delete">Elimina</a>
+					<a href="/Task/showTask?showTask=list">Lista</a>
+					<a href="/Manufacturing/showTime?idTask=<% out.println(UserService.idTask); %>">Tempi</a>
+					<a href="/Task/showTask?showTask=choose">Seleziona</a>
+				</div>
+			</div>
+		  </li>
+		  
+		  <li>
+	  		<div class="dropdown">
+				<button class="dropbtn">Istruzioni</button>
+				
+				<div class="dropdown-content"> 
+					<a href="/Instruction/insertInstructionOpen">Inserisci</a>
+					<a href="/Instruction/showInstruction?showInstruction=delete">Elimina</a>
+					<a href="/Instruction/showInstruction?showInstruction=list">Lista</a>
+				</div>
+			</div>
+		  </li>
+		  
+		  <li>
+	  		<div class="dropdown">
+				<button class="dropbtn">WBS</button>
+				
+				<div class="dropdown-content"> 
+					<a href="/WBS/openInsertWbs">Inserisci</a>
+					<a href="/WBS/deleteWbsManagement">Elimina</a>
+					<a href="/WBS/showWbs">Lista</a>
+				</div>
+			</div>
+		  </li>
+		  
+		  <li>
+	  		<div class="dropdown">
+				<a href="/User/openUpdateUser" class="dropbtn">Profilo</a>				
+			</div>
+		  </li>
+		  
+		  <li>
+	  		<div class="dropdown">
+				<a href="/User/logout" class="dropbtn">Logout</a>			
+			</div>
+		  </li>
+		</ul>
