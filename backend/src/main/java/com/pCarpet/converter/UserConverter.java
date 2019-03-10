@@ -13,6 +13,8 @@ public class UserConverter{
 		if (user != null) {
 			userDTO = new UserDTO();
 			userDTO.setId(user.getId());
+			userDTO.setUsername(user.getUsername());
+			userDTO.setPassword(user.getPassword());
 			userDTO.setName(user.getName());
 			userDTO.setEmail(user.getEmail());
 			userDTO.setRank(user.getRankUser());

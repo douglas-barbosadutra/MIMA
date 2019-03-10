@@ -1,0 +1,25 @@
+<body background="../assets/images/Sfondo.png">
+
+  <div style="width:100%; margin-top:0%; margin-left:0%;">
+
+    <h1 class="title">MIMA</h1>
+
+    <form #f="ngForm">
+
+      <div class="form-group">
+        <label class="col-form-label">Username</label>
+        <input type="text" class="form-control" name="username" placeholder="Inserisci Username" ngModel>
+
+        <label class="col-form-label">Password</label>
+        <input type="password" class="form-control" name="password" placeholder="Inserisci Password" ngModel>
+      </div>
+
+      <div class="form-group">
+        <button style="margin-top:2%" class="btn btn-primary" type="submit" (click)="login(f)">Login</button>
+      </div>
+
+    </form>
+
+  </div>
+
+</body>
