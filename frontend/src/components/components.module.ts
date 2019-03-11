@@ -4,9 +4,21 @@ import { LoginComponent } from './login/login.component';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { HomeUserComponent } from './home-user/home-user.component';
 import { HomeEmployeeComponent } from './home-employee/home-employee.component';
+import { MenuUserComponent } from './menu-user/menu-user.component';
+import { MachineInsertComponent } from './machine-insert/machine-insert.component';
+import { MachineShowComponent } from './machine-show/machine-show.component';
+import { SchedulingInsertComponent } from './scheduling-insert/scheduling-insert.component';
+import { SchedulingShowComponent } from './scheduling-show/scheduling-show.component';
+import { TaskInsertComponent } from './task-insert/task-insert.component';
+import { TaskShowComponent } from './task-show/task-show.component';
+import { InstructionInsertComponent } from './instruction-insert/instruction-insert.component';
+import { InstructionShowComponent } from './instruction-show/instruction-show.component';
+import { UserUpdateComponent } from './user-update/user-update.component';
+import { WbsInsertComponent } from './wbs-insert/wbs-insert.component';
+import { WbsShowComponent } from './wbs-show/wbs-show.component';
 
 @NgModule({
-  declarations: [LoginComponent, HomeAdminComponent, HomeUserComponent, HomeEmployeeComponent],
+  declarations: [LoginComponent, HomeAdminComponent, HomeUserComponent, HomeEmployeeComponent, MenuUserComponent, MachineInsertComponent, MachineShowComponent, SchedulingInsertComponent, SchedulingShowComponent, TaskInsertComponent, TaskShowComponent, InstructionInsertComponent, InstructionShowComponent, UserUpdateComponent, WbsInsertComponent, WbsShowComponent],
   imports: [
     CommonModule
   ]
