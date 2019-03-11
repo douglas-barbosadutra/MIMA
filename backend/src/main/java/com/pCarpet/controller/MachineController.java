@@ -36,7 +36,7 @@ public class MachineController {
 			return null;
 	}
 	
-	@RequestMapping(value="/deleteMachine" , method= RequestMethod.GET)
+	@RequestMapping(value="/deleteMachine" , method= RequestMethod.POST)
 	public boolean deleteMachine(@RequestBody MachineDTO machinedto) {		
 		return machineService.deleteMachine(machinedto.getId());
 	}

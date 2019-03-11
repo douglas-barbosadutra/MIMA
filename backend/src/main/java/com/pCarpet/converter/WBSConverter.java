@@ -1,8 +1,9 @@
 package com.pCarpet.converter;
 
-import com.pCarpet.dto.InstructionDTO;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.pCarpet.dto.WBSDTO;
-import com.pCarpet.model.Instruction;
 import com.pCarpet.model.WBS;
 import com.pCarpet.services.UserService;
 
@@ -38,4 +39,13 @@ public class WBSConverter {
 		return wbs;
 	}
 
+	public static List<WBSDTO> toListDTO(List<WBS> list){
+		List<WBSDTO> listWbsDto = new ArrayList<>();
+		if(list != null) {
+			for(WBS wbs: list) {
+				listWbsDto.add(WBSConverter.convertToDto(wbs));
+			}
+		}
+		return listWbsDto;
+	}
 }

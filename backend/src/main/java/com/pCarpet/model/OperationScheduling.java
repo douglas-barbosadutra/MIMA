@@ -34,10 +34,15 @@ public class OperationScheduling {
 	private Integer orderTask;
 	
 	@ManyToOne
-	@JoinColumn(name="id_task")
-	private Task task;
+	@JoinColumn(name="id_task_father")
+	private Task taskFather;
+	
+	@ManyToOne
+	@JoinColumn(name="id_task_child")
+	private Task taskChild;
 	
 	@ManyToOne
 	@JoinColumn(name="id_scheduling")
 	private Scheduling scheduling;
+	
 }

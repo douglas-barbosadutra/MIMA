@@ -1,20 +1,20 @@
 package com.pCarpet.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.pCarpet.dto.TaskDTO;
 import com.pCarpet.dto.TimeDTO;
 import com.pCarpet.services.TimeService;
 
-@Controller
+@CrossOrigin(value="*")
+@RestController
 @RequestMapping("/Manufacturing")
 public class ManufacturingController {
 
@@ -25,14 +25,8 @@ public class ManufacturingController {
 		this.timeService = timeService;
 	}
 	
-	@RequestMapping(value = "/showTime", method = RequestMethod.GET)
-	public String showTime(HttpServletRequest request) {
-		int idTask = Integer.parseInt(request.getParameter("idTask").toString());
-		TaskDTO task = new TaskDTO();
-		task.setId(idTask);
-		List<TimeDTO> listaTempi = new ArrayList<>();
-		listaTempi = timeService.getAllTempi(task);
-		request.getSession().setAttribute("listaTempi", listaTempi);
-		return "timeShow";
+	@RequestMapping(value = "/showTime", method = RequestMethod.POST)
+	public List<TimeDTO> showTime(@RequestBody TaskDTO task) {
+		return timeService.getAllTempi(task);
 	}
 }

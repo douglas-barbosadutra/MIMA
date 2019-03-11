@@ -3,7 +3,6 @@ package com.pCarpet.converter;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.pCarpet.dto.ItemDTO;
 import com.pCarpet.dto.ManufacturingDTO;
 import com.pCarpet.model.Instruction;
 import com.pCarpet.model.Item;

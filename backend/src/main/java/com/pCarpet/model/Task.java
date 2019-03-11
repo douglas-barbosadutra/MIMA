@@ -47,10 +47,6 @@ public class Task {
 	private List<Instruction> instructions;
 	
 	@OneToMany(mappedBy="task")
-	@OnDelete(action=OnDeleteAction.CASCADE)
-	private List<OperationScheduling> operationSchedulings;
-	
-	
-	@OneToMany(mappedBy="task")
 	private List<Employee> employeers;
+
 }

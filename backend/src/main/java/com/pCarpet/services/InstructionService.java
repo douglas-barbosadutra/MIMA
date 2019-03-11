@@ -10,6 +10,7 @@ import com.pCarpet.converter.TaskConverter;
 import com.pCarpet.dao.InstructionDAO;
 import com.pCarpet.dto.InstructionDTO;
 import com.pCarpet.dto.TaskDTO;
+import com.pCarpet.model.Instruction;
 
 @Service
 public class InstructionService {
@@ -25,11 +26,14 @@ public class InstructionService {
 		return (InstructionConverter.toListDTO(istruzioneDAO.findAllByTask(TaskConverter.convertToEntity(task))));
 	}
 	
-	public void insertIstruzione(InstructionDTO istruzionedto) {
-		this.istruzioneDAO.save(InstructionConverter.convertToEntity(istruzionedto));
+	public InstructionDTO insertIstruzione(InstructionDTO istruzionedto) {
+		Instruction instruction = InstructionConverter.convertToEntity(istruzionedto);
+		this.istruzioneDAO.saveAndFlush(instruction);
+		return InstructionConverter.convertToDto(instruction);
 	}
 	
-	public void deleteIstruzione(int idIstruzione) {
+	public boolean deleteIstruzione(int idIstruzione) {
 		istruzioneDAO.deleteById(idIstruzione);
+		return true;
 	}
 }

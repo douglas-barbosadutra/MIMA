@@ -27,38 +27,18 @@ public class ItemService {
 		return (ItemConverter.convertToDto(itemDAO.findItemById(id)));
 	}
 	
-	public void insertItem(ItemDTO itemDTO) {
-		itemDAO.save(ItemConverter.convertToEntity(itemDTO));
+	public ItemDTO insertItem(ItemDTO itemDTO) {
+		Item item = ItemConverter.convertToEntity(itemDTO);
+		itemDAO.saveAndFlush(item);
+		return ItemConverter.convertToDto(item);
 	}
 	
-	public void deleteItem(int id) {
+	public boolean deleteItem(int id) {
 		itemDAO.deleteItem(id);
+		return true;
 	}
 	
 	public List<ItemDTO> getItemByWBS(WBSDTO wbs){
 		return (ItemConverter.toListDTO(itemDAO.findAllByWbs(WBSConverter.convertToEntity(wbs))));
-	}
-	
-	public List<ItemDTO> getItemByLevelAndWbs(Integer level, WBSDTO wbs){
-		
-		List<Item> item = itemDAO.findAllByLevelAndWbs(level,WBSConverter.convertToEntity(wbs));
-		List<ItemDTO> itemDTO = ItemConverter.toListDTO(item);
-		
-		return itemDTO;
-	}
-	
-	public int getMaxLevelByWbs(WBSDTO wbs) {
-		
-		return itemDAO.findMaxLevelByWbs(wbs.getId());
-	}
-	
-	public void insertItem(String name, Integer id_father, int id_wbs, int level) {
-		if(id_father == 0) {
-			itemDAO.insertItem(name, null, id_wbs, level);
-		}
-		else {
-			itemDAO.insertItem(name, id_father, id_wbs, level);
-		}	
-	}
-	
+	}	
 }

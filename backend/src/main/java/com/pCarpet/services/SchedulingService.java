@@ -10,6 +10,7 @@ import com.pCarpet.converter.SchedulingConverter;
 import com.pCarpet.dao.SchedulingDAO;
 import com.pCarpet.dto.MachineDTO;
 import com.pCarpet.dto.SchedulingDTO;
+import com.pCarpet.model.Scheduling;
 
 @Service
 public class SchedulingService {
@@ -25,12 +26,15 @@ public class SchedulingService {
 		return (SchedulingConverter.convertToDTO(schedulingDAO.findById(id)));
 	}
 	
-	public void insertScheduling(SchedulingDTO schedulingDTO) {
-		schedulingDAO.save(SchedulingConverter.convertToEntity(schedulingDTO));
+	public SchedulingDTO insertScheduling(SchedulingDTO schedulingDTO) {
+		Scheduling scheduling = SchedulingConverter.convertToEntity(schedulingDTO);
+		schedulingDAO.saveAndFlush(scheduling);
+		return SchedulingConverter.convertToDTO(scheduling);
 	}
 	
-	public void deleteScheduling(int idScheduling) {
+	public boolean deleteScheduling(int idScheduling) {
 		schedulingDAO.deleteById(idScheduling);
+		return true;
 	}
 	
 	public List<SchedulingDTO> getAllScheduling(MachineDTO machineDTO){

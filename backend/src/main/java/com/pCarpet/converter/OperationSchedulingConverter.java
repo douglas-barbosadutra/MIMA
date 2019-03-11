@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.pCarpet.dto.OperationSchedulingDTO;
-import com.pCarpet.dto.SchedulingDTO;
 import com.pCarpet.model.OperationScheduling;
 import com.pCarpet.model.Scheduling;
 import com.pCarpet.model.Task;
@@ -19,10 +18,12 @@ public class OperationSchedulingConverter {
 				os.setId(osdto.getId());
 			os.setOrderTask(osdto.getOrder());
 			Task task = new Task();
-			task.setId(osdto.getIdTask());
+			task.setId(osdto.getIdTaskFather());
+			os.setTaskFather(task);
+			task.setId(osdto.getIdTaskChild());
+			os.setTaskChild(task);
 			Scheduling scheduling = new Scheduling();
 			scheduling.setId(osdto.getIdScheduling());
-			os.setTask(task);
 			os.setScheduling(scheduling);
 		}
 		return os;
@@ -34,7 +35,8 @@ public class OperationSchedulingConverter {
 			osdto = new OperationSchedulingDTO();
 			osdto.setId(os.getId());
 			osdto.setIdScheduling(os.getScheduling().getId());
-			osdto.setIdTask(os.getTask().getId());
+			osdto.setIdTaskFather(os.getTaskFather().getId());
+			osdto.setIdTaskChild(os.getTaskChild().getId());
 			osdto.setOrder(os.getOrderTask());
 		}
 		return osdto;

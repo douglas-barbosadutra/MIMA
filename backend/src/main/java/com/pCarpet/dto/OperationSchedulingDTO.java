@@ -13,8 +13,8 @@ import lombok.ToString;
 public class OperationSchedulingDTO {
 
 	private int id;
-	private int idTask;
+	private int idTaskFather;
+	private int idTaskChild;
 	private int idScheduling;
-	private int order;
-	
+	private int order;	
 }

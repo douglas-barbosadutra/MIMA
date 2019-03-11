@@ -2,77 +2,42 @@ package com.pCarpet.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.pCarpet.dto.MachineDTO;
 import com.pCarpet.dto.TaskDTO;
-import com.pCarpet.services.MachineService;
 import com.pCarpet.services.TaskService;
-import com.pCarpet.services.UserService;
 
-@Controller
+@CrossOrigin(value="*")
+@RestController
 @RequestMapping("/Task")
 public class TaskController {
 	
 	private TaskService taskService;
-	private MachineService machineService;
 	
 	@Autowired
-	public TaskController(TaskService ts, MachineService ms) {
+	public TaskController(TaskService ts) {
 		taskService = ts;
-		machineService = ms;
-	}
-	
-	@RequestMapping(value="/chooseMachine" , method= RequestMethod.GET)
-	public String chooseMachine(HttpServletRequest request) {		
-		
-		UserService.idMacchinario = Integer.parseInt(request.getParameter("id"));
-		request.getSession().setAttribute("idMacchinarioScelto", UserService.idMacchinario);
-		
-		return "homeUser";
 	}
 	
 	@RequestMapping(value="/insertTask", method= RequestMethod.POST)
-	public String insertTask(HttpServletRequest request) {
-		
-		String descrizione = request.getParameter("descrizione");
-		
-		TaskDTO taskdto = new TaskDTO(0, descrizione, UserService.idMacchinario);
-		
-		taskService.insertTask(taskdto);
-		
-		return "homeUser";
+	public TaskDTO insertTask(@RequestBody TaskDTO taskdto) {
+		return taskService.insertTask(taskdto);
 	}
 	
-	@RequestMapping(value="/deleteTask" , method= RequestMethod.GET)
-	public String deleteTask(HttpServletRequest request) {		
-		
-		int id = Integer.parseInt(request.getParameter("id"));
-		taskService.deleteTask(id);
-		
-		return "homeUser";
+	@RequestMapping(value="/deleteTask" , method= RequestMethod.POST)
+	public boolean deleteTask(@RequestBody TaskDTO taskdto) {		
+		return taskService.deleteTask(taskdto.getId());
 	}
 	
-	@RequestMapping(value="/showTask" , method= RequestMethod.GET)
-	public String showTask(HttpServletRequest request) {
-		
-		
-			
-			String showTask = request.getParameter("showTask");
-			
-			List<TaskDTO> tasks = taskService.getAllTasks(UserService.idMacchinario);
-			
-			request.getSession().setAttribute("taskList", tasks);
-			request.getSession().setAttribute("showTask", showTask);
-
-			return "taskShow";
-		
-		
+	@RequestMapping(value="/showTask" , method= RequestMethod.POST)
+	public List<TaskDTO> showTask(@RequestBody MachineDTO machinedto) {
+		return taskService.getAllTasks(machinedto.getId());
 	}
 
 }

@@ -1,13 +1,14 @@
 package com.pCarpet.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pCarpet.converter.UserConverter;
 import com.pCarpet.converter.WBSConverter;
 import com.pCarpet.dao.WBSDAO;
+import com.pCarpet.dto.UserDTO;
 import com.pCarpet.dto.WBSDTO;
 import com.pCarpet.model.WBS;
 
@@ -21,25 +22,20 @@ public class WBSService {
 		this.wbsDao = wbsDao;
 	}
 	
-	public void deleteWBS(int id) {
+	public boolean deleteWBS(int id) {
 		wbsDao.deleteById(id);
+		return true;
 	}
 	
-	public void insertWBS(WBSDTO wbsDTO) {
-		wbsDao.save(WBSConverter.convertToEntity(wbsDTO));
+	public WBSDTO insertWBS(WBSDTO wbsDTO) {
+		WBS wbs = WBSConverter.convertToEntity(wbsDTO);
+		wbsDao.save(wbs);
+		return WBSConverter.convertToDto(wbs);
 	}
 	
-	public List<WBSDTO> showWBS(){
-		
-		List<WBS> wbs = wbsDao.findAllByUser(UserService.getUserSession());
-		List<WBSDTO> wbsDTO = new ArrayList<>();
-		
-		for(WBS w : wbs)
-			wbsDTO.add(WBSConverter.convertToDto(w));
-		
-		return wbsDTO;
-		
+	public List<WBSDTO> showWBS(UserDTO user){
+		List<WBS> wbs = wbsDao.findAllByUser(UserConverter.toEntity(user));
+		return WBSConverter.toListDTO(wbs);
 	}
-	
 
 }

@@ -27,12 +27,12 @@ public class UserController {
 		return userService.insertUser(user);
 	}
 	
-	@RequestMapping(value="/deleteUser" , method= RequestMethod.GET)
+	@RequestMapping(value="/deleteUser" , method= RequestMethod.POST)
 	public boolean deleteUser(@RequestBody UserDTO user) {		
 		return userService.deleteUser(user.getId());
 	}
 	
-	@RequestMapping(value="/showUser" , method= RequestMethod.GET)
+	@RequestMapping(value="/showUser" , method= RequestMethod.POST)
 	public List<UserDTO> showUser() {		
 		return userService.getAllUsers();
 	}

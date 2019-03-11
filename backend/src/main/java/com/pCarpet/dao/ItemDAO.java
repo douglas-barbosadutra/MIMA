@@ -1,8 +1,8 @@
 package com.pCarpet.dao;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import com.pCarpet.model.Item;
@@ -13,7 +13,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-public interface ItemDAO extends CrudRepository<Item, Integer>{
+public interface ItemDAO extends JpaRepository<Item, Integer>{
 	
 	final String FIND_MAX_LEVEL_BY_WBS = "select max(level) from items where id_wbs = :wbs";
 	

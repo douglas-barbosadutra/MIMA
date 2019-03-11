@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pCarpet.converter.OperationSchedulingConverter;
+import com.pCarpet.converter.SchedulingConverter;
 import com.pCarpet.dao.OperationSchedulingDAO;
 import com.pCarpet.dto.OperationSchedulingDTO;
+import com.pCarpet.dto.SchedulingDTO;
 import com.pCarpet.dto.TaskDTO;
 import com.pCarpet.dto.TaskScheduledDTO;
 import com.pCarpet.model.Scheduling;
@@ -24,7 +26,32 @@ public class OperationSchedulingService {
 		this.operationSchedulingDAO = operationSchedulingDAO;
 		this.taskService = taskService;
 	}
-
+	
+	public boolean insertOperationScheduling(TaskScheduledDTO father, TaskScheduledDTO child) {
+		OperationSchedulingDTO osdto = new OperationSchedulingDTO();
+		osdto.setIdTaskChild(child.getIdTask());
+		osdto.setIdTaskFather(father.getIdTask());
+		osdto.setIdScheduling(father.getIdOperationScheduling());
+		operationSchedulingDAO.save(OperationSchedulingConverter.convertToEntity(osdto));
+		return true;
+	}
+	
+	public boolean deleteOperationScheduling(int id) {
+		operationSchedulingDAO.deleteById(id);
+		return true;
+	}
+	
+	public List<OperationSchedulingDTO> showOperationScheduling(SchedulingDTO scheduling) { //da ordinare
+		return OperationSchedulingConverter.toListDTO(operationSchedulingDAO.findAllByScheduling(SchedulingConverter.convertToEntity(scheduling)));
+	}
+	
+	
+	public TaskScheduledDTO getFatherTaskScheduled(SchedulingDTO scheduling){
+		List<OperationSchedulingDTO> operationList = showOperationScheduling(scheduling);
+		TaskScheduledDTO father = null;
+		return father;
+	}
+/*
 	public void deleteOperationScheduling(int id, int idSchedulazione, int idMacchinario) {
 		List<TaskScheduledDTO> listaTaskSchedultatiDTO = getTaskSchedulati(idSchedulazione, idMacchinario);
 		int i = 0;
@@ -41,7 +68,7 @@ public class OperationSchedulingService {
 		this.operationSchedulingDAO.deleteById(id);
 	}
 
-	public void insertOperazioneSchedulazione(int id_schedulazione, int id_task, int ordine) {
+	public void insertOperazioneSchedulazione(TaskScheduledDTO father, TaskScheduledDTO child) {
 		OperationSchedulingDTO osdto = new OperationSchedulingDTO(0, id_task, id_schedulazione, ordine);
 		this.operationSchedulingDAO.save(OperationSchedulingConverter.convertToEntity(osdto));
 	}
@@ -89,5 +116,5 @@ public class OperationSchedulingService {
 		insertOperationScheduling(osdto);
 		listaTaskSchedulati.get(oldPosition - 1).setOrder(newPosition);
 		listaTaskSchedulati.get(newPosition - 1).setOrder(oldPosition);
-	}
+	}*/
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.pCarpet.dto.EmployeeDTO;
 import com.pCarpet.dto.UserDTO;
@@ -27,7 +28,7 @@ public class EmployeeController {
 		this.userService = userService;
 	}
 	
-	@RequestMapping(value="/insertEmployee")
+	@RequestMapping(value="/insertEmployee", method = RequestMethod.POST)
 	public EmployeeDTO insertEmployee(@RequestBody UserDTO userdto, @RequestBody Integer idBusinessOwner) {
 		userdto.setRank(2);
 		userService.insertUser(userdto);
@@ -39,14 +40,14 @@ public class EmployeeController {
 		return employeeService.insertEmployee(employee);
 	}
 	
-	@RequestMapping(value="/assignTask")
+	@RequestMapping(value="/assignTask", method = RequestMethod.POST)
 	public EmployeeDTO assignTask(@RequestBody EmployeeDTO employee, @RequestBody Integer idTask) {
 		employee.setIdTask(idTask);
 		return employeeService.insertEmployee(employee);
 	}
 	
-	@RequestMapping(value="/showEmployee")
-	public List<EmployeeDTO> getEmployeeByBusinessOwner(@RequestBody Integer idBusinessOwner){
-		return this.employeeService.getEmployeeByIdBusinessOwner(idBusinessOwner);
+	@RequestMapping(value="/showEmployee", method = RequestMethod.POST)
+	public List<EmployeeDTO> getEmployeeByBusinessOwner(@RequestBody UserDTO BusinessOwner){
+		return this.employeeService.getEmployeeByIdBusinessOwner(BusinessOwner.getId());
 	}
 }
