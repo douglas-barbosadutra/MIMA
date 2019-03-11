@@ -15,7 +15,7 @@ import com.pCarpet.services.UserService;
 
 @CrossOrigin(value="*")
 @Controller
-@RequestMapping("/Login")
+@RequestMapping("/Employee")
 public class EmployeeController {
 
 	private EmployeeService employeeService;
@@ -39,13 +39,13 @@ public class EmployeeController {
 		return employeeService.insertEmployee(employee);
 	}
 	
-	@RequestMapping(value="/insertEmployee")
+	@RequestMapping(value="/assignTask")
 	public EmployeeDTO assignTask(@RequestBody EmployeeDTO employee, @RequestBody Integer idTask) {
 		employee.setIdTask(idTask);
 		return employeeService.insertEmployee(employee);
 	}
 	
-	
+	@RequestMapping(value="/showEmployee")
 	public List<EmployeeDTO> getEmployeeByBusinessOwner(@RequestBody Integer idBusinessOwner){
 		return this.employeeService.getEmployeeByIdBusinessOwner(idBusinessOwner);
 	}

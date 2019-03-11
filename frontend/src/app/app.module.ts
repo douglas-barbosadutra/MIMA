@@ -7,6 +7,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginService } from 'src/services/login.service';
+import {MachineService} from 'src/services/machine.service';
+
 import {HomeAdminComponent} from 'src/components/home-admin/home-admin.component';
 import {HomeUserComponent} from 'src/components/home-user/home-user.component';
 import {HomeEmployeeComponent} from 'src/components/home-employee/home-employee.component';
@@ -49,7 +51,7 @@ import {WbsShowComponent} from 'src/components/wbs-show/wbs-show.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [LoginService],
+  providers: [LoginService,MachineService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

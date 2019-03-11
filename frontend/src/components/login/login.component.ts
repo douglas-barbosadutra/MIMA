@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import {LoginService} from "src/services/login.service";
+import { UserDTO } from 'src/dto/UserDTO';
 
 
 @Component({
@@ -11,7 +12,7 @@ import {LoginService} from "src/services/login.service";
 })
 export class LoginComponent implements OnInit {
 
-  private utenteLocale: string;
+  private idUtenteLocale: number;
   constructor(private loginService: LoginService, private router:  Router) { }
 
   ngOnInit(){
@@ -23,8 +24,9 @@ export class LoginComponent implements OnInit {
     this.loginService.login(f.value.username, f.value.password).subscribe((response) => {
 
       if(response != null){
-        this.utenteLocale = response.name;
-        sessionStorage.setItem("user", JSON.stringify(this.utenteLocale));
+        this.idUtenteLocale = response.id;
+        console.log(this.idUtenteLocale);
+        sessionStorage.setItem("idUser", JSON.stringify(this.idUtenteLocale));
 
         if(response.rank == 0)
           this.router.navigateByUrl("/homeUser");
