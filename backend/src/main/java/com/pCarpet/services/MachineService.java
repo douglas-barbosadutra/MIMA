@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.pCarpet.converter.MachineConverter;
 import com.pCarpet.dao.MachineDAO;
 import com.pCarpet.dto.MachineDTO;
+import com.pCarpet.model.User;
 
 @Service
 public class MachineService {
@@ -27,8 +28,10 @@ public class MachineService {
         this.machineDAO.deleteById(id);
     }
     
-    public List<MachineDTO> getAllMachines() {
-    	return (MachineConverter.toListDTO(this.machineDAO.findAllByUser(UserService.getUserSession())));
+    public List<MachineDTO> getAllMachinesByIdUser(int idUser) {
+    	User user = new User();
+    	user.setId(idUser);
+    	return (MachineConverter.toListDTO(this.machineDAO.findAllByUser(user)));
     }
     
 }

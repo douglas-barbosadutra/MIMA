@@ -42,6 +42,10 @@ public class UserService {
 		return userDAO.findUserById(id);
 	}
 
+	public UserDTO getUserByUsername(String username) {
+		return UserConverter.toDTO(userDAO.findUserByUsername(username));
+	}
+	
 	public static void setUserSession(User u) {
 		user = u;
 	}
@@ -49,4 +53,5 @@ public class UserService {
 	public static User getUserSession() {
 		return user;
 	}
+	
 }

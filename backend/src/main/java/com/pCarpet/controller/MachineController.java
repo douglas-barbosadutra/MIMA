@@ -5,15 +5,18 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.pCarpet.dto.MachineDTO;
 import com.pCarpet.services.MachineService;
 import com.pCarpet.services.UserService;
 
-@Controller
+
+@CrossOrigin(value="*")
+@RestController
 @RequestMapping("/Machine")
 public class MachineController {
 	
@@ -22,11 +25,6 @@ public class MachineController {
 	@Autowired
 	public MachineController(MachineService ms) {
 		machineService = ms;
-	}
-	
-	@RequestMapping(value="/openInsertMachine")
-	public String openInsertMachine(HttpServletRequest request) {
-		return "machineInsert";
 	}
 	
 	@RequestMapping(value="/insertMachine", method= RequestMethod.POST)
@@ -52,16 +50,9 @@ public class MachineController {
 	}
 	
 	@RequestMapping(value="/showMachine" , method= RequestMethod.GET)
-	public String showMachine(HttpServletRequest request) {
-		
-		String showMachine = request.getParameter("showMachine");
-		
-		List<MachineDTO> machines = machineService.getAllMachines();
-		
-		request.getSession().setAttribute("machines_list", machines);
-		request.getSession().setAttribute("showMachine", showMachine);
-		
-		return "machineShow";
+	public List<MachineDTO> showMachine(HttpServletRequest request) {
+		int idUser = (int)request.getAttribute("idUser");
+		return (machineService.getAllMachinesByIdUser(idUser));
 	}
 
 }

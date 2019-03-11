@@ -23,11 +23,6 @@ public class UserController {
 		userService = us;
 	}
 	
-	@RequestMapping(value="/openInsertUser")
-	public String openInsertUser(HttpServletRequest request) {
-		return "userInsert";
-	}
-	
 	@RequestMapping(value="/insertUser", method= RequestMethod.POST)
 	public String insertUser(HttpServletRequest request) {
 		
@@ -44,11 +39,6 @@ public class UserController {
 		userService.insertUser(userdto);
 		
 		return "homeAdmin";
-	}
-	
-	@RequestMapping(value="/openUpdateUser")
-	public String openUpdateUser(HttpServletRequest request) {
-		return "userUpdate";
 	}
 	
 	@RequestMapping(value="/updateUser", method= RequestMethod.POST)
@@ -95,6 +85,4 @@ public class UserController {
 	public String logout(HttpServletRequest request) {		
 		return "index";
 	}
-
-	
 }

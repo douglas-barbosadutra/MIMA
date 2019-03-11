@@ -37,22 +37,6 @@ public class TaskController {
 		return "homeUser";
 	}
 	
-	@RequestMapping(value="/openInsertTask")
-	public String openInsertTask(HttpServletRequest request) {
-		if(UserService.idMacchinario == 0) {
-			
-			List<MachineDTO> machines = machineService.getAllMachines();
-			
-			request.getSession().setAttribute("machines_list", machines);
-			request.getSession().setAttribute("showMachine", "choose");
-			
-			return "machineShow";
-			
-		}else {
-			return "taskInsert";
-		}
-	}
-	
 	@RequestMapping(value="/insertTask", method= RequestMethod.POST)
 	public String insertTask(HttpServletRequest request) {
 		
@@ -77,16 +61,7 @@ public class TaskController {
 	@RequestMapping(value="/showTask" , method= RequestMethod.GET)
 	public String showTask(HttpServletRequest request) {
 		
-		if(UserService.idMacchinario == 0) {
 		
-			List<MachineDTO> machines = machineService.getAllMachines();
-			
-			request.getSession().setAttribute("machines_list", machines);
-			request.getSession().setAttribute("showMachine", "choose");
-			
-			return "machineShow";
-		
-		}else{
 			
 			String showTask = request.getParameter("showTask");
 			
@@ -96,7 +71,7 @@ public class TaskController {
 			request.getSession().setAttribute("showTask", showTask);
 
 			return "taskShow";
-		}
+		
 		
 	}
 

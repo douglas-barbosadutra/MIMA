@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.pCarpet.dto.InstructionDTO;
-import com.pCarpet.dto.MachineDTO;
 import com.pCarpet.dto.TaskDTO;
 import com.pCarpet.services.InstructionService;
 import com.pCarpet.services.TaskService;

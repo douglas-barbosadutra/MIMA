@@ -40,23 +40,9 @@ public class SchedulingController {
 		return "homeUser";
 	}
 
-	@RequestMapping(value = "/openInsertScheduling")
-	public String openInsertScheduling(HttpServletRequest request) {
-		if (UserService.idMacchinario == 0) {
-			List<MachineDTO> machines = machineService.getAllMachines();
-
-			request.getSession().setAttribute("machines_list", machines);
-			request.getSession().setAttribute("showMachine", "choose");
-			return "machineShow";
-
-		} else {
-
-			return "schedulingInsert";
-		}
-	}
-
 	@RequestMapping(value = "/insertScheduling", method = RequestMethod.POST)
 	public String insertScheduling(HttpServletRequest request) {
+		
 		String name = request.getParameter("name");
 		String dataInizio = request.getParameter("dataInizio");
 		String dataFine = request.getParameter("dataFine");
@@ -76,12 +62,6 @@ public class SchedulingController {
 	@RequestMapping(value = "/showScheduling", method = RequestMethod.GET)
 	public String showScheduling(HttpServletRequest request) {
 
-		if (UserService.idMacchinario == 0) {
-			List<MachineDTO> machines = machineService.getAllMachines();
-			request.getSession().setAttribute("machines_list", machines);
-			request.getSession().setAttribute("showMachine", "choose");
-			return "machineShow";
-		} else {
 			String showScheduling = request.getParameter("showScheduling");
 			MachineDTO machineDTO = new MachineDTO();
 			machineDTO.setId(UserService.idMacchinario);
@@ -89,7 +69,7 @@ public class SchedulingController {
 			request.getSession().setAttribute("schedulingList", scheduling);
 			request.getSession().setAttribute("showScheduling", showScheduling);
 			return "schedulingList";
-		}
+	
 	}
 
 	@RequestMapping(value = "/modifySchedulingOpen")
