@@ -22,14 +22,14 @@ export class MachineService {
   }
 
   insertMachine(machineDTO: any){
-    
     return this.http.post( 'http://localhost:8080/Machine/insertMachine', machineDTO);
-    
   }
 
   showMachine(userDTO: UserDTO){
-    
     return this.http.post('http://localhost:8080/Machine/showMachine', userDTO);
+  }
 
+  deleteMachine(machineDTO: MachineDTO){
+    return this.http.post('http://localhost:8080/Machine/deleteMachine', machineDTO);
   }
 }

@@ -21,7 +21,10 @@
 							<td >{{machineList.id}}</td>
               <td >{{machineList.nome}}</td>
               <td >{{machineList.modello}}</td>
-              <td >{{machineList.modello}}</td>
+              <td>
+                <button class="btn btn-primary" (click)="chooseMachine(machineList.id)">Seleziona</button>
+                <button class="btn btn-primary" (click)="deleteMachine(machineList.id)">Elimina</button>
+              </td>
 						</tr>
 			    </tbody>
 			    

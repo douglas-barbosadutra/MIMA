@@ -13,8 +13,9 @@ export class MachineShowComponent implements OnInit {
 
   private machineList : Array<MachineDTO>;
   private userDTO: UserDTO;
+  private machineDTO: MachineDTO;
 
-  constructor(private machineService: MachineService) { }
+  constructor(private machineService: MachineService, private router:  Router) { }
 
   ngOnInit() {
 
@@ -27,6 +28,26 @@ export class MachineShowComponent implements OnInit {
       }
     })
 
+  }
+
+  chooseMachine(idMachine: number){
+    
+    sessionStorage.setItem("idMachine",JSON.stringify(idMachine));
+    alert("Macchinario selezionato");
+  }
+
+  deleteMachine(idMachine: number){
+
+    this.machineDTO = new MachineDTO(idMachine,"","",0);
+    this.machineService.deleteMachine(this.machineDTO).subscribe((data: any) =>{
+
+      if(data)
+        alert("Cancellazione effettuata");   
+      else
+        alert("Cancellazione fallita");
+
+      this.router.navigateByUrl("homeUser");
+    })
   }
 
 }
