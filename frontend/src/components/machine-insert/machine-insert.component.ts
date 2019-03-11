@@ -26,7 +26,7 @@ export class MachineInsertComponent implements OnInit {
       if(data != null)
         alert("Inserimento effettuato");
       else
-        alert("Richiesta fallita");
+        alert("Inserimento fallito");
 
         this.router.navigateByUrl("/homeUser");
     })

@@ -24,7 +24,6 @@ export class MachineShowComponent implements OnInit {
 
       if(data != null){
         this.machineList = data;
-        console.log(this.machineList);
       }
     })
 

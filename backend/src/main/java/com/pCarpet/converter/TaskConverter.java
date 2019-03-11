@@ -14,7 +14,7 @@ public class TaskConverter{
 		if(taskdto != null) {
 			task = new Task();
 			task.setId(taskdto.getId());
-			task.setDescription(taskdto.getDescrizione());
+			task.setDescription(taskdto.getDescription());
 			Machine machine = new Machine();
 			machine.setId(taskdto.getIdMachine());
 			task.setMachine(machine);
@@ -27,7 +27,7 @@ public class TaskConverter{
 		if(task != null) {
 			taskdto = new TaskDTO();
 			taskdto.setId(task.getId());
-			taskdto.setDescrizione(task.getDescription());
+			taskdto.setDescription(task.getDescription());
 			taskdto.setIdMachine(task.getMachine().getId());
 		}
 		return taskdto;

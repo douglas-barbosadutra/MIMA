@@ -1,4 +1,28 @@
 <app-menu-user></app-menu-user>
-<p>
-  task-show works!
-</p>
+<h1 class="title">Lista task</h1>
+
+<div id="container">
+  <table class="table table-striped">
+    <thead>
+      
+      <tr>
+        <th>ID</th>
+        <th>Descrizione</th>
+        <th>Opzioni</th>
+      </tr>
+      
+    </thead>
+    
+    <tbody>
+      <tr *ngFor="let taskList of taskList">			
+        <td >{{taskList.id}}</td>
+        <td >{{taskList.description}}</td>
+        <td>
+          <button class="btn btn-primary" (click)="chooseTask(taskList.id)">Seleziona</button>
+          <button class="btn btn-primary" (click)="deleteTask(taskList.id)">Elimina</button>
+        </td>
+      </tr>
+    </tbody>
+    
+  </table>
+</div>

@@ -11,10 +11,10 @@ import lombok.ToString;
 @ToString
 
 public class TimeDTO {
-	private String nomeIstruzione;
+	private String nameInstruction;
 	private String item;
-	private int durataEffettiva;
-	private int durataPrevista;
-	private String risultato;
+	private int effectiveDuration;
+	private int expectedDuration;
+	private String result;
 
 }

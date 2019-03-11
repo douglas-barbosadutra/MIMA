@@ -11,12 +11,12 @@ public class TimeConverter {
 		TimeDTO timeDTO = null;
 		if(instructionDTO != null && manufacturingDTO != null && itemDTO != null) {
 			timeDTO = new TimeDTO();
-			timeDTO.setNomeIstruzione(instructionDTO.getNomeIstruzione());
+			timeDTO.setNameInstruction(instructionDTO.getNomeIstruzione());
 			timeDTO.setItem(itemDTO.getName());
-			timeDTO.setDurataEffettiva(manufacturingDTO.getDurata());
-			timeDTO.setDurataPrevista(instructionDTO.getDurata());
-			String risultato = (timeDTO.getDurataEffettiva() <= timeDTO.getDurataPrevista()) ? "#79fc00" : "RED";
-			timeDTO.setRisultato(risultato);
+			timeDTO.setEffectiveDuration(manufacturingDTO.getDurata());
+			timeDTO.setExpectedDuration(instructionDTO.getDurata());
+			String risultato = (timeDTO.getEffectiveDuration() <= timeDTO.getExpectedDuration()) ? "#79fc00" : "RED";
+			timeDTO.setResult(risultato);
 		}
 		return timeDTO;
 	}

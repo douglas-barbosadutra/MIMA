@@ -11,6 +11,7 @@ export class InstructionInsertComponent implements OnInit {
   constructor(private router:  Router) { }
 
   ngOnInit() {
+    
   }
 
 }

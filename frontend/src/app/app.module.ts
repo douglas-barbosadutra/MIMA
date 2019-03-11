@@ -24,6 +24,7 @@ import {TaskShowComponent} from 'src/components/task-show/task-show.component';
 import {UserUpdateComponent} from 'src/components/user-update/user-update.component';
 import {WbsInsertComponent} from 'src/components/wbs-insert/wbs-insert.component';
 import {WbsShowComponent} from 'src/components/wbs-show/wbs-show.component';
+import { TaskService } from 'src/services/task.service';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,7 @@ import {WbsShowComponent} from 'src/components/wbs-show/wbs-show.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [LoginService,MachineService],
+  providers: [LoginService,MachineService,TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
