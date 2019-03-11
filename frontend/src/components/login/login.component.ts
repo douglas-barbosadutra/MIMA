@@ -12,7 +12,7 @@ import {LoginService} from "src/services/login.service";
 export class LoginComponent implements OnInit {
 
   private utenteLocale: string;
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private router:  Router) { }
 
   ngOnInit(){
     console.log("eccolo");
@@ -21,11 +21,23 @@ export class LoginComponent implements OnInit {
 
   login(f:NgForm): void{
     this.loginService.login(f.value.username, f.value.password).subscribe((response) => {
+
       if(response != null){
-        console.log(response);
+        this.utenteLocale = response.name;
+        sessionStorage.setItem("user", JSON.stringify(this.utenteLocale));
+
+        if(response.rank == 0)
+          this.router.navigateByUrl("/homeUser");
+
+        else if(response.rank == 1)
+          this.router.navigateByUrl("/homeAdmin");
+
+        else
+          this.router.navigateByUrl("/homeEmployee");
+            
       }
       else{
-        console.log("user o pass errati");
+        alert("user o pass errati");
       }
     });
   }
