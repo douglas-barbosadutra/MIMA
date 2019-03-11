@@ -28,7 +28,12 @@ public class MachineController {
 	
 	@RequestMapping(value="/insertMachine", method= RequestMethod.POST)
 	public MachineDTO insertMachine(@RequestBody MachineDTO machinedto) {
-		return machineService.insertMachine(machinedto);		
+		
+		MachineDTO machine = machineService.insertMachine(machinedto);
+		if(machine != null)
+			return machinedto;
+		else
+			return null;
 	}
 	
 	@RequestMapping(value="/deleteMachine" , method= RequestMethod.GET)
@@ -36,7 +41,7 @@ public class MachineController {
 		return machineService.deleteMachine(machinedto.getId());
 	}
 	
-	@RequestMapping(value="/showMachine" , method= RequestMethod.GET)
+	@RequestMapping(value="/showMachine" , method= RequestMethod.POST)
 	public List<MachineDTO> showMachine(@RequestBody UserDTO user) {
 		return (machineService.getAllMachinesByIdUser(user.getId()));
 

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
 import { Observable, of, } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { MachineDTO } from '../dto/MachineDTO';
+import { UserDTO } from '../dto/UserDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -20,9 +21,15 @@ export class MachineService {
     };
   }
 
-  insertMachine(machineDTO: MachineDTO): Observable<MachineDTO>{
-    const params = new HttpParams().set('machinedto', JSON.stringify(machineDTO));
-    return this.http.post<MachineDTO>('http://localhost:8080/Machine/insertMachine', params).pipe(tap((response) => console.log(machineDTO), catchError(this.handleError("login error", {}))));
-  
+  insertMachine(machineDTO: any){
+    
+    return this.http.post( 'http://localhost:8080/Machine/insertMachine', machineDTO);
+    
+  }
+
+  showMachine(userDTO: UserDTO){
+    
+    return this.http.post('http://localhost:8080/Machine/showMachine', userDTO);
+
   }
 }

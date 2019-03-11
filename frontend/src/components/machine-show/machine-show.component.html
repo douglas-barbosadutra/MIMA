@@ -1,4 +1,30 @@
 <app-menu-user></app-menu-user>
-<p>
-  machine-show works!
-</p>
+
+<h1 class="title">Lista macchinari</h1>
+		
+		<div id="container">
+			
+			<table class="table table-striped">
+			    <thead>
+			      
+			      <tr>
+			        <th>ID</th>
+			        <th>Nome</th>
+			        <th>Modello</th>
+			        <th>Opzioni</th>
+			      </tr>
+			      
+			    </thead>
+			    
+			    <tbody>
+			    	<tr *ngFor="let machineList of machineList">			
+							<td >{{machineList.id}}</td>
+              <td >{{machineList.nome}}</td>
+              <td >{{machineList.modello}}</td>
+              <td >{{machineList.modello}}</td>
+						</tr>
+			    </tbody>
+			    
+		  </table>
+		  	
+		</div>
