@@ -26,12 +26,15 @@ public class UserService {
 		this.userDAO = userDAO;
 	}
 
-	public void deleteUser(int id) {
+	public boolean deleteUser(int id) {
 		this.userDAO.deleteById(id);
+		return true;
 	}
 
-	public void insertUser(UserDTO userdto) {
-		userDAO.save(UserConverter.toEntity(userdto));
+	public UserDTO insertUser(UserDTO userDTO) {
+		User user = UserConverter.toEntity(userDTO);
+		userDAO.saveAndFlush(user);
+		return UserConverter.toDTO(user);
 	}
 	
 	public List<UserDTO> getAllUsers(){

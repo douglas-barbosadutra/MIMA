@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.pCarpet.converter.EmployeeConverter;
 import com.pCarpet.dao.EmployeeDAO;
 import com.pCarpet.dto.EmployeeDTO;
+import com.pCarpet.model.Employee;
 import com.pCarpet.model.User;
 
 @Service
@@ -20,12 +21,15 @@ public class EmployeeService {
 		this.employeeDAO = employeeDAO;
 	}
 	
-	public void insertEmployee(EmployeeDTO employee) {
-		employeeDAO.save(EmployeeConverter.convertToEntity(employee));
+	public EmployeeDTO insertEmployee(EmployeeDTO employeeDTO) {
+		Employee employee = EmployeeConverter.convertToEntity(employeeDTO);
+		employeeDAO.saveAndFlush(employee);
+		return EmployeeConverter.convertToDto(employee);
 	}
 	
-	public void deleteEmployeeById(EmployeeDTO employee) {
+	public boolean deleteEmployeeById(EmployeeDTO employee) {
 		employeeDAO.deleteById(employee.getId());
+		return true;
 	}
 	
 	public List<EmployeeDTO> getEmployeeByIdBusinessOwner(int id){

@@ -1,10 +1,11 @@
 package com.pCarpet.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.pCarpet.dto.EmployeeDTO;
@@ -27,9 +28,7 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping(value="/insertEmployee")
-	public String insertEmployee(HttpServletRequest request) {
-		UserDTO userdto = (UserDTO)request.getAttribute("user");
-		int idBusinessOwner = (int)(request.getAttribute("idBusinessOwner"));
+	public EmployeeDTO insertEmployee(@RequestBody UserDTO userdto, @RequestBody Integer idBusinessOwner) {
 		userdto.setRank(2);
 		userService.insertUser(userdto);
 		userdto = userService.getUserByUsername(userdto.getUsername());
@@ -37,16 +36,17 @@ public class EmployeeController {
 		employee.setIdUser(userdto.getId());
 		employee.setIdBusinessOwner(idBusinessOwner);
 		employee.setName(userdto.getName());
-		employeeService.insertEmployee(employee);
-		return "";
+		return employeeService.insertEmployee(employee);
 	}
 	
 	@RequestMapping(value="/insertEmployee")
-	public String assignTask(HttpServletRequest request) {
-		EmployeeDTO employee = (EmployeeDTO)request.getAttribute("employee");
-		int idTask = (int)request.getAttribute("idTask");
+	public EmployeeDTO assignTask(@RequestBody EmployeeDTO employee, @RequestBody Integer idTask) {
 		employee.setIdTask(idTask);
-		employeeService.insertEmployee(employee);
-		return "";
+		return employeeService.insertEmployee(employee);
+	}
+	
+	
+	public List<EmployeeDTO> getEmployeeByBusinessOwner(@RequestBody Integer idBusinessOwner){
+		return this.employeeService.getEmployeeByIdBusinessOwner(idBusinessOwner);
 	}
 }
