@@ -15,7 +15,7 @@ export class ItemService {
   }
 
   deleteItem(itemDto: ItemDTO){
-    return this.http.post('http://localhost:8080/Item/deleteNode', itemDto);
+    return this.http.post('http://localhost:8080/Item/removeNode', itemDto);
   }
 
   showItemTree(wbsDTO: WBSDTO){

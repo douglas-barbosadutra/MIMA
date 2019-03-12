@@ -19,5 +19,4 @@ public class ItemDTO {
 	private int idFather;
 	private int idWBS;
 	public List<ItemDTO> itemChildrenDTO;
-	private int level;
 }

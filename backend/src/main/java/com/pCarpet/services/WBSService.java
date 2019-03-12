@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.pCarpet.converter.UserConverter;
 import com.pCarpet.converter.WBSConverter;
 import com.pCarpet.dao.WBSDAO;
+import com.pCarpet.dto.ItemDTO;
 import com.pCarpet.dto.UserDTO;
 import com.pCarpet.dto.WBSDTO;
 import com.pCarpet.model.WBS;
@@ -16,10 +17,12 @@ import com.pCarpet.model.WBS;
 public class WBSService {
 	
 	private WBSDAO wbsDao;
+	private ItemService itemService;
 	
 	@Autowired
-	public WBSService(WBSDAO wbsDao) {
+	public WBSService(WBSDAO wbsDao, ItemService itemService) {
 		this.wbsDao = wbsDao;
+		this.itemService = itemService;
 	}
 	
 	public boolean deleteWBS(int id) {
@@ -29,7 +32,12 @@ public class WBSService {
 	
 	public WBSDTO insertWBS(WBSDTO wbsDTO) {
 		WBS wbs = WBSConverter.convertToEntity(wbsDTO);
-		wbsDao.save(wbs);
+		wbs = wbsDao.save(wbs);
+		wbsDao.flush();
+		ItemDTO item = new ItemDTO();
+		item.setIdWBS(wbs.getId());
+		item.setName(wbs.getName());
+		itemService.insertItem(item);
 		return WBSConverter.convertToDto(wbs);
 	}
 	

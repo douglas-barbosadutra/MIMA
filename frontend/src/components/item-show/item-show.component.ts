@@ -22,27 +22,30 @@ export class ItemShowComponent implements OnInit {
     this.itemService.showItemTree(this.wbsDto).subscribe((data: any) =>{
 
       if(data != null){
-        this.list = data;
+          this.list = data;
       }
     })
   }
 
-  chooseFather(idItem: number){
-    
-    sessionStorage.setItem("idItemFather",JSON.stringify(idItem));
-    alert("Item padre selezionato");
+  insertChild(idItem: number){
+    sessionStorage.setItem("idFather", JSON.stringify(idItem));
+    this.router.navigateByUrl("itemInsert");
   }
 
   deleteItem(idItem: number){
-    this.itemDto = new ItemDTO(idItem, "", 0, 0, null, 0);
+    this.itemDto = new ItemDTO(idItem, "", 0, 0, null);
     this.itemService.deleteItem(this.itemDto).subscribe((data: any) =>{
+        this.itemService.showItemTree(this.wbsDto).subscribe((data: any) =>{
 
-      if(data)
-        alert("Cancellazione effettuata");   
-      else
-        alert("Cancellazione fallita");
-
-      this.router.navigateByUrl("homeUser");
+          if(data != null){
+              this.list = data;
+          }
+        })
     });
+  }
+
+  inserisciRadice(){
+    sessionStorage.setItem("idFather", JSON.stringify(0));
+    this.router.navigateByUrl("itemInsert");
   }
 }

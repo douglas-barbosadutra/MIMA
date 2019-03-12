@@ -27,16 +27,11 @@ export class WbsShowComponent implements OnInit {
 
   chooseWbs(idWbs: number){
     sessionStorage.setItem("idWbs", JSON.stringify(idWbs));
-    alert("WBS selezionato");
+    this.router.navigateByUrl("/itemShow");
   }
 
   deleteWbs(idWbs: number){
     this.wbsService.deleteWbs(idWbs).subscribe((data: any) =>{
-      if(data)
-      alert("Cancellazione effettuata");   
-    else
-      alert("Cancellazione fallita");
-
     this.router.navigateByUrl("homeUser");
     });
   }

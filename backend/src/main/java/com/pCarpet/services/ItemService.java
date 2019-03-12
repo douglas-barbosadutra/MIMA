@@ -29,8 +29,11 @@ public class ItemService {
 	
 	public ItemDTO insertItem(ItemDTO itemDTO) {
 		Item item = ItemConverter.convertToEntity(itemDTO);
-		itemDAO.insertItem(itemDTO.getName(), itemDTO.getIdFather(), itemDTO.getIdWBS(), itemDTO.getLevel());
-		return ItemConverter.convertToDto(item); //err
+		if(itemDTO.getIdFather() != 0)
+			itemDAO.insertItem(itemDTO.getName(), itemDTO.getIdFather(), itemDTO.getIdWBS());
+		else
+			itemDAO.insertItem(itemDTO.getName(), null, itemDTO.getIdWBS());
+		return ItemConverter.convertToDto(item); 
 	}
 	
 	public boolean deleteItem(int id) {

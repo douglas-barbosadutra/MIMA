@@ -1,5 +1,8 @@
 package com.pCarpet.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,8 +27,10 @@ public class ItemController {
 	}
 
 	@RequestMapping(value = "/showNodes", method = RequestMethod.POST)
-	public ItemDTO showNodes(@RequestBody WBSDTO wbs) {
-		return itemService.getItemByWBS(wbs);
+	public List<ItemDTO> showNodes(@RequestBody WBSDTO wbs) {
+		List<ItemDTO> temp = new ArrayList<>();
+		temp.add(itemService.getItemByWBS(wbs));
+		return temp;
 	}
 
 	@RequestMapping(value = "/addNode", method = RequestMethod.POST)

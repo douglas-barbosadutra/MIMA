@@ -15,14 +15,12 @@ public class ItemConverter {
 			itemDTO = new ItemDTO();
 			itemDTO.setId(item.getId());
 			itemDTO.setName(item.getName());
-			
 			if(item.getFather() == null) {
 				itemDTO.setIdFather(0);
 			}else {
 				itemDTO.setIdFather(item.getFather().getId());
 			}
 			itemDTO.setIdWBS(item.getWbs().getId());
-			itemDTO.setLevel(item.getLevel());
 			itemDTO.setItemChildrenDTO(ItemConverter.toListDTO(item.getChildsList()));
 		}
 		return itemDTO;
@@ -37,7 +35,6 @@ public class ItemConverter {
 			item.setFather(null);
 			if(itemDTO.getIdFather() != 0) {
 				Item father = new Item();
-				item.setLevel(itemDTO.getLevel());
 				father.setId(itemDTO.getIdFather());
 				item.setFather(father);
 			}			

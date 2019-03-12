@@ -44,9 +44,6 @@ public class Item {
 	@JoinColumn(name="id_wbs")
 	private WBS wbs;
 	
-	@Column(name = "level")
-	private Integer level;
-	
 	@OneToMany(mappedBy="output")
 	@OnDelete(action=OnDeleteAction.CASCADE)
 	private List<Manufacturing> manufacturings;

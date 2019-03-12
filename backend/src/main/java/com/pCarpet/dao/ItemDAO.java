@@ -19,19 +19,15 @@ public interface ItemDAO extends JpaRepository<Item, Integer>{
 	
 	public List<Item> findAllByWbs(WBS wbs);
 	public List<Item> findAllByManufacturings(Manufacturing manufacturings);
-	public List<Item> findAllByLevelAndWbs(Integer level, WBS wbs);
 	
 	public Item findByFather(Item i);
 	public Item findByManufacturings(Manufacturing m);
 	public Item findItemById(int id);
-	
-	@Query(value = "select max(level) from items where id_wbs = :wbs", nativeQuery=true)
-	public int findMaxLevelByWbs(@Param("wbs") int wbs);
 
 	@Modifying
 	@Transactional
-	@Query(value = "INSERT INTO items (name,id_father,id_wbs,level) VALUES (:name,:id_father,:id_wbs,:level)", nativeQuery=true)
-	public void insertItem(@Param("name") String name, @Param("id_father") Integer id_father, @Param("id_wbs") Integer id_wbs, @Param("level") Integer level);
+	@Query(value = "INSERT INTO items (name,id_father,id_wbs) VALUES (:name,:id_father,:id_wbs)", nativeQuery=true)
+	public void insertItem(@Param("name") String name, @Param("id_father") Integer id_father, @Param("id_wbs") Integer id_wbs);
 	
 	
 	@Modifying

@@ -19,15 +19,9 @@ export class ItemInsertComponent implements OnInit {
   }
 
   insertItem(f: NgForm){
-    this.itemDto = new ItemDTO(0, f.value.nome, parseInt(sessionStorage.getItem("idFather")), parseInt(sessionStorage.getItem("idWbs")), null, 0);
+    this.itemDto = new ItemDTO(0, f.value.nome, parseInt(sessionStorage.getItem("idFather")), parseInt(sessionStorage.getItem("idWbs")), null);
     this.itemService.insertItem(this.itemDto).subscribe((data: any) => {
-      
-      if(data != null)
-        alert("Inserimento effettuato");
-      else
-        alert("Inserimento fallito");
-
-        this.router.navigateByUrl("/homeUser");
+        this.router.navigateByUrl("/itemShow");
     });
   }
 }
