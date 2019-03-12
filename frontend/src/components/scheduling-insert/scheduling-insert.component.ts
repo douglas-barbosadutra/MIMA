@@ -12,6 +12,7 @@ import { SchedulingService } from 'src/services/scheduling.service';
 export class SchedulingInsertComponent implements OnInit {
 
   public schedulingDTO: SchedulingDTO;
+  private shcedulingInsert: SchedulingDTO;
 
   constructor(private router: Router, private schedulingService: SchedulingService) { }
 
@@ -31,7 +32,9 @@ export class SchedulingInsertComponent implements OnInit {
       else
         alert("Inserimento fallito");
       this.router.navigateByUrl("homeUser");
+      
     })
   }
+
 
 }

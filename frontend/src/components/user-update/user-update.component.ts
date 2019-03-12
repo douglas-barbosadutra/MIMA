@@ -17,21 +17,22 @@ export class UserUpdateComponent implements OnInit {
   constructor(private router: Router, private userSerivce: UserService) { }
 
   ngOnInit() {
-    this.findUser();
+    //this.findUser();
+    this.userDTO = new UserDTO(parseInt(sessionStorage.getItem("idUser")),"","","","","","",0);
   }
 
   updateUser(f: NgForm){
     console.log(this.userDTO);
 
-    /*this.userSerivce.updateUser(this.userDTO).subscribe((data: any) => {
+    this.userSerivce.updateUser(this.userDTO).subscribe((data: any) => {
 
       if(data != null)
         alert("Aggiornamento effettuato");
       else
         alert("Aggiornamento fallito");
 
-        this.router.navigateByUrl("homeAdmin");
-    })*/
+        this.router.navigateByUrl("homeUser");
+    })
   }
 
   findUser(){

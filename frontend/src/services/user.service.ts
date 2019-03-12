@@ -23,7 +23,7 @@ export class UserService {
   }
 
   updateUser(userDTO: UserDTO) {
-    return this.http.put( 'http://localhost:8080/User/updatetUser', userDTO);
+    return this.http.put( 'http://localhost:8080/User/updateUser', userDTO);
   }
 
   findUser(idUser: number){

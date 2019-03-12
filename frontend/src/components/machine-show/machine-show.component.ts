@@ -26,7 +26,7 @@ export class MachineShowComponent implements OnInit {
     })
 
   }
-
+s
   chooseMachine(idMachine: number){
     
     sessionStorage.setItem("idMachine",JSON.stringify(idMachine));
