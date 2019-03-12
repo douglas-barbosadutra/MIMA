@@ -23,7 +23,7 @@ import { ItemInsertComponent } from 'src/components/item-insert/item-insert.comp
 import { ItemShowComponent } from 'src/components/item-show/item-show.component';
 import { SchedulingUpdateComponent } from 'src/components/scheduling-update/scheduling-update.component';
 import { TimeShowComponent } from 'src/components/time-show/time-show.component';
-
+import { TaskScheduledComponent } from 'src/components/task-scheduled/task-scheduled.component';
 
 
 const routes: Routes = [
@@ -50,7 +50,8 @@ const routes: Routes = [
 {path: 'userShow', component: UserShowComponent},
 {path: 'itemInsert', component: ItemInsertComponent},
 {path: 'itemShow', component: ItemShowComponent},
-{path: 'timeShow', component: TimeShowComponent}];
+{path: 'timeShow', component: TimeShowComponent},
+{path: 'TaskScheduled', component: TaskScheduledComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {useHash: true, onSameUrlNavigation: 'reload'})],

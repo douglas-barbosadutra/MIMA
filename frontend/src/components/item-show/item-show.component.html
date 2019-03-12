@@ -2,6 +2,7 @@
 
 <h1>Albero</h1>
 <div>
+  <h3>{{father.name}}</h3><button (click)=insertChild(father.id)>Aggiungi Figlio</button>
 <ul>
   <ng-template #recursiveList let-list>
     <li *ngFor="let item of list">

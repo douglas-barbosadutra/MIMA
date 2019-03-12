@@ -3,7 +3,7 @@ export class ItemDTO{
     name: String;
     idFather: number;
     idWBS: number;
-    itemChildrenDTO: Array<ItemDTO>;
+    public itemChildrenDTO: Array<ItemDTO>;
 
     constructor(id: number, name: string, idFather: number, idWbs: number, itemChildrenDTO: Array<ItemDTO>){
         this.id = id;

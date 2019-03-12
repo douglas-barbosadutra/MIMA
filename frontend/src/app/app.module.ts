@@ -14,6 +14,7 @@ import { SchedulingService } from 'src/services/scheduling.service';
 import { ManufactoringService } from 'src/services/manufactoring.service';
 import {WbsService} from 'src/services/wbs.service';
 import {ItemService} from 'src/services/item.service';
+import {TaskScheduledService} from 'src/services/task-scheduled.service';
 
 import {HomeAdminComponent} from 'src/components/home-admin/home-admin.component';
 import {HomeUserComponent} from 'src/components/home-user/home-user.component';
@@ -39,7 +40,7 @@ import { UserService } from 'src/services/user.service';
 import { ItemInsertComponent } from 'src/components/item-insert/item-insert.component';
 import { ItemShowComponent } from 'src/components/item-show/item-show.component';
 import { TimeShowComponent } from 'src/components/time-show/time-show.component';
-
+import{TaskScheduledComponent} from 'src/components/task-scheduled/task-scheduled.component';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { TimeShowComponent } from 'src/components/time-show/time-show.component'
     ItemInsertComponent,
     ItemShowComponent,
     MenuEmployeeComponent,
-    TimeShowComponent
+    TimeShowComponent,
+    TaskScheduledComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +78,7 @@ import { TimeShowComponent } from 'src/components/time-show/time-show.component'
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [LoginService,UserService,MachineService,TaskService,InstructionService,SchedulingService,ManufactoringService, WbsService, ItemService],
+  providers: [LoginService,UserService,MachineService,TaskService,InstructionService,SchedulingService,ManufactoringService, WbsService, ItemService, TaskScheduledService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

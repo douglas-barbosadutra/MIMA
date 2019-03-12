@@ -11,9 +11,11 @@ import { WBSDTO } from 'src/dto/WBSDTO';
   styleUrls: ['./item-show.component.css']
 })
 export class ItemShowComponent implements OnInit {
+  public father: ItemDTO;
   public list: Array<ItemDTO>;
   private itemDto: ItemDTO;
   private wbsDto: WBSDTO;
+  
 
   constructor(private router: Router, private itemService: ItemService) { }
 
@@ -22,7 +24,8 @@ export class ItemShowComponent implements OnInit {
     this.itemService.showItemTree(this.wbsDto).subscribe((data: any) =>{
 
       if(data != null){
-          this.list = data;
+          this.father = data;
+          this.list = this.father.itemChildrenDTO;
       }
     })
   }
@@ -34,13 +37,14 @@ export class ItemShowComponent implements OnInit {
 
   deleteItem(idItem: number){
     this.itemDto = new ItemDTO(idItem, "", 0, 0, null);
-    this.itemService.deleteItem(this.itemDto).subscribe((data: any) =>{
-        this.itemService.showItemTree(this.wbsDto).subscribe((data: any) =>{
-
-          if(data != null){
-              this.list = data;
-          }
-        })
+    this.itemService.deleteItem(idItem).subscribe((data: any) =>{
+    });
+    this.itemService.showItemTree(this.wbsDto).subscribe((data: any) =>{
+      if(data != null){
+        this.list = data;
+        this.father = this.list[0];
+        this.list = this.father.itemChildrenDTO;
+      }
     });
   }
 

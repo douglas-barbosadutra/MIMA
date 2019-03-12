@@ -1,13 +1,11 @@
 package com.pCarpet.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pCarpet.dto.ItemDTO;
@@ -27,10 +25,8 @@ public class ItemController {
 	}
 
 	@RequestMapping(value = "/showNodes", method = RequestMethod.POST)
-	public List<ItemDTO> showNodes(@RequestBody WBSDTO wbs) {
-		List<ItemDTO> temp = new ArrayList<>();
-		temp.add(itemService.getItemByWBS(wbs));
-		return temp;
+	public ItemDTO showNodes(@RequestBody WBSDTO wbs) {
+		return itemService.getItemByWBS(wbs);
 	}
 
 	@RequestMapping(value = "/addNode", method = RequestMethod.POST)
@@ -38,9 +34,9 @@ public class ItemController {
 		return itemService.insertItem(item);
 	}
 
-	@RequestMapping(value = "/removeNode", method = RequestMethod.POST)
-	public boolean removeNode(@RequestBody ItemDTO item) {
-		return itemService.deleteItem(item.getId());
+	@RequestMapping(value = "/removeNode", method = RequestMethod.DELETE)
+	public boolean removeNode(@RequestParam(value="idItem") int idItem) {
+		return itemService.deleteItem(idItem);
 	}
 
 }
