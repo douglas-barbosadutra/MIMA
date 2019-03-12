@@ -1,5 +1,5 @@
 body{
-    background-image: "../assets/images/Sfondo.png";
+    background-image: url('../../assets/images/Sfondo.png');
     background-repeat: no-repeat;
 }
 
