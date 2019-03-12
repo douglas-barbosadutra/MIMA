@@ -21,6 +21,7 @@ import {UserInsertComponent} from 'src/components/user-insert/user-insert.compon
 import {UserShowComponent} from 'src/components/user-show/user-show.component';
 import { ItemInsertComponent } from 'src/components/item-insert/item-insert.component';
 import { ItemShowComponent } from 'src/components/item-show/item-show.component';
+import { SchedulingUpdateComponent } from 'src/components/scheduling-update/scheduling-update.component';
 
 
 
@@ -37,6 +38,7 @@ const routes: Routes = [
 {path: 'machineShow', component: MachineShowComponent},
 {path: 'schedulingInsert', component: SchedulingInsertComponent},
 {path: 'schedulingShow', component: SchedulingShowComponent},
+{path: 'schedulingUpdate', component: SchedulingUpdateComponent},
 {path: 'taskInsert', component: TaskInsertComponent},
 {path: 'taskShow', component: TaskShowComponent},
 {path: 'userUpdate', component: UserUpdateComponent},

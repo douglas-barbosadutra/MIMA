@@ -25,6 +25,7 @@ import {MachineInsertComponent} from 'src/components/machine-insert/machine-inse
 import {MachineShowComponent} from 'src/components/machine-show/machine-show.component';
 import {SchedulingInsertComponent} from 'src/components/scheduling-insert/scheduling-insert.component';
 import {SchedulingShowComponent} from 'src/components/scheduling-show/scheduling-show.component';
+import {SchedulingUpdateComponent} from 'src/components/scheduling-update/scheduling-update.component';
 import {TaskInsertComponent} from 'src/components/task-insert/task-insert.component';
 import {TaskShowComponent} from 'src/components/task-show/task-show.component';
 import {UserUpdateComponent} from 'src/components/user-update/user-update.component';
@@ -52,6 +53,7 @@ import { ItemShowComponent } from 'src/components/item-show/item-show.component'
     MachineShowComponent,
     SchedulingInsertComponent,
     SchedulingShowComponent,
+    SchedulingUpdateComponent,
     TaskInsertComponent,
     TaskShowComponent,
     UserUpdateComponent,

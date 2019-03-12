@@ -1,4 +1,35 @@
 <app-menu-user></app-menu-user>
-<p>
-  scheduling-show works!
-</p>
+<h1 class="title">Lista scheduling</h1>
+		
+<div id="container">
+  
+  <table class="table table-striped">
+      <thead>
+        
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Data inizio</th>
+          <th>Data fine</th>
+          <th>Opzioni</th>
+        </tr>
+        
+      </thead>
+      
+      <tbody>
+        <tr *ngFor="let schedulingList of schedulingList">			
+          <td >{{schedulingList.id}}</td>
+          <td >{{schedulingList.name}}</td>
+          <td >{{schedulingList.startDate}}</td>
+          <td >{{schedulingList.endDate}}</td>
+          <td>
+            <button class="btn btn-primary" (click)="showGraph(schedulingList.id)">Visualizza grafo</button>
+            <button class="btn btn-primary" (click)="deleteScheduling(schedulingList.id)">Elimina</button>
+            <button class="btn btn-primary" (click)="updateScheduling(schedulingList.id)">Modifica</button>
+          </td>
+        </tr>
+      </tbody>
+      
+  </table>
+    
+</div>

@@ -18,9 +18,10 @@ import { WbsInsertComponent } from './wbs-insert/wbs-insert.component';
 import { WbsShowComponent } from './wbs-show/wbs-show.component';
 import { ItemInsertComponent } from './item-insert/item-insert.component';
 import { ItemShowComponent } from './item-show/item-show.component';
+import { SchedulingUpdateComponent } from './scheduling-update/scheduling-update.component';
 
 @NgModule({
-  declarations: [LoginComponent, HomeAdminComponent, HomeUserComponent, HomeEmployeeComponent, MenuUserComponent, MachineInsertComponent, MachineShowComponent, SchedulingInsertComponent, SchedulingShowComponent, TaskInsertComponent, TaskShowComponent, InstructionInsertComponent, InstructionShowComponent, UserUpdateComponent, WbsInsertComponent, WbsShowComponent, ItemInsertComponent, ItemShowComponent],
+  declarations: [LoginComponent, HomeAdminComponent, HomeUserComponent, HomeEmployeeComponent, MenuUserComponent, MachineInsertComponent, MachineShowComponent, SchedulingInsertComponent, SchedulingShowComponent, TaskInsertComponent, TaskShowComponent, InstructionInsertComponent, InstructionShowComponent, UserUpdateComponent, WbsInsertComponent, WbsShowComponent, ItemInsertComponent, ItemShowComponent, SchedulingUpdateComponent],
   imports: [
     CommonModule
   ]

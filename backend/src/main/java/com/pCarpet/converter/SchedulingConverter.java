@@ -14,10 +14,10 @@ public class SchedulingConverter {
 		if(scheduling != null) {
 			schedulingDTO = new SchedulingDTO();
 			schedulingDTO.setId(scheduling.getId());
-			schedulingDTO.setIdMacchinario(scheduling.getMachine().getId());
+			schedulingDTO.setIdMachine(scheduling.getMachine().getId());
 			schedulingDTO.setName(scheduling.getName());
-			schedulingDTO.setDataInizio(scheduling.getStart());
-			schedulingDTO.setDataFine(scheduling.getFinish());
+			schedulingDTO.setStartDate(scheduling.getStart());
+			schedulingDTO.setEndDate(scheduling.getFinish());
 		}
 		return schedulingDTO;
 	}
@@ -28,10 +28,10 @@ public class SchedulingConverter {
 			scheduling = new Scheduling();
 			scheduling.setId(schedulingDTO.getId());
 			scheduling.setName(schedulingDTO.getName());
-			scheduling.setStart(schedulingDTO.getDataInizio());
-			scheduling.setFinish(schedulingDTO.getDataFine());
+			scheduling.setStart(schedulingDTO.getStartDate());
+			scheduling.setFinish(schedulingDTO.getStartDate());
 			Machine machine = new Machine();
-			machine.setId(schedulingDTO.getIdMacchinario());
+			machine.setId(schedulingDTO.getIdMachine());
 			scheduling.setMachine(machine);
 		}
 		return scheduling;

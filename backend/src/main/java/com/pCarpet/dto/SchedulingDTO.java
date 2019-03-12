@@ -17,8 +17,8 @@ public class SchedulingDTO {
 
 	private int id;
 	private String name;
-	private Timestamp dataInizio;
-	private Timestamp dataFine;
-	private int idMacchinario;
+	private Timestamp startDate;
+	private Timestamp endDate;
+	private int idMachine;
 	
 }
