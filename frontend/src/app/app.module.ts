@@ -41,6 +41,8 @@ import { ItemInsertComponent } from 'src/components/item-insert/item-insert.comp
 import { ItemShowComponent } from 'src/components/item-show/item-show.component';
 import { TimeShowComponent } from 'src/components/time-show/time-show.component';
 import{TaskScheduledComponent} from 'src/components/task-scheduled/task-scheduled.component';
+import { TaskEmployeeShowComponent } from 'src/components/task-employee-show/task-employee-show.component';
+
 
 
 @NgModule({
@@ -70,7 +72,8 @@ import{TaskScheduledComponent} from 'src/components/task-scheduled/task-schedule
     ItemShowComponent,
     MenuEmployeeComponent,
     TimeShowComponent,
-    TaskScheduledComponent
+    TaskScheduledComponent,
+    TaskEmployeeShowComponent
   ],
   imports: [
     BrowserModule,
