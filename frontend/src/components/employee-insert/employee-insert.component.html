@@ -1,3 +1,48 @@
-<p>
-  employee-insert works!
-</p>
+<app-menu-user></app-menu-user>
+<h1 class="title">Inserisci employee</h1>
+
+<div id="container">
+
+	<form #f="ngForm">
+
+		<div class="form-group">
+			<label class="col-form-label">Username</label>
+			<input type="text" class="form-control" name="username" [(ngModel)]="userDTO.username">
+
+    </div>
+
+    <div class="form-group">
+			<label class="col-form-label">Password</label>
+			<input type="password" class="form-control" name="password" [(ngModel)]="userDTO.password">
+
+		</div>
+
+		<div class="form-group">
+			<label class="col-form-label">Nome</label>
+			<input type="text" class="form-control" name="name" [(ngModel)]="userDTO.name">
+
+		</div>
+
+		<div class="form-group">
+			<label class="col-form-label">Cognome</label>
+			<input type="text" class="form-control" name="surname" [(ngModel)]="userDTO.surname">
+
+		</div>
+
+		<div class="form-group">
+			<label class="col-form-label">Email</label>
+			<input type="email" class="form-control" name="email" [(ngModel)]="userDTO.email">
+
+		</div>
+
+		<div class="form-group">
+			<label class="col-form-label">Telefono</label>
+			<input type="number" class="form-control" name="phone" [(ngModel)]="userDTO.phone">
+
+		</div>
+
+		<button type="submit" class="btn btn-primary" (click)="insertEmployee()" >Inserisci</button>
+
+	</form>
+
+</div>

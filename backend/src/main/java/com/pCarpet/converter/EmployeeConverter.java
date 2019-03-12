@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.pCarpet.dto.EmployeeDTO;
+import com.pCarpet.dto.UserDTO;
 import com.pCarpet.model.Employee;
+import com.pCarpet.model.Task;
 import com.pCarpet.model.User;
 
 public class EmployeeConverter {
@@ -14,9 +16,14 @@ public class EmployeeConverter {
 		if(employee != null) {
 			employeeDTO = new EmployeeDTO();
 			employeeDTO.setId(employee.getId());
-			employeeDTO.setIdUser(employee.getUser().getId());
-			employeeDTO.setName(employee.getUser().getName());
-			employeeDTO.setIdTask(employee.getTask().getId());
+			UserDTO user = new UserDTO();
+			user.setId(employee.getUser().getId());
+			user.setName(employee.getUser().getName());
+			employeeDTO.setUser(user);
+			if(employee.getTask() == null)
+				employeeDTO.setIdTask(0);
+			else	
+				employeeDTO.setIdTask(employee.getTask().getId());
 			employeeDTO.setIdBusinessOwner(employee.getBusinessOwner().getId());
 		}
 		return employeeDTO;
@@ -28,11 +35,15 @@ public class EmployeeConverter {
 			employee = new Employee();
 			employee.setId(employeeDTO.getId());
 			User user = new User();
-			user.setId(employeeDTO.getIdUser());
+			user.setId(employeeDTO.getUser().getId());
+			employee.setUser(user);
 			User businessOwner = new User();
 			businessOwner.setId(employeeDTO.getIdBusinessOwner());
+			employee.setBusinessOwner(businessOwner);
 			if(employeeDTO.getIdTask() != 0) {
-				
+				Task task = new Task();
+				task.setId(employeeDTO.getIdTask());
+				employee.setTask(task);
 			}
 		}
 		return employee;

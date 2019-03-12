@@ -10,9 +10,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class EmployeeDTO {
-	public int id;			//chiave della tabella employee
-	private int idUser;		//id che identifica l'employee nella tabella user
+	private int id;			//chiave della tabella employee
+	private UserDTO user;		//dto con le informazioni delll'employee
 	private int idTask;
-	private String name;
 	private int idBusinessOwner;	//id del business owner a cui fa riferimento il dipendente
 }

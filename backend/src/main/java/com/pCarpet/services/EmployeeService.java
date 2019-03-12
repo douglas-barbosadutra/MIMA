@@ -23,12 +23,11 @@ public class EmployeeService {
 	
 	public EmployeeDTO insertEmployee(EmployeeDTO employeeDTO) {
 		Employee employee = EmployeeConverter.convertToEntity(employeeDTO);
-		employeeDAO.saveAndFlush(employee);
-		return EmployeeConverter.convertToDto(employee);
+		return EmployeeConverter.convertToDto(employeeDAO.saveAndFlush(employee));
 	}
 	
-	public boolean deleteEmployeeById(EmployeeDTO employee) {
-		employeeDAO.deleteById(employee.getId());
+	public boolean deleteEmployeeById(int idEmployee) {
+		this.employeeDAO.deleteById(idEmployee);
 		return true;
 	}
 	

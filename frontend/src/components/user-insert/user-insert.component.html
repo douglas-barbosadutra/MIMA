@@ -1,64 +1,64 @@
 <app-menu-admin></app-menu-admin>
 <h1 class="title">Inserisci utente</h1>
 
-			<div id="container">
+<div id="container">
 
-				<form #f="ngForm">
+	<form #f="ngForm">
 
-					<div class="form-group">
-						<label class="col-form-label">Username</label>
-						<input type="text" class="form-control" name="username" [(ngModel)]="userDTO.username">
+		<div class="form-group">
+			<label class="col-form-label">Username</label>
+			<input type="text" class="form-control" name="username" [(ngModel)]="userDTO.username">
 
-          </div>
+</div>
 
-          <div class="form-group">
-						<label class="col-form-label">Password</label>
-						<input type="password" class="form-control" name="password" [(ngModel)]="userDTO.password">
+<div class="form-group">
+			<label class="col-form-label">Password</label>
+			<input type="password" class="form-control" name="password" [(ngModel)]="userDTO.password">
 
-					</div>
+		</div>
 
-					<div class="form-group">
-						<label class="col-form-label">Nome</label>
-						<input type="text" class="form-control" name="name" [(ngModel)]="userDTO.name">
+		<div class="form-group">
+			<label class="col-form-label">Nome</label>
+			<input type="text" class="form-control" name="name" [(ngModel)]="userDTO.name">
 
-					</div>
+		</div>
 
-					<div class="form-group">
-						<label class="col-form-label">Cognome</label>
-						<input type="text" class="form-control" name="surname" [(ngModel)]="userDTO.surname">
+		<div class="form-group">
+			<label class="col-form-label">Cognome</label>
+			<input type="text" class="form-control" name="surname" [(ngModel)]="userDTO.surname">
 
-					</div>
+		</div>
 
-					<div class="form-group">
-						<label class="col-form-label">Email</label>
-						<input type="email" class="form-control" name="email" [(ngModel)]="userDTO.email">
+		<div class="form-group">
+			<label class="col-form-label">Email</label>
+			<input type="email" class="form-control" name="email" [(ngModel)]="userDTO.email">
 
-					</div>
+		</div>
 
-					<div class="form-group">
-						<label class="col-form-label">Telefono</label>
-						<input type="number" class="form-control" name="phone" [(ngModel)]="userDTO.phone">
+		<div class="form-group">
+			<label class="col-form-label">Telefono</label>
+			<input type="number" class="form-control" name="phone" [(ngModel)]="userDTO.phone">
 
-					</div>
+		</div>
 
-					<div class="form-check" style="margin-top:2%;">
+		<div class="form-check" style="margin-top:2%;">
 
-						<input class="form-check-input" type="radio" name="rank" value="0" checked="checked" [(ngModel)]="userDTO.rank">
-						<label class="form-check-label">Utente</label>
+			<input class="form-check-input" type="radio" name="rank" value="0" checked="checked" [(ngModel)]="userDTO.rank">
+			<label class="form-check-label">Utente</label>
 
-          </div>
+</div>
 
-					<div class="form-check">
+		<div class="form-check">
 
-						<input class="form-check-input" type="radio" name="rank" value="1" [(ngModel)]="userDTO.rank">
-						<label class="form-check-label">Admin</label>
+			<input class="form-check-input" type="radio" name="rank" value="1" [(ngModel)]="userDTO.rank">
+			<label class="form-check-label">Admin</label>
 
-          </div>
+</div>
 
-					<button style="margin-top:2%; margin-left:40%;" type="submit" class="btn btn-primary" (click)="insertUser(f)" >Inserisci</button>
+		<button style="margin-top:2%; margin-left:40%;" type="submit" class="btn btn-primary" (click)="insertUser(f)" >Inserisci</button>
 
-				</form>
+	</form>
 
-			</div>
+</div>
 
 

@@ -31,30 +31,35 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping(value="/insertEmployee", method = RequestMethod.POST)
-	public EmployeeDTO insertEmployee(@RequestBody UserDTO userdto, @RequestBody Integer idBusinessOwner) {
-		userdto.setRank(2);
-		userService.insertUser(userdto);
-		userdto = userService.getUserByUsername(userdto.getUsername());
-		EmployeeDTO employee = new EmployeeDTO();
-		employee.setIdUser(userdto.getId());
-		employee.setIdBusinessOwner(idBusinessOwner);
-		employee.setName(userdto.getName());
+	public EmployeeDTO insertEmployee(@RequestBody EmployeeDTO employeeDTO) {
+		System.out.println(employeeDTO);
+		UserDTO userDTO = employeeDTO.getUser();
+		userDTO.setRank(2);
+		userService.insertUser(userDTO);
+		
+		userDTO = userService.getUserByUsername(userDTO.getUsername());
+		employeeDTO.setUser(userDTO);
+		System.out.println(employeeDTO);
+		return employeeService.insertEmployee(employeeDTO);
+	}
+	
+	@RequestMapping(value="/assignTask", method = RequestMethod.PUT)
+	public EmployeeDTO assignTask(@RequestBody EmployeeDTO employee) {
 		return employeeService.insertEmployee(employee);
 	}
 	
-	@RequestMapping(value="/assignTask", method = RequestMethod.POST)
-	public EmployeeDTO assignTask(@RequestBody EmployeeDTO employee, @RequestBody Integer idTask) {
-		employee.setIdTask(idTask);
-		return employeeService.insertEmployee(employee);
-	}
-	
-	@RequestMapping(value="/showEmployee", method = RequestMethod.POST)
-	public List<EmployeeDTO> getEmployeeByBusinessOwner(@RequestBody UserDTO BusinessOwner){
-		return this.employeeService.getEmployeeByIdBusinessOwner(BusinessOwner.getId());
+	@RequestMapping(value="/showEmployee", method = RequestMethod.GET)
+	public List<EmployeeDTO> getEmployeeByBusinessOwner(@RequestParam(value="idBusinessOwner") int idBusinessOwner){
+		return this.employeeService.getEmployeeByIdBusinessOwner(idBusinessOwner);
 	}
 	
 	@RequestMapping(value="/findEmployee", method = RequestMethod.GET)
 	public EmployeeDTO findEmployee(@RequestParam(value="idUser") int idUser) {
 		return this.employeeService.getEmployeeByUser(idUser);
+	}
+	
+	@RequestMapping(value="/deleteEmployee", method = RequestMethod.DELETE)
+	public boolean deleteEmployee(@RequestParam(value="idEmployee") int idEmployee) {
+		return this.employeeService.deleteEmployeeById(idEmployee);
 	}
 }
