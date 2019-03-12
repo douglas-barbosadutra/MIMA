@@ -1,4 +1,17 @@
 <app-menu-user></app-menu-user>
-<p>
-  wbs-insert works!
-</p>
+
+<h1 class="title">Creazione nuovo WBS</h1>
+    
+<div id="container">
+
+  <form #f="ngForm">
+
+    <div class="form-group">
+      <label class="col-form-label">Nome</label>
+      <input type="text" class="form-control" name="nome" ngModel>				
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="insertWbs(f)" >Inserisci</button>	
+  
+  </form>
+  
+</div>

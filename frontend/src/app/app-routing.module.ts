@@ -19,6 +19,8 @@ import {WbsShowComponent} from 'src/components/wbs-show/wbs-show.component';
 import {MenuAdminComponent} from 'src/components/menu-admin/menu-admin.component';
 import {UserInsertComponent} from 'src/components/user-insert/user-insert.component';
 import {UserShowComponent} from 'src/components/user-show/user-show.component';
+import { ItemInsertComponent } from 'src/components/item-insert/item-insert.component';
+import { ItemShowComponent } from 'src/components/item-show/item-show.component';
 
 
 
@@ -42,7 +44,9 @@ const routes: Routes = [
 {path: 'wbsShow', component: WbsShowComponent},
 {path: 'menuAdmin', component: MenuAdminComponent},
 {path: 'userInsert', component: UserInsertComponent},
-{path: 'userShow', component: UserShowComponent}];
+{path: 'userShow', component: UserShowComponent},
+{path: 'itemInsert', component: ItemInsertComponent},
+{path: 'itemShow', component: ItemShowComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {useHash: true, onSameUrlNavigation: 'reload'})],
