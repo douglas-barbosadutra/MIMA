@@ -1,4 +1,31 @@
 <app-menu-user></app-menu-user>
-<p>
-  wbs-show works!
-</p>
+
+<h1 class="title">Lista Wbs</h1>
+		
+		<div id="container">
+			
+			<table class="table table-striped">
+			    <thead>
+			      
+			      <tr>
+			        <th>ID</th>
+              <th>Nome</th>
+              <th>Opzioni</th>
+			      </tr>
+			      
+			    </thead>
+			    
+			    <tbody>
+			    	<tr *ngFor="let wbs of wbsList">			
+							<td >{{wbs.id}}</td>
+              <td >{{wbs.nome}}</td>
+              <td>
+                <button class="btn btn-primary" (click)="chooseWbs(wbs.id)">Gestisci l'albero</button>
+                <button class="btn btn-primary" (click)="deleteWbs(wbs.id)">Elimina</button>
+              </td>
+						</tr>
+			    </tbody>
+			    
+		  </table>
+		  	
+		</div>

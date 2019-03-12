@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.pCarpet.dto.WBSDTO;
+import com.pCarpet.model.User;
 import com.pCarpet.model.WBS;
-import com.pCarpet.services.UserService;
 
 public class WBSConverter {
 	
@@ -18,6 +18,7 @@ public class WBSConverter {
 			
 			wbsDTO.setId(wbs.getId());
 			wbsDTO.setName(wbs.getName());
+			wbsDTO.setIdUser(wbs.getUser().getId());
 			
 		}
 		return wbsDTO;
@@ -33,7 +34,9 @@ public class WBSConverter {
 			
 			wbs.setId(wbsDTO.getId());
 			wbs.setName(wbsDTO.getName());
-			wbs.setUser(UserService.getUserSession());
+			User user = new User();
+			user.setId(wbsDTO.getIdUser());
+			wbs.setUser(user);
 			
 		}
 		return wbs;

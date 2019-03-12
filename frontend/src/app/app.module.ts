@@ -12,6 +12,7 @@ import { TaskService } from 'src/services/task.service';
 import { InstructionService } from 'src/services/instruction.service';
 import { SchedulingService } from 'src/services/scheduling.service';
 import { ManufactoringService } from 'src/services/manufactoring.service';
+import {WbsService} from 'src/services/wbs.service';
 
 import {HomeAdminComponent} from 'src/components/home-admin/home-admin.component';
 import {HomeUserComponent} from 'src/components/home-user/home-user.component';
@@ -63,7 +64,7 @@ import { UserService } from 'src/services/user.service';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [LoginService,UserService,MachineService,TaskService,InstructionService,SchedulingService,ManufactoringService],
+  providers: [LoginService,UserService,MachineService,TaskService,InstructionService,SchedulingService,ManufactoringService, WbsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

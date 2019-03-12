@@ -16,10 +16,6 @@ public class UserService {
 
 	private UserDAO userDAO;
 	
-	private static User user = null;
-	public static int idMacchinario = 0;
-	public static int idTask = 0;
-	public static int idScheduling = 0;
 
 	@Autowired
 	public UserService(UserDAO userDAO) {
@@ -48,13 +44,5 @@ public class UserService {
 	public UserDTO getUserByUsername(String username) {
 		return UserConverter.toDTO(userDAO.findUserByUsername(username));
 	}
-	
-	public static void setUserSession(User u) {
-		user = u;
-	}
 
-	public static User getUserSession() {
-		return user;
-	}
-	
 }
