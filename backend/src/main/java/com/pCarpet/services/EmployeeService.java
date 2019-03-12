@@ -38,7 +38,9 @@ public class EmployeeService {
 		return (EmployeeConverter.toListDTO(employeeDAO.findAllByBusinessOwner(businessOwner)));
 	}
 	
-	public EmployeeDTO getEmployeeById(int id) {
-		return EmployeeConverter.convertToDto(employeeDAO.findEmployeeById(id));
+	public EmployeeDTO getEmployeeByUser(int idUser) {
+		User user = new User();
+		user.setId(idUser);
+		return EmployeeConverter.convertToDto(employeeDAO.findEmployeeByUser(user));
 	}
 }

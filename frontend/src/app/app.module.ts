@@ -43,6 +43,7 @@ import { ItemShowComponent } from 'src/components/item-show/item-show.component'
 import { TimeShowComponent } from 'src/components/time-show/time-show.component';
 import{TaskScheduledComponent} from 'src/components/task-scheduled/task-scheduled.component';
 import { TaskEmployeeShowComponent } from 'src/components/task-employee-show/task-employee-show.component';
+import { EmployeeUpdateComponent } from 'src/components/employee-update/employee-update.component';
 
 
 
@@ -74,7 +75,8 @@ import { TaskEmployeeShowComponent } from 'src/components/task-employee-show/tas
     MenuEmployeeComponent,
     TimeShowComponent,
     TaskScheduledComponent,
-    TaskEmployeeShowComponent
+    TaskEmployeeShowComponent,
+    EmployeeUpdateComponent
   ],
   imports: [
     BrowserModule,

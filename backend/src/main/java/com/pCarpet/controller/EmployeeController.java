@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.pCarpet.dto.EmployeeDTO;
 import com.pCarpet.dto.UserDTO;
@@ -16,7 +17,7 @@ import com.pCarpet.services.EmployeeService;
 import com.pCarpet.services.UserService;
 
 @CrossOrigin(value="*")
-@Controller
+@RestController
 @RequestMapping("/Employee")
 public class EmployeeController {
 
@@ -53,7 +54,7 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping(value="/findEmployee", method = RequestMethod.GET)
-	public EmployeeDTO findEmployee(@RequestParam(value="idEmployee") int idEmployee) {
-		return this.employeeService.getEmployeeById(idEmployee);
+	public EmployeeDTO findEmployee(@RequestParam(value="idUser") int idUser) {
+		return this.employeeService.getEmployeeByUser(idUser);
 	}
 }
