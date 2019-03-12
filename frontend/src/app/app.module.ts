@@ -10,6 +10,8 @@ import { LoginService } from 'src/services/login.service';
 import {MachineService} from 'src/services/machine.service';
 import { TaskService } from 'src/services/task.service';
 import { InstructionService } from 'src/services/instruction.service';
+import { SchedulingService } from 'src/services/scheduling.service';
+import { ManufactoringService } from 'src/services/manufactoring.service';
 
 import {HomeAdminComponent} from 'src/components/home-admin/home-admin.component';
 import {HomeUserComponent} from 'src/components/home-user/home-user.component';
@@ -61,7 +63,7 @@ import { UserService } from 'src/services/user.service';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [LoginService,UserService,MachineService,TaskService,InstructionService],
+  providers: [LoginService,UserService,MachineService,TaskService,InstructionService,SchedulingService,ManufactoringService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

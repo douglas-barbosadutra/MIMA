@@ -1,4 +1,31 @@
 <app-menu-user></app-menu-user>
-<p>
-  instruction-insert works!
-</p>
+
+<h1 class="title">Inserimento istruzione</h1>
+		
+<div id="container">
+
+  <form #f="ngForm">
+
+    <div class="form-group">
+      <label class="col-form-label">Nome istruzione</label>
+      <input type="text" class="form-control" name="nome" ngModel>				
+      
+    </div>
+    
+    <div class="form-group">
+      <label class="col-form-label">Durata in secondi</label>
+      <input type="number" class="form-control" name="durata" ngModel>				
+      
+    </div>
+    
+    <div class="form-group">
+      <label class="col-form-label">Codice</label>
+      <input type="text" class="form-control" name="codice" ngModel>				
+      
+    </div>
+    
+    <button style="margin-top:2%; margin-left:40%;" type="submit" class="btn btn-primary" (click)="insertInstruction(f)">Inserisci</button>	
+  
+  </form>
+  
+</div>
