@@ -8,6 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginService } from 'src/services/login.service';
 import {MachineService} from 'src/services/machine.service';
+import { TaskService } from 'src/services/task.service';
+import { InstructionService } from 'src/services/instruction.service';
 
 import {HomeAdminComponent} from 'src/components/home-admin/home-admin.component';
 import {HomeUserComponent} from 'src/components/home-user/home-user.component';
@@ -24,7 +26,7 @@ import {TaskShowComponent} from 'src/components/task-show/task-show.component';
 import {UserUpdateComponent} from 'src/components/user-update/user-update.component';
 import {WbsInsertComponent} from 'src/components/wbs-insert/wbs-insert.component';
 import {WbsShowComponent} from 'src/components/wbs-show/wbs-show.component';
-import { TaskService } from 'src/services/task.service';
+
 
 @NgModule({
   declarations: [
@@ -52,7 +54,7 @@ import { TaskService } from 'src/services/task.service';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [LoginService,MachineService,TaskService],
+  providers: [LoginService,MachineService,TaskService,InstructionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
