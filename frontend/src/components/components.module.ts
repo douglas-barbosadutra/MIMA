@@ -23,9 +23,11 @@ import { TimeShowComponent } from './time-show/time-show.component';
 import { TaskScheduledComponent } from './task-scheduled/task-scheduled.component';
 import { TaskEmployeeShowComponent } from './task-employee-show/task-employee-show.component';
 import { EmployeeUpdateComponent } from './employee-update/employee-update.component';
+import { EmployeeInsertComponent } from './employee-insert/employee-insert.component';
+import { EmployeeShowComponent } from './employee-show/employee-show.component';
 
 @NgModule({
-  declarations: [LoginComponent, HomeAdminComponent, HomeUserComponent, HomeEmployeeComponent, MenuUserComponent, MachineInsertComponent, MachineShowComponent, SchedulingInsertComponent, SchedulingShowComponent, TaskInsertComponent, TaskShowComponent, InstructionInsertComponent, InstructionShowComponent, UserUpdateComponent, WbsInsertComponent, WbsShowComponent, ItemInsertComponent, ItemShowComponent, SchedulingUpdateComponent, TimeShowComponent, TaskScheduledComponent, TaskEmployeeShowComponent, EmployeeUpdateComponent],
+  declarations: [LoginComponent, HomeAdminComponent, HomeUserComponent, HomeEmployeeComponent, MenuUserComponent, MachineInsertComponent, MachineShowComponent, SchedulingInsertComponent, SchedulingShowComponent, TaskInsertComponent, TaskShowComponent, InstructionInsertComponent, InstructionShowComponent, UserUpdateComponent, WbsInsertComponent, WbsShowComponent, ItemInsertComponent, ItemShowComponent, SchedulingUpdateComponent, TimeShowComponent, TaskScheduledComponent, TaskEmployeeShowComponent, EmployeeUpdateComponent, EmployeeInsertComponent, EmployeeShowComponent],
   imports: [
     CommonModule
   ]
