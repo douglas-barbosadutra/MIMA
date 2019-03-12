@@ -1,0 +1,28 @@
+<app-menu-user></app-menu-user>
+<h1 class="title">Lista tempi</h1>
+		
+<div id="container">
+  
+  <table class="table">
+      <thead>
+        
+        <tr>
+          <th>Nome Istruzione</th>
+          <th>Tempi effettivi</th>
+          <th>Tempi previsti</th>
+        </tr>
+        
+      </thead>
+      
+      <tbody>
+        <tr *ngFor="let timeList of timeList">			
+          <td >{{timeList.nameInstruction}}</td>
+          <td >{{timeList.effectiveDuration}}</td>
+          <td >{{timeList.expectedDuration}}</td>
+        </tr>
+      </tbody>
+      
+  </table>
+    
+</div>
+

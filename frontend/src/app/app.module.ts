@@ -37,6 +37,8 @@ import {MenuAdminComponent} from 'src/components/menu-admin/menu-admin.component
 import { UserService } from 'src/services/user.service';
 import { ItemInsertComponent } from 'src/components/item-insert/item-insert.component';
 import { ItemShowComponent } from 'src/components/item-show/item-show.component';
+import { TimeShowComponent } from 'src/components/time-show/time-show.component';
+
 
 
 @NgModule({
@@ -63,7 +65,8 @@ import { ItemShowComponent } from 'src/components/item-show/item-show.component'
     UserShowComponent,
     MenuAdminComponent,
     ItemInsertComponent,
-    ItemShowComponent
+    ItemShowComponent,
+    TimeShowComponent
   ],
   imports: [
     BrowserModule,
