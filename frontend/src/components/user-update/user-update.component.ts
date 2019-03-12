@@ -3,7 +3,6 @@ import { UserService } from 'src/services/user.service';
 import { NgForm } from '@angular/forms';
 import {UserDTO } from 'src/dto/UserDTO';
 import { Router } from '@angular/router';
-import { FindValueSubscriber } from 'rxjs/internal/operators/find';
 
 
 @Component({
