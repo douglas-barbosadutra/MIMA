@@ -1,19 +1,19 @@
 <app-menu-user></app-menu-user>
 
 <h1 class="title">Inserimento task al macchinario scelto</h1>
-		
+
 <div style="padding-left: 20%; padding-right: 20%;">
 
   <form #f="ngForm">
 
     <div class="form-group">
       <label class="col-form-label">Descrizione</label>
-      <input type="text" class="form-control" name="description" [(ngModel)]="taskDTO.description">				
+      <input type="text" class="form-control" name="description" [(ngModel)]="taskDTO.description">
       
     </div>
-    
-    <button type="submit" class="btn btn-primary" (click)="insertTask(f)" >Inserisci</button>	
-  
+
+    <button type="submit" class="btn btn-primary" (click)="insertTask(f)" >Inserisci</button>
+
   </form>
-  
+
 </div>

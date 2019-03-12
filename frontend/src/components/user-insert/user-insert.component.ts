@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from "@angular/router";
+import { UserDTO } from 'src/dto/UserDTO';
+import {UserService} from "src/services/user.service";
 
 
 @Component({
@@ -8,14 +11,25 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./user-insert.component.css']
 })
 export class UserInsertComponent implements OnInit {
+  public userDTO: UserDTO;
 
-  constructor() { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
+    this.userDTO = new UserDTO(0,"","","","","","",0);
   }
 
-  insert(f:NgForm): void{
-    console.log(f.value);
+    insertUser(f: NgForm){
+      console.log(this.userDTO);
+    this.userService.insertUser(this.userDTO).subscribe((data: any) => {
+
+      if(data != null)
+        alert("Inserimento effettuato");
+      else
+        alert("Inserimento fallito");
+
+        this.router.navigateByUrl("/homeAdmin");
+    })
   }
 
 }

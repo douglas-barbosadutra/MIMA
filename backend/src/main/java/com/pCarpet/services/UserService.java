@@ -37,8 +37,8 @@ public class UserService {
 		return UserConverter.toListDTO(userDAO.findAll());
 	}
 	
-	public User findUserById(int id) {
-		return userDAO.findUserById(id);
+	public UserDTO findUserById(int id) {
+		return UserConverter.toDTO(userDAO.findUserById(id));
 	}
 
 	public UserDTO getUserByUsername(String username) {
