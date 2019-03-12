@@ -1,3 +1,23 @@
-<p>
-  scheduling-update works!
-</p>
+<app-menu-user></app-menu-user>
+
+<h1 class="title">Aggiornamento Scheduling</h1>
+		
+<div id="container">
+
+  <form #f="ngForm">
+    
+    <div class="form-group">
+      <label class="col-form-label">Data Inizio</label>
+      <input type="datetime-local" class="form-control" name="startDate" ngModel>				
+    </div>
+    
+    <div class="form-group">
+      <label class="col-form-label">Data Fine</label>
+      <input type="datetime-local" class="form-control" name="endDate" ngModel>				
+    </div>
+    
+    <button type="submit" class="btn btn-primary" (click)="schedulingUpdate(f)" >Aggiorna</button>	
+  
+  </form>
+  
+</div>

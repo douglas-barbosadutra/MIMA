@@ -11,6 +11,7 @@ import { SchedulingDTO } from 'src/dto/SchedulingDTO';
 })
 export class SchedulingShowComponent implements OnInit {
   private machineDTO: MachineDTO;
+  private schedulingDTO: SchedulingDTO;
   private schedulingList: Array<SchedulingDTO>;
 
   constructor(private router: Router, private schedulingSerivce: SchedulingService) { }
@@ -35,4 +36,20 @@ export class SchedulingShowComponent implements OnInit {
     })
   }
 
+  updateScheduling(idScheduling: number, nameScheduling: string){
+    sessionStorage.setItem("idScheduling",JSON.stringify(idScheduling));
+    sessionStorage.setItem("nameScheduling",nameScheduling);
+    this.router.navigateByUrl("schedulingUpdate");
+  }
+
+  deleteScheduling(idScheduling: number){
+    this.schedulingDTO = new SchedulingDTO(idScheduling,"",new Date(),new Date(),0);
+    this.schedulingSerivce.deleteScheduling(this.schedulingDTO).subscribe((data: any) =>{
+      if(data != null)
+        alert("Cancellazione effettuata");
+      else
+        alert("Cancellazione fallita");
+      this.router.navigateByUrl("homeUser");
+    })
+  }
 }

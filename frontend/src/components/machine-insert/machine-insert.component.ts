@@ -23,8 +23,11 @@ export class MachineInsertComponent implements OnInit {
     this.machineDTO = new MachineDTO(0,f.value.nome,f.value.modello, parseInt(sessionStorage.getItem("idUser")));
     this.machineService.insertMachine(this.machineDTO).subscribe((data: any) => {
       
-      if(data != null)
+      if(data != null){
         alert("Inserimento effettuato");
+        //console.log(data);
+      }
+        
       else
         alert("Inserimento fallito");
 
