@@ -1,0 +1,71 @@
+<app-menu-admin></app-menu-admin>
+<h1 class="title">Inserisci utente</h1>
+
+			<div id="container">
+
+				<form #f="ngForm">
+
+					<div class="form-group">
+						<label class="col-form-label">Username</label>
+						<input type="text" class="form-control" name="username" ngModel>
+
+					</div>
+
+					<div class="form-group">
+						<label class="col-form-label">Password</label>
+						<input type="password" class="form-control" name="password" ngModel>
+
+					</div>
+
+					<div class="form-group">
+						<label class="col-form-label">Nome</label>
+						<input type="text" class="form-control" name="nome" ngModel>
+
+					</div>
+
+					<div class="form-group">
+						<label class="col-form-label">Cognome</label>
+						<input type="text" class="form-control" name="cognome" ngModel>
+
+					</div>
+
+					<div class="form-group">
+						<label class="col-form-label">Email</label>
+						<input type="email" class="form-control" name="email" ngModel>
+
+					</div>
+
+					<div class="form-group">
+						<label class="col-form-label">Telefono</label>
+						<input type="number" class="form-control" name="telefono" ngModel>
+
+					</div>
+
+					<div class="form-check" style="margin-top:2%;">
+
+						<input class="form-check-input" type="radio" name="rank" value="0" checked="checked" ngModel>
+						<label class="form-check-label">Utente</label>
+
+          </div>
+
+					<div class="form-check">
+
+						<input class="form-check-input" type="radio" name="rank" value="1" ngModel>
+						<label class="form-check-label">Admin</label>
+
+          </div>
+
+          <div class="form-check">
+
+						<input class="form-check-input" type="radio" name="rank" value="2" ngModel>
+						<label class="form-check-label">Employee</label>
+
+					</div>
+
+					<button style="margin-top:2%; margin-left:40%;" type="submit" class="btn btn-primary" (click)="insert(f)" >Inserisci</button>
+
+				</form>
+
+			</div>
+
+

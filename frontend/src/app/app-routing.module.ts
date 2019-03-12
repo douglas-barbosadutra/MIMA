@@ -16,9 +16,13 @@ import {TaskShowComponent} from 'src/components/task-show/task-show.component';
 import {UserUpdateComponent} from 'src/components/user-update/user-update.component';
 import {WbsInsertComponent} from 'src/components/wbs-insert/wbs-insert.component';
 import {WbsShowComponent} from 'src/components/wbs-show/wbs-show.component';
+import {MenuAdminComponent} from 'src/components/menu-admin/menu-admin.component';
+import {UserInsertComponent} from 'src/components/user-insert/user-insert.component';
+import {UserShowComponent} from 'src/components/user-show/user-show.component';
 
 
-const routes: Routes = [ 
+
+const routes: Routes = [
 {path: '', redirectTo: '/login', pathMatch: 'full'},
 {path: 'login', component: LoginComponent},
 {path: 'homeAdmin', component: HomeAdminComponent},
@@ -35,7 +39,10 @@ const routes: Routes = [
 {path: 'taskShow', component: TaskShowComponent},
 {path: 'userUpdate', component: UserUpdateComponent},
 {path: 'wbsInsert', component: WbsInsertComponent},
-{path: 'wbsShow', component: WbsShowComponent}];
+{path: 'wbsShow', component: WbsShowComponent},
+{path: 'menuAdmin', component: MenuAdminComponent},
+{path: 'userInsert', component: UserInsertComponent},
+{path: 'userShow', component: UserShowComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {useHash: true, onSameUrlNavigation: 'reload'})],

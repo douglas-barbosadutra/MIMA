@@ -26,6 +26,10 @@ import {TaskShowComponent} from 'src/components/task-show/task-show.component';
 import {UserUpdateComponent} from 'src/components/user-update/user-update.component';
 import {WbsInsertComponent} from 'src/components/wbs-insert/wbs-insert.component';
 import {WbsShowComponent} from 'src/components/wbs-show/wbs-show.component';
+import {UserInsertComponent} from 'src/components/user-insert/user-insert.component';
+import {UserShowComponent} from 'src/components/user-show/user-show.component';
+import {MenuAdminComponent} from 'src/components/menu-admin/menu-admin.component';
+import { UserService } from 'src/services/user.service';
 
 
 @NgModule({
@@ -46,7 +50,10 @@ import {WbsShowComponent} from 'src/components/wbs-show/wbs-show.component';
     TaskShowComponent,
     UserUpdateComponent,
     WbsInsertComponent,
-    WbsShowComponent
+    WbsShowComponent,
+    UserInsertComponent,
+    UserShowComponent,
+    MenuAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +61,7 @@ import {WbsShowComponent} from 'src/components/wbs-show/wbs-show.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [LoginService,MachineService,TaskService,InstructionService],
+  providers: [LoginService,UserService,MachineService,TaskService,InstructionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

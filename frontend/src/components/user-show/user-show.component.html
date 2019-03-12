@@ -1,0 +1,31 @@
+<app-menu-admin></app-menu-admin>
+<h1 class="title">Lista utenti</h1>
+
+			<div id="container">
+
+				<table class="table table-striped">
+				  <thead>
+
+				      <tr>
+				        <th>ID</th>
+				        <th>Nome</th>
+				        <th>Cognome</th>
+				        <th>Email</th>
+				        <th>Telefono</th>
+				      </tr>
+
+				  </thead>
+
+				  <tbody>
+
+							<tr *ngFor="let user of user">
+                <td>{{user.id}} </td>
+                <td>{{user.nome}}</td>
+                <td>{{user.cognome}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.telefono}}</td>
+              </tr>
+
+          </tbody>
+			  </table>
+      </div>
