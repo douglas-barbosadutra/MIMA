@@ -27,6 +27,7 @@ public class InstructionController {
 	
 	@RequestMapping(value="/insertInstruction", method= RequestMethod.POST)
 	public InstructionDTO insertInstruction(@RequestBody InstructionDTO instruction) {
+		System.out.println("Instruction: "+instruction);
 		return istruzioneService.insertIstruzione(instruction);
 	}
 	

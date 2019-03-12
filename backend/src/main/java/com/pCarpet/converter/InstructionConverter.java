@@ -14,9 +14,9 @@ public class InstructionConverter{
 		if(instruction != null) {
 			instructionDTO = new InstructionDTO();
 			instructionDTO.setId(instruction.getId());
-			instructionDTO.setDurata(instruction.getDuration());
-			instructionDTO.setCodice(instruction.getGcodeFile());
-			instructionDTO.setNomeIstruzione(instruction.getName());
+			instructionDTO.setDuration(instruction.getDuration());
+			instructionDTO.setCodex(instruction.getGcodeFile());
+			instructionDTO.setNameInstruction(instruction.getName());
 			instructionDTO.setIdTask(instruction.getTask().getId());
 		}
 		return instructionDTO;
@@ -27,9 +27,9 @@ public class InstructionConverter{
 		if(instructionDTO != null) {
 			instruction = new Instruction();
 			instruction.setId(instructionDTO.getId());
-			instruction.setDuration(instructionDTO.getDurata());
-			instruction.setGcodeFile(instructionDTO.getCodice());
-			instruction.setName(instructionDTO.getNomeIstruzione());
+			instruction.setDuration(instructionDTO.getDuration());
+			instruction.setGcodeFile(instructionDTO.getCodex());
+			instruction.setName(instructionDTO.getNameInstruction());
 			Task task = new Task();
 			task.setId(instructionDTO.getIdTask());
 			instruction.setTask(task);

@@ -1,4 +1,34 @@
 <app-menu-user></app-menu-user>
-<p>
-  instruction-show works!
-</p>
+
+<h1 class="title">Lista task</h1>
+		
+<div id="container">
+  
+  <table class="table table-striped">
+      <thead>
+        
+        <tr>
+          <th>ID</th>
+          <th>Durata</th>
+          <th>Codice</th>
+          <th>Nome</th>
+          <th>Opzioni</th>
+        </tr>
+        
+      </thead>
+      
+      <tbody>
+        <tr *ngFor="let instructionList of instructionList">			
+          <td >{{instructionList.id}}</td>
+          <td >{{instructionList.duration}}</td>
+          <td >{{instructionList.codex}}</td>
+          <td >{{instructionList.nameInstruction}}</td>
+          <td>
+            <button class="btn btn-primary" (click)="instructionDelete(instructionList.id)">Elimina</button>
+          </td>
+        </tr>
+      </tbody>
+      
+  </table>
+    
+</div>

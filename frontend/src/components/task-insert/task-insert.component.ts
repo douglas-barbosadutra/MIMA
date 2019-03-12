@@ -18,8 +18,8 @@ export class TaskInsertComponent implements OnInit {
   ngOnInit() {
 
     if(sessionStorage.getItem("idMachine") == null){
-      alert("Devi prima selezionare un macchinario");
       this.router.navigateByUrl("machineShow");
+      alert("Devi prima selezionare un macchinario");
     }
       
   }

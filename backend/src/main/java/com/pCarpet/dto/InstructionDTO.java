@@ -12,8 +12,8 @@ import lombok.ToString;
 
 public class InstructionDTO {
 	private int id;
-	private int durata;
-	private String codice;
-	private String nomeIstruzione;
+	private int duration;
+	private String codex;
+	private String nameInstruction;
 	private int idTask;
 }

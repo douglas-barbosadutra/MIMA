@@ -1,15 +1,15 @@
 export class InstructionDTO{
     private id: number;
-    private durata: number;
-    private codice: string;
-    private nomeIstrutione: string;
+    private duration: number;
+    private codex: string;
+    private nameInstruction: string;
     private idTask: number;
 
-    constructor(id: number, durata: number, codice: string, nomeIstruzione: string, idTask: number){
+    constructor(id: number, duration: number, codex: string, nameInstruction: string, idTask: number){
         this.id = id;
-        this.durata = durata;
-        this.codice = codice;
-        this.nomeIstrutione = nomeIstruzione;
+        this.duration = duration;
+        this.codex = codex;
+        this.nameInstruction = nameInstruction;
         this.idTask = idTask;
     }
 }
