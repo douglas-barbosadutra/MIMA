@@ -8,6 +8,6 @@ import com.pCarpet.model.Employee;
 import com.pCarpet.model.User;
 
 public interface EmployeeDAO extends JpaRepository<Employee, Integer>{
-	public Employee findEmployeeByUser(User user);
+	public Employee findEmployeeById(int id);
 	public List<Employee> findAllByBusinessOwner(User user);
 }

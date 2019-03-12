@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.pCarpet.dto.EmployeeDTO;
 import com.pCarpet.dto.UserDTO;
@@ -49,5 +50,10 @@ public class EmployeeController {
 	@RequestMapping(value="/showEmployee", method = RequestMethod.POST)
 	public List<EmployeeDTO> getEmployeeByBusinessOwner(@RequestBody UserDTO BusinessOwner){
 		return this.employeeService.getEmployeeByIdBusinessOwner(BusinessOwner.getId());
+	}
+	
+	@RequestMapping(value="/findEmployee", method = RequestMethod.GET)
+	public EmployeeDTO findEmployee(@RequestParam(value="idEmployee") int idEmployee) {
+		return this.employeeService.getEmployeeById(idEmployee);
 	}
 }

@@ -37,4 +37,8 @@ public class EmployeeService {
 		businessOwner.setId(id);
 		return (EmployeeConverter.toListDTO(employeeDAO.findAllByBusinessOwner(businessOwner)));
 	}
+	
+	public EmployeeDTO getEmployeeById(int id) {
+		return EmployeeConverter.convertToDto(employeeDAO.findEmployeeById(id));
+	}
 }

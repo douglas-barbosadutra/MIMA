@@ -15,6 +15,7 @@ import { ManufactoringService } from 'src/services/manufactoring.service';
 import {WbsService} from 'src/services/wbs.service';
 import {ItemService} from 'src/services/item.service';
 import {TaskScheduledService} from 'src/services/task-scheduled.service';
+import {EmployeeService} from 'src/services/employee.service';
 
 import {HomeAdminComponent} from 'src/components/home-admin/home-admin.component';
 import {HomeUserComponent} from 'src/components/home-user/home-user.component';
@@ -81,7 +82,7 @@ import { TaskEmployeeShowComponent } from 'src/components/task-employee-show/tas
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [LoginService,UserService,MachineService,TaskService,InstructionService,SchedulingService,ManufactoringService, WbsService, ItemService, TaskScheduledService],
+  providers: [LoginService,UserService,MachineService,TaskService,InstructionService,SchedulingService,ManufactoringService, WbsService, ItemService, TaskScheduledService, EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
