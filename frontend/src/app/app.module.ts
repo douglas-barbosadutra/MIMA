@@ -19,6 +19,7 @@ import {HomeAdminComponent} from 'src/components/home-admin/home-admin.component
 import {HomeUserComponent} from 'src/components/home-user/home-user.component';
 import {HomeEmployeeComponent} from 'src/components/home-employee/home-employee.component';
 import {MenuUserComponent} from 'src/components/menu-user/menu-user.component';
+import {MenuEmployeeComponent} from 'src/components/menu-employee/menu-employee.component';
 import {InstructionInsertComponent} from 'src/components/instruction-insert/instruction-insert.component';
 import {InstructionShowComponent} from 'src/components/instruction-show/instruction-show.component';
 import {MachineInsertComponent} from 'src/components/machine-insert/machine-insert.component';
@@ -66,6 +67,7 @@ import { TimeShowComponent } from 'src/components/time-show/time-show.component'
     MenuAdminComponent,
     ItemInsertComponent,
     ItemShowComponent,
+    MenuEmployeeComponent,
     TimeShowComponent
   ],
   imports: [
