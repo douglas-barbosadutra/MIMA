@@ -13,9 +13,11 @@ import lombok.ToString;
 @ToString
 
 public class TaskScheduledDTO {
-	private int idOperationScheduling;
+	private int id;
 	private int idTask;
+	private boolean hasFather;
 	private String name;
+	private int idScheduling;
 	private List<TaskScheduledDTO> taskScheduledChildren;
 }
 

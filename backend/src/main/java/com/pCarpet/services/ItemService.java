@@ -29,8 +29,8 @@ public class ItemService {
 	
 	public ItemDTO insertItem(ItemDTO itemDTO) {
 		Item item = ItemConverter.convertToEntity(itemDTO);
-		itemDAO.saveAndFlush(item);
-		return ItemConverter.convertToDto(item);
+		itemDAO.insertItem(itemDTO.getName(), itemDTO.getIdFather(), itemDTO.getIdWBS(), itemDTO.getLevel());
+		return ItemConverter.convertToDto(item); //err
 	}
 	
 	public boolean deleteItem(int id) {
@@ -38,7 +38,12 @@ public class ItemService {
 		return true;
 	}
 	
-	public List<ItemDTO> getItemByWBS(WBSDTO wbs){
-		return (ItemConverter.toListDTO(itemDAO.findAllByWbs(WBSConverter.convertToEntity(wbs))));
+	public ItemDTO getItemByWBS(WBSDTO wbs){
+		List<ItemDTO> list = (ItemConverter.toListDTO(itemDAO.findAllByWbs(WBSConverter.convertToEntity(wbs))));
+		for(ItemDTO item: list) {
+			if(item.getIdFather() == 0)
+				return item;
+		}
+		return null;
 	}	
 }

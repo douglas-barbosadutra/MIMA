@@ -11,10 +11,8 @@ import lombok.ToString;
 @ToString
 
 public class OperationSchedulingDTO {
-
-	private int id;
-	private int idTaskFather;
-	private int idTaskChild;
-	private int idScheduling;
-	private int order;	
+	int idFather;
+	int idChild;
+	int idTask;					//questo campo, se diverso da zero, indicherà che bisogna inserire un nuovo task nello scheduling. Se invece è zero indica che è stata soltanto aggiunta una relazione tra due task già schedulati
+	int idScheduling;
 }

@@ -53,6 +53,6 @@ public class Scheduling {
 	
 	@OneToMany(mappedBy="scheduling")
 	@OnDelete(action=OnDeleteAction.CASCADE)
-	private List<OperationScheduling> operationSchedulings;
+	private List<TaskScheduled> taskScheduled;
 
 }

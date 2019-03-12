@@ -48,5 +48,9 @@ public class Task {
 	
 	@OneToMany(mappedBy="task")
 	private List<Employee> employeers;
+	
+	@OneToMany(mappedBy="task")
+	@OnDelete(action=OnDeleteAction.CASCADE)
+	private List<TaskScheduled> scheduled;
 
 }
