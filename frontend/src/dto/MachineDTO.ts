@@ -1,13 +1,13 @@
 export class MachineDTO{
     private id: number;
-	private nome: string;
-	private modello: string;
+	private name: string;
+	private model: string;
     private idUser: number;
     
-    constructor(id: number, nome: string, modello: string, idUser: number){
+    constructor(id: number, name: string, model: string, idUser: number){
         this.id = id;
         this.idUser = idUser;
-        this.modello = modello;
-        this.nome = nome;
+        this.model = model;
+        this.name = name;
     }
 }

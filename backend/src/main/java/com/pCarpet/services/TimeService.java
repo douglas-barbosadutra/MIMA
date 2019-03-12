@@ -29,7 +29,7 @@ public class TimeService {
 	
 	public List<TimeDTO> getAllTempi(TaskDTO task){
 		List<TimeDTO> tempiDTO = new ArrayList<>();
-		List<InstructionDTO> istruzioni = instructionService.getAllIstruzioni(task);
+		List<InstructionDTO> istruzioni = instructionService.getAllIstruzioniByIdTask(task.getId());
 		for(InstructionDTO istruzione : istruzioni) {
 			List<ManufacturingDTO> lavorazioni = 	manufacturingService.getManufacturingByInstruction(istruzione);
 			for(ManufacturingDTO lavorazione : lavorazioni) {

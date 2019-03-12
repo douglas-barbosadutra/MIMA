@@ -13,8 +13,8 @@ import lombok.ToString;
 public class MachineDTO {
 	
 	private int id;
-	private String nome;
-	private String modello;
+	private String name;
+	private String model;
 	private int idUser;
 }
 	

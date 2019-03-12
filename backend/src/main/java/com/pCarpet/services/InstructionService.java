@@ -22,7 +22,9 @@ public class InstructionService {
 		this.istruzioneDAO = istruzioneDAO;
 	}
 	
-	public List<InstructionDTO> getAllIstruzioni(TaskDTO task){
+	public List<InstructionDTO> getAllIstruzioniByIdTask(int idTask){
+		TaskDTO task = new TaskDTO();
+		task.setId(idTask);;
 		return (InstructionConverter.toListDTO(istruzioneDAO.findAllByTask(TaskConverter.convertToEntity(task))));
 	}
 	

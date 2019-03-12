@@ -11,7 +11,6 @@ import { InstructionDTO } from 'src/dto/InstructionDTO';
 })
 export class InstructionShowComponent implements OnInit {
 
-  private taskDTO: TaskDTO;
   private instructionDTO: InstructionDTO;
   private instructionList: Array<InstructionDTO>;
 
@@ -30,17 +29,15 @@ export class InstructionShowComponent implements OnInit {
   }
 
   instructionShow(){
-    this.taskDTO = new TaskDTO(parseInt(sessionStorage.getItem("idTask")),"",0);
-    this.instructionService.showInstruction(this.taskDTO).subscribe((data: any) =>{
-      if(data != null)
-        this.instructionList = data;
+    this.instructionService.showInstruction(parseInt(sessionStorage.getItem("idTask"))).subscribe((data: any) =>{
+    if(data != null)
+      this.instructionList = data;
     })
   }
 
   instructionDelete(idInstruction: number){
-    this.instructionDTO = new InstructionDTO(idInstruction,0,"","",0);
-    this.instructionService.deleteInstruction(this.instructionDTO).subscribe((data: any) =>{
-      if(data != null)
+    this.instructionService.deleteInstruction(idInstruction).subscribe((data: any) =>{
+      if(data)
         alert("Cancellazione effettuata");
       else
         alert("Cancellazione fallita");

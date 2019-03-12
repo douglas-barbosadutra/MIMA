@@ -11,7 +11,7 @@ import { InstructionService } from 'src/services/instruction.service';
 })
 export class InstructionInsertComponent implements OnInit {
   
-  private instructionDTO: InstructionDTO;
+  public instructionDTO: InstructionDTO;
 
   constructor(private router:  Router, private instructionService: InstructionService) { }
 
@@ -20,10 +20,10 @@ export class InstructionInsertComponent implements OnInit {
       this.router.navigateByUrl("taskShow");
       alert("Devi prima selezionare un task");
     }
+    this.instructionDTO = new InstructionDTO(0,0,"","",parseInt(sessionStorage.getItem("idTask")));
   }
 
   insertInstruction(f: NgForm){
-    this.instructionDTO = new InstructionDTO(0,f.value.durata,f.value.codice,f.value.nome,parseInt(sessionStorage.getItem("idTask")));
     this.instructionService.insertInstruction(this.instructionDTO).subscribe((data: any) =>{
 
       if(data != null)

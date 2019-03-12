@@ -11,16 +11,17 @@ import {MachineService} from "src/services/machine.service";
   styleUrls: ['./machine-insert.component.css']
 })
 export class MachineInsertComponent implements OnInit {
-  private machineDTO: MachineDTO;
+  public machineDTO: MachineDTO;
   
 
   constructor(private router: Router, private machineService: MachineService) { }
 
   ngOnInit() {
+    this.machineDTO = new MachineDTO(0,"","",parseInt(sessionStorage.getItem("idUser")));
   }
 
   insertMachine(f: NgForm){
-    this.machineDTO = new MachineDTO(0,f.value.nome,f.value.modello, parseInt(sessionStorage.getItem("idUser")));
+    console.log(this.machineDTO);
     this.machineService.insertMachine(this.machineDTO).subscribe((data: any) => {
       
       if(data != null){

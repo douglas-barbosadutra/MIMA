@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pCarpet.dto.InstructionDTO;
@@ -31,14 +32,14 @@ public class InstructionController {
 		return istruzioneService.insertIstruzione(instruction);
 	}
 	
-	@RequestMapping(value="/deleteInstruction" , method= RequestMethod.POST)
-	public boolean  deleteInstruction(@RequestBody InstructionDTO instruction) {		
-		return istruzioneService.deleteIstruzione(instruction.getId());
+	@RequestMapping(value="/deleteInstruction" , method= RequestMethod.DELETE)
+	public boolean  deleteInstruction(@RequestParam(value="idInstruction") int idInstruction) {		
+		return istruzioneService.deleteIstruzione(idInstruction);
 	}
 	
-	@RequestMapping(value="/showInstruction" , method= RequestMethod.POST)
-	public List<InstructionDTO> showInstruction(@RequestBody TaskDTO taskdto) {	
-		return istruzioneService.getAllIstruzioni(taskdto);		
+	@RequestMapping(value="/showInstruction" , method= RequestMethod.GET)
+	public List<InstructionDTO> showInstruction(@RequestParam(value="idTask") int idTask) {	
+		return istruzioneService.getAllIstruzioniByIdTask(idTask);
 	}
 
 }

@@ -12,15 +12,13 @@ import { UserDTO } from 'src/dto/UserDTO';
 export class MachineShowComponent implements OnInit {
 
   private machineList : Array<MachineDTO>;
-  private userDTO: UserDTO;
   private machineDTO: MachineDTO;
 
   constructor(private machineService: MachineService, private router:  Router) { }
 
   ngOnInit() {
 
-    this.userDTO = new UserDTO(parseInt(sessionStorage.getItem("idUser")),"","","","","",0);
-    this.machineService.showMachine(this.userDTO).subscribe((data: any) =>{
+    this.machineService.showMachine().subscribe((data: any) =>{
 
       if(data != null){
         this.machineList = data;
@@ -37,8 +35,7 @@ export class MachineShowComponent implements OnInit {
 
   deleteMachine(idMachine: number){
 
-    this.machineDTO = new MachineDTO(idMachine,"","",0);
-    this.machineService.deleteMachine(this.machineDTO).subscribe((data: any) =>{
+    this.machineService.deleteMachine(idMachine).subscribe((data: any) =>{
 
       if(data)
         alert("Cancellazione effettuata");   

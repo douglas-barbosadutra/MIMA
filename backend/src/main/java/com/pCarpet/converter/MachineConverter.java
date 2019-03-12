@@ -14,10 +14,10 @@ public class MachineConverter{
 		if(machinedto != null) {
 			machine = new Machine();
 			machine.setId(machinedto.getId());
-			machine.setModel(machinedto.getModello());
+			machine.setModel(machinedto.getModel());
 			User user = new User();
 			user.setId(machinedto.getIdUser());
-			machine.setName(machinedto.getNome());
+			machine.setName(machinedto.getName());
 			machine.setUser(user);
 		}
 		return machine;
@@ -28,8 +28,8 @@ public class MachineConverter{
 		if(machine != null) {
 			machinedto = new MachineDTO();
 			machinedto.setId(machine.getId());
-			machinedto.setModello(machine.getModel());
-			machinedto.setNome(machine.getName());
+			machinedto.setModel(machine.getModel());
+			machinedto.setName(machine.getName());
 			machinedto.setIdUser(machine.getUser().getId());
 		}
 		return machinedto;		
