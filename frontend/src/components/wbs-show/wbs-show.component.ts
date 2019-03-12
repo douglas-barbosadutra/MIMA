@@ -18,8 +18,7 @@ export class WbsShowComponent implements OnInit {
   constructor(private wbsService: WbsService, private router: Router) { }
 
   ngOnInit() {
-    this.userDTO = new UserDTO(parseInt(sessionStorage.getItem("idUser")),"","","","","",0);
-     this.wbsService.showWbs(this.userDTO).subscribe((data: any) =>{
+     this.wbsService.showWbs(parseInt(sessionStorage.getItem("idUser"))).subscribe((data: any) =>{
       if(data != null){
         this.wbsList = data;
       }
@@ -31,9 +30,8 @@ export class WbsShowComponent implements OnInit {
     alert("WBS selezionato");
   }
 
-  deleteWsb(idWbs: number){
-    this.wbsDTO = new WBSDTO(idWbs, "", 0);
-    this.wbsService.deleteWbs(this.wbsDTO).subscribe((data: any) =>{
+  deleteWbs(idWbs: number){
+    this.wbsService.deleteWbs(idWbs).subscribe((data: any) =>{
       if(data)
       alert("Cancellazione effettuata");   
     else

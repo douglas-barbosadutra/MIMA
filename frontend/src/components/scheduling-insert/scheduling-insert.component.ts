@@ -11,7 +11,7 @@ import { SchedulingService } from 'src/services/scheduling.service';
 })
 export class SchedulingInsertComponent implements OnInit {
 
-  private schedulingDTO: SchedulingDTO;
+  public schedulingDTO: SchedulingDTO;
 
   constructor(private router: Router, private schedulingService: SchedulingService) { }
 
@@ -20,11 +20,11 @@ export class SchedulingInsertComponent implements OnInit {
       alert("Devi prima selezionare un macchinario");
       this.router.navigateByUrl("machineShow");
     }
+    this.schedulingDTO = new SchedulingDTO(0,"",new Date(),new Date(),parseInt(sessionStorage.getItem("idMachine")));
   }
 
   schedulingInsert(f: NgForm){
-
-    this.schedulingDTO = new SchedulingDTO(0,f.value.name,f.value.startDate,f.value.endDate,parseInt(sessionStorage.getItem("idMachine")));
+    console.log(this.schedulingDTO);
     this.schedulingService.insertScheduling(this.schedulingDTO).subscribe((data: any) =>{
       if(data != null)
         alert("Inserimento effettuato");

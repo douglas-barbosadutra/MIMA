@@ -37,8 +37,10 @@ public class SchedulingService {
 		return true;
 	}
 	
-	public List<SchedulingDTO> getAllScheduling(MachineDTO machineDTO){
-		return (SchedulingConverter.toListDTO(schedulingDAO.findAllByMachine(MachineConverter.convertToEntity(machineDTO))));
+	public List<SchedulingDTO> getAllScheduling(int idMachine){
+		MachineDTO machine = new MachineDTO();
+		machine.setId(idMachine);
+		return (SchedulingConverter.toListDTO(schedulingDAO.findAllByMachine(MachineConverter.convertToEntity(machine))));
 	}
 
 }

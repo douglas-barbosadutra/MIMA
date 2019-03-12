@@ -33,7 +33,9 @@ public class WBSService {
 		return WBSConverter.convertToDto(wbs);
 	}
 	
-	public List<WBSDTO> showWBS(UserDTO user){
+	public List<WBSDTO> showWBS(int idUser){
+		UserDTO user = new UserDTO();
+		user.setId(idUser);
 		List<WBS> wbs = wbsDao.findAllByUser(UserConverter.toEntity(user));
 		return WBSConverter.toListDTO(wbs);
 	}

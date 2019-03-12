@@ -10,14 +10,14 @@ import {WbsService} from "src/services/wbs.service";
   styleUrls: ['./wbs-insert.component.css']
 })
 export class WbsInsertComponent implements OnInit {
-  private wbsdto: WBSDTO;
+  public wbsdto: WBSDTO;
   constructor(private router: Router, private wbsService: WbsService) { }
 
   ngOnInit() {
+    this.wbsdto = new WBSDTO(0,"",parseInt(sessionStorage.getItem("idUser")));
   }
 
   insertWbs(f: NgForm){
-    this.wbsdto = new WBSDTO(0, f.value.nome, parseInt(sessionStorage.getItem("idUser")));
     this.wbsService.insertWbs(this.wbsdto).subscribe((data: any) =>{
       if(data != null)
       alert("Inserimento effettuato");

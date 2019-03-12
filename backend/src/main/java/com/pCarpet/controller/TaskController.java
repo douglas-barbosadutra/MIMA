@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pCarpet.dto.MachineDTO;
@@ -30,14 +31,14 @@ public class TaskController {
 		return taskService.insertTask(taskdto);
 	}
 	
-	@RequestMapping(value="/deleteTask" , method= RequestMethod.POST)
-	public boolean deleteTask(@RequestBody TaskDTO taskdto) {		
-		return taskService.deleteTask(taskdto.getId());
+	@RequestMapping(value="/deleteTask" , method= RequestMethod.DELETE)
+	public boolean deleteTask(@RequestParam(value="idTask") int idTask) {		
+		return taskService.deleteTask(idTask);
 	}
 	
-	@RequestMapping(value="/showTask" , method= RequestMethod.POST)
-	public List<TaskDTO> showTask(@RequestBody MachineDTO machinedto) {
-		return taskService.getAllTasks(machinedto.getId());
+	@RequestMapping(value="/showTask" , method= RequestMethod.GET)
+	public List<TaskDTO> showTask(@RequestParam(value="idMachine") int idMachine) {
+		return taskService.getAllTasks(idMachine);
 	}
 
 }

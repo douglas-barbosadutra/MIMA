@@ -8,7 +8,7 @@
 
     <div class="form-group">
       <label class="col-form-label">Nome</label>
-      <input type="text" class="form-control" name="nome" ngModel>				
+      <input type="text" class="form-control" name="name" [(ngModel)]="wbsdto.name">				
     </div>
     <button type="submit" class="btn btn-primary" (click)="insertWbs(f)" >Inserisci</button>	
   

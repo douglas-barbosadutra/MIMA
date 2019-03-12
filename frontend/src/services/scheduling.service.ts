@@ -14,11 +14,15 @@ export class SchedulingService {
     return this.http.post( 'http://localhost:8080/Scheduling/insertScheduling', schedulingDTO);
   }
 
-  showScheduling(machineDTO: MachineDTO){
-    return this.http.post('http://localhost:8080/Scheduling/showScheduling', machineDTO);
+  showScheduling(idMachine: number){
+    return this.http.get('http://localhost:8080/Scheduling/showScheduling?idMachine='+idMachine);
   }
 
-  deleteScheduling(schedulingDTO: SchedulingDTO){
-    return this.http.post('http://localhost:8080/Scheduling/deleteScheduling', schedulingDTO);
+  deleteScheduling(idScheduling: number){
+    return this.http.delete('http://localhost:8080/Scheduling/deleteScheduling?idScheduling='+idScheduling);
+  }
+
+  updateScheduling(schedulingDTO: SchedulingDTO){
+    return this.http.put( 'http://localhost:8080/Scheduling/insertScheduling', schedulingDTO);
   }
 }

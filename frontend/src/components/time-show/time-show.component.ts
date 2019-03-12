@@ -11,7 +11,6 @@ import { TimeDTO } from 'src/dto/TimeDTO';
 })
 export class TimeShowComponent implements OnInit {
 
-  private taskDTO: TaskDTO;
   private timeList: Array<TimeDTO>;
 
   constructor(private router: Router, private manufactoringService: ManufactoringService) { }
@@ -30,8 +29,7 @@ export class TimeShowComponent implements OnInit {
   }
 
   timeShow(){
-    this.taskDTO = new TaskDTO(parseInt(sessionStorage.getItem("idTask")),"",0);
-    this.manufactoringService.showTime(this.taskDTO).subscribe((data: any) =>{
+    this.manufactoringService.showTime(parseInt(sessionStorage.getItem("idTask"))).subscribe((data: any) =>{
       if(data != null){
         console.log(data);
         this.timeList = data;

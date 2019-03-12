@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pCarpet.dto.MachineDTO;
@@ -27,17 +28,23 @@ public class SchedulingController {
 
 	@RequestMapping(value = "/insertScheduling", method = RequestMethod.POST)
 	public SchedulingDTO insertScheduling(@RequestBody SchedulingDTO schedulingDTO) {
+		System.out.println("scheduling: "+schedulingDTO);
 		return schedulingService.insertScheduling(schedulingDTO);
 	}
 
-	@RequestMapping(value = "/deleteScheduling", method = RequestMethod.POST)
-	public boolean deleteScheduling(@RequestBody SchedulingDTO schedulingDTO) {
-		return schedulingService.deleteScheduling(schedulingDTO.getId());
+	@RequestMapping(value = "/deleteScheduling", method = RequestMethod.DELETE)
+	public boolean deleteScheduling(@RequestParam(value="idScheduling") int idScheduling) {
+		return schedulingService.deleteScheduling(idScheduling);
 	}
 
-	@RequestMapping(value = "/showScheduling", method = RequestMethod.POST)
-	public List<SchedulingDTO> showScheduling(@RequestBody MachineDTO machinedto) {
-		return schedulingService.getAllScheduling(machinedto);
+	@RequestMapping(value = "/showScheduling", method = RequestMethod.GET)
+	public List<SchedulingDTO> showScheduling(@RequestParam(value="idMachine") int idMachine) {
+		return schedulingService.getAllScheduling(idMachine);
+	}
+	
+	@RequestMapping(value = "/updateScheduling", method = RequestMethod.PUT)
+	public SchedulingDTO updateScheduling(@RequestBody SchedulingDTO schedulingDTO) {
+		return schedulingService.insertScheduling(schedulingDTO);
 	}
 
 }

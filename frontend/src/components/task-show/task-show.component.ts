@@ -31,13 +31,10 @@ export class TaskShowComponent implements OnInit {
 
   taskShow(){
 
-    this.machineDTO = new MachineDTO(parseInt(sessionStorage.getItem("idMachine")),"","",0);
-
-    this.taskService.showTask(this.machineDTO).subscribe((data: any) =>{
+    this.taskService.showTask(parseInt(sessionStorage.getItem("idMachine"))).subscribe((data: any) =>{
 
       if(data != null){
         this.taskList = data;
-        console.log(this.taskList);
       }
     })
   }
@@ -50,9 +47,8 @@ export class TaskShowComponent implements OnInit {
   }
 
   deleteTask(idTask: number){
-
-    this.taskDTO = new TaskDTO(idTask,"",0);
-    this.taskService.deleteTask(this.taskDTO).subscribe((data: any) =>{
+   
+    this.taskService.deleteTask(idTask).subscribe((data: any) =>{
 
       if(data)
         alert("Cancellazione effettuata");   

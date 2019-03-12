@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pCarpet.dto.TaskDTO;
@@ -25,8 +26,8 @@ public class ManufacturingController {
 		this.timeService = timeService;
 	}
 	
-	@RequestMapping(value = "/showTime", method = RequestMethod.POST)
-	public List<TimeDTO> showTime(@RequestBody TaskDTO task) {
-		return timeService.getAllTempi(task);
+	@RequestMapping(value = "/showTime", method = RequestMethod.GET)
+	public List<TimeDTO> showTime(@RequestParam(value="idTask") int idTask) {
+		return timeService.getAllTempi(idTask);
 	}
 }

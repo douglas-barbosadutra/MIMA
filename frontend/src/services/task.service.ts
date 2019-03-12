@@ -14,11 +14,11 @@ export class TaskService {
     return this.http.post( 'http://localhost:8080/Task/insertTask', taskDTO);
   }
 
-  showTask(machineDTO: MachineDTO){
-    return this.http.post('http://localhost:8080/Task/showTask', machineDTO);
+  showTask(idMachine: number){
+    return this.http.get('http://localhost:8080/Task/showTask?idMachine='+idMachine);
   }
 
-  deleteTask(taskDTO: TaskDTO){
-    return this.http.post('http://localhost:8080/Task/deleteTask', taskDTO);
+  deleteTask(idTask: number){
+    return this.http.delete('http://localhost:8080/Task/deleteTask?idTask='+idTask);
   }
 }

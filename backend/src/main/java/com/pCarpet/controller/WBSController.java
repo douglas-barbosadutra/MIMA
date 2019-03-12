@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pCarpet.dto.UserDTO;
@@ -30,14 +31,14 @@ public class WBSController {
 		return wbsService.insertWBS(wbsDTO);
 	}
 	
-	@RequestMapping(value="/showWbs", method= RequestMethod.POST)
-	public List<WBSDTO> showWbs(@RequestBody UserDTO user) {		
-		return wbsService.showWBS(user);
+	@RequestMapping(value="/showWbs", method= RequestMethod.GET)
+	public List<WBSDTO> showWbs(@RequestParam(value="idUser") int idUser) {		
+		return wbsService.showWBS(idUser);
 	}
 	
-	@RequestMapping(value="/deleteWbs", method= RequestMethod.POST)
-	public boolean deleteWbs(@RequestBody WBSDTO wbsDTO) {		
-		return wbsService.deleteWBS(wbsDTO.getId());
+	@RequestMapping(value="/deleteWbs", method= RequestMethod.DELETE)
+	public boolean deleteWbs(@RequestParam(value="idWbs") int idWbs) {		
+		return wbsService.deleteWBS(idWbs);
 	}
 	
 

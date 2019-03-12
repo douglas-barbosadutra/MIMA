@@ -8,12 +8,12 @@
     
     <div class="form-group">
       <label class="col-form-label">Data Inizio</label>
-      <input type="datetime-local" class="form-control" name="startDate" ngModel>				
+      <input type="datetime-local" class="form-control" name="startDate" [(ngModel)]="schedulingDTO.startDate">				
     </div>
     
     <div class="form-group">
       <label class="col-form-label">Data Fine</label>
-      <input type="datetime-local" class="form-control" name="endDate" ngModel>				
+      <input type="datetime-local" class="form-control" name="endDate" [(ngModel)]="schedulingDTO.endDate">				
     </div>
     
     <button type="submit" class="btn btn-primary" (click)="schedulingUpdate(f)" >Aggiorna</button>	

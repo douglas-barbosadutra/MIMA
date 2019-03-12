@@ -10,15 +10,15 @@ import { SchedulingDTO } from 'src/dto/SchedulingDTO';
   styleUrls: ['./scheduling-update.component.css']
 })
 export class SchedulingUpdateComponent implements OnInit {
-  private schedulingDTO: SchedulingDTO;
+  public schedulingDTO: SchedulingDTO;
 
   constructor(private router: Router, private schedulingSerivce: SchedulingService) { }
 
   ngOnInit() {
+    this.schedulingDTO = new SchedulingDTO(parseInt(sessionStorage.getItem("idScheduling")),sessionStorage.getItem("nameScheduling"),new Date(), new Date(),parseInt(sessionStorage.getItem("idMachine")));
   }
 
   schedulingUpdate(f: NgForm){
-    this.schedulingDTO = new SchedulingDTO(parseInt(sessionStorage.getItem("idScheduling")),sessionStorage.getItem("nameScheduling"),f.value.startDate, f.value.endDate,parseInt(sessionStorage.getItem("idMachine")));
     this.schedulingSerivce.insertScheduling(this.schedulingDTO).subscribe((data: any) =>{
       if(data != null)
         alert("Aggiornamento effettuato");

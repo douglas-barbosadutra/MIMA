@@ -11,7 +11,7 @@ import { TaskService } from 'src/services/task.service';
 })
 export class TaskInsertComponent implements OnInit {
 
-  private taskDTO: TaskDTO;
+  public taskDTO: TaskDTO;
 
   constructor(private router: Router, private taskService: TaskService) { }
 
@@ -21,13 +21,12 @@ export class TaskInsertComponent implements OnInit {
       this.router.navigateByUrl("machineShow");
       alert("Devi prima selezionare un macchinario");
     }
-      
+    this.taskDTO = new TaskDTO(0,"",parseInt(sessionStorage.getItem("idMachine")));
   }
 
   insertTask(f: NgForm){
 
-    this.taskDTO = new TaskDTO(0,f.value.description,parseInt(sessionStorage.getItem("idMachine")));
-    this.taskService.insertTask(this.taskDTO).subscribe((data: any) =>{
+      this.taskService.insertTask(this.taskDTO).subscribe((data: any) =>{
 
       if(data != null)
         alert("Inserimento effettuato");

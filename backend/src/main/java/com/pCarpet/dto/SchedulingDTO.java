@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Data
@@ -17,8 +18,8 @@ public class SchedulingDTO {
 
 	private int id;
 	private String name;
-	private Timestamp startDate;
-	private Timestamp endDate;
+	private Date startDate;
+	private Date endDate;
 	private int idMachine;
 	
 }

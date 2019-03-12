@@ -29,8 +29,7 @@ export class SchedulingShowComponent implements OnInit {
   }
 
   schedulingShow(){
-    this.machineDTO = new MachineDTO(parseInt(sessionStorage.getItem("idMachine")),"","",0);
-    this.schedulingSerivce.showScheduling(this.machineDTO).subscribe((data: any) =>{
+      this.schedulingSerivce.showScheduling(parseInt(sessionStorage.getItem("idMachine"))).subscribe((data: any) =>{
       if(data != null)
         this.schedulingList = data;
     })
@@ -43,9 +42,8 @@ export class SchedulingShowComponent implements OnInit {
   }
 
   deleteScheduling(idScheduling: number){
-    this.schedulingDTO = new SchedulingDTO(idScheduling,"",new Date(),new Date(),0);
-    this.schedulingSerivce.deleteScheduling(this.schedulingDTO).subscribe((data: any) =>{
-      if(data != null)
+    this.schedulingSerivce.deleteScheduling(idScheduling).subscribe((data: any) =>{
+      if(data)
         alert("Cancellazione effettuata");
       else
         alert("Cancellazione fallita");
