@@ -1,3 +1,17 @@
-<p>
-  item-insert works!
-</p>
+<app-menu-user></app-menu-user>
+
+<h1 class="title">Inserisci un nuovo Item nel Wbs</h1>
+    
+<div id="container">
+
+  <form #f="ngForm">
+
+    <div class="form-group">
+      <label class="col-form-label">Nome</label>
+      <input type="text" class="form-control" name="nome" ngModel>				
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="insertItem(f)" >Inserisci</button>	
+  
+  </form>
+  
+</div>
