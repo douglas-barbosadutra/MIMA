@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ItemDTO } from 'src/dto/ItemDTO';
 import { WBSDTO } from 'src/dto/WBSDTO';
-import { Observable, of, BehaviorSubject } from 'rxjs';
+import { Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

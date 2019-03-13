@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pCarpet.dto.OperationSchedulingDTO;
@@ -14,7 +15,7 @@ import com.pCarpet.services.TaskScheduledService;
 
 @CrossOrigin(value = "*")
 @RestController
-@RequestMapping("/OperationScheduling")
+@RequestMapping("/TaskScheduled")
 public class TaskScheduledController {
 
 	TaskScheduledService taskScheduledService;
@@ -35,12 +36,12 @@ public class TaskScheduledController {
 		return taskScheduledService.insertTaskScheduled(taskScheduled);
 	}
 	
-	@RequestMapping(value = "/deleteOperationScheduling", method = RequestMethod.POST)
-	public boolean deleteTaskScheduled(@RequestBody TaskScheduledDTO taskScheduled) {
-		return taskScheduledService.deleteTaskScheduled(taskScheduled.getId());
+	@RequestMapping(value = "/deleteTaskScheduled", method = RequestMethod.DELETE)
+	public boolean deleteTaskScheduled(@RequestParam(value="idTaskScheduled") int idTaskScheduled) {
+		return taskScheduledService.deleteTaskScheduled(idTaskScheduled);
 	}
 
-	@RequestMapping(value = "/showOperazionScheduling", method = RequestMethod.POST)
+	@RequestMapping(value = "/showTaskScheduled", method = RequestMethod.GET)
 	public TaskScheduledDTO getTaskScheduledRoot(@RequestBody SchedulingDTO scheduling) {
 		return taskScheduledService.getTaskScheduledRoot(scheduling);
 	}

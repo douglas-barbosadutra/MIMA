@@ -32,7 +32,7 @@ export class SchedulingShowComponent implements OnInit {
       this.schedulingSerivce.showScheduling(parseInt(sessionStorage.getItem("idMachine"))).subscribe((data: any) =>{
       if(data != null)
         this.schedulingList = data;
-    })
+    });
   }
 
   updateScheduling(idScheduling: number, nameScheduling: string){
@@ -48,6 +48,11 @@ export class SchedulingShowComponent implements OnInit {
       else
         alert("Cancellazione fallita");
       this.router.navigateByUrl("homeUser");
-    })
+    });
+  }
+
+  showGraph(idScheduling: number){
+    sessionStorage.setItem("idScheduling",JSON.stringify(idScheduling));
+    this.router.navigateByUrl("/TaskScheduled");
   }
 }
