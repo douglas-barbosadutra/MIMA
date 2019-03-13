@@ -32,7 +32,7 @@
 
             <input type="text" class="form-control" name="name" value="{{idChild}}" placeholder="Id Task del figlio scelto" disabled>
 
-            <button type="submit" class="btn btn-primary" (click)="insertTaskScheduled(f)" >Inserisci</button>
+            <button type="submit" class="btn btn-primary" (click)="insertTaskScheduled()" >Inserisci</button>
           </form>
       </div>
 
@@ -55,7 +55,8 @@
                   <td >{{item.idTask}}</td>
                   <td>{{item.name}}</td>
                   <td>
-                    <button class="btn btn-primary" (click)="chooseTask(taskList.id)">Inserisci Task nello Scheduling</button>
+                    <button class="btn btn-primary" (click)="chooseFather(item.id)">Inserisci Task padre</button>
+                    <button class="btn btn-primary" (click)="chooseChild(item.id)">Inserisci Task figlio</button>
                   </td>
                 </tr>
               </tbody>

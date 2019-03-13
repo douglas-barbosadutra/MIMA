@@ -26,19 +26,24 @@ public class TaskScheduledService {
 	}
 	
 	public void insertScheduledRelations(OperationSchedulingDTO osDTO) {
+		System.out.println("ciao2");
+		int idChild = osDTO.getIdChild();
 		if(osDTO.getIdTask() != 0) {
 			TaskScheduledDTO taskScheduled = new TaskScheduledDTO();
 			taskScheduled.setIdTask(osDTO.getIdTask());
 			taskScheduled.setIdScheduling(osDTO.getIdScheduling());
-			insertTaskScheduled(taskScheduled);
+			taskScheduled = insertTaskScheduled(taskScheduled);
+			idChild = taskScheduled.getId();
+			System.out.println("ciao3");
 		}
-		taskScheduledDAO.insertScheduledRelations(osDTO.getIdChild(), osDTO.getIdFather());
+		taskScheduledDAO.insertScheduledRelations(idChild, osDTO.getIdFather());
+		System.out.println("ciao4");
 	}
 	
 	public TaskScheduledDTO insertTaskScheduled(TaskScheduledDTO taskScheduled) {
 		TaskScheduled task = TaskScheduledConverter.convertToEntity(taskScheduled);
-		taskScheduledDAO.save(task);
-		
+		task = taskScheduledDAO.save(task);
+		taskScheduledDAO.flush();
 		return TaskScheduledConverter.convertToDto(task);//errore
 	}
 	
@@ -49,6 +54,7 @@ public class TaskScheduledService {
 	
 	public List<TaskScheduledDTO> getTaskScheduling(int idScheduling) {
 		SchedulingDTO schedulingDTO = new SchedulingDTO();
+		schedulingDTO.setId(idScheduling);
 		return TaskScheduledConverter.toListDTO(taskScheduledDAO.findAllByScheduling(SchedulingConverter.convertToEntity(schedulingDTO)));
 	}
 	

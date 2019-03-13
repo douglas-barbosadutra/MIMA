@@ -18,13 +18,13 @@ export class TaskScheduledService {
   }
 
   insertOperationScheduling(osdto: OperationSchedulingDTO){
-    this.http.post('http://localhost:8080/TaskScheduled/insertOperationScheduling', osdto);
+    return this.http.post('http://localhost:8080/TaskScheduled/insertOperationScheduling', osdto);
   }
 
   deleteTaskScheduled(idTaskScheduled: number){
     return this.http.delete('http://localhost:8080/TaskScheduled/deleteTaskScheduled?idTaskScheduled=' + idTaskScheduled);
   }
-  insertTaskScheduled(taskScheduledDTO: TaskScheduledDTO) {
-    this.http.post('http://localhost:8080/TaskScheduled/insertTaskScheduled', taskScheduledDTO);
+  insertTaskScheduled(taskScheduledDTO: TaskScheduledDTO) : any{
+    return this.http.post('http://localhost:8080/TaskScheduled/insertTaskScheduled', taskScheduledDTO);
   }
 }
