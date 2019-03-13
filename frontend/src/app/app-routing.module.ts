@@ -28,7 +28,7 @@ import { TaskEmployeeShowComponent } from 'src/components/task-employee-show/tas
 import { EmployeeUpdateComponent } from 'src/components/employee-update/employee-update.component';
 import { EmployeeInsertComponent } from 'src/components/employee-insert/employee-insert.component';
 import { EmployeeShowComponent } from 'src/components/employee-show/employee-show.component';
-
+import { AssignTaskComponent } from 'src/components/assign-task/assign-task.component';
 
 
 const routes: Routes = [
@@ -60,7 +60,8 @@ const routes: Routes = [
 {path: 'taskEmployeeShow', component: TaskEmployeeShowComponent},
 {path: 'employeeUpdate', component: EmployeeUpdateComponent},
 {path: 'employeeInsert', component: EmployeeInsertComponent},
-{path: 'employeeShow', component: EmployeeShowComponent}];
+{path: 'employeeShow', component: EmployeeShowComponent},
+{path: 'assignTask', component: AssignTaskComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {useHash: true, onSameUrlNavigation: 'reload'})],

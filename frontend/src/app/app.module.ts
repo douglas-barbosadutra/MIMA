@@ -46,6 +46,8 @@ import { TaskEmployeeShowComponent } from 'src/components/task-employee-show/tas
 import { EmployeeUpdateComponent } from 'src/components/employee-update/employee-update.component';
 import { EmployeeInsertComponent } from 'src/components/employee-insert/employee-insert.component';
 import { EmployeeShowComponent } from 'src/components/employee-show/employee-show.component';
+import { AssignTaskComponent } from 'src/components/assign-task/assign-task.component';
+
 
 
 @NgModule({
@@ -79,7 +81,8 @@ import { EmployeeShowComponent } from 'src/components/employee-show/employee-sho
     TaskEmployeeShowComponent,
     EmployeeUpdateComponent,
     EmployeeInsertComponent,
-    EmployeeShowComponent
+    EmployeeShowComponent,
+    AssignTaskComponent
   ],
   imports: [
     BrowserModule,

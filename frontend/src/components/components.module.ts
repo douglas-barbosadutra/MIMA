@@ -25,9 +25,10 @@ import { TaskEmployeeShowComponent } from './task-employee-show/task-employee-sh
 import { EmployeeUpdateComponent } from './employee-update/employee-update.component';
 import { EmployeeInsertComponent } from './employee-insert/employee-insert.component';
 import { EmployeeShowComponent } from './employee-show/employee-show.component';
+import { AssignTaskComponent } from './assign-task/assign-task.component';
 
 @NgModule({
-  declarations: [LoginComponent, HomeAdminComponent, HomeUserComponent, HomeEmployeeComponent, MenuUserComponent, MachineInsertComponent, MachineShowComponent, SchedulingInsertComponent, SchedulingShowComponent, TaskInsertComponent, TaskShowComponent, InstructionInsertComponent, InstructionShowComponent, UserUpdateComponent, WbsInsertComponent, WbsShowComponent, ItemInsertComponent, ItemShowComponent, SchedulingUpdateComponent, TimeShowComponent, TaskScheduledComponent, TaskEmployeeShowComponent, EmployeeUpdateComponent, EmployeeInsertComponent, EmployeeShowComponent],
+  declarations: [LoginComponent, HomeAdminComponent, HomeUserComponent, HomeEmployeeComponent, MenuUserComponent, MachineInsertComponent, MachineShowComponent, SchedulingInsertComponent, SchedulingShowComponent, TaskInsertComponent, TaskShowComponent, InstructionInsertComponent, InstructionShowComponent, UserUpdateComponent, WbsInsertComponent, WbsShowComponent, ItemInsertComponent, ItemShowComponent, SchedulingUpdateComponent, TimeShowComponent, TaskScheduledComponent, TaskEmployeeShowComponent, EmployeeUpdateComponent, EmployeeInsertComponent, EmployeeShowComponent, AssignTaskComponent],
   imports: [
     CommonModule
   ]

@@ -1,3 +1,32 @@
-<p>
-  employee-show works!
-</p>
+<app-menu-user></app-menu-user>
+<h1 class="title">Lista employee</h1>
+		
+<div id="container">
+  
+  <table class="table table-striped">
+      <thead>
+        
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Task assegnato</th>
+          <th>Opzioni</th>
+        </tr>
+        
+      </thead>
+      
+      <tbody>
+        <tr *ngFor="let employeeList of employeeList">			
+          <td >{{employeeList.id}}</td>
+          <td >{{employeeList.user.name}}</td>
+          <td >{{employeeList.idTask}}</td>
+          <td>
+            <button class="btn btn-primary" (click)="employeeDelete(employeeList.id)">Elimina</button>
+            <button class="btn btn-primary" (click)="assignTask(employeeList.id)">Elimina</button>
+          </td>
+        </tr>
+      </tbody>
+      
+  </table>
+    
+</div>

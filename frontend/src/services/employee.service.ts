@@ -16,4 +16,8 @@ export class EmployeeService {
   insertEmployee(employeeDTO: EmployeeDTO){
     return this.http.post('http://localhost:8080/Employee/insertEmployee',employeeDTO);
   }
+
+  showEmployee(idBusinessOwner: number){
+    return this.http.get('http://localhost:8080/Employee/showEmployee?idBusinessOwner='+idBusinessOwner);
+  }
 }
