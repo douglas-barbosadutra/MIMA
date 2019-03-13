@@ -1,13 +1,13 @@
 <app-menu-user></app-menu-user>
 
-<h1>Albero</h1>
-<div>
-  <h3 class="title">{{father.name}}</h3><button (click)=insertChild(father.id)>Aggiungi Figlio</button>
-<ul>
+<h1 class="title">Albero</h1>
+<div id="container">
+  <span id="father">{{father.name}}</span><button button class="btn btn-primary" (click)=insertChild(father.id)>Aggiungi Figlio</button>
+<ul class="list">
   <ng-template #recursiveList let-list>
-    <li *ngFor="let item of list">
-      {{item.name}}<button class="btn btn primary" (click)=insertChild(item.id)>Aggiungi Figlio</button><button (click)=deleteItem(item.id)>Elimina Nodo</button>
-      <ul *ngIf="item.itemChildrenDTO.length > 0">
+    <li class="list" *ngFor="let item of list">
+      {{item.name}}<button class="btn btn-primary" (click)=insertChild(item.id)>Aggiungi Figlio</button><button button class="btn btn-primary" (click)=deleteItem(item.id)>Elimina Nodo</button>
+      <ul class="list" *ngIf="item.itemChildrenDTO.length > 0">
         <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: item.itemChildrenDTO }"></ng-container>
       </ul>
     </li>

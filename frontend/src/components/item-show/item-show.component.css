@@ -1,3 +1,18 @@
+.list{
+    font-size: 25px;
+    list-style: none;
+    margin-top: 1%;
+}
+
+#father{
+    font-size: 25px;
+}
+
+#container{
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
 .btn {
 	display: inline-block;
 	font-weight: 400;
