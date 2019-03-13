@@ -21,8 +21,8 @@
           <td >{{employeeList.user.name}}</td>
           <td >{{employeeList.idTask}}</td>
           <td>
-            <button class="btn btn-primary" (click)="employeeDelete(employeeList.id)">Elimina</button>
-            <button class="btn btn-primary" (click)="assignTask(employeeList.id)">Elimina</button>
+            <button class="btn btn-primary" (click)="employeeDelete(employeeList.user.id)">Elimina</button>
+            <button class="btn btn-primary" (click)="assignTask(employeeList.id,employeeList.user.id)">Assegna task</button>
           </td>
         </tr>
       </tbody>

@@ -19,6 +19,8 @@ export class SchedulingUpdateComponent implements OnInit {
   }
 
   schedulingUpdate(f: NgForm){
+    this.schedulingDTO.setStartDate(new Date(f.value.startDate).toLocaleString());
+    this.schedulingDTO.setEndDate(new Date(f.value.endDate).toLocaleString());
     this.schedulingSerivce.insertScheduling(this.schedulingDTO).subscribe((data: any) =>{
       if(data != null)
         alert("Aggiornamento effettuato");

@@ -1,3 +1,27 @@
-<p>
-  assign-task works!
-</p>
+<app-menu-user></app-menu-user>
+<h1 class="title">Assegnazione task</h1>
+
+<div id="container">
+  <table class="table table-striped">
+    <thead>
+      
+      <tr>
+        <th>ID</th>
+        <th>Descrizione</th>
+        <th>Opzioni</th>
+      </tr>
+      
+    </thead>
+    
+    <tbody>
+      <tr *ngFor="let taskList of taskList">			
+        <td >{{taskList.id}}</td>
+        <td >{{taskList.description}}</td>
+        <td>
+          <button class="btn btn-primary" (click)="assignTask(taskList.id)">Seleziona</button>
+        </td>
+      </tr>
+    </tbody>
+    
+  </table>
+</div>

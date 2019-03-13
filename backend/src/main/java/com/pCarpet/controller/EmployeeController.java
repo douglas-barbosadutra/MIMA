@@ -59,7 +59,7 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping(value="/deleteEmployee", method = RequestMethod.DELETE)
-	public boolean deleteEmployee(@RequestParam(value="idEmployee") int idEmployee) {
-		return this.employeeService.deleteEmployeeById(idEmployee);
+	public boolean deleteEmployee(@RequestParam(value="idUser") int idUser) {
+		return this.userService.deleteUser(idUser);
 	}
 }

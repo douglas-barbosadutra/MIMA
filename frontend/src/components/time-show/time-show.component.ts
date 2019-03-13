@@ -29,13 +29,11 @@ export class TimeShowComponent implements OnInit {
   }
 
   timeShow(){
-    this.manufactoringService.showTime(parseInt(sessionStorage.getItem("idTask"))).subscribe((data: any) =>{
+    this.manufactoringService.showTime(parseInt(sessionStorage.getItem("idTask"))).subscribe((data: Array<TimeDTO>) =>{
       if(data != null){
-        console.log(data);
         this.timeList = data;
+        console.log(data);
       }
     })
   }
-
-
 }

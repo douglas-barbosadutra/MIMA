@@ -29,7 +29,7 @@ public class SchedulingConverter {
 			scheduling.setId(schedulingDTO.getId());
 			scheduling.setName(schedulingDTO.getName());
 			scheduling.setStart(schedulingDTO.getStartDate());
-			scheduling.setFinish(schedulingDTO.getStartDate());
+			scheduling.setFinish(schedulingDTO.getEndDate());
 			Machine machine = new Machine();
 			machine.setId(schedulingDTO.getIdMachine());
 			scheduling.setMachine(machine);

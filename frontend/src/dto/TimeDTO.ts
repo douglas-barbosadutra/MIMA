@@ -3,9 +3,9 @@ export class TimeDTO{
     private item: string;
     private effectiveDuration: number;
     private expectedDuration: number;
-    private result: string;
+    private result: object;
 
-    constructor(nameInstruction: string, item: string, effectiveDuration: number, expectedDuration: number, result: string){
+    constructor(nameInstruction: string, item: string, effectiveDuration: number, expectedDuration: number, result: object){
         this.nameInstruction = nameInstruction;
         this.item = item;
         this.effectiveDuration = effectiveDuration;

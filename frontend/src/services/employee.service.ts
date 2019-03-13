@@ -20,4 +20,12 @@ export class EmployeeService {
   showEmployee(idBusinessOwner: number){
     return this.http.get('http://localhost:8080/Employee/showEmployee?idBusinessOwner='+idBusinessOwner);
   }
+
+  deleteEmployee(idUser: number){
+    return this.http.delete('http://localhost:8080/Employee/deleteEmployee?idUser='+idUser);
+  }
+
+  assignTask(employeeDTO: EmployeeDTO){
+    return this.http.put('http://localhost:8080/Employee/assignTask',employeeDTO);
+  }
 }

@@ -15,7 +15,7 @@
       </thead>
       
       <tbody>
-        <tr *ngFor="let timeList of timeList">			
+        <tr *ngFor="let timeList of timeList" [style.background-color]="(timeList.result)">			
           <td >{{timeList.nameInstruction}}</td>
           <td >{{timeList.effectiveDuration}}</td>
           <td >{{timeList.expectedDuration}}</td>
@@ -25,4 +25,3 @@
   </table>
     
 </div>
-

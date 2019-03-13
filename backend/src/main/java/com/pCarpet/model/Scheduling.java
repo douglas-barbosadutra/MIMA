@@ -1,6 +1,6 @@
 package com.pCarpet.model;
 
-import java.sql.Date;
+
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -42,11 +42,11 @@ public class Scheduling {
 	
 	@Column(name = "start")
 	@NotNull
-	private Date start;
+	private String start;
 	
 	@Column(name = "finish")
 	@NotNull
-	private Date finish;
+	private String finish;
 	
 	@ManyToOne
 	@JoinColumn(name="id_machine")

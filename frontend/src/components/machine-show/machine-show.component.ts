@@ -31,6 +31,7 @@ s
     
     sessionStorage.setItem("idMachine",JSON.stringify(idMachine));
     alert("Macchinario selezionato");
+    this.router.navigateByUrl("homeUser");
   }
 
   deleteMachine(idMachine: number){

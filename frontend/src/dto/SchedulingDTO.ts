@@ -1,13 +1,11 @@
-import { Timestamp } from 'rxjs/internal/operators/timestamp';
-
 export class SchedulingDTO{
     private id: number;
     private name: string;
-    private startDate: Date;
-    private endDate: Date;
+    private startDate: string;
+    private endDate: string;
     private idMachine: number;
 
-    constructor(id: number, name: string, startDate: Date, endDate: Date, idMachine: number){
+    constructor(id: number, name: string, startDate: string, endDate: string, idMachine: number){
         this.id = id;
         this.name = name;
         this.startDate = startDate;
@@ -16,7 +14,11 @@ export class SchedulingDTO{
 
     }
 
-    public getStartDate(){
-        return this.startDate;
+    public setStartDate(startDate: string){
+        this.startDate = startDate;
+    }
+
+    public setEndDate(endDate: string){
+        this.endDate = endDate;
     }
 }
