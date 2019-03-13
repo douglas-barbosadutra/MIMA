@@ -16,6 +16,8 @@
 	vertical-align: top;
   border-top: 1px solid #dee2e6;
   text-align: center;
+  color: #000000;
+  font-weight: bold;
 }
 
 .table thead th {
@@ -27,8 +29,8 @@
 	border-top: 2px solid #dee2e6;
 }
 
-.table .table {
-	background-color: #fff;
+.table.table {
+	background-color: rgba(0, 0, 0, 0.05);
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
@@ -61,8 +63,7 @@
 	border-radius: 0.25rem;
 	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
         border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    margin-top:2%;
-    margin-left:40%;
+
 }
 
 .btn:hover, .btn:focus {
@@ -89,3 +90,4 @@
 .btn-primary:focus, .btn-primary.focus {
 	box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
 }
+
