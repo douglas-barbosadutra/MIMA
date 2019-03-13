@@ -15,7 +15,7 @@ export class SchedulingUpdateComponent implements OnInit {
   constructor(private router: Router, private schedulingSerivce: SchedulingService) { }
 
   ngOnInit() {
-    this.schedulingDTO = new SchedulingDTO(parseInt(sessionStorage.getItem("idScheduling")),sessionStorage.getItem("nameScheduling"),new Date(), new Date(),parseInt(sessionStorage.getItem("idMachine")));
+    this.schedulingDTO = new SchedulingDTO(parseInt(sessionStorage.getItem("idScheduling")),sessionStorage.getItem("nameScheduling"),"", "",parseInt(sessionStorage.getItem("idMachine")));
   }
 
   schedulingUpdate(f: NgForm){

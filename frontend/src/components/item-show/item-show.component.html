@@ -2,11 +2,11 @@
 
 <h1>Albero</h1>
 <div>
-  <h3>{{father.name}}</h3><button (click)=insertChild(father.id)>Aggiungi Figlio</button>
+  <h3 class="title">{{father.name}}</h3><button (click)=insertChild(father.id)>Aggiungi Figlio</button>
 <ul>
   <ng-template #recursiveList let-list>
     <li *ngFor="let item of list">
-      {{item.name}}<button (click)=insertChild(item.id)>Aggiungi Figlio</button><button (click)=deleteItem(item.id)>Elimina Nodo</button>
+      {{item.name}}<button class="btn btn primary" (click)=insertChild(item.id)>Aggiungi Figlio</button><button (click)=deleteItem(item.id)>Elimina Nodo</button>
       <ul *ngIf="item.itemChildrenDTO.length > 0">
         <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: item.itemChildrenDTO }"></ng-container>
       </ul>
