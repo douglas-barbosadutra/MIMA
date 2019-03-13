@@ -53,6 +53,7 @@
 	border-radius: 0.25rem;
 	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
         border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  margin-top: 3%;
 
 }
 
@@ -101,4 +102,35 @@
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+#formContainer{
+  float: left;
+  padding: 2%;
+  width: 30%;
+}
+
+.title {
+	text-align: center;
+	text-shadow: 2px 2px 3px #333;
+	color: darkblue;
+}
+
+div.container {
+  width: 90%;
+  text-align: center;
+}
+div.split2 div {
+  float: left;
+  width: 45%;
+  padding:2%;
+}
+div.wide {
+  clear: left;
+}
+
+#taskDisponibiliContainer{
+  padding-left: 30%;
+  padding-right: 30%;
+  margin-top: 5%;
 }

@@ -1,86 +1,94 @@
 <app-menu-user></app-menu-user>
+<h1 class="title">Gestione scheduling</h1>
 
-<div><h2>tabella relazione</h2>
-    <table class="table table-striped">
-        <thead>
-          
-          <tr>
-            <th>ID Padre</th>
-            <th>ID Figlio</th>
-          </tr>
-        </thead>
+<div class="container">
+  <div class="split2">
+      <div style="width: 20%;">
+        <h1 class="title">Tabella relazione</h1>
 
-        <tbody>
-            <tr *ngFor="let item of table">			
-              <td >{{item.idFather}}</td>
-              <td >{{item.idChild}}</td>
-            </tr>
-          </tbody>
-          
-        </table>
+        <table class="table table-striped">
+            <thead>
 
+              <tr>
+                <th>ID Padre</th>
+                <th>ID Figlio</th>
+              </tr>
+            </thead>
 
-</div>
+            <tbody>
+              <tr *ngFor="let item of table">
+                <td >{{item.idFather}}</td>
+                <td >{{item.idChild}}</td>
+              </tr>
+            </tbody>
 
+          </table>
 
-<div><h2>Task Schedulati</h2>
-    <table class="table table-striped">
-        <thead>
-          
-          <tr>
-            <th>ID</th>
-            <th>ID Task</th>
-            <th>Descrizione</th>
-            <th>Opzioni</th>
-          </tr>
-        </thead>
-          <tbody>
-            <tr *ngFor="let item of taskScheduledList">			
-              <td >{{item.id}}</td>
-              <td >{{item.idTask}}</td>
-              <td>{{item.name}}</td>
-              <td>
-                <button class="btn btn-primary" (click)="chooseTask(taskList.id)">Inserisci Task nello Scheduling</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        
+      </div>
 
-</div>
-
-<div><h2>Task Disponibili</h2>
-    <table class="table table-striped">
-        <thead>
-          
-          <tr>
-            <th>ID</th>
-            <th>Descrizione</th>
-            <th>Inserimento</th>
-          </tr>
-          
-        </thead>
-
-        <tbody>
-            <tr *ngFor="let task of taskList">			
-              <td >{{task.id}}</td>
-              <td >{{task.description}}</td>
-              <td>
-                <button class="btn btn-primary" (click)="insertTask(task.id, task.name)">Inserisci Task nello Scheduling</button>
-              </td>
-            </tr>
-          </tbody>
-          
-        </table>
-
+      <div style="width: 20%; margin-top: 3%; text-align: left;">
         <form #f="ngForm">
-        <label class="col-form-label">Id Task del padre scelto</label>
-        <input type="text" class="form-control" name="name" value="{{idFather}}" disabled>
+            <input type="text" class="form-control" name="name" value="{{idFather}}" placeholder="Id Task del padre scelto" disabled>
 
-        <label class="col-form-label">Id Task dek figlio scelto</label>
-        <input type="text" class="form-control" name="name" value="{{idChild}}" disabled>
+            <input type="text" class="form-control" name="name" value="{{idChild}}" placeholder="Id Task del figlio scelto" disabled>
 
-        <button type="submit" class="btn btn-primary" (click)="insertTaskScheduled(f)" >Inserisci</button>
-      </form>
+            <button type="submit" class="btn btn-primary" (click)="insertTaskScheduled(f)" >Inserisci</button>
+          </form>
+      </div>
 
+      <div style="width: 45%;">
+        <h1 class="title">Task Schedulati</h1>
+
+        <table class="table table-striped">
+            <thead>
+
+              <tr>
+                <th>ID</th>
+                <th>ID Task</th>
+                <th>Descrizione</th>
+                <th>Opzioni</th>
+              </tr>
+            </thead>
+              <tbody>
+                <tr *ngFor="let item of taskScheduledList">
+                  <td >{{item.id}}</td>
+                  <td >{{item.idTask}}</td>
+                  <td>{{item.name}}</td>
+                  <td>
+                    <button class="btn btn-primary" (click)="chooseTask(taskList.id)">Inserisci Task nello Scheduling</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+      </div>
+  </div>
+
+  <div class="wide"></div>
+</div>
+
+<div id="taskDisponibiliContainer">
+  <h2 class="title">Task Disponibili</h2>
+    <table class="table table-striped">
+      <thead>
+
+        <tr>
+          <th>ID</th>
+          <th>Descrizione</th>
+          <th>Inserimento</th>
+        </tr>
+
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let task of taskList">
+          <td >{{task.id}}</td>
+          <td >{{task.description}}</td>
+          <td>
+            <button class="btn btn-primary" (click)="insertTask(task.id, task.name)">Inserisci Task nello Scheduling</button>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
 </div>
