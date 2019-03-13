@@ -1,5 +1,7 @@
 package com.pCarpet.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pCarpet.dto.OperationSchedulingDTO;
-import com.pCarpet.dto.SchedulingDTO;
 import com.pCarpet.dto.TaskScheduledDTO;
 import com.pCarpet.services.TaskScheduledService;
 
@@ -42,8 +43,9 @@ public class TaskScheduledController {
 	}
 
 	@RequestMapping(value = "/showTaskScheduled", method = RequestMethod.GET)
-	public TaskScheduledDTO getTaskScheduledRoot(@RequestBody SchedulingDTO scheduling) {
-		return taskScheduledService.getTaskScheduledRoot(scheduling);
+	public List<TaskScheduledDTO> getTaskScheduledRoot(@RequestParam(value="idScheduling") int idScheduling) {
+		//return taskScheduledService.getTaskScheduledRoot(scheduling);
+		return taskScheduledService.getTaskScheduling(idScheduling);
 	}
 
 }

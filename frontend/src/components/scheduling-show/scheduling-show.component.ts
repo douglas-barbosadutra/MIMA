@@ -43,10 +43,6 @@ export class SchedulingShowComponent implements OnInit {
 
   deleteScheduling(idScheduling: number){
     this.schedulingSerivce.deleteScheduling(idScheduling).subscribe((data: any) =>{
-      if(data)
-        alert("Cancellazione effettuata");
-      else
-        alert("Cancellazione fallita");
       this.router.navigateByUrl("homeUser");
     });
   }

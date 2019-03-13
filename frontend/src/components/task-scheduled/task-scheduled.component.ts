@@ -16,6 +16,9 @@ export class TaskScheduledComponent implements OnInit {
   public taskList: Array<TaskDTO>;
   public table: Array<OperationSchedulingDTO>;
   osDTO: OperationSchedulingDTO;
+  task: TaskScheduledDTO;
+  public idFather: number;
+  public idChild: number;
 
   constructor(private router: Router, private taskScheduledService: TaskScheduledService, private taskService: TaskService) { }
 
@@ -25,20 +28,23 @@ export class TaskScheduledComponent implements OnInit {
   }
 
   getTaskScheduledList(){
-    this.taskScheduledService.showTaskScheduled(parseInt(sessionStorage.getItem("idScheduling"))).subscribe((data: any) =>{
+    this.taskScheduledService.showTaskScheduled(parseInt(sessionStorage.getItem("idScheduling"))).subscribe((data) =>{
       if(data != null){
         this.taskScheduledList = data;
+        if(this.getTaskScheduledList.length > 0)
+        this.createTable();
       }
     });
+
   }
 
   getTaskList(){
     this.taskService.showTask(parseInt(sessionStorage.getItem("idMachine"))).subscribe((data: any) =>{
       if(data != null){
-        this.taskList = data;
+        this.taskList = data;        
       }
     });
-    this.createTable();
+    
   }
 
   createTable(){
@@ -51,6 +57,27 @@ export class TaskScheduledComponent implements OnInit {
     }
   }
 
+  chooseChild(idChild: number){
+    this.idChild = idChild;
+  }
 
+  chooseFather(idFather: number){
+    this.idFather = idFather;
+  }
+
+  insertTask(idTask: number, taskName: string){
+    if(this.getTaskScheduledList.length == 0){
+      this.task = new TaskScheduledDTO(0, idTask, false, taskName, parseInt(sessionStorage.getItem("idScheduling")), null);
+      this.createTaskScheduled(idTask, taskName);
+    }
+    else{
+      this.task = new TaskScheduledDTO(0, idTask, false, taskName, parseInt(sessionStorage.getItem("idScheduling")), null);
+      this.idChild = idTask;
+    }
+  }
+
+  createTaskScheduled(idTask: number, taskName: string){
+    this.taskScheduledService.insertTaskScheduled(this.task);
+  }
   
 }

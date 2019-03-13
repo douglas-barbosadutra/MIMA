@@ -62,15 +62,25 @@
         </thead>
 
         <tbody>
-            <tr *ngFor="let taskList of taskList">			
-              <td >{{taskList.id}}</td>
-              <td >{{taskList.description}}</td>
+            <tr *ngFor="let task of taskList">			
+              <td >{{task.id}}</td>
+              <td >{{task.description}}</td>
               <td>
-                <button class="btn btn-primary" (click)="chooseTask(taskList.id)">Inserisci Task nello Scheduling</button>
+                <button class="btn btn-primary" (click)="insertTask(task.id, task.name)">Inserisci Task nello Scheduling</button>
               </td>
             </tr>
           </tbody>
           
         </table>
+
+        <form #f="ngForm">
+        <label class="col-form-label">Id Task del padre scelto</label>
+        <input type="text" class="form-control" name="name" value="{{idFather}}" disabled>
+
+        <label class="col-form-label">Id Task dek figlio scelto</label>
+        <input type="text" class="form-control" name="name" value="{{idChild}}" disabled>
+
+        <button type="submit" class="btn btn-primary" (click)="insertTaskScheduled(f)" >Inserisci</button>
+      </form>
 
 </div>

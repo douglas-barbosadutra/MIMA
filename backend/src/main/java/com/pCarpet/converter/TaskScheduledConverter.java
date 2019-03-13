@@ -14,7 +14,8 @@ public class TaskScheduledConverter {
 		TaskScheduled task = null;
 		if (taskScheduledDto != null) {
 			task = new TaskScheduled();
-			task.setId(taskScheduledDto.getId());
+			if(taskScheduledDto.getId() != 0)
+				task.setId(taskScheduledDto.getId());
 
 			Task temp = new Task();
 			temp.setId(taskScheduledDto.getIdTask());

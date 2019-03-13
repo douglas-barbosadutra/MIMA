@@ -37,7 +37,7 @@ public class TaskScheduledService {
 	
 	public TaskScheduledDTO insertTaskScheduled(TaskScheduledDTO taskScheduled) {
 		TaskScheduled task = TaskScheduledConverter.convertToEntity(taskScheduled);
-		//taskScheduledDAO.insertTaskScheduled(taskScheduled.getFather(), taskScheduled.getIdScheduling(), taskScheduled.getIdTask());
+		taskScheduledDAO.save(task);
 		
 		return TaskScheduledConverter.convertToDto(task);//errore
 	}
@@ -47,12 +47,13 @@ public class TaskScheduledService {
 		return true;
 	}
 	
-	public List<TaskScheduledDTO> getTaskScheduling(SchedulingDTO scheduling) {
-		return TaskScheduledConverter.toListDTO(taskScheduledDAO.findAllByScheduling(SchedulingConverter.convertToEntity(scheduling)));
+	public List<TaskScheduledDTO> getTaskScheduling(int idScheduling) {
+		SchedulingDTO schedulingDTO = new SchedulingDTO();
+		return TaskScheduledConverter.toListDTO(taskScheduledDAO.findAllByScheduling(SchedulingConverter.convertToEntity(schedulingDTO)));
 	}
 	
-	public TaskScheduledDTO getTaskScheduledRoot(SchedulingDTO scheduling) {
-		List<TaskScheduledDTO> list = this.getTaskScheduling(scheduling);
+	public TaskScheduledDTO getTaskScheduledRoot(int idScheduling) {
+		List<TaskScheduledDTO> list = this.getTaskScheduling(idScheduling);
 		for(TaskScheduledDTO i: list) {
 			if(!i.isHasFather())
 				return i;
