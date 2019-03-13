@@ -87,6 +87,7 @@
 }
 
 .btn {
+  margin-top: 1%;
 	display: inline-block;
 	font-weight: 400;
 	text-align: center;
@@ -102,7 +103,7 @@
 	line-height: 1.5;
 	border-radius: 0.25rem;
 	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-		border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .btn:hover, .btn:focus {
@@ -118,7 +119,6 @@
 	color: #fff;
 	background-color: #007bff;
   border-color: #007bff;
-  box-align: center;
 }
 
 .btn-primary:hover {
