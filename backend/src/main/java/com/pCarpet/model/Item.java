@@ -57,4 +57,8 @@ public class Item {
 	@OnDelete(action=OnDeleteAction.CASCADE)
 	private List<Item> childsList=new ArrayList<>();
 	
+	@OneToMany(mappedBy="output")
+	@OnDelete(action=OnDeleteAction.CASCADE)
+	private List<TaskScheduled> listTaskScheduled;
+	
 }

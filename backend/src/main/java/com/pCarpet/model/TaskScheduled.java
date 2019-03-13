@@ -17,6 +17,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.lang.Nullable;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -55,4 +56,15 @@ public class TaskScheduled {
 	joinColumns=@JoinColumn(name = "childId"),
 	inverseJoinColumns=@JoinColumn(name = "fatherId"))
 	private List<TaskScheduled> fatherList=new ArrayList<>();
+	
+	@Nullable
+	@ManyToOne
+	@JoinColumn(name="id_item")
+	private Item output;
+	
+	@ManyToMany
+	@JoinTable(name="inputs",
+		joinColumns={@JoinColumn(name="id_item")},
+		inverseJoinColumns= {@JoinColumn(name="id_task")})
+	private List<Item> inputs;
 }

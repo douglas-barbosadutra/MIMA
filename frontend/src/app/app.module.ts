@@ -47,6 +47,7 @@ import { EmployeeUpdateComponent } from 'src/components/employee-update/employee
 import { EmployeeInsertComponent } from 'src/components/employee-insert/employee-insert.component';
 import { EmployeeShowComponent } from 'src/components/employee-show/employee-show.component';
 import { AssignTaskComponent } from 'src/components/assign-task/assign-task.component';
+import { TreeViewComponent } from './tree-view/tree-view.component';
 
 
 
@@ -82,7 +83,8 @@ import { AssignTaskComponent } from 'src/components/assign-task/assign-task.comp
     EmployeeUpdateComponent,
     EmployeeInsertComponent,
     EmployeeShowComponent,
-    AssignTaskComponent
+    AssignTaskComponent,
+    TreeViewComponent
   ],
   imports: [
     BrowserModule,
