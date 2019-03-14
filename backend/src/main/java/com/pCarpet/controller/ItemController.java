@@ -1,5 +1,7 @@
 package com.pCarpet.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,6 +39,11 @@ public class ItemController {
 	@RequestMapping(value = "/removeNode", method = RequestMethod.DELETE)
 	public boolean removeNode(@RequestParam(value="idItem") int idItem) {
 		return itemService.deleteItem(idItem);
+	}
+	
+	@RequestMapping(value="/showItem", method = RequestMethod.GET)
+	public List<ItemDTO> showItem(){
+		return itemService.getAllItem();
 	}
 
 }

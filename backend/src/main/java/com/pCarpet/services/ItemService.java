@@ -48,5 +48,9 @@ public class ItemService {
 				return item;
 		}
 		return null;
-	}	
+	}
+	
+	public List<ItemDTO> getAllItem(){
+		return ItemConverter.toListDTO(itemDAO.findAll());
+	}
 }

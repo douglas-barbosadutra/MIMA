@@ -19,6 +19,7 @@ public interface ItemDAO extends JpaRepository<Item, Integer>{
 	
 	public List<Item> findAllByWbs(WBS wbs);
 	public List<Item> findAllByManufacturings(Manufacturing manufacturings);
+	public List<Item> findAll();
 	
 	public Item findByFather(Item i);
 	public Item findByManufacturings(Manufacturing m);
