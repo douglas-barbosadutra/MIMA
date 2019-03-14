@@ -20,7 +20,7 @@ export class UserInsertComponent implements OnInit {
   }
 
     insertUser(f: NgForm){
-      console.log(this.userDTO);
+      
     this.userService.insertUser(this.userDTO).subscribe((data: any) => {
 
       if(data != null)

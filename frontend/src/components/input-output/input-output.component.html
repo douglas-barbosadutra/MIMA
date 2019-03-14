@@ -1,3 +1,45 @@
-<p>
-  input-output works!
-</p>
+<app-menu-user></app-menu-user>
+<h1 class="title">Lista item</h1>
+		
+<div id="container">
+  
+  <table class="table table-striped">
+      <thead>
+        
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Input/output</th>
+          <th>Opzioni</th>
+        </tr>
+        
+      </thead>
+      
+      <tbody>
+        <tr *ngFor="let itemList of itemList">			
+          <td >{{itemList.id}}</td>
+          <td >{{itemList.name}}</td>
+          <td >
+            <form #f="ngForm">
+              
+              <span class="form-check" style="margin-top:2%;">
+
+                <input class="form-check-input" type="radio" name="inputOutput" value="0" [(ngModel)]="inputOutput" checked>
+                <label class="form-check-label">Input</label>
+  
+                <input style="margin-left: 3%;" class="form-check-input" type="radio" name="inputOutput" value="1" [(ngModel)]="inputOutput">
+                <label style="margin-left: 6%;" class="form-check-label">Output</label>
+          
+              </span>
+            </form>
+          </td>
+          <td >
+            <button type="submit" class="btn btn-primary" (click)="selectItem(itemList.id)" >Seleziona</button>
+          </td>
+
+        </tr>
+      </tbody>
+      
+  </table>
+    
+</div>

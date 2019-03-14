@@ -49,6 +49,7 @@ import { EmployeeShowComponent } from 'src/components/employee-show/employee-sho
 import { AssignTaskComponent } from 'src/components/assign-task/assign-task.component';
 import { TreeViewComponent } from './tree-view/tree-view.component';
 import { InputOutputComponent } from 'src/components/input-output/input-output.component';
+import { TaskScheduledShowComponent } from 'src/components/task-scheduled-show/task-scheduled-show.component';
 
 
 
@@ -86,7 +87,8 @@ import { InputOutputComponent } from 'src/components/input-output/input-output.c
     EmployeeShowComponent,
     AssignTaskComponent,
     TreeViewComponent,
-    InputOutputComponent
+    InputOutputComponent,
+    TaskScheduledShowComponent
   ],
   imports: [
     BrowserModule,
