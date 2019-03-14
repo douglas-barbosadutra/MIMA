@@ -45,8 +45,12 @@ public class TaskScheduledController {
 
 	@RequestMapping(value = "/showTaskScheduled", method = RequestMethod.GET)
 	public List<TaskScheduledDTO> showTaskScheduled(@RequestParam(value="idScheduling") int idScheduling) {
-		//return taskScheduledService.getTaskScheduledRoot(scheduling);
 		return taskScheduledService.getTaskScheduling(idScheduling);
 	}
-
+	
+	@RequestMapping(value = "/showOperationScheduling", method = RequestMethod.GET)
+	public List<OperationSchedulingDTO> showOperationScheduling(@RequestParam(value="idScheduling") int idScheduling) {
+		//return taskScheduledService.getTaskScheduling(idScheduling);
+		return null;
+	}
 }

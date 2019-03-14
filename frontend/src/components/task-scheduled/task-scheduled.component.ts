@@ -25,16 +25,15 @@ export class TaskScheduledComponent implements OnInit {
   ngOnInit() {
     this.getTaskScheduledList();
     this.getTaskList();
+    this.createTable();
   }
 
   getTaskScheduledList(){
     this.taskScheduledService.showTaskScheduled(parseInt(sessionStorage.getItem("idScheduling"))).subscribe((data) =>{
       if(data != null){
+        this.taskScheduledList = new Array();
         this.taskScheduledList = data;
         sessionStorage.setItem("taskScheduledListLength",JSON.stringify(this.taskScheduledList.length));
-        if(this.taskScheduledList.length > 0){
-          this.createTable();
-        }
       }
     });
   }
@@ -45,17 +44,15 @@ export class TaskScheduledComponent implements OnInit {
         this.taskList = data;        
       }
     });
-    
   }
 
   createTable(){
-    for(let father of this.taskScheduledList){
-      for(let elem of father.taskScheduledChildren){
-        this.osDTO.idFather = father.id;
-        this.osDTO.idChild = elem.id;
-        this.table.push(this.osDTO);
-      }
-    }
+      this.table = new Array<OperationSchedulingDTO>();
+      this.taskScheduledService.showOperationScheduling(parseInt(sessionStorage.getItem("idScheduling"))).subscribe((data) =>{
+        if(data != null){
+          this.table = data;
+        }
+      });
   }
 
   chooseChild(idChild: number){

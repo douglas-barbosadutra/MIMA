@@ -17,6 +17,10 @@ export class TaskScheduledService {
     return this.http.get<Array<TaskScheduledDTO>>('http://localhost:8080/TaskScheduled/showTaskScheduled?idScheduling=' + idScheduling);
   }
 
+  showOperationScheduling(idScheduling: number): Observable<Array<OperationSchedulingDTO>>{
+    return this.http.get<Array<OperationSchedulingDTO>>('http://localhost:8080/TaskScheduled/showOperationScheduling?idScheduling=' + idScheduling);
+  }
+
   insertOperationScheduling(osdto: OperationSchedulingDTO){
     return this.http.post('http://localhost:8080/TaskScheduled/insertOperationScheduling', osdto);
   }
