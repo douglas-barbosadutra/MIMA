@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ItemDTO } from 'src/dto/ItemDTO';
 import { WBSDTO } from 'src/dto/WBSDTO';
 import { Observable} from 'rxjs';
+import { InputDTO } from 'src/dto/InputDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,10 @@ export class ItemService {
 
   insertItem(itemDto: ItemDTO){
     return this.http.post('http://localhost:8080/Item/addNode', itemDto);
+  }
+
+  insertInput(inputDTO: InputDTO){
+    return this.http.post('http://localhost:8080/Item/insertInput', inputDTO);
   }
 
   deleteItem(idItem: number){

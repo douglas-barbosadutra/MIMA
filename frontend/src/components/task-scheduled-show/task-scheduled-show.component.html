@@ -1,3 +1,26 @@
-<p>
-  task-scheduled-show works!
-</p>
+<app-menu-user></app-menu-user>
+
+<h1 class="title">Task Schedulati</h1>
+<div id="container">
+
+  <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>ID Task</th>
+          <th>Descrizione</th>
+          <th>Opzioni</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of taskScheduledList">
+          <td >{{item.id}}</td>
+          <td >{{item.idTask}}</td>
+          <td>{{item.name}}</td>
+          <td>
+            <button class="btn btn-primary" (click)="choose(item.id, item.idTask)">Seleziona</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>

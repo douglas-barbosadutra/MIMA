@@ -67,4 +67,9 @@ public class TaskScheduledService {
 		return null;
 	}
 	
+	public boolean insertOutput(int idItem, int idOperationScheduling) {
+		taskScheduledDAO.insertOutput(idItem, idOperationScheduling);
+		return true;
+	}
+	
 }

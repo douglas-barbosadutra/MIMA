@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pCarpet.dto.InputDTO;
 import com.pCarpet.dto.ItemDTO;
 import com.pCarpet.dto.WBSDTO;
 import com.pCarpet.services.ItemService;
@@ -45,5 +46,10 @@ public class ItemController {
 	public List<ItemDTO> showItem(){
 		return itemService.getAllItem();
 	}
+	
+	@RequestMapping(value="/insertInput", method = RequestMethod.POST)
+	public boolean insertInput(@RequestBody InputDTO input) {
+		return itemService.insertInput(input.getIdItem(), input.getIdTask());
+	}	
 
 }

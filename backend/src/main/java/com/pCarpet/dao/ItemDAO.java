@@ -35,4 +35,9 @@ public interface ItemDAO extends JpaRepository<Item, Integer>{
 	@Transactional
 	@Query(value = "DELETE FROM items WHERE id_item = :id_item", nativeQuery=true)
 	public void deleteItem(@Param("id_item") Integer idItem);
+	
+	@Modifying
+	@Transactional
+	@Query(value = "INSERT INTO inputs (id_item, id_task) VALUES (:id_item, :id_task)", nativeQuery=true)
+	public void insertInput(@Param("id_item") Integer id_item, @Param("id_task") Integer id_task);
 }

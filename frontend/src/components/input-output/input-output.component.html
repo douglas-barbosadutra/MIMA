@@ -9,7 +9,6 @@
         <tr>
           <th>ID</th>
           <th>Nome</th>
-          <th>Input/output</th>
           <th>Opzioni</th>
         </tr>
         
@@ -20,21 +19,8 @@
           <td >{{itemList.id}}</td>
           <td >{{itemList.name}}</td>
           <td >
-            <form #f="ngForm">
-              
-              <span class="form-check" style="margin-top:2%;">
-
-                <input class="form-check-input" type="radio" name="inputOutput" value="0" [(ngModel)]="inputOutput" checked>
-                <label class="form-check-label">Input</label>
-  
-                <input style="margin-left: 3%;" class="form-check-input" type="radio" name="inputOutput" value="1" [(ngModel)]="inputOutput">
-                <label style="margin-left: 6%;" class="form-check-label">Output</label>
-          
-              </span>
-            </form>
-          </td>
-          <td >
-            <button type="submit" class="btn btn-primary" (click)="selectItem(itemList.id)" >Seleziona</button>
+            <button type="submit" class="btn btn-primary" (click)="insertInput(itemList.id)" >Inserisci come input</button>
+            <button type="submit" class="btn btn-primary" (click)="insertOutput(itemList.id)" >Inserisci come output</button>
           </td>
 
         </tr>

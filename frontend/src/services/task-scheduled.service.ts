@@ -25,6 +25,10 @@ export class TaskScheduledService {
     return this.http.post('http://localhost:8080/TaskScheduled/insertOperationScheduling', osdto);
   }
 
+  insertOutput(idItem: number, idOperationScheduling: number){
+    return this.http.get('http://localhost:8080/TaskScheduled/insertOutput?idItem='+idItem+"&idOperationScheduling="+idOperationScheduling);
+  }
+
   deleteTaskScheduled(idTaskScheduled: number){
     return this.http.delete('http://localhost:8080/TaskScheduled/deleteTaskScheduled?idTaskScheduled=' + idTaskScheduled);
   }

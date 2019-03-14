@@ -53,4 +53,11 @@ public class TaskScheduledController {
 		//return taskScheduledService.getTaskScheduling(idScheduling);
 		return null;
 	}
+	
+	@RequestMapping(value = "/insertOutput", method = RequestMethod.GET)
+	public boolean insertOutput(@RequestParam(value="idItem") int idItem, @RequestParam(value="idOperationScheduling") int idOperationScheduling) {
+		System.out.println("idItem: "+idItem);
+		System.out.println("idOperationScheduling: "+idOperationScheduling);
+		return taskScheduledService.insertOutput(idItem, idOperationScheduling);
+	}
 }

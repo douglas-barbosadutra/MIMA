@@ -53,4 +53,9 @@ public class ItemService {
 	public List<ItemDTO> getAllItem(){
 		return ItemConverter.toListDTO(itemDAO.findAll());
 	}
+	
+	public boolean insertInput(int idItem, int idTask) {
+		itemDAO.insertInput(idItem, idTask);
+		return true;
+	}
 }
