@@ -8,24 +8,23 @@
 }
 
 .dropdown {
-	width: 125px;
+  width: 125px;
 }
 
 .dropdown-content {
-	display: none;
-	position: absolute;
-	background-color: lightblue;
-	width: 125px;
-	z-index: 1;
+  display: none;
+  position: absolute;
+  background-color: lightblue;
+  width: 125px;
+  z-index: 1;
 }
 
 .dropdown-content a {
-	color: black;
-	padding: 12px 16px;
-	text-decoration: none;
-	display: block;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
 }
-
 .dropdown-content a:hover {
 	background-color: white;
 }
@@ -54,5 +53,6 @@
 	display: block;
 	text-align: center;
 	padding: 14px 16px;
-	text-decoration: none;
+  text-decoration: none;
+  width: 100px;
 }
