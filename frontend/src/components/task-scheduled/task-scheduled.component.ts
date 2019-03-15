@@ -12,9 +12,12 @@ import { OperationSchedulingDTO } from 'src/dto/OperationschedulingDTO';
   styleUrls: ['./task-scheduled.component.css']
 })
 export class TaskScheduledComponent implements OnInit {
-  public taskScheduledList : Array<TaskScheduledDTO>;
+  public taskScheduledList: Array<TaskScheduledDTO>;
   public taskList: Array<TaskDTO>;
   public table: Array<OperationSchedulingDTO>;
+  public taskScheduledListToUpdateFather: Array<TaskScheduledDTO>;
+  public taskScheduledListToUpdateChild: Array<TaskScheduledDTO>;
+  public idTaskDeleted: number;
   osDTO: OperationSchedulingDTO;
   task: TaskScheduledDTO;
   public idFather: number;
@@ -28,80 +31,100 @@ export class TaskScheduledComponent implements OnInit {
     this.createTable();
   }
 
-  getTaskScheduledList(){
-    this.taskScheduledService.showTaskScheduled(parseInt(sessionStorage.getItem("idScheduling"))).subscribe((data) =>{
-      if(data != null){
+
+
+  getTaskScheduledList() {
+    this.taskScheduledService.showTaskScheduled(parseInt(sessionStorage.getItem("idScheduling"))).subscribe((data) => {
+      if (data != null) {
         this.taskScheduledList = new Array();
         this.taskScheduledList = data;
-        sessionStorage.setItem("taskScheduledListLength",JSON.stringify(this.taskScheduledList.length));
+        sessionStorage.setItem("taskScheduledListLength", JSON.stringify(this.taskScheduledList.length));
       }
     });
   }
 
-  getTaskList(){
-    this.taskService.showTask(parseInt(sessionStorage.getItem("idMachine"))).subscribe((data: any) =>{
-      if(data != null){
-        this.taskList = data;        
+  getTaskList() {
+    this.taskService.showTask(parseInt(sessionStorage.getItem("idMachine"))).subscribe((data: any) => {
+      if (data != null) {
+        this.taskList = data;
       }
     });
   }
 
-  createTable(){
-      this.table = new Array<OperationSchedulingDTO>();
-      this.taskScheduledService.showOperationScheduling(parseInt(sessionStorage.getItem("idScheduling"))).subscribe((data) =>{
-        if(data != null){
-          this.table = data;
-        }
-      });
+  createTable() {
+    this.table = new Array<OperationSchedulingDTO>();
+    this.taskScheduledService.showOperationScheduling(parseInt(sessionStorage.getItem("idScheduling"))).subscribe((data) => {
+      if (data != null) {
+        this.table = data;
+      }
+    });
   }
 
-  chooseChild(idChild: number){
+  chooseChild(idChild: number) {
     this.idChild = idChild;
   }
 
-  chooseFather(idFather: number){
+  chooseFather(idFather: number) {
     this.idFather = idFather;
   }
 
-  insertTask(idTask: number, taskName: string){
-    if(parseInt(sessionStorage.getItem("taskScheduledListLength")) == 0){
+  insertTask(idTask: number, taskName: string) {
+    if (parseInt(sessionStorage.getItem("taskScheduledListLength")) == 0) {
       console.log("ciao");
       this.task = new TaskScheduledDTO(0, idTask, false, taskName, parseInt(sessionStorage.getItem("idScheduling")), null);
       this.createTaskScheduled();
     }
-    else{
+    else {
       this.idChild = idTask;
-      this.osDTO = new OperationSchedulingDTO(this.idFather, this.idChild ,idTask, parseInt(sessionStorage.getItem("idScheduling")));
+      this.osDTO = new OperationSchedulingDTO(this.idFather, this.idChild, idTask, parseInt(sessionStorage.getItem("idScheduling")));
     }
   }
 
-  createOperationScheduling(){
-    this.taskScheduledService.insertOperationScheduling(this.osDTO).subscribe((data: any) => {});
+  createOperationScheduling() {
+    this.taskScheduledService.insertOperationScheduling(this.osDTO).subscribe((data: any) => { });
     this.getTaskScheduledList();
     this.getTaskList();
   }
 
-  createTaskScheduled(){
-    this.taskScheduledService.insertTaskScheduled(this.task).subscribe((data: any) => {});
+  createTaskScheduled() {
+    this.taskScheduledService.insertTaskScheduled(this.task).subscribe((data: any) => { });
     this.getTaskScheduledList();
     this.getTaskList();
-    }
+  }
 
-    insertTaskScheduled(){
-      if((this.idFather != undefined) && (this.idFather!= null) && (this.idChild != undefined) && (this.idChild != null)){
-        if((this.osDTO != undefined) && (this.osDTO != null)){
-          this.osDTO.idFather = this.idFather;
-          this.osDTO.idChild = this.idChild;
-          this.osDTO.idScheduling =  parseInt(sessionStorage.getItem("idScheduling"));
-          this.osDTO.idTask =  this.idChild;
-          this.taskScheduledService.insertOperationScheduling(this.osDTO).subscribe((data: any) => {});
-          this.osDTO = null;
+  delete(idTaskScheduled: number) {
+    this.taskScheduledListToUpdateFather = new Array<TaskScheduledDTO>();
+    this.taskScheduledListToUpdateChild = new Array<TaskScheduledDTO>();
+    for (let row of this.table) {
+      if (row.idFather == this.idTaskDeleted) {
+        for(let t of this.taskScheduledList){
+          this.taskScheduledListToUpdateFather.push(t);
         }
-        else{
-          this.osDTO = new OperationSchedulingDTO(this.idFather, this.idChild, 0, parseInt(sessionStorage.getItem("idScheduling")));
-          this.taskScheduledService.insertOperationScheduling(this.osDTO).subscribe((data: any) => {});
-          this.osDTO = null;
+      }
+      else if (row.idChild == this.idTaskDeleted) {
+        for(let t of this.taskScheduledList){
+          this.taskScheduledListToUpdateChild.push(t);
         }
       }
     }
+  }
+
+
+  insertTaskScheduled() {
+    if ((this.idFather != undefined) && (this.idFather != null) && (this.idChild != undefined) && (this.idChild != null)) {
+      if ((this.osDTO != undefined) && (this.osDTO != null)) {
+        this.osDTO.idFather = this.idFather;
+        this.osDTO.idChild = this.idChild;
+        this.osDTO.idScheduling = parseInt(sessionStorage.getItem("idScheduling"));
+        this.osDTO.idTask = this.idChild;
+        this.taskScheduledService.insertOperationScheduling(this.osDTO).subscribe((data: any) => { });
+        this.osDTO = null;
+      }
+      else {
+        this.osDTO = new OperationSchedulingDTO(this.idFather, this.idChild, 0, parseInt(sessionStorage.getItem("idScheduling")));
+        this.taskScheduledService.insertOperationScheduling(this.osDTO).subscribe((data: any) => { });
+        this.osDTO = null;
+      }
+    }
+  }
 }

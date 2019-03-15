@@ -28,7 +28,6 @@ public class TaskScheduledController {
 
 	@RequestMapping(value = "/insertOperationScheduling", method = RequestMethod.POST)
 	public String insertOperazionScheduling(@RequestBody OperationSchedulingDTO osDTO) {
-		System.out.println("ciao");
 		taskScheduledService.insertScheduledRelations(osDTO);
 		return "";
 	}
@@ -50,8 +49,7 @@ public class TaskScheduledController {
 	
 	@RequestMapping(value = "/showOperationScheduling", method = RequestMethod.GET)
 	public List<OperationSchedulingDTO> showOperationScheduling(@RequestParam(value="idScheduling") int idScheduling) {
-		//return taskScheduledService.getTaskScheduling(idScheduling);
-		return null;
+		return taskScheduledService.getOperationScheduling(idScheduling);
 	}
 	
 	@RequestMapping(value = "/insertOutput", method = RequestMethod.GET)

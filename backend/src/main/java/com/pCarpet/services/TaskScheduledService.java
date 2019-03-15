@@ -1,5 +1,6 @@
 package com.pCarpet.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,6 @@ public class TaskScheduledService {
 	}
 	
 	public void insertScheduledRelations(OperationSchedulingDTO osDTO) {
-		System.out.println("ciao2");
 		int idChild = osDTO.getIdChild();
 		if(osDTO.getIdTask() != 0) {
 			TaskScheduledDTO taskScheduled = new TaskScheduledDTO();
@@ -34,17 +34,15 @@ public class TaskScheduledService {
 			taskScheduled.setIdScheduling(osDTO.getIdScheduling());
 			taskScheduled = insertTaskScheduled(taskScheduled);
 			idChild = taskScheduled.getId();
-			System.out.println("ciao3");
 		}
 		taskScheduledDAO.insertScheduledRelations(idChild, osDTO.getIdFather());
-		System.out.println("ciao4");
 	}
 	
 	public TaskScheduledDTO insertTaskScheduled(TaskScheduledDTO taskScheduled) {
 		TaskScheduled task = TaskScheduledConverter.convertToEntity(taskScheduled);
 		task = taskScheduledDAO.save(task);
 		taskScheduledDAO.flush();
-		return TaskScheduledConverter.convertToDto(task);//errore
+		return TaskScheduledConverter.convertToDto(task);
 	}
 	
 	public boolean deleteTaskScheduled(int id) {
@@ -65,6 +63,20 @@ public class TaskScheduledService {
 				return i;
 		}
 		return null;
+	}
+	
+	public List<OperationSchedulingDTO> getOperationScheduling(int idScheduling){
+		List<TaskScheduledDTO> list = this.getTaskScheduling(idScheduling);
+		List<OperationSchedulingDTO> result = new ArrayList<>();
+		for(TaskScheduledDTO task: list) {
+			if(task.getTaskScheduledChildren() != null) {
+				for(TaskScheduledDTO child: task.getTaskScheduledChildren()) {
+					OperationSchedulingDTO temp = new OperationSchedulingDTO(task.getId(), child.getId(), 0, 0);			
+					result.add(temp);
+				}
+			}
+		}
+		return result;
 	}
 	
 	public boolean insertOutput(int idItem, int idOperationScheduling) {
