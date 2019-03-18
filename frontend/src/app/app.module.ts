@@ -48,7 +48,6 @@ import { EmployeeUpdateComponent } from 'src/components/employee-update/employee
 import { EmployeeInsertComponent } from 'src/components/employee-insert/employee-insert.component';
 import { EmployeeShowComponent } from 'src/components/employee-show/employee-show.component';
 import { AssignTaskComponent } from 'src/components/assign-task/assign-task.component';
-import { TreeViewComponent } from './tree-view/tree-view.component';
 import { InputOutputComponent } from 'src/components/input-output/input-output.component';
 import { TaskScheduledShowComponent } from 'src/components/task-scheduled-show/task-scheduled-show.component';
 import { TaskScheduledDeleteComponent } from 'src/components/task-scheduled-delete/task-scheduled-delete.component';
@@ -89,7 +88,6 @@ import { TaskScheduledDeleteComponent } from 'src/components/task-scheduled-dele
     EmployeeInsertComponent,
     EmployeeShowComponent,
     AssignTaskComponent,
-    TreeViewComponent,
     InputOutputComponent,
     TaskScheduledShowComponent
   ],
