@@ -1,6 +1,7 @@
+<app-menu-user></app-menu-user>
 <div class="container">
 
-  <div style="width: 45%;">
+  <div id="container">
     <h1 class="title">Task Figli</h1>
       <table class="table table-striped">
         <thead>
@@ -21,7 +22,7 @@
                   {{task.name}}
                 </option>
               </select>
-              <button class="btn btn-primary" (click)="addRelationChild(item.id)">Aggiungi Relazione</button>
+              <button class="btn btn-primary" type="submit" (click)="addRelationChild(item.id)">Aggiungi Relazione</button>
             </td>
           </tr>
         </tbody>
@@ -29,7 +30,7 @@
 
   </div>
 
-  <div style="width: 45%;">
+  <div id="container">
     <h1 class="title">Task Padri</h1>
 
       <table class="table table-striped">
@@ -51,12 +52,12 @@
                       {{task.name}}
                     </option>
                   </select>
-              <button class="btn btn-primary" (click)="addRelationFather(item.id)">Aggiungi Relazione</button>
+              <button class="btn btn-primary" type="submit" (click)="addRelationFather(item.id)">Aggiungi Relazione</button>
             </td>
           </tr>
         </tbody>
       </table>
   </div>
-  
-  <button (click)="finish()">Fine</button>
+
+  <button class="btn btn-primary" style="margin-top:2%; margin-left:48%;" type="submit" (click)="finish()">Fine</button>
 </div>

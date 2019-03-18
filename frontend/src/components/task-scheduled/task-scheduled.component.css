@@ -7,7 +7,7 @@
 
 .table th, .table td {
 	padding: 5px;
-	vertical-align: top;
+	vertical-align: middle;
   border-top: 1px solid #dee2e6;
   text-align: center;
   color: #000000;
@@ -69,7 +69,9 @@
 .btn-primary {
 	color: #fff;
 	background-color: #007bff;
-	border-color: #007bff;
+  border-color: #007bff;
+  margin-left: 35%;
+  margin-bottom: 2%;
 }
 
 .btn-primary:hover {
@@ -133,4 +135,10 @@ div.wide {
   padding-left: 30%;
   padding-right: 30%;
   margin-top: 5%;
+}
+
+.taskSchedulati{
+  padding-left: 30%;
+  padding-right: 30%;
+ 
 }

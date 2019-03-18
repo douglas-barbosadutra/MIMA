@@ -8,7 +8,7 @@
 }
 
 .dropdown {
-  width: 125px;
+  width: 100%;
 }
 
 .dropdown-content {
@@ -46,7 +46,7 @@
 }
 
 .menu li {
-	float: left;
+  float: left;
 }
 
 .menu li a {
@@ -54,5 +54,4 @@
 	text-align: center;
 	padding: 14px 16px;
   text-decoration: none;
-  width: 100px;
 }
