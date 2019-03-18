@@ -79,7 +79,8 @@
 .btn-primary {
 	color: #fff;
 	background-color: #007bff;
-	border-color: #007bff;
+  border-color: #007bff;
+  margin-left:45%;
 }
 
 .btn-primary:hover {
