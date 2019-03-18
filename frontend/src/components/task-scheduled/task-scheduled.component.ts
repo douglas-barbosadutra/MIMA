@@ -4,7 +4,8 @@ import { TaskService } from 'src/services/task.service';
 import { Router } from "@angular/router";
 import { TaskScheduledDTO } from 'src/dto/TaskScheduledDTO';
 import { TaskDTO } from 'src/dto/TaskDTO';
-import { OperationSchedulingDTO } from 'src/dto/OperationschedulingDTO';
+import { OperationSchedulingDTO } from 'src/dto/OperationSchedulingDTO';
+import { DataServiceService } from 'src/services/data-service.service';
 
 @Component({
   selector: 'app-task-scheduled',
@@ -23,7 +24,9 @@ export class TaskScheduledComponent implements OnInit {
   public idFather: number;
   public idChild: number;
 
-  constructor(private router: Router, private taskScheduledService: TaskScheduledService, private taskService: TaskService) { }
+  constructor(private router: Router, private taskScheduledService: TaskScheduledService, private taskService: TaskService, private dataService: DataServiceService) {
+    this.router.onSameUrlNavigation = 'reload';
+   }
 
   ngOnInit() {
     this.getTaskScheduledList();
@@ -70,9 +73,9 @@ export class TaskScheduledComponent implements OnInit {
 
   insertTask(idTask: number, taskName: string) {
     if (parseInt(sessionStorage.getItem("taskScheduledListLength")) == 0) {
-      console.log("ciao");
       this.task = new TaskScheduledDTO(0, idTask, false, taskName, parseInt(sessionStorage.getItem("idScheduling")), null);
       this.createTaskScheduled();
+      window.location.reload();
     }
     else {
       this.idChild = idTask;
@@ -84,29 +87,39 @@ export class TaskScheduledComponent implements OnInit {
     this.taskScheduledService.insertOperationScheduling(this.osDTO).subscribe((data: any) => { });
     this.getTaskScheduledList();
     this.getTaskList();
+    this.createTable();
   }
 
   createTaskScheduled() {
     this.taskScheduledService.insertTaskScheduled(this.task).subscribe((data: any) => { });
     this.getTaskScheduledList();
     this.getTaskList();
+    this.createTable();
   }
 
   delete(idTaskScheduled: number) {
+
     this.taskScheduledListToUpdateFather = new Array<TaskScheduledDTO>();
     this.taskScheduledListToUpdateChild = new Array<TaskScheduledDTO>();
+
     for (let row of this.table) {
-      if (row.idFather == this.idTaskDeleted) {
-        for(let t of this.taskScheduledList){
-          this.taskScheduledListToUpdateFather.push(t);
+      if (row.idFather == idTaskScheduled) {
+        for (let t of this.taskScheduledList) {
+          if (row.idChild == t.id)
+            this.taskScheduledListToUpdateFather.push(t);
         }
       }
-      else if (row.idChild == this.idTaskDeleted) {
-        for(let t of this.taskScheduledList){
-          this.taskScheduledListToUpdateChild.push(t);
+      else if (row.idChild == idTaskScheduled) {
+        for (let t of this.taskScheduledList) {
+          if (row.idFather == t.id)
+            this.taskScheduledListToUpdateChild.push(t);
         }
       }
     }
+    this.dataService.sendTaskScheduledChildren(this.taskScheduledListToUpdateChild);
+    this.dataService.sendTaskScheduledFathers(this.taskScheduledListToUpdateFather);
+    this.taskScheduledService.deleteTaskScheduled(idTaskScheduled).subscribe((data: any) => { });
+    this.router.navigateByUrl("/TaskScheduledDelete");
   }
 
 
@@ -118,13 +131,12 @@ export class TaskScheduledComponent implements OnInit {
         this.osDTO.idScheduling = parseInt(sessionStorage.getItem("idScheduling"));
         this.osDTO.idTask = this.idChild;
         this.taskScheduledService.insertOperationScheduling(this.osDTO).subscribe((data: any) => { });
-        this.osDTO = null;
       }
       else {
         this.osDTO = new OperationSchedulingDTO(this.idFather, this.idChild, 0, parseInt(sessionStorage.getItem("idScheduling")));
         this.taskScheduledService.insertOperationScheduling(this.osDTO).subscribe((data: any) => { });
-        this.osDTO = null;
       }
     }
+    window.location.reload();
   }
 }

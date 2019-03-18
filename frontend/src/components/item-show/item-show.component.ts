@@ -22,12 +22,11 @@ export class ItemShowComponent implements OnInit {
   ngOnInit() {
     this.wbsDto = new WBSDTO(parseInt(sessionStorage.getItem("idWbs")), "", 0);
     this.itemService.showItemTree(this.wbsDto).subscribe((data: any) =>{
-
       if(data != null){
           this.father = data;
           this.list = this.father.itemChildrenDTO;
       }
-    })
+    });
   }
 
   insertChild(idItem: number){
@@ -39,13 +38,7 @@ export class ItemShowComponent implements OnInit {
     this.itemDto = new ItemDTO(idItem, "", 0, 0, null);
     this.itemService.deleteItem(idItem).subscribe((data: any) =>{
     });
-    this.itemService.showItemTree(this.wbsDto).subscribe((data: any) =>{
-      if(data != null){
-        this.list = data;
-        this.father = this.list[0];
-        this.list = this.father.itemChildrenDTO;
-      }
-    });
+    window.location.reload();
   }
 
   inserisciRadice(){

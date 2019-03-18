@@ -31,6 +31,7 @@ import { EmployeeShowComponent } from 'src/components/employee-show/employee-sho
 import { AssignTaskComponent } from 'src/components/assign-task/assign-task.component';
 import { InputOutputComponent } from 'src/components/input-output/input-output.component';
 import { TaskScheduledShowComponent } from 'src/components/task-scheduled-show/task-scheduled-show.component';
+import { TaskScheduledDeleteComponent } from 'src/components/task-scheduled-delete/task-scheduled-delete.component';
 
 
 const routes: Routes = [
@@ -65,7 +66,8 @@ const routes: Routes = [
 {path: 'employeeShow', component: EmployeeShowComponent},
 {path: 'assignTask', component: AssignTaskComponent},
 {path: 'inputOutput', component: InputOutputComponent},
-{path: 'taskScheduledShow', component: TaskScheduledShowComponent}];
+{path: 'taskScheduledShow', component: TaskScheduledShowComponent},
+{path: 'TaskScheduledDelete', component: TaskScheduledDeleteComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {useHash: true, onSameUrlNavigation: 'reload'})],

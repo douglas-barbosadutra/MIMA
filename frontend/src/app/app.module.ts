@@ -16,6 +16,7 @@ import {WbsService} from 'src/services/wbs.service';
 import {ItemService} from 'src/services/item.service';
 import {TaskScheduledService} from 'src/services/task-scheduled.service';
 import {EmployeeService} from 'src/services/employee.service';
+import { DataServiceService } from 'src/services/data-service.service';
 
 import {HomeAdminComponent} from 'src/components/home-admin/home-admin.component';
 import {HomeUserComponent} from 'src/components/home-user/home-user.component';
@@ -50,6 +51,7 @@ import { AssignTaskComponent } from 'src/components/assign-task/assign-task.comp
 import { TreeViewComponent } from './tree-view/tree-view.component';
 import { InputOutputComponent } from 'src/components/input-output/input-output.component';
 import { TaskScheduledShowComponent } from 'src/components/task-scheduled-show/task-scheduled-show.component';
+import { TaskScheduledDeleteComponent } from 'src/components/task-scheduled-delete/task-scheduled-delete.component';
 
 
 
@@ -81,6 +83,7 @@ import { TaskScheduledShowComponent } from 'src/components/task-scheduled-show/t
     MenuEmployeeComponent,
     TimeShowComponent,
     TaskScheduledComponent,
+    TaskScheduledDeleteComponent,
     TaskEmployeeShowComponent,
     EmployeeUpdateComponent,
     EmployeeInsertComponent,
@@ -96,7 +99,7 @@ import { TaskScheduledShowComponent } from 'src/components/task-scheduled-show/t
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [LoginService,UserService,MachineService,TaskService,InstructionService,SchedulingService,ManufactoringService, WbsService, ItemService, TaskScheduledService, EmployeeService],
+  providers: [LoginService,UserService,MachineService,TaskService,InstructionService,SchedulingService,ManufactoringService, WbsService, ItemService, TaskScheduledService, EmployeeService, DataServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -28,7 +28,7 @@ export class ItemService {
     return this.http.post<ItemDTO>('http://localhost:8080/Item/showNodes', wbsDTO);
   }
 
-  showItem(){
-    return this.http.get<ItemDTO>('http://localhost:8080/Item/showItem');
+  showItem(): Observable<Array<ItemDTO>>{
+    return this.http.get<Array<ItemDTO>>('http://localhost:8080/Item/showItem');
   }
 }
