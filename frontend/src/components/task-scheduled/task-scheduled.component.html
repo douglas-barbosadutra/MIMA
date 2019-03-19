@@ -1,19 +1,29 @@
 <app-menu-user></app-menu-user>
 <h1 class="title">Gestione scheduling</h1>
 
+<canvas id="viewport" width="1200" height="500"></canvas>
+
 <div class="container">
-    <div style="width: 20%; margin-top: 3%; text-align: left;">
+
+    <div style="width: 200px">
+        <br><br>
+
+        <input id="task-selected" type="text" class="form-control" placeholder="Task selezionato" #taskSelected disabled>
+        <button class="btn btn-primary" (click)="chooseFather(taskSelected.value)">Inserisci Task padre</button>
+        <button class="btn btn-primary" (click)="chooseChild(taskSelected.value)">Inserisci Task figlio</button>
+        <button class="btn btn-primary" (click)="delete(taskSelected.value)">Elimina Task</button>
+
+       <br><br>
+
         <form #f="ngForm">
             <input type="text" class="form-control" name="name" value="{{idFather}}" placeholder="Id Task del padre scelto" disabled>
-
             <input type="text" class="form-control" name="name" value="{{idChild}}" placeholder="Id Task del figlio scelto" disabled>
-
             <button type="submit" class="btn btn-primary1" (click)="insertTaskScheduled()" >Inserisci</button>
-          </form>
-      </div>
+        </form>
+    </div>
 
   <div class="split2">
-      <div style="width: 20%;">
+      <!-- <div style="width: 20%;">
         <h1 class="title">Tabella relazione</h1>
 
         <table class="table table-striped">
@@ -34,9 +44,9 @@
 
           </table>
 
-      </div>
+      </div> -->
 
-      <div class="taskSchedulati">
+      <!-- <div class="taskSchedulati">
         <h1 class="title">Task Schedulati</h1>
 
         <table class="table table-striped">
@@ -61,7 +71,7 @@
               </tbody>
             </table>
 
-      </div>
+      </div> -->
   </div>
 
   <div class="wide"></div>
