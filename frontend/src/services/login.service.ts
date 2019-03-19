@@ -3,12 +3,15 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of, } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { UserDTO } from '../dto/UserDTO';
+import { LoginDTO } from 'src/dto/LoginDTO';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
+  private logindto: LoginDTO;
   constructor(private http: HttpClient) { }
 
   private handleError<T>(operation = 'operation', result?: T) {
@@ -20,8 +23,13 @@ export class LoginService {
     };
   }
 
-  login(username: string, password: string): Observable<UserDTO> {
-    const params = new HttpParams().set('username', username).set('password', password);
-    return this.http.post<UserDTO>('http://localhost:8080/Login/login', params).pipe(tap((response) => console.log(username), catchError(this.handleError("login error", {}))));
+  login(username: string, password: string){
+    //const params = new HttpParams().set('username', username).set('password', password);
+    this.logindto = new LoginDTO(username, password);
+    return this.http.post('http://localhost:8080/Login/login', this.logindto).map((response) => {
+      const json = response.json();
+      return json.data;
+    });
+    //return this.http.post<UserDTO>('http://localhost:8080/Login/login', this.logindto).pipe(tap((response) => console.log(username), catchError(this.handleError("login error", {}))));
   }
 }

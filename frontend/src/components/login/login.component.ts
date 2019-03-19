@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
         console.log(this.idUtenteLocale);
         sessionStorage.setItem("idUser", JSON.stringify(this.idUtenteLocale));
 
+        console.log(response);
         if(response.rank == 0)
           this.router.navigateByUrl("/homeUser");
 
