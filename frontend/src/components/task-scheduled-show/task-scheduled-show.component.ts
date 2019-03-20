@@ -15,14 +15,14 @@ export class TaskScheduledShowComponent implements OnInit {
 
   ngOnInit() {
     this.checkScheduling();
-    this.getTaskScheduledList();
   }
 
   checkScheduling(){
     if(sessionStorage.getItem("idScheduling") == null){
-      alert("Devi prima selezionare uno scheduling");
       this.router.navigateByUrl("schedulingShow");
     }
+    else
+      this.getTaskScheduledList();
   }
 
   getTaskScheduledList(){

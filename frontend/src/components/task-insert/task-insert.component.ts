@@ -19,7 +19,7 @@ export class TaskInsertComponent implements OnInit {
 
     if(sessionStorage.getItem("idMachine") == null){
       this.router.navigateByUrl("machineShow");
-      alert("Devi prima selezionare un macchinario");
+      //alert("Devi prima selezionare un macchinario");
     }
     this.taskDTO = new TaskDTO(0,"",parseInt(sessionStorage.getItem("idMachine")));
   }

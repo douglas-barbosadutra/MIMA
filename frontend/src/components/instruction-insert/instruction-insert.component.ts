@@ -18,7 +18,6 @@ export class InstructionInsertComponent implements OnInit {
   ngOnInit() {
     if(sessionStorage.getItem("idTask") == null){
       this.router.navigateByUrl("taskShow");
-      alert("Devi prima selezionare un task");
     }
     this.instructionDTO = new InstructionDTO(0,0,"","",parseInt(sessionStorage.getItem("idTask")));
   }

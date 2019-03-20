@@ -18,14 +18,14 @@ export class InstructionShowComponent implements OnInit {
 
   ngOnInit() {
     this.checkTask();
-    this.instructionShow();
   }
 
   checkTask(){
     if(sessionStorage.getItem("idTask") == null){
-      alert("Devi prima selezionare un task");
       this.router.navigateByUrl("showTask");
     }
+    else
+      this.instructionShow();
   }
 
   instructionShow(){

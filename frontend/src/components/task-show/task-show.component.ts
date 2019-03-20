@@ -19,14 +19,14 @@ export class TaskShowComponent implements OnInit {
 
   ngOnInit() {
     this.checkMachineSelected();
-    this.taskShow();
   }
 
   checkMachineSelected(){
     if(sessionStorage.getItem("idMachine") == null){
       this.router.navigateByUrl("machineShow");
-      alert("Devi prima selezionare un macchinario");
     }
+    else
+      this.taskShow();
   }
 
   taskShow(){

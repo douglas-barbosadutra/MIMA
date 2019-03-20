@@ -17,15 +17,15 @@ export class TimeShowComponent implements OnInit {
 
   ngOnInit() {
 
-    this.checkMachine();
-    this.timeShow();
+    this.checkTask();
   }
 
-  checkMachine(){
+  checkTask(){
     if(sessionStorage.getItem("idTask") == null){
-      alert("Devi prima selezionare un task");
       this.router.navigateByUrl("taskShow");
     }
+    else
+      this.timeShow();
   }
 
   timeShow(){
