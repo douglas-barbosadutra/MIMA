@@ -3,7 +3,13 @@ package com.pCarpet.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,25 +32,25 @@ public class SchedulingController {
 		this.schedulingService = schedulingService;
 	}
 
-	@RequestMapping(value = "/insertScheduling", method = RequestMethod.POST)
-	public SchedulingDTO insertScheduling(@RequestBody SchedulingDTO schedulingDTO) {
-		System.out.println("scheduling: "+schedulingDTO);
-		return schedulingService.insertScheduling(schedulingDTO);
+	@PostMapping("/insertScheduling")
+	public ResponseEntity<SchedulingDTO> insertScheduling(@RequestBody SchedulingDTO schedulingDTO) {
+		
+		return ResponseEntity.status(HttpStatus.OK).body(schedulingService.insertScheduling(schedulingDTO));
 	}
 
-	@RequestMapping(value = "/deleteScheduling", method = RequestMethod.DELETE)
-	public boolean deleteScheduling(@RequestParam(value="idScheduling") int idScheduling) {
-		return schedulingService.deleteScheduling(idScheduling);
+	@DeleteMapping("/deleteScheduling")
+	public ResponseEntity<Boolean> deleteScheduling(@RequestParam(value="idScheduling") int idScheduling) {
+		return ResponseEntity.status(HttpStatus.OK).body(schedulingService.deleteScheduling(idScheduling));
 	}
 
-	@RequestMapping(value = "/showScheduling", method = RequestMethod.GET)
-	public List<SchedulingDTO> showScheduling(@RequestParam(value="idMachine") int idMachine) {
-		return schedulingService.getAllScheduling(idMachine);
+	@GetMapping("/showScheduling")
+	public ResponseEntity<List<SchedulingDTO>> showScheduling(@RequestParam(value="idMachine") int idMachine) {
+		return ResponseEntity.status(HttpStatus.OK).body(schedulingService.getAllScheduling(idMachine));
 	}
 	
-	@RequestMapping(value = "/updateScheduling", method = RequestMethod.PUT)
-	public SchedulingDTO updateScheduling(@RequestBody SchedulingDTO schedulingDTO) {
-		return schedulingService.insertScheduling(schedulingDTO);
+	@PutMapping("/updateScheduling")
+	public ResponseEntity<SchedulingDTO> updateScheduling(@RequestBody SchedulingDTO schedulingDTO) {
+		return ResponseEntity.status(HttpStatus.OK).body(schedulingService.insertScheduling(schedulingDTO));
 	}
 
 }

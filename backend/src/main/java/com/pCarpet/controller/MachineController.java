@@ -3,7 +3,12 @@ package com.pCarpet.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,24 +32,25 @@ public class MachineController {
 		machineService = ms;
 	}
 	
-	@RequestMapping(value="/insertMachine", method= RequestMethod.POST)
-	public MachineDTO insertMachine(@RequestBody MachineDTO machinedto) {
+	@PostMapping("/insertMachine")
+	public ResponseEntity<MachineDTO> insertMachine(@RequestBody MachineDTO machinedto) {
 		
 		MachineDTO machine = machineService.insertMachine(machinedto);
+		
 		if(machine != null)
-			return machinedto;
+			return ResponseEntity.status(HttpStatus.OK).body(machine);
 		else
-			return null;
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
 	}
 	
-	@RequestMapping(value="/deleteMachine" , method= RequestMethod.DELETE)
-	public boolean deleteMachine(@RequestParam(value="idMachine") int idMachine) {		
-		return machineService.deleteMachine(idMachine);
+	@DeleteMapping("/deleteMachine")
+	public ResponseEntity<Boolean> deleteMachine(@RequestParam(value="idMachine") int idMachine) {		
+		return ResponseEntity.status(HttpStatus.OK).body(machineService.deleteMachine(idMachine));
 	}
 	
-	@RequestMapping(value="/showMachine" , method= RequestMethod.GET)
-	public List<MachineDTO> showMachine(@RequestParam(value="idUser") int idUser) {
-		return (machineService.getAllMachinesByIdUser(idUser));
+	@GetMapping("/showMachine")
+	public ResponseEntity<List<MachineDTO>> showMachine(@RequestParam(value="idUser") int idUser) {
+		return ResponseEntity.status(HttpStatus.OK).body(machineService.getAllMachinesByIdUser(idUser));
 
 	}
 

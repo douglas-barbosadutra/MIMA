@@ -3,7 +3,12 @@ package com.pCarpet.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,29 +32,29 @@ public class ItemController {
 		itemService = is;
 	}
 
-	@RequestMapping(value = "/showNodes", method = RequestMethod.POST)
-	public ItemDTO showNodes(@RequestBody WBSDTO wbs) {
-		return itemService.getItemByWBS(wbs);
+	@PostMapping("/showNodes")
+	public ResponseEntity<ItemDTO> showNodes(@RequestBody WBSDTO wbs) {
+		return ResponseEntity.status(HttpStatus.OK).body(itemService.getItemByWBS(wbs));
 	}
 
-	@RequestMapping(value = "/addNode", method = RequestMethod.POST)
-	public ItemDTO addNode(@RequestBody ItemDTO item) {
-		return itemService.insertItem(item);
+	@PostMapping("/addNode")
+	public ResponseEntity<ItemDTO> addNode(@RequestBody ItemDTO item) {
+		return ResponseEntity.status(HttpStatus.OK).body(itemService.insertItem(item));
 	}
 
-	@RequestMapping(value = "/removeNode", method = RequestMethod.DELETE)
-	public boolean removeNode(@RequestParam(value="idItem") int idItem) {
-		return itemService.deleteItem(idItem);
+	@DeleteMapping("/removeNode")
+	public ResponseEntity<Boolean> removeNode(@RequestParam(value="idItem") int idItem) {
+		return ResponseEntity.status(HttpStatus.OK).body(itemService.deleteItem(idItem));
 	}
 	
-	@RequestMapping(value="/showItem", method = RequestMethod.GET)
-	public List<ItemDTO> showItem(){
-		return itemService.getAllItem();
+	@GetMapping("/showItem")
+	public ResponseEntity<List<ItemDTO>> showItem(){
+		return ResponseEntity.status(HttpStatus.OK).body(itemService.getAllItem());
 	}
 	
-	@RequestMapping(value="/insertInput", method = RequestMethod.POST)
-	public boolean insertInput(@RequestBody InputDTO input) {
-		return itemService.insertInput(input.getIdItem(), input.getIdTask());
+	@PostMapping("/insertInput")
+	public ResponseEntity<Boolean> insertInput(@RequestBody InputDTO input) {
+		return ResponseEntity.status(HttpStatus.OK).body(itemService.insertInput(input.getIdItem(), input.getIdTask()));
 	}	
 
 }

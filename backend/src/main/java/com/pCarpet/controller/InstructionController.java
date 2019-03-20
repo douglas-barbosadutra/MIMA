@@ -3,7 +3,12 @@ package com.pCarpet.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,20 +31,20 @@ public class InstructionController {
 		istruzioneService = is;
 	}
 	
-	@RequestMapping(value="/insertInstruction", method= RequestMethod.POST)
-	public InstructionDTO insertInstruction(@RequestBody InstructionDTO instruction) {
-		System.out.println("Instruction: "+instruction);
-		return istruzioneService.insertIstruzione(instruction);
+	@PostMapping("/insertInstruction")
+	public ResponseEntity<InstructionDTO> insertInstruction(@RequestBody InstructionDTO instruction) {
+		//System.out.println("Instruction: "+instruction);
+		return ResponseEntity.status(HttpStatus.OK).body(istruzioneService.insertIstruzione(instruction));
 	}
 	
-	@RequestMapping(value="/deleteInstruction" , method= RequestMethod.DELETE)
-	public boolean  deleteInstruction(@RequestParam(value="idInstruction") int idInstruction) {		
-		return istruzioneService.deleteIstruzione(idInstruction);
+	@DeleteMapping("/deleteInstruction")
+	public ResponseEntity<Boolean>  deleteInstruction(@RequestParam(value="idInstruction") int idInstruction) {		
+		return ResponseEntity.status(HttpStatus.OK).body(istruzioneService.deleteIstruzione(idInstruction));
 	}
 	
-	@RequestMapping(value="/showInstruction" , method= RequestMethod.GET)
-	public List<InstructionDTO> showInstruction(@RequestParam(value="idTask") int idTask) {	
-		return istruzioneService.getAllIstruzioniByIdTask(idTask);
+	@GetMapping("/showInstruction")
+	public ResponseEntity<List<InstructionDTO>> showInstruction(@RequestParam(value="idTask") int idTask) {	
+		return ResponseEntity.status(HttpStatus.OK).body(istruzioneService.getAllIstruzioniByIdTask(idTask));
 	}
 
 }
