@@ -3,6 +3,7 @@ import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import {LoginService} from "src/services/login.service";
 import { UserDTO } from 'src/dto/UserDTO';
+import { LoginDTO } from 'src/dto/LoginDTO';
 
 
 @Component({
@@ -13,17 +14,19 @@ import { UserDTO } from 'src/dto/UserDTO';
 export class LoginComponent implements OnInit {
 
   private idUtenteLocale: number;
+  public loginDTO: LoginDTO;
+
   constructor(private loginService: LoginService, private router:  Router) { }
 
   ngOnInit(){
-    console.log("eccolo");
-
+    //onsole.log("eccolo");
+    this.loginDTO = new LoginDTO("","");
   }
 
   login(f:NgForm): void{
-    this.loginService.login(f.value.username, f.value.password).subscribe((response) => {
-
-      if(response != null){
+    this.loginService.login(this.loginDTO).subscribe((response) => {
+      console.log(response);
+      /*if(response != null){
         this.idUtenteLocale = response.id;
         console.log(this.idUtenteLocale);
         sessionStorage.setItem("idUser", JSON.stringify(this.idUtenteLocale));
@@ -41,7 +44,7 @@ export class LoginComponent implements OnInit {
       }
       else{
         alert("user o pass errati");
-      }
+      }*/
     });
   }
 }

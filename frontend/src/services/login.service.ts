@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators';
 })
 export class LoginService {
 
-  private logindto: LoginDTO;
+  //private logindto: LoginDTO;
   constructor(private http: HttpClient) { }
 
   private handleError<T>(operation = 'operation', result?: T) {
@@ -23,13 +23,10 @@ export class LoginService {
     };
   }
 
-  login(username: string, password: string){
+  login(loginDTO: LoginDTO){
     //const params = new HttpParams().set('username', username).set('password', password);
-    this.logindto = new LoginDTO(username, password);
-    return this.http.post('http://localhost:8080/Login/login', this.logindto).map((response) => {
-      const json = response.json();
-      return json.data;
-    });
+    //this.logindto = new LoginDTO(username, password);
+    return this.http.post('http://localhost:8080/Login/login', loginDTO);
     //return this.http.post<UserDTO>('http://localhost:8080/Login/login', this.logindto).pipe(tap((response) => console.log(username), catchError(this.handleError("login error", {}))));
   }
 }
