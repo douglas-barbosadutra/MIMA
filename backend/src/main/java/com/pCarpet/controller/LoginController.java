@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.pCarpet.dto.LoginDTO;
 import com.pCarpet.dto.UserDTO;
 import com.pCarpet.services.LoginService;
-import com.pCarpet.utils.JsonResponseBody;
-
 @CrossOrigin(value = "*")
 @RestController
 @RequestMapping("/Login")
