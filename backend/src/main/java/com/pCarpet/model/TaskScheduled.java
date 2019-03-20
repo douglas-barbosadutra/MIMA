@@ -4,6 +4,7 @@ package com.pCarpet.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -42,19 +43,21 @@ public class TaskScheduled {
 	
 	@ManyToOne
 	@JoinColumn(name="id_scheduling")
+	@OnDelete(action=OnDeleteAction.CASCADE)
 	private Scheduling scheduling;
 	
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "task_scheduled_relations",
 	joinColumns=@JoinColumn(name = "fatherId"),
 	inverseJoinColumns=@JoinColumn(name = "childId"))
 	@OnDelete(action=OnDeleteAction.CASCADE)
 	private List<TaskScheduled> childsList=new ArrayList<>();
 	
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "task_scheduled_relations",
 	joinColumns=@JoinColumn(name = "childId"),
 	inverseJoinColumns=@JoinColumn(name = "fatherId"))
+	@OnDelete(action=OnDeleteAction.CASCADE)
 	private List<TaskScheduled> fatherList=new ArrayList<>();
 	
 	@Nullable
