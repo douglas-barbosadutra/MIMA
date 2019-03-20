@@ -3,8 +3,14 @@ package com.pCarpet.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,29 +32,29 @@ public class UserController {
 		userService = us;
 	}
 	
-	@RequestMapping(value="/insertUser", method= RequestMethod.POST)
-	public UserDTO insertUser(@RequestBody UserDTO user) {
-		return userService.insertUser(user);
+	@PostMapping("/insertUser")
+	public ResponseEntity<UserDTO> insertUser(@RequestBody UserDTO user) {
+		return ResponseEntity.status(HttpStatus.OK).body(userService.insertUser(user));
 	}
 	
-	@RequestMapping(value="/deleteUser" , method= RequestMethod.DELETE)
-	public boolean deleteUser(@RequestParam(value="idUser") int idUser) {		
-		return userService.deleteUser(idUser);
+	@DeleteMapping("/deleteUser")
+	public ResponseEntity<Boolean> deleteUser(@RequestParam(value="idUser") int idUser) {		
+		return ResponseEntity.status(HttpStatus.OK).body(userService.deleteUser(idUser));
 	}
 	
-	@RequestMapping(value="/showUser" , method= RequestMethod.GET)
-	public List<UserDTO> showUser() {		
-		return userService.getAllUsers();
+	@GetMapping("/showUser")
+	public ResponseEntity<List<UserDTO>> showUser() {		
+		return ResponseEntity.status(HttpStatus.OK).body(userService.getAllUsers());
 	}
 	
-	@RequestMapping(value="/updateUser" , method= RequestMethod.PUT)
-	public UserDTO showUser(@RequestBody UserDTO user) {		
-		return userService.insertUser(user);
+	@PutMapping("/updateUser")
+	public ResponseEntity<UserDTO> showUser(@RequestBody UserDTO user) {		
+		return ResponseEntity.status(HttpStatus.OK).body(userService.insertUser(user));
 	}
 	
-	@RequestMapping(value="/findUser" , method= RequestMethod.GET)
-	public UserDTO findUser(@RequestParam(value="idUser") int idUser) {		
-		return userService.findUserById(idUser);
+	@GetMapping("/findUser")
+	public ResponseEntity<UserDTO> findUser(@RequestParam(value="idUser") int idUser) {		
+		return ResponseEntity.status(HttpStatus.OK).body(userService.findUserById(idUser));
 	}
 
 }

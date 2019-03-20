@@ -3,7 +3,12 @@ package com.pCarpet.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,19 +30,19 @@ public class WBSController {
 		this.wbsService = wbsService;
 	}
 	
-	@RequestMapping(value="/insertWbs", method= RequestMethod.POST)
-	public WBSDTO insertWbs(@RequestBody WBSDTO wbsDTO) {
-		return wbsService.insertWBS(wbsDTO);
+	@PostMapping("/insertWbs")
+	public ResponseEntity<WBSDTO> insertWbs(@RequestBody WBSDTO wbsDTO) {
+		return ResponseEntity.status(HttpStatus.OK).body(wbsService.insertWBS(wbsDTO));
 	}
 	
-	@RequestMapping(value="/showWbs", method= RequestMethod.GET)
-	public List<WBSDTO> showWbs(@RequestParam(value="idUser") int idUser) {		
-		return wbsService.showWBS(idUser);
+	@GetMapping("/showWbs")
+	public ResponseEntity<List<WBSDTO>> showWbs(@RequestParam(value="idUser") int idUser) {		
+		return ResponseEntity.status(HttpStatus.OK).body(wbsService.showWBS(idUser));
 	}
 	
-	@RequestMapping(value="/deleteWbs", method= RequestMethod.DELETE)
-	public boolean deleteWbs(@RequestParam(value="idWbs") int idWbs) {		
-		return wbsService.deleteWBS(idWbs);
+	@DeleteMapping("/deleteWbs")
+	public ResponseEntity<Boolean> deleteWbs(@RequestParam(value="idWbs") int idWbs) {		
+		return ResponseEntity.status(HttpStatus.OK).body(wbsService.deleteWBS(idWbs));
 	}
 	
 
