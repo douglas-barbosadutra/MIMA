@@ -27,14 +27,14 @@ public class LoginController {
 	}
 
 	@PostMapping("/login")
-	public ResponseEntity<UserDTO> login(@RequestBody LoginDTO logindto) {
+	public ResponseEntity<UserDTO> login(@Valid @RequestBody LoginDTO logindto) {
+		String username = logindto.getUsername();
+		String password = logindto.getPassword();
 		UserDTO user;
-		//System.out.println(logindto);
 		try {
-			
-			user = loginService.login(logindto.getUsername(), logindto.getPassword());
-			//System.out.println("User: "+user);
-			//System.out.println(user);
+			System.out.println(username + " " + password);
+			user = loginService.login(username, password);
+			System.out.println("User: "+user);
 			if (user == null) {
 				//System.out.println(user);
 				return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);

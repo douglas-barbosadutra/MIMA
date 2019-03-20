@@ -27,6 +27,16 @@ public class TaskScheduledService {
 	}
 	
 	public void insertScheduledRelations(OperationSchedulingDTO osDTO) {
+		TaskScheduledDTO father = TaskScheduledConverter.convertToDto(taskScheduledDAO.findById(osDTO.getIdFather()).get());
+		TaskScheduledDTO child = TaskScheduledConverter.convertToDto(taskScheduledDAO.findById(osDTO.getIdChild()).get());
+		if(searchLoop(child, osDTO.getIdFather())) {
+			if(searchLoop(father, osDTO.getIdChild())) {
+				return;
+			}
+			int id = osDTO.getIdChild();
+			osDTO.setIdChild(osDTO.getIdFather());
+			osDTO.setIdFather(id);
+		}
 		int idChild = osDTO.getIdChild();
 		if(osDTO.getIdTask() != 0) {
 			TaskScheduledDTO taskScheduled = new TaskScheduledDTO();
@@ -84,4 +94,13 @@ public class TaskScheduledService {
 		return true;
 	}
 	
+	private boolean searchLoop(TaskScheduledDTO task, int id) {
+		if(task.getId() == id)
+			return true;
+		boolean result = false;
+		for(TaskScheduledDTO child : task.getTaskScheduledChildren()) {
+			result = result | searchLoop(child, id);
+		}
+		return result;
+	}
 }

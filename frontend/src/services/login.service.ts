@@ -23,10 +23,7 @@ export class LoginService {
     };
   }
 
-  login(loginDTO: LoginDTO){
-    //const params = new HttpParams().set('username', username).set('password', password);
-    //this.logindto = new LoginDTO(username, password);
-    return this.http.post('http://localhost:8080/Login/login', loginDTO);
-    //return this.http.post<UserDTO>('http://localhost:8080/Login/login', this.logindto).pipe(tap((response) => console.log(username), catchError(this.handleError("login error", {}))));
+  login(logindto: LoginDTO): Observable<UserDTO>{
+    return this.http.post<UserDTO>('http://localhost:8080/Login/login', logindto);
   }
 }

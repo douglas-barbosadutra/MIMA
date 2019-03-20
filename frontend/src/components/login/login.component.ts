@@ -19,14 +19,13 @@ export class LoginComponent implements OnInit {
   constructor(private loginService: LoginService, private router:  Router) { }
 
   ngOnInit(){
-    //onsole.log("eccolo");
     this.loginDTO = new LoginDTO("","");
   }
 
   login(f:NgForm): void{
     this.loginService.login(this.loginDTO).subscribe((response) => {
       console.log(response);
-      /*if(response != null){
+      if(response != null){
         this.idUtenteLocale = response.id;
         console.log(this.idUtenteLocale);
         sessionStorage.setItem("idUser", JSON.stringify(this.idUtenteLocale));
@@ -44,7 +43,7 @@ export class LoginComponent implements OnInit {
       }
       else{
         alert("user o pass errati");
-      }*/
+      }
     });
   }
 }
