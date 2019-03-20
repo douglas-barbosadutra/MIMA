@@ -1,29 +1,44 @@
 <app-menu-user></app-menu-user>
 <h1 class="title">Gestione scheduling</h1>
+<div>
+<!--<div align="left"  class="container">
 
-<canvas id="viewport" width="1200" height="500"></canvas>
+  <div style="width: 200px">
+      <br><br>
 
-<div class="container">
 
-    <div style="width: 200px">
-        <br><br>
+  </div>
+</div>
 
-        <input id="task-selected" type="text" class="form-control" placeholder="Task selezionato" #taskSelected disabled>
-        <button class="btn btn-primary" (click)="chooseFather(taskSelected.value)">Inserisci Task padre</button>
-        <button class="btn btn-primary" (click)="chooseChild(taskSelected.value)">Inserisci Task figlio</button>
-        <button class="btn btn-primary" (click)="delete(taskSelected.value)">Elimina Task</button>
+<div align="right">
 
-       <br><br>
+</div>-->
 
-        <form #f="ngForm">
-            <input type="text" class="form-control" name="name" value="{{idFather}}" placeholder="Id Task del padre scelto" disabled>
-            <input type="text" class="form-control" name="name" value="{{idChild}}" placeholder="Id Task del figlio scelto" disabled>
-            <button type="submit" class="btn btn-primary1" (click)="insertTaskScheduled()" >Inserisci</button>
-        </form>
-    </div>
+<div style="float:left; display:block; width:25%; padding-right: 2%; padding-top: 5%; padding-left: 2%;">
+  <input style="width:50%;" id="task-selected" type="text" class="form-control" placeholder="Task selezionato" #taskSelected disabled>
+  <button class="btn btn-primary" (click)="chooseFather(taskSelected.value)">Inserisci Task padre </button><br>
+  <button class="btn btn-primary" (click)="chooseChild(taskSelected.value)">Inserisci Task figlio</button><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <button class="btn btn-primary" (click)="delete(taskSelected.value)">Elimina Task</button>
 
+ <br><br>
+
+  <form #f="ngForm" style="margin-top: 5%;">
+      <input style="width:50%;" type="text" class="form-control" name="name" value="{{idFather}}" placeholder="Id Task del padre scelto" disabled>
+      <input style="width:50%;" type="text" class="form-control" name="name" value="{{idChild}}" placeholder="Id Task del figlio scelto" disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button type="submit" class="btn btn-primary" (click)="insertTaskScheduled()" >Inserisci</button>
+  </form>
+</div>
+
+<div style="float:left; display:block; width:65%;">
+  <canvas id="viewport" width="1000" height="500"></canvas>
+</div>
+<div style="clear:both;"></div>
+
+
+    <!--
   <div class="split2">
-      <!-- <div style="width: 20%;">
+       <div style="width: 20%;">
         <h1 class="title">Tabella relazione</h1>
 
         <table class="table table-striped">
@@ -71,13 +86,12 @@
               </tbody>
             </table>
 
-      </div> -->
-  </div>
 
-  <div class="wide"></div>
+  </div>
+ </div> -->
 </div>
 
-<div id="taskDisponibiliContainer">
+<div id="taskDisponibiliContainer" style="margin-top: 5%;">
   <h2 class="title">Task Disponibili</h2>
     <table class="table table-striped">
       <thead>
