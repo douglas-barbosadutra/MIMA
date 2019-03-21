@@ -3,6 +3,7 @@ package com.pCarpet.dao;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import com.pCarpet.model.Machine;
 import com.pCarpet.model.Scheduling;
@@ -14,4 +15,7 @@ public interface MachineDAO extends JpaRepository<Machine, Integer>{
 	public List<Machine> findAllByUser(User u);
 	public Machine findByTasks(Task tasks);
 	public Machine findBySchedulings(Scheduling s);
+	
+	@Query(value = "SELECT LAST_INSERT_ID()", nativeQuery = true)
+    int getLastInsertId();
 }
