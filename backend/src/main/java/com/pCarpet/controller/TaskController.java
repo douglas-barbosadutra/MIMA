@@ -24,12 +24,11 @@ import com.pCarpet.services.TaskService;
 @RequestMapping("/Task")
 public class TaskController {
 	
+	@Autowired
 	private TaskService taskService;
 	
 	@Autowired
-	public TaskController(TaskService ts) {
-		taskService = ts;
-	}
+	public TaskController() {	}
 	
 	@PostMapping("/insertTask")
 	public ResponseEntity<TaskDTO> insertTask(@RequestBody TaskDTO taskdto) {

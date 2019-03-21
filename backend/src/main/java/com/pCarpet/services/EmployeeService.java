@@ -14,12 +14,10 @@ import com.pCarpet.model.User;
 @Service
 public class EmployeeService {
 	
+	@Autowired
 	private EmployeeDAO employeeDAO;
 	
-	@Autowired
-	public EmployeeService(EmployeeDAO employeeDAO) {
-		this.employeeDAO = employeeDAO;
-	}
+	public EmployeeService() {	}
 	
 	public EmployeeDTO insertEmployee(EmployeeDTO employeeDTO) {
 		Employee employee = EmployeeConverter.convertToEntity(employeeDTO);

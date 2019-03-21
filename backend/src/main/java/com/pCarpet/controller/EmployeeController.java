@@ -27,14 +27,14 @@ import com.pCarpet.services.UserService;
 @RequestMapping("/Employee")
 public class EmployeeController {
 
+	@Autowired
 	private EmployeeService employeeService;
-	private UserService userService;
 	
 	@Autowired
-	public EmployeeController(EmployeeService employeeService, UserService userService) {
-		this.employeeService = employeeService;
-		this.userService = userService;
-	}
+	private UserService userService;
+	
+	
+	public EmployeeController() {}
 	
 	@PostMapping("/insertEmployee")
 	public ResponseEntity<EmployeeDTO> insertEmployee(@RequestBody EmployeeDTO employeeDTO) {

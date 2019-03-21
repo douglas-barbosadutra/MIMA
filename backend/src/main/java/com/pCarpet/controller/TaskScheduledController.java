@@ -24,12 +24,10 @@ import com.pCarpet.services.TaskScheduledService;
 @RequestMapping("/TaskScheduled")
 public class TaskScheduledController {
 
+	@Autowired
 	TaskScheduledService taskScheduledService;
 
-	@Autowired
-	public TaskScheduledController(TaskScheduledService taskScheduledService) {
-		this.taskScheduledService = taskScheduledService;
-	}
+	public TaskScheduledController() {	}
 
 	@PostMapping("/insertOperationScheduling")
 	public ResponseEntity<Boolean> insertOperazionScheduling(@RequestBody OperationSchedulingDTO osDTO) {

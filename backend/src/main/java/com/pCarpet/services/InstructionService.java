@@ -15,12 +15,10 @@ import com.pCarpet.model.Instruction;
 @Service
 public class InstructionService {
 	
+	@Autowired
 	private InstructionDAO istruzioneDAO;
 	
-	@Autowired
-	public InstructionService(InstructionDAO istruzioneDAO) {
-		this.istruzioneDAO = istruzioneDAO;
-	}
+	public InstructionService() {	}
 	
 	public List<InstructionDTO> getAllIstruzioniByIdTask(int idTask){
 		TaskDTO task = new TaskDTO();

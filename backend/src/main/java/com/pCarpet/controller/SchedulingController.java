@@ -25,12 +25,10 @@ import com.pCarpet.services.SchedulingService;
 @RequestMapping("/Scheduling")
 public class SchedulingController {
 
+	@Autowired
 	private SchedulingService schedulingService;
 
-	@Autowired
-	public SchedulingController(SchedulingService schedulingService) {
-		this.schedulingService = schedulingService;
-	}
+	public SchedulingController() {	}
 
 	@PostMapping("/insertScheduling")
 	public ResponseEntity<SchedulingDTO> insertScheduling(@RequestBody SchedulingDTO schedulingDTO) {

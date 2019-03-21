@@ -11,12 +11,10 @@ import com.pCarpet.model.User;
 @Service
 public class LoginService {
 
+	@Autowired
     private UserDAO userDAO;
 
-    @Autowired
-    public LoginService(UserDAO userDAO) {
-        this.userDAO = userDAO;
-    }
+    public LoginService() {    }
 
     public UserDTO login(String username, String password) {
         return UserConverter.toDTO(this.userDAO.findUserByUsernameAndPassword(username, password));

@@ -17,14 +17,13 @@ import com.pCarpet.model.TaskScheduled;
 @Service
 public class TaskScheduledService {
 
+	@Autowired
 	TaskScheduledDAO taskScheduledDAO;
+	
+	@Autowired
 	TaskService taskService;
 
-	@Autowired
-	TaskScheduledService(TaskScheduledDAO taskScheduledDAO, TaskService taskService) {
-		this.taskScheduledDAO = taskScheduledDAO;
-		this.taskService = taskService;
-	}
+	TaskScheduledService() {	}
 	
 	public void insertScheduledRelations(OperationSchedulingDTO osDTO) {
 		TaskScheduledDTO father = TaskScheduledConverter.convertToDto(taskScheduledDAO.findById(osDTO.getIdFather()).get());

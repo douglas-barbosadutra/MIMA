@@ -23,12 +23,10 @@ import com.pCarpet.services.WBSService;
 @RequestMapping("/WBS")
 public class WBSController {
 	
+	@Autowired
 	private WBSService wbsService;
 	
-	@Autowired
-	public WBSController(WBSService wbsService) {
-		this.wbsService = wbsService;
-	}
+	public WBSController() {	}
 	
 	@PostMapping("/insertWbs")
 	public ResponseEntity<WBSDTO> insertWbs(@RequestBody WBSDTO wbsDTO) {

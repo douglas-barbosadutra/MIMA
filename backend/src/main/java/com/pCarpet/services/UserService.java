@@ -14,13 +14,10 @@ import com.pCarpet.converter.UserConverter;
 @Service
 public class UserService {
 
+	@Autowired
 	private UserDAO userDAO;
 	
-
-	@Autowired
-	public UserService(UserDAO userDAO) {
-		this.userDAO = userDAO;
-	}
+	public UserService() {	}
 
 	public boolean deleteUser(int id) {
 		this.userDAO.deleteById(id);

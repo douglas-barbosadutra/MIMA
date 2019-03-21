@@ -25,12 +25,10 @@ import com.pCarpet.services.MachineService;
 @RequestMapping("/Machine")
 public class MachineController {
 	
+	@Autowired
 	private MachineService machineService;
 	
-	@Autowired
-	public MachineController(MachineService ms) {
-		machineService = ms;
-	}
+	public MachineController() {	}
 	
 	@PostMapping("/insertMachine")
 	public ResponseEntity<MachineDTO> insertMachine(@RequestBody MachineDTO machinedto) {

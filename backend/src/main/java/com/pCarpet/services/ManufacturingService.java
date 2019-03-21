@@ -13,12 +13,11 @@ import com.pCarpet.dto.ManufacturingDTO;
 
 @Service
 public class ManufacturingService {
-	ManufacturingDAO manufacturingDAO;
 	
 	@Autowired
-	public ManufacturingService(ManufacturingDAO manufacturingDAO) {
-		this.manufacturingDAO = manufacturingDAO;
-	}
+	ManufacturingDAO manufacturingDAO;
+	
+	public ManufacturingService() {	}
 	
 	public List<ManufacturingDTO> getManufacturingByInstruction(InstructionDTO instruction){
 		return (ManufacturingConverter.toListDTO(manufacturingDAO.findAllByInstruction(InstructionConverter.convertToEntity(instruction))));

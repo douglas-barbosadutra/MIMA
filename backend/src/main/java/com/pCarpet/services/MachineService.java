@@ -14,12 +14,11 @@ import com.pCarpet.model.User;
 @Service
 public class MachineService {
 
+	@Autowired
     private MachineDAO machineDAO;
 
     @Autowired
-    public MachineService(MachineDAO machineDAO) {
-        this.machineDAO = machineDAO;
-    }
+    public MachineService() {    }
 
     public MachineDTO insertMachine (MachineDTO machineDTO) {
     	Machine machine = MachineConverter.convertToEntity(machineDTO);

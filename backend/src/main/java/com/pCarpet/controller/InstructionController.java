@@ -24,12 +24,10 @@ import com.pCarpet.services.InstructionService;
 @RequestMapping("/Instruction")
 public class InstructionController {
 	
+	@Autowired
 	private InstructionService istruzioneService;
 	
-	@Autowired
-	public InstructionController(InstructionService is) {
-		istruzioneService = is;
-	}
+	public InstructionController() {}
 	
 	@PostMapping("/insertInstruction")
 	public ResponseEntity<InstructionDTO> insertInstruction(@RequestBody InstructionDTO instruction) {

@@ -15,12 +15,10 @@ import com.pCarpet.model.Scheduling;
 @Service
 public class SchedulingService {
 	
+	@Autowired
 	private SchedulingDAO schedulingDAO;
 	
-	@Autowired
-	public SchedulingService(SchedulingDAO schedulingDAO) {
-		this.schedulingDAO = schedulingDAO;
-	}
+	public SchedulingService() {	}
 	
 	public SchedulingDTO getSchedulingById(int id) {
 		return (SchedulingConverter.convertToDTO(schedulingDAO.findById(id)));

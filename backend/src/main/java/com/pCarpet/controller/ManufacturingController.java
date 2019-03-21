@@ -22,12 +22,11 @@ import com.pCarpet.services.TimeService;
 @RequestMapping("/Manufacturing")
 public class ManufacturingController {
 
+	@Autowired
 	TimeService timeService;
 	
 	@Autowired
-	public ManufacturingController(TimeService timeService) {
-		this.timeService = timeService;
-	}
+	public ManufacturingController() {	}
 	
 	@GetMapping("/showTime")
 	public ResponseEntity<List<TimeDTO>> showTime(@RequestParam(value="idTask") int idTask) {

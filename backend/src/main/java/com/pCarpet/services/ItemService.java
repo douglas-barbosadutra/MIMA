@@ -19,7 +19,6 @@ public class ItemService {
 	@Autowired
 	private ItemDAO itemDAO;
 	
-	@Autowired
 	public ItemService() {}
 	
 	public ItemDTO getItemById(int id) {

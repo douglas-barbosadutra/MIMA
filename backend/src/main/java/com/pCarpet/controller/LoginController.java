@@ -19,12 +19,10 @@ import com.pCarpet.services.LoginService;
 @RequestMapping("/Login")
 public class LoginController {
 
+	@Autowired
 	private LoginService loginService;
 
-	@Autowired
-	public LoginController(LoginService ls) {
-		loginService = ls;
-	}
+	public LoginController() {	}
 
 	@PostMapping("/login")
 	public ResponseEntity<UserDTO> login(@Valid @RequestBody LoginDTO logindto) {

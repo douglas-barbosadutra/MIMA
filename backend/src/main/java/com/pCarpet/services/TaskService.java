@@ -15,12 +15,10 @@ import com.pCarpet.model.Task;
 @Service
 public class TaskService {
 	
+	@Autowired
 	private TaskDAO taskDAO;
 	
-	@Autowired
-	public TaskService(TaskDAO taskDAO) {
-		this.taskDAO = taskDAO;
-	}
+	public TaskService() {	}
 	
 	public boolean deleteTask(int id) {
 		this.taskDAO.deleteById(id);

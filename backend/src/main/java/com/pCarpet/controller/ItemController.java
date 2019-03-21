@@ -25,12 +25,10 @@ import com.pCarpet.services.ItemService;
 @RequestMapping("/Item")
 public class ItemController {
 
+	@Autowired
 	private ItemService itemService;
 
-	@Autowired
-	public ItemController(ItemService is) {
-		itemService = is;
-	}
+	public ItemController() {	}
 
 	@PostMapping("/showNodes")
 	public ResponseEntity<ItemDTO> showNodes(@RequestBody WBSDTO wbs) {

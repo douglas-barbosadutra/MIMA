@@ -25,12 +25,10 @@ import com.pCarpet.services.UserService;
 @RequestMapping("/User")
 public class UserController {
 	
+	@Autowired
 	private UserService userService;
 	
-	@Autowired
-	public UserController(UserService us) {
-		userService = us;
-	}
+	public UserController() {	}
 	
 	@PostMapping("/insertUser")
 	public ResponseEntity<UserDTO> insertUser(@RequestBody UserDTO user) {

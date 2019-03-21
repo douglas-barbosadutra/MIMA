@@ -16,16 +16,17 @@ import com.pCarpet.dto.TimeDTO;
 @Service
 public class TimeService {
 	
+	@Autowired
 	private InstructionService instructionService;
+	
+	@Autowired
 	private ManufacturingService manufacturingService;
+	
+	@Autowired
 	private ItemService itemService;
 	
 	@Autowired
-	public TimeService(InstructionService instructionService, ManufacturingService manufacturingService, ItemService itemService) {
-		this.instructionService = instructionService;
-		this.manufacturingService = manufacturingService;
-		this.itemService = itemService;
-	}
+	public TimeService() {	}
 	
 	public List<TimeDTO> getAllTempi(int idTask){
 		List<TimeDTO> tempiDTO = new ArrayList<>();
