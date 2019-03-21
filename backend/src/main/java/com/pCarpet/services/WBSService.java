@@ -22,7 +22,6 @@ public class WBSService {
 	@Autowired
 	private ItemService itemService;
 	
-	@Autowired
 	public WBSService() {}
 	
 	public boolean deleteWBS(int id) {

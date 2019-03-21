@@ -1,12 +1,12 @@
-package service;
+package com.pCarpet.test;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.isA;
-import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
@@ -15,17 +15,18 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.pCarpet.converter.ItemConverter;
+import com.pCarpet.converter.UserConverter;
 import com.pCarpet.converter.WBSConverter;
-import com.pCarpet.dao.ItemDAO;
 import com.pCarpet.dao.WBSDAO;
 import com.pCarpet.dto.ItemDTO;
+import com.pCarpet.dto.UserDTO;
 import com.pCarpet.dto.WBSDTO;
+import com.pCarpet.model.WBS;
 import com.pCarpet.services.ItemService;
 import com.pCarpet.services.WBSService;
 
 
-public class WBSTest {
+public class WBSTestService {
 	
 	@Mock
 	private WBSDAO wbsDao;
@@ -53,5 +54,19 @@ public class WBSTest {
 		when(wbsDao.saveAndFlush(WBSConverter.convertToEntity(wbs))).thenReturn(WBSConverter.convertToEntity(wbs));
 		doReturn(item).when(itemService).insertItem(item);						//questa sintassi è equivalente a quella della riga precedente
 		assertThat(wbsService.insertWBS(wbs), is (wbs));
+	}
+	
+	@Test
+	public void testShowWBS() {
+		UserDTO user = new UserDTO();
+		user.setId(1);
+		List<WBS> list = new ArrayList<WBS>();
+		when(wbsDao.findAllByUser(UserConverter.toEntity(user))).thenReturn(list);
+		assertThat(wbsService.showWBS(user.getId()), is (list) );
+	}
+	
+	@Test
+	public void testDeleteWBS() {
+		
 	}
 }
