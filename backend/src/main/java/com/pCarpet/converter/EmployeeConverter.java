@@ -16,10 +16,7 @@ public class EmployeeConverter {
 		if(employee != null) {
 			employeeDTO = new EmployeeDTO();
 			employeeDTO.setId(employee.getId());
-			UserDTO user = new UserDTO();
-			user.setId(employee.getUser().getId());
-			user.setName(employee.getUser().getName());
-			employeeDTO.setUser(user);
+			employeeDTO.setUser(UserConverter.toDTO(employee.getUser()));
 			if(employee.getTask() == null)
 				employeeDTO.setIdTask(0);
 			else	
@@ -34,9 +31,7 @@ public class EmployeeConverter {
 		if(employeeDTO != null) {
 			employee = new Employee();
 			employee.setId(employeeDTO.getId());
-			User user = new User();
-			user.setId(employeeDTO.getUser().getId());
-			employee.setUser(user);
+			employee.setUser(UserConverter.toEntity(employeeDTO.getUser()));
 			User businessOwner = new User();
 			businessOwner.setId(employeeDTO.getIdBusinessOwner());
 			employee.setBusinessOwner(businessOwner);

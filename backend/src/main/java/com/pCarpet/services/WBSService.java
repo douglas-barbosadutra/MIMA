@@ -22,6 +22,7 @@ public class WBSService {
 	@Autowired
 	private ItemService itemService;
 	
+	@Autowired
 	public WBSService() {}
 	
 	public boolean deleteWBS(int id) {
@@ -29,7 +30,7 @@ public class WBSService {
 		return true;
 	}
 	
-	public WBSDTO insertWBS(WBSDTO wbsDTO) {
+	public WBSDTO insertWBS(WBSDTO wbsDTO) { 
 		WBS wbs = WBSConverter.convertToEntity(wbsDTO);
 		wbs = wbsDao.saveAndFlush(wbs);
 		ItemDTO item = new ItemDTO();
