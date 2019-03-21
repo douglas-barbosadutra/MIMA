@@ -42,5 +42,15 @@ public class TaskConverter{
 		}
 		return listTaskDTO;
 	}
+	
+	public static List<Task> toListEntity(List<TaskDTO> list){
+		List<Task> listTask = new ArrayList<>();
+		if (!list.isEmpty()) {
+			for(TaskDTO task : list) {
+				listTask.add(TaskConverter.convertToEntity(task));
+			}
+		}
+		return listTask;
+	}
 }
 

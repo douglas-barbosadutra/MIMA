@@ -46,4 +46,14 @@ public class InstructionConverter{
 		}
 		return listInstructionDTO;
 	}
+	
+	public static List<Instruction> toListEntity(List<InstructionDTO> list){
+		List<Instruction> listInstruction = new ArrayList<>();
+		if (!list.isEmpty()) {
+			for(InstructionDTO instruction : list) {
+				listInstruction.add(InstructionConverter.convertToEntity(instruction));
+			}
+		}
+		return listInstruction;
+	}
 }

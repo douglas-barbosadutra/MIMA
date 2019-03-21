@@ -46,4 +46,14 @@ public class SchedulingConverter {
 		}
 		return listSchedulingDTO;
 	}
+	
+	public static List<Scheduling> toListEntity(List<SchedulingDTO> list){
+		List<Scheduling> listScheduling = new ArrayList<>();
+		if (!list.isEmpty()) {
+			for(SchedulingDTO scheduling : list) {
+				listScheduling.add(SchedulingConverter.convertToEntity(scheduling));
+			}
+		}
+		return listScheduling;
+	}
 }

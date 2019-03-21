@@ -20,10 +20,6 @@ public class SchedulingService {
 	
 	public SchedulingService() {	}
 	
-	public SchedulingDTO getSchedulingById(int id) {
-		return (SchedulingConverter.convertToDTO(schedulingDAO.findById(id)));
-	}
-	
 	public SchedulingDTO insertScheduling(SchedulingDTO schedulingDTO) {
 		Scheduling scheduling = SchedulingConverter.convertToEntity(schedulingDTO);
 		schedulingDAO.saveAndFlush(scheduling);

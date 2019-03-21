@@ -47,4 +47,14 @@ public class  ManufacturingConverter{
 		}
 		return listManufacturingDTO;
 	}
+	
+	public static List<Manufacturing> toListEntity(List<ManufacturingDTO> list){
+		List<Manufacturing> listManufacturing = new ArrayList<>();
+		if (!list.isEmpty()) {
+			for(ManufacturingDTO manufacturing : list) {
+				listManufacturing.add(ManufacturingConverter.convertToEntity(manufacturing));
+			}
+		}
+		return listManufacturing;
+	}
 }

@@ -25,7 +25,6 @@ public class TimeService {
 	@Autowired
 	private ItemService itemService;
 	
-	@Autowired
 	public TimeService() {	}
 	
 	public List<TimeDTO> getAllTempi(int idTask){

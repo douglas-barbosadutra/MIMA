@@ -44,4 +44,14 @@ public class MachineConverter{
 		}
 		return listMachineDTO;
 	}
+	
+	public static List<Machine> toListEntity(List<MachineDTO> list){
+		List<Machine> listMachine = new ArrayList<>();
+		if (!list.isEmpty()) {
+			for(MachineDTO machine : list) {
+				listMachine.add(MachineConverter.convertToEntity(machine));
+			}
+		}
+		return listMachine;
+	}
 }
