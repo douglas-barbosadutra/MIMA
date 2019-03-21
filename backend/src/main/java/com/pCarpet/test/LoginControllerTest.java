@@ -16,6 +16,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import com.pCarpet.controller.LoginController;
 import com.pCarpet.dto.UserDTO;
 import com.pCarpet.services.LoginService;
@@ -58,7 +61,13 @@ public class LoginControllerTest {
 		int status = mvcResult.getResponse().getStatus();
 	    Assert.assertEquals(200, status);
 	    
-	    //String content = mvcResult.getResponse().getContentAsString();
+	    String content = mvcResult.getResponse().getContentAsString();
+	    Assert.assertEquals(content, objectToJson(userDTO));
+	}
+	
+	public String objectToJson(Object object) throws JsonProcessingException {
+		ObjectMapper mapper = new ObjectMapper();
+		return mapper.writeValueAsString(object);
 	}
 		   
 }
