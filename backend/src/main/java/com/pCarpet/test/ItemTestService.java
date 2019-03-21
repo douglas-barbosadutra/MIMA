@@ -6,6 +6,7 @@ import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
@@ -15,8 +16,10 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import com.pCarpet.converter.ItemConverter;
+import com.pCarpet.converter.WBSConverter;
 import com.pCarpet.dao.ItemDAO;
 import com.pCarpet.dto.ItemDTO;
+import com.pCarpet.dto.WBSDTO;
 import com.pCarpet.services.ItemService;
 
 public class ItemTestService {
@@ -34,7 +37,7 @@ public class ItemTestService {
 	
 	@After
 	public void tearDown() throws Exception {
-
+		
 	}
 	
 	@Test
@@ -46,7 +49,42 @@ public class ItemTestService {
 	}
 	
 	@Test
+	public void testInsertItem() {
+		ItemDTO itemDTO = new ItemDTO(1, "test", 0, 1, new ArrayList<ItemDTO>());
+		when(itemDAO.insertItem(itemDTO.getName(), null, itemDTO.getIdWBS())).thenReturn(1);
+		assertThat(itemService.insertItem(itemDTO), is (itemDTO));
+	}
+	
+	@Test
+	public void testDeleteItem() {
+		
+	}
+	
+	@Test
 	public void testGetItemByWBS() {
+		List<ItemDTO> list = new ArrayList<ItemDTO>();
+		ItemDTO father = new ItemDTO(1, "test", 0, 1, new ArrayList<ItemDTO>());
+		ItemDTO child = new ItemDTO(1, "test", 1, 1, new ArrayList<ItemDTO>());
+		list.add(father);
+		list.add(child);
+		WBSDTO wbs = new WBSDTO(1, "prova", 1);
+		when(itemDAO.findAllByWbs(WBSConverter.convertToEntity(wbs))).thenReturn(ItemConverter.toListEntity(list));
+		assertThat(itemService.getItemByWBS(wbs), is (father));
+	}
+	
+	@Test
+	public void testGetAllItem() {
+		List<ItemDTO> list = new ArrayList<ItemDTO>();
+		ItemDTO father = new ItemDTO(1, "test", 0, 1, new ArrayList<ItemDTO>());
+		ItemDTO child = new ItemDTO(1, "test", 1, 1, new ArrayList<ItemDTO>());
+		list.add(father);
+		list.add(child);
+		when(itemDAO.findAll()).thenReturn(ItemConverter.toListEntity(list));
+		assertThat(itemService.getAllItem(), is(list));
+	}
+	
+	@Test
+	public void testInsertInput() {
 		
 	}
 }
