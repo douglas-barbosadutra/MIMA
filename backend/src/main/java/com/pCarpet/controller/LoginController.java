@@ -30,9 +30,9 @@ public class LoginController {
 		String password = logindto.getPassword();
 		UserDTO user;
 		try {
-			System.out.println(username + " " + password);
+			//System.out.println(username + " " + password);
 			user = loginService.login(username, password);
-			System.out.println("User: "+user);
+			//System.out.println("User: "+user);
 			if (user == null) {
 				//System.out.println(user);
 				return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
