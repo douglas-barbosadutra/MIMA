@@ -1,4 +1,4 @@
-package service;
+package com.pCarpet.test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -22,7 +22,7 @@ import com.pCarpet.dto.UserDTO;
 import com.pCarpet.model.User;
 import com.pCarpet.services.UserService;
 
-public class UserTest {
+public class UserServiceTest {
 	
 	@Mock
 	private UserDAO userDAO;
