@@ -16,12 +16,11 @@ import com.pCarpet.model.Item;
 @Service
 public class ItemService {
 	
+	@Autowired
 	private ItemDAO itemDAO;
 	
 	@Autowired
-	public ItemService(ItemDAO itemDAO) {
-		this.itemDAO = itemDAO;
-	}
+	public ItemService() {}
 	
 	public ItemDTO getItemById(int id) {
 		return (ItemConverter.convertToDto(itemDAO.findItemById(id)));

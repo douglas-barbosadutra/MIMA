@@ -16,14 +16,14 @@ import com.pCarpet.model.WBS;
 @Service
 public class WBSService {
 	
+	@Autowired
 	private WBSDAO wbsDao;
+	
+	@Autowired
 	private ItemService itemService;
 	
 	@Autowired
-	public WBSService(WBSDAO wbsDao, ItemService itemService) {
-		this.wbsDao = wbsDao;
-		this.itemService = itemService;
-	}
+	public WBSService() {}
 	
 	public boolean deleteWBS(int id) {
 		wbsDao.deleteById(id);
@@ -32,12 +32,11 @@ public class WBSService {
 	
 	public WBSDTO insertWBS(WBSDTO wbsDTO) {
 		WBS wbs = WBSConverter.convertToEntity(wbsDTO);
-		wbs = wbsDao.save(wbs);
-		wbsDao.flush();
+		wbs = wbsDao.saveAndFlush(wbs);
 		ItemDTO item = new ItemDTO();
 		item.setIdWBS(wbs.getId());
 		item.setName(wbs.getName());
-		itemService.insertItem(item);
+		item = itemService.insertItem(item);
 		return WBSConverter.convertToDto(wbs);
 	}
 	

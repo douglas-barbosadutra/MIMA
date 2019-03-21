@@ -28,7 +28,7 @@ public interface ItemDAO extends JpaRepository<Item, Integer>{
 	@Modifying
 	@Transactional
 	@Query(value = "INSERT INTO items (name,id_father,id_wbs) VALUES (:name,:id_father,:id_wbs)", nativeQuery=true)
-	public void insertItem(@Param("name") String name, @Param("id_father") Integer id_father, @Param("id_wbs") Integer id_wbs);
+	public int insertItem(@Param("name") String name, @Param("id_father") Integer id_father, @Param("id_wbs") Integer id_wbs);
 	
 	
 	@Modifying
