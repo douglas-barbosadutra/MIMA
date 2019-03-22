@@ -1,4 +1,4 @@
-package com.pCarpet.test;
+package com.mima.test.dao;
 
 import org.junit.After;
 import org.junit.Before;
@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.pCarpet.dao.ItemDAO;
+import com.mima.dao.ItemDAO;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest

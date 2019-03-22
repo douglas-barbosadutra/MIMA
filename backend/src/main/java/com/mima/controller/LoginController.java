@@ -1,4 +1,4 @@
-package com.pCarpet.controller;
+package com.mima.controller;
 
 import javax.validation.Valid;
 
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pCarpet.dto.LoginDTO;
-import com.pCarpet.dto.UserDTO;
-import com.pCarpet.services.LoginService;
+import com.mima.dto.LoginDTO;
+import com.mima.dto.UserDTO;
+import com.mima.services.LoginService;
 @CrossOrigin(value = "*")
 @RestController
 @RequestMapping("/Login")

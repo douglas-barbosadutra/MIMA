@@ -1,4 +1,4 @@
-package com.pCarpet.test;
+package com.mima.test.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,17 +13,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.pCarpet.converter.MachineConverter;
-import com.pCarpet.converter.SchedulingConverter;
-import com.pCarpet.converter.UserConverter;
-import com.pCarpet.dao.MachineDAO;
-import com.pCarpet.dao.SchedulingDAO;
-import com.pCarpet.dao.UserDAO;
-import com.pCarpet.dto.MachineDTO;
-import com.pCarpet.dto.SchedulingDTO;
-import com.pCarpet.dto.UserDTO;
-import com.pCarpet.model.Machine;
-import com.pCarpet.model.Scheduling;
+import com.mima.converter.MachineConverter;
+import com.mima.converter.SchedulingConverter;
+import com.mima.converter.UserConverter;
+import com.mima.dao.MachineDAO;
+import com.mima.dao.SchedulingDAO;
+import com.mima.dao.UserDAO;
+import com.mima.dto.MachineDTO;
+import com.mima.dto.SchedulingDTO;
+import com.mima.dto.UserDTO;
+import com.mima.model.Machine;
+import com.mima.model.Scheduling;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest

@@ -1,12 +1,12 @@
-package com.pCarpet.services;
+package com.mima.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.pCarpet.converter.UserConverter;
-import com.pCarpet.dao.UserDAO;
-import com.pCarpet.dto.UserDTO;
-import com.pCarpet.model.User;
+import com.mima.converter.UserConverter;
+import com.mima.dao.UserDAO;
+import com.mima.dto.UserDTO;
+import com.mima.model.User;
 
 @Service
 public class LoginService {

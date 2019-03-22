@@ -1,4 +1,4 @@
-package com.pCarpet.test;
+package com.mima.test.service;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -14,10 +14,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.pCarpet.converter.TaskScheduledConverter;
-import com.pCarpet.dao.TaskScheduledDAO;
-import com.pCarpet.dto.TaskScheduledDTO;
-import com.pCarpet.services.TaskScheduledService;
+import com.mima.converter.TaskScheduledConverter;
+import com.mima.dao.TaskScheduledDAO;
+import com.mima.dto.TaskScheduledDTO;
+import com.mima.services.TaskScheduledService;
 
 public class TaskScheduledServiceTest {
 

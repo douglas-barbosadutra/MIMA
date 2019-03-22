@@ -1,11 +1,11 @@
-package com.pCarpet.converter;
+package com.mima.converter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.pCarpet.dto.WBSDTO;
-import com.pCarpet.model.User;
-import com.pCarpet.model.WBS;
+import com.mima.dto.WBSDTO;
+import com.mima.model.User;
+import com.mima.model.WBS;
 
 public class WBSConverter {
 	

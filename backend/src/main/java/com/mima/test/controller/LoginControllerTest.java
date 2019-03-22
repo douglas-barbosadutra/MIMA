@@ -1,4 +1,4 @@
-package com.pCarpet.test;
+package com.mima.test.controller;
 
 import static org.mockito.Mockito.when;
 
@@ -18,9 +18,9 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pCarpet.controller.LoginController;
-import com.pCarpet.dto.UserDTO;
-import com.pCarpet.services.LoginService;
+import com.mima.controller.LoginController;
+import com.mima.dto.UserDTO;
+import com.mima.services.LoginService;
 
 
 @RunWith(SpringRunner.class)

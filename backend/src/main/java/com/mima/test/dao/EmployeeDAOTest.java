@@ -1,4 +1,4 @@
-package com.pCarpet.test;
+package com.mima.test.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,14 +13,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.pCarpet.converter.EmployeeConverter;
-import com.pCarpet.converter.UserConverter;
-import com.pCarpet.dao.EmployeeDAO;
-import com.pCarpet.dao.UserDAO;
-import com.pCarpet.dto.EmployeeDTO;
-import com.pCarpet.dto.UserDTO;
-import com.pCarpet.model.Employee;
-import com.pCarpet.model.User;
+import com.mima.converter.EmployeeConverter;
+import com.mima.converter.UserConverter;
+import com.mima.dao.EmployeeDAO;
+import com.mima.dao.UserDAO;
+import com.mima.dto.EmployeeDTO;
+import com.mima.dto.UserDTO;
+import com.mima.model.Employee;
+import com.mima.model.User;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest

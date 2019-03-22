@@ -1,4 +1,4 @@
-package com.pCarpet.test;
+package com.mima.test.service;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -14,14 +14,14 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.pCarpet.converter.InstructionConverter;
-import com.pCarpet.converter.ManufacturingConverter;
-import com.pCarpet.dao.ManufacturingDAO;
-import com.pCarpet.dto.InstructionDTO;
-import com.pCarpet.dto.ManufacturingDTO;
-import com.pCarpet.model.Instruction;
-import com.pCarpet.model.Manufacturing;
-import com.pCarpet.services.ManufacturingService;
+import com.mima.converter.InstructionConverter;
+import com.mima.converter.ManufacturingConverter;
+import com.mima.dao.ManufacturingDAO;
+import com.mima.dto.InstructionDTO;
+import com.mima.dto.ManufacturingDTO;
+import com.mima.model.Instruction;
+import com.mima.model.Manufacturing;
+import com.mima.services.ManufacturingService;
 
 public class ManufacturingServiceTest {
 	

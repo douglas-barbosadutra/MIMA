@@ -1,4 +1,4 @@
-package com.pCarpet.model;
+package com.mima.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

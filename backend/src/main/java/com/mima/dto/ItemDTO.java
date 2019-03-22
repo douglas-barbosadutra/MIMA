@@ -1,4 +1,4 @@
-package com.pCarpet.dto;
+package com.mima.dto;
 
 import java.util.List;
 

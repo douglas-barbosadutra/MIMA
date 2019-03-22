@@ -1,11 +1,11 @@
-package com.pCarpet.dao;
+package com.mima.dao;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.pCarpet.model.Machine;
-import com.pCarpet.model.Task;
+import com.mima.model.Machine;
+import com.mima.model.Task;
 
 
 public interface TaskDAO extends JpaRepository<Task, Integer>{

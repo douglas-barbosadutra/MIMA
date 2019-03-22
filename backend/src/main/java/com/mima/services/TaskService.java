@@ -1,15 +1,15 @@
-package com.pCarpet.services;
+package com.mima.services;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.pCarpet.converter.TaskConverter;
-import com.pCarpet.dao.TaskDAO;
-import com.pCarpet.dto.TaskDTO;
-import com.pCarpet.model.Machine;
-import com.pCarpet.model.Task;
+import com.mima.converter.TaskConverter;
+import com.mima.dao.TaskDAO;
+import com.mima.dto.TaskDTO;
+import com.mima.model.Machine;
+import com.mima.model.Task;
 
 
 @Service

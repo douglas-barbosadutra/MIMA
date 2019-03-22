@@ -1,16 +1,16 @@
-package com.pCarpet.services;
+package com.mima.services;
 
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.pCarpet.converter.InstructionConverter;
-import com.pCarpet.converter.TaskConverter;
-import com.pCarpet.dao.InstructionDAO;
-import com.pCarpet.dto.InstructionDTO;
-import com.pCarpet.dto.TaskDTO;
-import com.pCarpet.model.Instruction;
+import com.mima.converter.InstructionConverter;
+import com.mima.converter.TaskConverter;
+import com.mima.dao.InstructionDAO;
+import com.mima.dto.InstructionDTO;
+import com.mima.dto.TaskDTO;
+import com.mima.model.Instruction;
 
 @Service
 public class InstructionService {

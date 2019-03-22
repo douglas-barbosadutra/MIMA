@@ -1,4 +1,4 @@
-package com.pCarpet.services;
+package com.mima.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,12 +6,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.pCarpet.converter.TimeConverter;
-import com.pCarpet.dto.InstructionDTO;
-import com.pCarpet.dto.ItemDTO;
-import com.pCarpet.dto.ManufacturingDTO;
-import com.pCarpet.dto.TaskDTO;
-import com.pCarpet.dto.TimeDTO;
+import com.mima.converter.TimeConverter;
+import com.mima.dto.InstructionDTO;
+import com.mima.dto.ItemDTO;
+import com.mima.dto.ManufacturingDTO;
+import com.mima.dto.TaskDTO;
+import com.mima.dto.TimeDTO;
 
 @Service
 public class TimeService {

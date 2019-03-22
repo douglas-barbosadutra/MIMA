@@ -1,7 +1,7 @@
-package com.pCarpet.converter;
+package com.mima.converter;
 
-import com.pCarpet.dto.LoginDTO;
-import com.pCarpet.model.User;
+import com.mima.dto.LoginDTO;
+import com.mima.model.User;
 
 public class LoginConverter {
 

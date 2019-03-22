@@ -1,4 +1,4 @@
-package com.pCarpet.utils;
+package com.mima.utils;
 
 public class GestoreEccezioni {
     private static GestoreEccezioni ourInstance = new GestoreEccezioni();

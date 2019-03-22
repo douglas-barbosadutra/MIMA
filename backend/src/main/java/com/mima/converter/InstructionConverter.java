@@ -1,11 +1,11 @@
-package com.pCarpet.converter;
+package com.mima.converter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.pCarpet.dto.InstructionDTO;
-import com.pCarpet.model.Instruction;
-import com.pCarpet.model.Task;
+import com.mima.dto.InstructionDTO;
+import com.mima.model.Instruction;
+import com.mima.model.Task;
 
 public class InstructionConverter{
 

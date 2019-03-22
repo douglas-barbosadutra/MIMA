@@ -1,4 +1,4 @@
-package com.pCarpet.test;
+package com.mima.test.controller;
 
 import static org.mockito.Mockito.when;
 
@@ -18,9 +18,9 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pCarpet.controller.WBSController;
-import com.pCarpet.dto.WBSDTO;
-import com.pCarpet.services.WBSService;
+import com.mima.controller.WBSController;
+import com.mima.dto.WBSDTO;
+import com.mima.services.WBSService;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(WBSController.class)

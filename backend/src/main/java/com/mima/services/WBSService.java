@@ -1,17 +1,17 @@
-package com.pCarpet.services;
+package com.mima.services;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.pCarpet.converter.UserConverter;
-import com.pCarpet.converter.WBSConverter;
-import com.pCarpet.dao.WBSDAO;
-import com.pCarpet.dto.ItemDTO;
-import com.pCarpet.dto.UserDTO;
-import com.pCarpet.dto.WBSDTO;
-import com.pCarpet.model.WBS;
+import com.mima.converter.UserConverter;
+import com.mima.converter.WBSConverter;
+import com.mima.dao.WBSDAO;
+import com.mima.dto.ItemDTO;
+import com.mima.dto.UserDTO;
+import com.mima.dto.WBSDTO;
+import com.mima.model.WBS;
 
 @Service
 public class WBSService {

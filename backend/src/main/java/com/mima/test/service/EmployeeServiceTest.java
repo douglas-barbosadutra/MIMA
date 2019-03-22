@@ -1,4 +1,4 @@
-package com.pCarpet.test;
+package com.mima.test.service;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.isA;
@@ -19,18 +19,18 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.pCarpet.converter.EmployeeConverter;
-import com.pCarpet.converter.UserConverter;
-import com.pCarpet.converter.WBSConverter;
-import com.pCarpet.dao.EmployeeDAO;
-import com.pCarpet.dto.EmployeeDTO;
-import com.pCarpet.dto.UserDTO;
-import com.pCarpet.model.Employee;
-import com.pCarpet.model.User;
-import com.pCarpet.model.WBS;
-import com.pCarpet.services.EmployeeService;
+import com.mima.converter.EmployeeConverter;
+import com.mima.converter.UserConverter;
+import com.mima.converter.WBSConverter;
+import com.mima.dao.EmployeeDAO;
+import com.mima.dto.EmployeeDTO;
+import com.mima.dto.UserDTO;
+import com.mima.model.Employee;
+import com.mima.model.User;
+import com.mima.model.WBS;
+import com.mima.services.EmployeeService;
 
-public class EmployeeTest {
+public class EmployeeServiceTest {
 	
 	@Mock
 	private EmployeeDAO employeeDAO;

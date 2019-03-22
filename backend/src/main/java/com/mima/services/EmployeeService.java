@@ -1,15 +1,15 @@
-package com.pCarpet.services;
+package com.mima.services;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.pCarpet.converter.EmployeeConverter;
-import com.pCarpet.dao.EmployeeDAO;
-import com.pCarpet.dto.EmployeeDTO;
-import com.pCarpet.model.Employee;
-import com.pCarpet.model.User;
+import com.mima.converter.EmployeeConverter;
+import com.mima.dao.EmployeeDAO;
+import com.mima.dto.EmployeeDTO;
+import com.mima.model.Employee;
+import com.mima.model.User;
 
 @Service
 public class EmployeeService {

@@ -1,4 +1,4 @@
-package com.pCarpet.controller;
+package com.mima.controller;
 
 import java.util.List;
 
@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pCarpet.dto.MachineDTO;
-import com.pCarpet.dto.TaskDTO;
-import com.pCarpet.services.TaskService;
+import com.mima.dto.MachineDTO;
+import com.mima.dto.TaskDTO;
+import com.mima.services.TaskService;
 
 @CrossOrigin(value="*")
 @RestController

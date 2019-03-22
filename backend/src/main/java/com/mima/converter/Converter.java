@@ -1,4 +1,4 @@
-package com.pCarpet.converter;
+package com.mima.converter;
 
 public interface Converter<Entity,DTO> {
 

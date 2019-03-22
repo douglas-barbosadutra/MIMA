@@ -1,15 +1,15 @@
-package com.pCarpet.services;
+package com.mima.services;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.pCarpet.converter.MachineConverter;
-import com.pCarpet.dao.MachineDAO;
-import com.pCarpet.dto.MachineDTO;
-import com.pCarpet.model.Machine;
-import com.pCarpet.model.User;
+import com.mima.converter.MachineConverter;
+import com.mima.dao.MachineDAO;
+import com.mima.dto.MachineDTO;
+import com.mima.model.Machine;
+import com.mima.model.User;
 
 @Service
 public class MachineService {

@@ -1,13 +1,13 @@
-package com.pCarpet.converter;
+package com.mima.converter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.pCarpet.dto.EmployeeDTO;
-import com.pCarpet.dto.UserDTO;
-import com.pCarpet.model.Employee;
-import com.pCarpet.model.Task;
-import com.pCarpet.model.User;
+import com.mima.dto.EmployeeDTO;
+import com.mima.dto.UserDTO;
+import com.mima.model.Employee;
+import com.mima.model.Task;
+import com.mima.model.User;
 
 public class EmployeeConverter {
 

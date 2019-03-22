@@ -1,13 +1,13 @@
-package com.pCarpet.dao;
+package com.mima.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.pCarpet.model.Item;
-import com.pCarpet.model.Manufacturing;
-import com.pCarpet.model.WBS;
+import com.mima.model.Item;
+import com.mima.model.Manufacturing;
+import com.mima.model.WBS;
 
 import java.util.List;
 

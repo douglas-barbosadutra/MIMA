@@ -1,9 +1,9 @@
-package com.pCarpet.converter;
+package com.mima.converter;
 
-import com.pCarpet.dto.InstructionDTO;
-import com.pCarpet.dto.ItemDTO;
-import com.pCarpet.dto.ManufacturingDTO;
-import com.pCarpet.dto.TimeDTO;
+import com.mima.dto.InstructionDTO;
+import com.mima.dto.ItemDTO;
+import com.mima.dto.ManufacturingDTO;
+import com.mima.dto.TimeDTO;
 
 public class TimeConverter {
 	

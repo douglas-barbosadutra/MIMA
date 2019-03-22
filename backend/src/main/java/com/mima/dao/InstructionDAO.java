@@ -1,8 +1,9 @@
-package com.pCarpet.dao;
+package com.mima.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.pCarpet.model.Instruction;
-import com.pCarpet.model.Task;
+
+import com.mima.model.Instruction;
+import com.mima.model.Task;
 
 import java.util.List;
 

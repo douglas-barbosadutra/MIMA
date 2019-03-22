@@ -1,15 +1,15 @@
-package com.pCarpet.services;
+package com.mima.services;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.pCarpet.converter.InstructionConverter;
-import com.pCarpet.converter.ManufacturingConverter;
-import com.pCarpet.dao.ManufacturingDAO;
-import com.pCarpet.dto.InstructionDTO;
-import com.pCarpet.dto.ManufacturingDTO;
+import com.mima.converter.InstructionConverter;
+import com.mima.converter.ManufacturingConverter;
+import com.mima.dao.ManufacturingDAO;
+import com.mima.dto.InstructionDTO;
+import com.mima.dto.ManufacturingDTO;
 
 @Service
 public class ManufacturingService {

@@ -1,11 +1,11 @@
-package com.pCarpet.converter;
+package com.mima.converter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.pCarpet.dto.SchedulingDTO;
-import com.pCarpet.model.Machine;
-import com.pCarpet.model.Scheduling;
+import com.mima.dto.SchedulingDTO;
+import com.mima.model.Machine;
+import com.mima.model.Scheduling;
 
 public class SchedulingConverter {
 	

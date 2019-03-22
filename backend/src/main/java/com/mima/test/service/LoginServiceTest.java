@@ -1,4 +1,4 @@
-package com.pCarpet.test;
+package com.mima.test.service;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -11,11 +11,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.pCarpet.converter.UserConverter;
-import com.pCarpet.dao.UserDAO;
-import com.pCarpet.dto.UserDTO;
-import com.pCarpet.model.User;
-import com.pCarpet.services.LoginService;
+import com.mima.converter.UserConverter;
+import com.mima.dao.UserDAO;
+import com.mima.dto.UserDTO;
+import com.mima.model.User;
+import com.mima.services.LoginService;
 
 public class LoginServiceTest {
 	

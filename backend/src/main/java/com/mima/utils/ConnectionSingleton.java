@@ -1,4 +1,4 @@
-package com.pCarpet.utils;
+package com.mima.utils;
 
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import java.sql.Connection;

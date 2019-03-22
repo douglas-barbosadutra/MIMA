@@ -1,10 +1,10 @@
-package com.pCarpet.converter;
+package com.mima.converter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.pCarpet.dto.UserDTO;
-import com.pCarpet.model.User;
+import com.mima.dto.UserDTO;
+import com.mima.model.User;
 
 public class UserConverter{
 

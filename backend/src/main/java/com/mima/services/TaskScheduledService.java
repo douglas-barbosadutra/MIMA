@@ -1,4 +1,4 @@
-package com.pCarpet.services;
+package com.mima.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,13 +6,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.pCarpet.converter.SchedulingConverter;
-import com.pCarpet.converter.TaskScheduledConverter;
-import com.pCarpet.dao.TaskScheduledDAO;
-import com.pCarpet.dto.OperationSchedulingDTO;
-import com.pCarpet.dto.SchedulingDTO;
-import com.pCarpet.dto.TaskScheduledDTO;
-import com.pCarpet.model.TaskScheduled;
+import com.mima.converter.SchedulingConverter;
+import com.mima.converter.TaskScheduledConverter;
+import com.mima.dao.TaskScheduledDAO;
+import com.mima.dto.OperationSchedulingDTO;
+import com.mima.dto.SchedulingDTO;
+import com.mima.dto.TaskScheduledDTO;
+import com.mima.model.TaskScheduled;
 
 @Service
 public class TaskScheduledService {

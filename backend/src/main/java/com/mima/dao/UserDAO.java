@@ -1,12 +1,12 @@
-package com.pCarpet.dao;
+package com.mima.dao;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.pCarpet.model.Machine;
-import com.pCarpet.model.User;
+import com.mima.model.Machine;
+import com.mima.model.User;
 
 
 public interface UserDAO extends JpaRepository<User, Integer>{

@@ -1,12 +1,12 @@
-package com.pCarpet.converter;
+package com.mima.converter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.pCarpet.dto.TaskScheduledDTO;
-import com.pCarpet.model.Scheduling;
-import com.pCarpet.model.Task;
-import com.pCarpet.model.TaskScheduled;
+import com.mima.dto.TaskScheduledDTO;
+import com.mima.model.Scheduling;
+import com.mima.model.Task;
+import com.mima.model.TaskScheduled;
 
 public class TaskScheduledConverter {
 

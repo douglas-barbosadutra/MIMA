@@ -1,12 +1,12 @@
-package com.pCarpet.dao;
+package com.mima.dao;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.pCarpet.model.Instruction;
-import com.pCarpet.model.Item;
-import com.pCarpet.model.Manufacturing;
+import com.mima.model.Instruction;
+import com.mima.model.Item;
+import com.mima.model.Manufacturing;
 
 
 public interface ManufacturingDAO extends JpaRepository<Manufacturing, Integer>{

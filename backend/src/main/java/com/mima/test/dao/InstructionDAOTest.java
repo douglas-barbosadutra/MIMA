@@ -1,4 +1,4 @@
-package com.pCarpet.test;
+package com.mima.test.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,20 +13,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.pCarpet.converter.InstructionConverter;
-import com.pCarpet.converter.MachineConverter;
-import com.pCarpet.converter.TaskConverter;
-import com.pCarpet.converter.UserConverter;
-import com.pCarpet.dao.InstructionDAO;
-import com.pCarpet.dao.MachineDAO;
-import com.pCarpet.dao.TaskDAO;
-import com.pCarpet.dao.UserDAO;
-import com.pCarpet.dto.InstructionDTO;
-import com.pCarpet.dto.MachineDTO;
-import com.pCarpet.dto.TaskDTO;
-import com.pCarpet.dto.UserDTO;
-import com.pCarpet.model.Instruction;
-import com.pCarpet.model.Task;
+import com.mima.converter.InstructionConverter;
+import com.mima.converter.MachineConverter;
+import com.mima.converter.TaskConverter;
+import com.mima.converter.UserConverter;
+import com.mima.dao.InstructionDAO;
+import com.mima.dao.MachineDAO;
+import com.mima.dao.TaskDAO;
+import com.mima.dao.UserDAO;
+import com.mima.dto.InstructionDTO;
+import com.mima.dto.MachineDTO;
+import com.mima.dto.TaskDTO;
+import com.mima.dto.UserDTO;
+import com.mima.model.Instruction;
+import com.mima.model.Task;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest

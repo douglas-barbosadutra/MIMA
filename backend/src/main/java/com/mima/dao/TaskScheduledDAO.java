@@ -1,4 +1,4 @@
-package com.pCarpet.dao;
+package com.mima.dao;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.pCarpet.model.Scheduling;
-import com.pCarpet.model.TaskScheduled;
+import com.mima.model.Scheduling;
+import com.mima.model.TaskScheduled;
 
 
 public interface TaskScheduledDAO extends JpaRepository<TaskScheduled, Integer>{

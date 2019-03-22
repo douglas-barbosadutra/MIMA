@@ -1,4 +1,4 @@
-package com.pCarpet;
+package com.mima;
 
 
 import org.springframework.boot.SpringApplication;

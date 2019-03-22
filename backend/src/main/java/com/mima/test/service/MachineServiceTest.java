@@ -1,4 +1,4 @@
-package com.pCarpet.test;
+package com.mima.test.service;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -14,12 +14,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.pCarpet.converter.MachineConverter;
-import com.pCarpet.dao.MachineDAO;
-import com.pCarpet.dto.MachineDTO;
-import com.pCarpet.model.Machine;
-import com.pCarpet.model.User;
-import com.pCarpet.services.MachineService;
+import com.mima.converter.MachineConverter;
+import com.mima.dao.MachineDAO;
+import com.mima.dto.MachineDTO;
+import com.mima.model.Machine;
+import com.mima.model.User;
+import com.mima.services.MachineService;
 
 public class MachineServiceTest {
 	

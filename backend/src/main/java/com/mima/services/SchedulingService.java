@@ -1,16 +1,16 @@
-package com.pCarpet.services;
+package com.mima.services;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.pCarpet.converter.MachineConverter;
-import com.pCarpet.converter.SchedulingConverter;
-import com.pCarpet.dao.SchedulingDAO;
-import com.pCarpet.dto.MachineDTO;
-import com.pCarpet.dto.SchedulingDTO;
-import com.pCarpet.model.Scheduling;
+import com.mima.converter.MachineConverter;
+import com.mima.converter.SchedulingConverter;
+import com.mima.dao.SchedulingDAO;
+import com.mima.dto.MachineDTO;
+import com.mima.dto.SchedulingDTO;
+import com.mima.model.Scheduling;
 
 @Service
 public class SchedulingService {

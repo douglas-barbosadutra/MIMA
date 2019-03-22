@@ -1,12 +1,12 @@
-package com.pCarpet.converter;
+package com.mima.converter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.pCarpet.dto.ManufacturingDTO;
-import com.pCarpet.model.Instruction;
-import com.pCarpet.model.Item;
-import com.pCarpet.model.Manufacturing;
+import com.mima.dto.ManufacturingDTO;
+import com.mima.model.Instruction;
+import com.mima.model.Item;
+import com.mima.model.Manufacturing;
 
 public class  ManufacturingConverter{
 	

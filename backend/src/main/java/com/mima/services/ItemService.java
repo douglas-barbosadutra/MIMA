@@ -1,16 +1,16 @@
-package com.pCarpet.services;
+package com.mima.services;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.pCarpet.converter.ItemConverter;
-import com.pCarpet.converter.WBSConverter;
-import com.pCarpet.dao.ItemDAO;
-import com.pCarpet.dto.ItemDTO;
-import com.pCarpet.dto.WBSDTO;
-import com.pCarpet.model.Item;
+import com.mima.converter.ItemConverter;
+import com.mima.converter.WBSConverter;
+import com.mima.dao.ItemDAO;
+import com.mima.dto.ItemDTO;
+import com.mima.dto.WBSDTO;
+import com.mima.model.Item;
 
 
 @Service

@@ -1,4 +1,4 @@
-package com.pCarpet.test;
+package com.mima.test.service;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -15,14 +15,14 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.pCarpet.converter.ItemConverter;
-import com.pCarpet.converter.WBSConverter;
-import com.pCarpet.dao.ItemDAO;
-import com.pCarpet.dto.ItemDTO;
-import com.pCarpet.dto.WBSDTO;
-import com.pCarpet.services.ItemService;
+import com.mima.converter.ItemConverter;
+import com.mima.converter.WBSConverter;
+import com.mima.dao.ItemDAO;
+import com.mima.dto.ItemDTO;
+import com.mima.dto.WBSDTO;
+import com.mima.services.ItemService;
 
-public class ItemTestService {
+public class ItemServiceTest {
 
 	@Mock
 	private ItemDAO itemDAO;
