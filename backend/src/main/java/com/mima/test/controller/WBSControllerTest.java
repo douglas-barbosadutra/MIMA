@@ -50,10 +50,7 @@ public class WBSControllerTest {
 	public void testInsertWBS() throws Exception {
 		String uri = "/WBS/insertWbs";
 		WBSDTO wbsDTO = new WBSDTO(1, "test", 1);
-		String inputJson = this.objectToJson(wbsDTO);
-		
-		System.out.println(inputJson);
-		
+		String inputJson = this.objectToJson(wbsDTO);		
 		when(wbsService.insertWBS(wbsDTO)).thenReturn(wbsDTO);
 		
 		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
