@@ -49,8 +49,7 @@ public class TaskScheduledService {
 	
 	public TaskScheduledDTO insertTaskScheduled(TaskScheduledDTO taskScheduled) {
 		TaskScheduled task = TaskScheduledConverter.convertToEntity(taskScheduled);
-		task = taskScheduledDAO.save(task);
-		taskScheduledDAO.flush();
+		task = taskScheduledDAO.saveAndFlush(task);
 		return TaskScheduledConverter.convertToDto(task);
 	}
 	

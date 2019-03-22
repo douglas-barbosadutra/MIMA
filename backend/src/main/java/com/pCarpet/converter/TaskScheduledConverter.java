@@ -20,7 +20,7 @@ public class TaskScheduledConverter {
 			Task temp = new Task();
 			temp.setId(taskScheduledDto.getIdTask());
 			task.setTask(temp);
-			
+			task.setName(taskScheduledDto.getName());
 			Scheduling s = new Scheduling();
 			s.setId(taskScheduledDto.getIdScheduling());
 			task.setScheduling(s);

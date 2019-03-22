@@ -15,6 +15,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -40,6 +41,10 @@ public class TaskScheduled {
 	@ManyToOne
 	@JoinColumn(name="id_task")
 	private Task task;
+	
+	@Column(name = "name")
+	@NotNull
+	private String name;
 	
 	@ManyToOne
 	@JoinColumn(name="id_scheduling")

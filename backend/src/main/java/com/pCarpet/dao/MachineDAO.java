@@ -13,8 +13,6 @@ import com.pCarpet.model.User;
 
 public interface MachineDAO extends JpaRepository<Machine, Integer>{
 	public List<Machine> findAllByUser(User u);
-	public Machine findByTasks(Task tasks);
-	public Machine findBySchedulings(Scheduling s);
 	
 	@Query(value = "SELECT LAST_INSERT_ID()", nativeQuery = true)
     int getLastInsertId();
