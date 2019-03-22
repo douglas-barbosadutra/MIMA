@@ -51,6 +51,7 @@ public class TaskScheduled {
 	@OnDelete(action=OnDeleteAction.CASCADE)
 	private Scheduling scheduling;
 	
+	//anche con queste annotazioni una delle colonne che vengono create nella tabella delle relazioni ha una chiave esterna restrict
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "task_scheduled_relations",
 	joinColumns=@JoinColumn(name = "fatherId"),

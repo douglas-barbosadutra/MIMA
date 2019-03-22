@@ -10,6 +10,7 @@ import com.mima.converter.SchedulingConverter;
 import com.mima.dao.SchedulingDAO;
 import com.mima.dto.MachineDTO;
 import com.mima.dto.SchedulingDTO;
+import com.mima.dto.TaskScheduledDTO;
 import com.mima.model.Scheduling;
 
 @Service
@@ -17,6 +18,9 @@ public class SchedulingService {
 	
 	@Autowired
 	private SchedulingDAO schedulingDAO;
+	
+	@Autowired
+	private TaskScheduledService taskScheduledService;
 	
 	public SchedulingService() {	}
 	

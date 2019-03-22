@@ -31,6 +31,7 @@ public class TaskScheduledController {
 
 	@PostMapping("/insertOperationScheduling")
 	public ResponseEntity<Boolean> insertOperazionScheduling(@RequestBody OperationSchedulingDTO osDTO) {
+		System.out.println(osDTO);
 		taskScheduledService.insertScheduledRelations(osDTO);
 		return ResponseEntity.status(HttpStatus.OK).body(true);
 	}
