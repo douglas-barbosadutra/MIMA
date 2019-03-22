@@ -10,5 +10,4 @@ import com.pCarpet.model.Scheduling;
 
 public interface SchedulingDAO extends JpaRepository<Scheduling, Integer>{
 	public List<Scheduling> findAllByMachine(Machine m);
-	public Scheduling findById(int id);
 }

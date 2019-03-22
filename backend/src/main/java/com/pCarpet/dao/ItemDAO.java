@@ -15,14 +15,8 @@ import javax.transaction.Transactional;
 
 public interface ItemDAO extends JpaRepository<Item, Integer>{
 	
-	final String FIND_MAX_LEVEL_BY_WBS = "select max(level) from items where id_wbs = :wbs";
-	
 	public List<Item> findAllByWbs(WBS wbs);
-	public List<Item> findAllByManufacturings(Manufacturing manufacturings);
 	public List<Item> findAll();
-	
-	public Item findByFather(Item i);
-	public Item findByManufacturings(Manufacturing m);
 	public Item findItemById(int id);
 
 	@Modifying
