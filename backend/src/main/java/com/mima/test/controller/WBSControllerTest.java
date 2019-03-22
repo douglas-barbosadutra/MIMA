@@ -1,6 +1,10 @@
 package com.mima.test.controller;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -63,10 +67,32 @@ public class WBSControllerTest {
 	}
 	
 	@Test
-	public void testShowWbs() {
+	public void testShowWbs() throws Exception {
 		String uri = "/WBS/showWbs?idUser=1";
-		//MvcResult mvcResult = 
+		List<WBSDTO> list = new ArrayList<WBSDTO>();
+		WBSDTO elem1 = new WBSDTO(1, "primo elem", 1);
+		WBSDTO elem2 = new WBSDTO(2, "secondo elem", 2);
+		WBSDTO elem3 = new WBSDTO(3, "terzo elem", 2);
+		list.add(elem1); list.add(elem2); list.add(elem3);
+		when(wbsService.showWBS(1)).thenReturn(list);
+		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)
+			      .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+		int status = mvcResult.getResponse().getStatus();
+		assertEquals(200, status);
+		String content = mvcResult.getResponse().getContentAsString();
+		assertEquals(content, this.objectToJson(list));
 	}
+	/*
+	@Test
+	public void testDeleteWbs() throws Exception {
+		String uri = "/WBS/deleteWbs?idUser=1";
+		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.delete(uri)).andReturn();
+		int status = mvcResult.getResponse().getStatus();
+		assertEquals(200, status);
+		boolean result = true;
+		String content = mvcResult.getResponse().getContentAsString();
+		assertEquals(content, this.objectToJson(result));
+	}*/
 	
 	public String objectToJson(Object object) throws JsonProcessingException {
 		ObjectMapper mapper = new ObjectMapper();
