@@ -82,17 +82,18 @@ public class WBSControllerTest {
 		String content = mvcResult.getResponse().getContentAsString();
 		assertEquals(content, this.objectToJson(list));
 	}
-	/*
+	
 	@Test
 	public void testDeleteWbs() throws Exception {
-		String uri = "/WBS/deleteWbs?idUser=1";
+		String uri = "/WBS/deleteWbs?idWbs=1";
+		boolean result = true;
+		when(wbsService.deleteWBS(1)).thenReturn(result);
 		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.delete(uri)).andReturn();
 		int status = mvcResult.getResponse().getStatus();
 		assertEquals(200, status);
-		boolean result = true;
 		String content = mvcResult.getResponse().getContentAsString();
 		assertEquals(content, this.objectToJson(result));
-	}*/
+	}
 	
 	public String objectToJson(Object object) throws JsonProcessingException {
 		ObjectMapper mapper = new ObjectMapper();
