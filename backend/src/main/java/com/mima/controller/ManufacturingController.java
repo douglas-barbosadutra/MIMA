@@ -25,7 +25,6 @@ public class ManufacturingController {
 	@Autowired
 	TimeService timeService;
 	
-	@Autowired
 	public ManufacturingController() {	}
 	
 	@GetMapping("/showTime")

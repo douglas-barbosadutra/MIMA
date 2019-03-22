@@ -1,0 +1,106 @@
+package com.mima.test.controller;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mima.controller.MachineController;
+import com.mima.dto.MachineDTO;
+import com.mima.services.MachineService;
+
+@RunWith(SpringRunner.class)
+@WebMvcTest(MachineController.class)
+public class MachineControllerTest {
+	
+	@Autowired
+	private MockMvc mvc;
+	
+	@MockBean
+	private MachineService machineService;
+	
+	@Before
+	public void setUp() throws Exception {
+
+	}
+
+	@After
+	public void tearDown() throws Exception {
+
+	}
+	
+	@Test
+	public void testInsertMachine() throws Exception {
+		
+		String uri = "/Machine/insertMachine";
+		MachineDTO machineDTO = new MachineDTO(1,"prova","prova",1);
+		String inputJson = this.objectToJson(machineDTO);
+		
+		when(machineService.insertMachine(machineDTO)).thenReturn(machineDTO);
+		
+		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+		         .contentType(MediaType.APPLICATION_JSON_VALUE)
+		         .content(inputJson)).andReturn();
+		
+		int status = mvcResult.getResponse().getStatus();
+	    Assert.assertEquals(200, status);
+	    String content = mvcResult.getResponse().getContentAsString();
+	    Assert.assertEquals(content, objectToJson(machineDTO));
+	}
+	
+	@Test
+	public void testShowMachine() throws Exception {
+		
+		String uri = "/Machine/showMachine?idUser=1";
+		List<MachineDTO> machinesDTO = new ArrayList<MachineDTO>();
+		machinesDTO.add(new MachineDTO(1,"prova","prova",1));
+		machinesDTO.add(new MachineDTO(2,"prova","prova",1));
+		machinesDTO.add(new MachineDTO(3,"prova","prova",1));
+		machinesDTO.add(new MachineDTO(4,"prova","prova",1));
+		
+		when(machineService.getAllMachinesByIdUser(1)).thenReturn(machinesDTO);
+		
+		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)
+			      .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+		int status = mvcResult.getResponse().getStatus();
+		assertEquals(200, status);
+		String content = mvcResult.getResponse().getContentAsString();
+		assertEquals(content, this.objectToJson(machinesDTO));
+	}
+	
+	@Test
+	public void testDeleteMachine() throws Exception {
+		String uri = "/Machine/deleteMachine?idMachine=1";
+		boolean result = true;
+		when(machineService.deleteMachine(1)).thenReturn(result);
+		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.delete(uri)).andReturn();
+		int status = mvcResult.getResponse().getStatus();
+		assertEquals(200, status);
+		String content = mvcResult.getResponse().getContentAsString();
+		assertEquals(content, this.objectToJson(result));
+	}
+	
+	
+	public String objectToJson(Object object) throws JsonProcessingException {
+		ObjectMapper mapper = new ObjectMapper();
+		return mapper.writeValueAsString(object);
+	}
+
+}

@@ -1,9 +1,12 @@
 package com.mima.test.controller;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,23 +21,19 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mima.controller.LoginController;
-import com.mima.dto.UserDTO;
-import com.mima.services.LoginService;
-
+import com.mima.controller.ManufacturingController;
+import com.mima.dto.TimeDTO;
+import com.mima.services.TimeService;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(LoginController.class)
-public class LoginControllerTest {
+@WebMvcTest(ManufacturingController.class)
+public class ManufacturingControllerTest {
 	
-	//https://www.tutorialspoint.com/spring_boot/spring_boot_rest_controller_unit_test.htm
+	@Autowired
+	private MockMvc mvc;
 	
-    @Autowired
-    private MockMvc mvc;
- 
-    @MockBean
-    private LoginService loginService;
-
+	@MockBean
+	private TimeService timeService;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -47,29 +46,29 @@ public class LoginControllerTest {
 	}
 	
 	@Test
-	public void testLogin() throws Exception {
-		String uri = "/Login/login";
-		String inputJson = "{ \"username\":\"username\", \"password\":\"password\" }";
+	public void testShowTime() throws Exception {
+		String uri = "/Manufacturing/showTime?idTask=1";
+		List<TimeDTO> timesDTO = new ArrayList<TimeDTO>();
+		timesDTO.add(new TimeDTO("prova","prova",1,1,"prova"));
+		timesDTO.add(new TimeDTO("prova","prova",1,1,"prova"));
+		timesDTO.add(new TimeDTO("prova","prova",1,1,"prova"));
+		timesDTO.add(new TimeDTO("prova","prova",1,1,"prova"));
 		
-		UserDTO userDTO = new UserDTO(0,"username","password","name","cognome","email@email.it","3212123", 0);
+		when(timeService.getAllTempi(1)).thenReturn(timesDTO);
 		
-		when(loginService.login(userDTO.getUsername(), userDTO.getPassword())).thenReturn(userDTO);	
-		
-		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
-		         .contentType(MediaType.APPLICATION_JSON_VALUE)
-		         .content(inputJson)).andReturn();
+		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)
+			      .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
 		
 		int status = mvcResult.getResponse().getStatus();
-	    Assert.assertEquals(200, status);
-	    
-	    String content = mvcResult.getResponse().getContentAsString();
-	    //System.out.println("json: "+objectToJson(userDTO));
-	    Assert.assertEquals(content, objectToJson(userDTO));
+		assertEquals(200, status);
+		
+		String content = mvcResult.getResponse().getContentAsString();
+		assertEquals(content, this.objectToJson(timesDTO));
 	}
 	
 	public String objectToJson(Object object) throws JsonProcessingException {
 		ObjectMapper mapper = new ObjectMapper();
 		return mapper.writeValueAsString(object);
 	}
-		   
+
 }
