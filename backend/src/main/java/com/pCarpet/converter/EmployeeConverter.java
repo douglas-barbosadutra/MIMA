@@ -53,4 +53,14 @@ public class EmployeeConverter {
 		}
 		return listEmployeeDTO;
 	}
+	
+	public static List<Employee> toListEntity(List<EmployeeDTO> list) {
+		List<Employee> listEmployee = new ArrayList<>();
+		if (!list.isEmpty()) {
+			for (EmployeeDTO employee: list) {
+				listEmployee.add(EmployeeConverter.convertToEntity(employee));
+			}
+		}
+		return listEmployee;
+	}
 }
