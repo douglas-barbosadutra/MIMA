@@ -51,4 +51,16 @@ public class TaskScheduledConverter {
 		}
 		return listTaskScheduledDTO;
 	}
+	
+	public static List<TaskScheduled> toListEntity(List<TaskScheduledDTO> list) {
+		
+		List<TaskScheduled> listTaskScheduled = new ArrayList<>();
+		
+		if (!list.isEmpty()) {
+			for (TaskScheduledDTO task : list) {
+				listTaskScheduled.add(TaskScheduledConverter.convertToEntity(task));
+			}
+		}
+		return listTaskScheduled;
+	}
 }

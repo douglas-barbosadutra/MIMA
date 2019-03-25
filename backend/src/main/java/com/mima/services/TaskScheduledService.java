@@ -69,12 +69,13 @@ public class TaskScheduledService {
 	public List<TaskScheduledDTO> getTaskScheduling(int idScheduling) {
 		SchedulingDTO schedulingDTO = new SchedulingDTO();
 		schedulingDTO.setId(idScheduling);
-		return TaskScheduledConverter
-				.toListDTO(taskScheduledDAO.findAllByScheduling(SchedulingConverter.convertToEntity(schedulingDTO)));
+		return TaskScheduledConverter.toListDTO(taskScheduledDAO.findAllByScheduling(SchedulingConverter.convertToEntity(schedulingDTO)));
 	}
 
 	public TaskScheduledDTO getTaskScheduledRoot(int idScheduling) {
+		
 		List<TaskScheduledDTO> list = this.getTaskScheduling(idScheduling);
+		
 		for (TaskScheduledDTO i : list) {
 			if (!i.isHasFather())
 				return i;

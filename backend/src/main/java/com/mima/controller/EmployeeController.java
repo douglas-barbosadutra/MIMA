@@ -38,14 +38,14 @@ public class EmployeeController {
 	
 	@PostMapping("/insertEmployee")
 	public ResponseEntity<EmployeeDTO> insertEmployee(@RequestBody EmployeeDTO employeeDTO) {
-		System.out.println(employeeDTO);
+		
 		UserDTO userDTO = employeeDTO.getUser();
 		userDTO.setRank(2);
 		userService.insertUser(userDTO);
 		
 		userDTO = userService.getUserByUsername(userDTO.getUsername());
 		employeeDTO.setUser(userDTO);
-		System.out.println(employeeDTO);
+		
 		return ResponseEntity.status(HttpStatus.OK).body(employeeService.insertEmployee(employeeDTO));
 	}
 	

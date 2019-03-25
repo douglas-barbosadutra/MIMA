@@ -10,7 +10,6 @@ import com.mima.model.Manufacturing;
 
 
 public interface ManufacturingDAO extends JpaRepository<Manufacturing, Integer>{
+	
 	public List<Manufacturing> findAllByInstruction(Instruction i);
-	public List<Manufacturing> findAllByItems(Item i);
-	public Manufacturing findByItems(Item i);
 }

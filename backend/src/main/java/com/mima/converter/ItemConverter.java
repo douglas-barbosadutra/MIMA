@@ -39,7 +39,7 @@ public class ItemConverter {
 				item.setFather(father);
 			}			
 			WBS wbs = new WBS();
-			wbs.setId(itemDTO.getId());
+			wbs.setId(itemDTO.getIdWBS());
 			item.setWbs(wbs);
 		}
 		return item;

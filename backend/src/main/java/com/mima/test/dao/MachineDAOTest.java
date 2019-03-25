@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import org.junit.Assert;
 
 import org.junit.After;
 import org.junit.Before;
@@ -45,6 +47,29 @@ public class MachineDAOTest {
 	public void tearDown() throws Exception {
 		machineDAO.deleteAll();
 		userDAO.deleteAll();
+	}
+	
+	@Test
+	public void testInsertMachine() {
+		
+		MachineDTO machineDTO = new MachineDTO(0,"prova","prova",idUser);
+		int idMachineInsert = machineDAO.saveAndFlush(MachineConverter.convertToEntity(machineDTO)).getId();
+		
+		Optional<Machine> machine = machineDAO.findById(idMachineInsert);
+		
+		Assert.assertTrue(machine.isPresent());
+	}
+	
+	@Test
+	public void testDeleteMachine() {
+		
+		MachineDTO machineDTO = new MachineDTO(0,"prova","prova",idUser);
+		int idMachineInsert = machineDAO.saveAndFlush(MachineConverter.convertToEntity(machineDTO)).getId();
+		
+		machineDAO.deleteById(idMachineInsert);
+		Optional<Machine> machine = machineDAO.findById(idMachineInsert);
+		
+		Assert.assertTrue(!machine.isPresent());
 	}
 	
 	@Test
