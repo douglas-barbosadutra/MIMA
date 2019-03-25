@@ -32,7 +32,7 @@ import com.mima.services.UserService;
 @RunWith(SpringRunner.class)
 @WebMvcTest(UserController.class)
 
-public class UserControlleTest {
+public class UserControllerTest {
 
 	@Autowired
 	private MockMvc mvc;
