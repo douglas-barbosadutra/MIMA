@@ -1,4 +1,4 @@
-package com.WbsMicroservice.WbsMicroservice;
+package com.WBSMicroservice.WBSMicroservice;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

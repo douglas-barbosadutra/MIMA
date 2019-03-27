@@ -1,4 +1,4 @@
-package com.WbsMicroservice.WbsMicroservice;
+package com.WBSMicroservice.WBSMicroservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
