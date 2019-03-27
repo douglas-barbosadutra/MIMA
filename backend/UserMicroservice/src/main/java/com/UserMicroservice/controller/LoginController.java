@@ -19,7 +19,6 @@ import com.UserMicroservice.dto.LoginDTO;
 import com.UserMicroservice.dto.UserDTO;
 import com.UserMicroservice.dto.UserLoggedDTO;
 import com.UserMicroservice.service.LoginService;
-import com.UserMicroservice.utils.JsonResponseBody;
 import com.UserMicroservice.utils.JwtUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

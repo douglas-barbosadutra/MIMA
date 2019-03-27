@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import {MachineDTO} from 'src/dto/MachineDTO';
 import {MachineService} from 'src/services/machine.service';
 import { UserDTO } from 'src/dto/UserDTO';
+import { ParamDTO } from 'src/dto/ParamDTO';
 
 @Component({
   selector: 'app-machine-show',
@@ -13,12 +14,13 @@ export class MachineShowComponent implements OnInit {
 
   private machineList : Array<MachineDTO>;
   private machineDTO: MachineDTO;
+  private paramDTO: ParamDTO;
 
   constructor(private machineService: MachineService, private router:  Router) { }
 
   ngOnInit() {
 
-    this.machineService.showMachine().subscribe((data: any) =>{
+    this.machineService.showMachine(sessionStorage.getItem("userLogged")).subscribe((data: any) =>{
 
       if(data != null){
         this.machineList = data;
@@ -26,7 +28,7 @@ export class MachineShowComponent implements OnInit {
     })
 
   }
-s
+
   chooseMachine(idMachine: number){
     
     sessionStorage.setItem("idMachine",JSON.stringify(idMachine));
@@ -35,8 +37,8 @@ s
   }
 
   deleteMachine(idMachine: number){
-
-    this.machineService.deleteMachine(idMachine).subscribe((data: any) =>{
+    this.paramDTO = new ParamDTO(sessionStorage.getItem("userLogged"),idMachine);
+    this.machineService.deleteMachine(this.paramDTO).subscribe((data: any) =>{
 
       if(data)
         alert("Cancellazione effettuata");   
