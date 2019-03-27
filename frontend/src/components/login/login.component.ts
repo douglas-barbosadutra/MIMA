@@ -4,7 +4,7 @@ import { Router } from "@angular/router";
 import {LoginService} from "src/services/login.service";
 import { UserDTO } from 'src/dto/UserDTO';
 import { LoginDTO } from 'src/dto/LoginDTO';
-
+import { UserLoggedDTO } from 'src/dto/UserLoggedDTO';
 
 @Component({
   selector: 'app-login',
@@ -23,18 +23,17 @@ export class LoginComponent implements OnInit {
   }
 
   login(f:NgForm): void{
-    this.loginService.login(this.loginDTO).subscribe((response) => {
-      console.log(response);
-      if(response != null){
-        this.idUtenteLocale = response.id;
-        console.log(this.idUtenteLocale);
-        sessionStorage.setItem("idUser", JSON.stringify(this.idUtenteLocale));
+    this.loginService.login(this.loginDTO).subscribe((data: UserLoggedDTO) => {
 
-        console.log(response);
-        if(response.rank == 0)
+      if(data != null){
+        console.log(data.jwt)
+
+        sessionStorage.setItem("userLogged",data.jwt);
+
+        if(data.rank == 0)
           this.router.navigateByUrl("/homeUser");
 
-        else if(response.rank == 1)
+        else if(data.rank == 1)
           this.router.navigateByUrl("/homeAdmin");
 
         else

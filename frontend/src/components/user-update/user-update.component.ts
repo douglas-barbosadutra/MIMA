@@ -3,6 +3,7 @@ import { UserService } from 'src/services/user.service';
 import { NgForm } from '@angular/forms';
 import {UserDTO } from 'src/dto/UserDTO';
 import { Router } from '@angular/router';
+import { ParamDTO } from 'src/dto/ParamDTO';
 
 
 @Component({
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class UserUpdateComponent implements OnInit {
   public userDTO: UserDTO;
+  private paramDTO: ParamDTO;
 
   constructor(private router: Router, private userSerivce: UserService) { }
 
@@ -21,9 +23,10 @@ export class UserUpdateComponent implements OnInit {
   }
 
   updateUser(f: NgForm){
-    console.log(this.userDTO);
 
-    this.userSerivce.updateUser(this.userDTO).subscribe((data: any) => {
+    this.paramDTO = new ParamDTO(sessionStorage.getItem("userLogged"),this.userDTO);
+
+    this.userSerivce.updateUser(this.paramDTO).subscribe((data: any) => {
 
       if(data != null)
         alert("Aggiornamento effettuato");
@@ -35,7 +38,7 @@ export class UserUpdateComponent implements OnInit {
   }
 
   findUser(){
-    this.userSerivce.findUser(parseInt(sessionStorage.getItem("idUser"))).subscribe((data: any) =>{
+    this.userSerivce.findUser(sessionStorage.getItem("userLogged")).subscribe((data: any) =>{
       if(data != null)
         this.userDTO = data;
     })

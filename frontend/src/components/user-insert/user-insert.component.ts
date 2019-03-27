@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from "@angular/router";
 import { UserDTO } from 'src/dto/UserDTO';
 import {UserService} from "src/services/user.service";
+import { ParamDTO } from 'src/dto/ParamDTO';
 
 
 @Component({
@@ -12,6 +13,7 @@ import {UserService} from "src/services/user.service";
 })
 export class UserInsertComponent implements OnInit {
   public userDTO: UserDTO;
+  private paramDTO: ParamDTO;
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -20,8 +22,10 @@ export class UserInsertComponent implements OnInit {
   }
 
     insertUser(f: NgForm){
+
+      this.paramDTO = new ParamDTO(sessionStorage.getItem("userLogged"),this.userDTO);
       
-    this.userService.insertUser(this.userDTO).subscribe((data: any) => {
+    this.userService.insertUser(this.paramDTO).subscribe((data: any) => {
 
       if(data != null)
         alert("Inserimento effettuato");

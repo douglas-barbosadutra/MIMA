@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserDTO } from 'src/dto/UserDTO';
 import { Router } from '@angular/router';
 import { UserService } from 'src/services/user.service';
+import { ParamDTO } from 'src/dto/ParamDTO';
 
 @Component({
   selector: 'app-employee-update',
@@ -11,17 +12,19 @@ import { UserService } from 'src/services/user.service';
 export class EmployeeUpdateComponent implements OnInit {
 
   public userDTO: UserDTO;
+  private paramDTO: ParamDTO;
 
   constructor(private router: Router, private userSerivce: UserService) { }
 
   ngOnInit() {
-    //this.findUser();
-    this.userDTO = new UserDTO(parseInt(sessionStorage.getItem("idUser")),"","","","","","",0);
+    this.userDTO = new UserDTO(0,"","","","","","",0);
   }
 
   updateUser(){
 
-    this.userSerivce.updateUser(this.userDTO).subscribe((data: any) => {
+    this.paramDTO = new ParamDTO(sessionStorage.getItem("userLogged"),this.userDTO);
+
+    this.userSerivce.updateUser(this.paramDTO).subscribe((data: any) => {
 
       if(data != null)
         alert("Aggiornamento effettuato");
@@ -29,13 +32,6 @@ export class EmployeeUpdateComponent implements OnInit {
         alert("Aggiornamento fallito");
 
         this.router.navigateByUrl("homeEmployee");
-    })
-  }
-
-  findUser(){
-    this.userSerivce.findUser(parseInt(sessionStorage.getItem("idUser"))).subscribe((data: any) =>{
-      if(data != null)
-        this.userDTO = data;
     })
   }
 

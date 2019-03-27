@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { EmployeeDTO } from 'src/dto/EmployeeDTO';
 import { Observable } from 'rxjs';
+import { ParamDTO } from 'src/dto/ParamDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -14,19 +15,19 @@ export class EmployeeService {
     return this.http.get<EmployeeDTO>('http://localhost:8080/Employee/findEmployee?idUser='+idUser);
   }
 
-  insertEmployee(employeeDTO: EmployeeDTO): Observable<EmployeeDTO>{
-    return this.http.post<EmployeeDTO>('http://localhost:8080/Employee/insertEmployee',employeeDTO);
+  insertEmployee(paramDTO: ParamDTO): Observable<EmployeeDTO>{
+    return this.http.post<EmployeeDTO>('http://localhost:8080/Employee/insertEmployee',paramDTO);
   }
 
-  showEmployee(idBusinessOwner: number): Observable<Array<EmployeeDTO>>{
-    return this.http.get<Array<EmployeeDTO>>('http://localhost:8080/Employee/showEmployee?idBusinessOwner='+idBusinessOwner);
+  showEmployee(jwt: string): Observable<Array<EmployeeDTO>>{
+    return this.http.get<Array<EmployeeDTO>>('http://localhost:8080/Employee/showEmployee?jwt='+jwt);
   }
 
-  deleteEmployee(idUser: number){
-    return this.http.delete('http://localhost:8080/Employee/deleteEmployee?idUser='+idUser);
+  deleteEmployee(paramDTO: ParamDTO){
+    return this.http.post('http://localhost:8080/Employee/deleteEmployee?',paramDTO);
   }
 
-  assignTask(employeeDTO: EmployeeDTO): Observable<EmployeeDTO>{
-    return this.http.put<EmployeeDTO>('http://localhost:8080/Employee/assignTask',employeeDTO);
+  assignTask(paramDTO: ParamDTO): Observable<EmployeeDTO>{
+    return this.http.put<EmployeeDTO>('http://localhost:8080/Employee/assignTask',paramDTO);
   }
 }

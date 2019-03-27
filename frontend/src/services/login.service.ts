@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams , HttpResponse, HttpClientModule} from '@angular/common/http';
 import { Observable, of, } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { UserDTO } from '../dto/UserDTO';
 import { LoginDTO } from 'src/dto/LoginDTO';
 import { map } from 'rxjs/operators';
+import { UserLoggedDTO } from 'src/dto/UserLoggedDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class LoginService {
     };
   }
 
-  login(logindto: LoginDTO): Observable<UserDTO>{
-    return this.http.post<UserDTO>('http://localhost:8080/Login/login', logindto);
+  login(logindto: LoginDTO): Observable<UserLoggedDTO>{
+    return this.http.post<UserLoggedDTO>('http://localhost:8080/Login/login', logindto);
   }
 }

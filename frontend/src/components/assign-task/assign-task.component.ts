@@ -5,6 +5,7 @@ import { TaskDTO } from 'src/dto/TaskDTO';
 import { TaskService } from 'src/services/task.service';
 import { Router } from '@angular/router';
 import { EmployeeService } from 'src/services/employee.service';
+import { ParamDTO } from 'src/dto/ParamDTO';
 
 @Component({
   selector: 'app-assign-task',
@@ -15,6 +16,7 @@ export class AssignTaskComponent implements OnInit {
   private employeeDTO: EmployeeDTO;
   private userDTO: UserDTO;
   private taskList: Array<TaskDTO>;
+  private paramDTO: ParamDTO;
 
   constructor(private taskService: TaskService, private employeeService: EmployeeService, private router: Router) { }
 
@@ -40,11 +42,12 @@ export class AssignTaskComponent implements OnInit {
   }
 
   assignTask(idTask: number){
-    console.log("idEployee: "+sessionStorage.getItem("idEmployee"));
+
     this.userDTO = new UserDTO(parseInt(sessionStorage.getItem("idUserEmployee")),"","","","","","",0);
-    this.employeeDTO = new EmployeeDTO(parseInt(sessionStorage.getItem("idEmployee")),this.userDTO,idTask,parseInt(sessionStorage.getItem("idUser")));
-    console.log(this.employeeDTO);
-    this.employeeService.assignTask(this.employeeDTO).subscribe((data: any) =>{
+    this.employeeDTO = new EmployeeDTO(parseInt(sessionStorage.getItem("idEmployee")),this.userDTO,idTask,0);
+    this.paramDTO = new ParamDTO(sessionStorage.getItem("userLogged"),this.employeeDTO);
+
+    this.employeeService.assignTask(this.paramDTO).subscribe((data: any) =>{
       if(data != null)
         alert("Assegnazione task effettuata");
       else

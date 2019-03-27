@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import {UserService} from 'src/services/user.service';
 import { UserDTO } from 'src/dto/UserDTO';
 import { Router } from "@angular/router";
+import { ParamDTO } from 'src/dto/ParamDTO';
 
 
 
@@ -15,12 +16,13 @@ export class UserShowComponent implements OnInit {
 
   private userList : Array<UserDTO>;
   private userDTO: UserDTO;
+  private paramDTO: ParamDTO;
 
   constructor(private userService: UserService, private router:  Router) { }
 
   ngOnInit() {
 
-   this.userService.showUser().subscribe((data: any) =>{
+   this.userService.showUser(sessionStorage.getItem("userLogged")).subscribe((data: any) =>{
 
       if(data != null){
         this.userList = data;
@@ -29,7 +31,9 @@ export class UserShowComponent implements OnInit {
   }
     deleteUser(idUser: number){
 
-      this.userService.deleteUser(idUser).subscribe((data: any) =>{
+      this.paramDTO = new ParamDTO(sessionStorage.getItem("userLogged"),<Object>idUser);
+
+      this.userService.deleteUser(this.paramDTO).subscribe((data: any) =>{
 
         if(data)
           alert("Cancellazione effettuata");

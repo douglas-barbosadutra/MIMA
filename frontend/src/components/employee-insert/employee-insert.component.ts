@@ -3,6 +3,7 @@ import { UserDTO } from 'src/dto/UserDTO';
 import { EmployeeService } from 'src/services/employee.service';
 import { Router } from '@angular/router';
 import { EmployeeDTO } from 'src/dto/EmployeeDTO';
+import { ParamDTO } from 'src/dto/ParamDTO';
 
 @Component({
   selector: 'app-employee-insert',
@@ -13,6 +14,7 @@ export class EmployeeInsertComponent implements OnInit {
 
   public userDTO: UserDTO;
   private employeeDTO: EmployeeDTO;
+  private paramDTO: ParamDTO;
 
   constructor(private employeeService: EmployeeService, private router: Router) { }
 
@@ -21,8 +23,10 @@ export class EmployeeInsertComponent implements OnInit {
   }
 
   insertEmployee(){
-      this.employeeDTO = new EmployeeDTO(0,this.userDTO,0,parseInt(sessionStorage.getItem("idUser")));
-      this.employeeService.insertEmployee(this.employeeDTO).subscribe((data: any) =>{
+      this.employeeDTO = new EmployeeDTO(0,this.userDTO,0,0);
+      this.paramDTO = new ParamDTO(sessionStorage.getItem("userLogged"),this.employeeDTO);
+
+      this.employeeService.insertEmployee(this.paramDTO).subscribe((data: any) =>{
         if(data =! null)
           alert("Inserimento effettuato");
         else
