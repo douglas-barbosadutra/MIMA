@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,7 +26,8 @@ public class TaskScheduledController {
 	@Autowired
 	TaskScheduledService taskScheduledService;
 
-	public TaskScheduledController() {	}
+	public TaskScheduledController() {
+	}
 
 	@PostMapping("/insertOperationScheduling")
 	public ResponseEntity<Boolean> insertOperazionScheduling(@RequestBody OperationSchedulingDTO osDTO) {
@@ -40,25 +40,28 @@ public class TaskScheduledController {
 	public ResponseEntity<TaskScheduledDTO> insertTaskScheduled(@RequestBody TaskScheduledDTO taskScheduled) {
 		return ResponseEntity.status(HttpStatus.OK).body(taskScheduledService.insertTaskScheduled(taskScheduled));
 	}
-	
+
 	@DeleteMapping("/deleteTaskScheduled")
-	public ResponseEntity<Boolean> deleteTaskScheduled(@RequestParam(value="idTaskScheduled") int idTaskScheduled) {
+	public ResponseEntity<Boolean> deleteTaskScheduled(@RequestParam(value = "idTaskScheduled") int idTaskScheduled) {
 		return ResponseEntity.status(HttpStatus.OK).body(taskScheduledService.deleteTaskScheduled(idTaskScheduled));
 	}
 
 	@GetMapping("/showTaskScheduled")
-	public ResponseEntity<List<TaskScheduledDTO>> showTaskScheduled(@RequestParam(value="idScheduling") int idScheduling) {
+	public ResponseEntity<List<TaskScheduledDTO>> showTaskScheduled(
+			@RequestParam(value = "idScheduling") int idScheduling) {
 		return ResponseEntity.status(HttpStatus.OK).body(taskScheduledService.getTaskScheduling(idScheduling));
 	}
-	
+
 	@GetMapping("/showOperationScheduling")
-	public ResponseEntity<List<OperationSchedulingDTO>> showOperationScheduling(@RequestParam(value="idScheduling") int idScheduling) {
+	public ResponseEntity<List<OperationSchedulingDTO>> showOperationScheduling(
+			@RequestParam(value = "idScheduling") int idScheduling) {
 		return ResponseEntity.status(HttpStatus.OK).body(taskScheduledService.getOperationScheduling(idScheduling));
 	}
-	
+
 	@GetMapping("/insertOutput")
-	public ResponseEntity<Boolean> insertOutput(@RequestParam(value="idItem") int idItem, @RequestParam(value="idOperationScheduling") int idOperationScheduling) {
-		
-		return ResponseEntity.status(HttpStatus.OK).body(taskScheduledService.insertOutput(idItem, idOperationScheduling));
+	public ResponseEntity<Boolean> insertOutput(@RequestParam(value = "idItem") int idItem,
+			@RequestParam(value = "idOperationScheduling") int idOperationScheduling) {
+		return ResponseEntity.status(HttpStatus.OK)
+				.body(taskScheduledService.insertOutput(idItem, idOperationScheduling));
 	}
 }

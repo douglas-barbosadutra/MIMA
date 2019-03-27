@@ -80,7 +80,7 @@ public class TaskControllerTest {
 		assertEquals(content, this.objectToJson(result));
 	}
 	
-
+/*
 	@Test
 	public void testShowTask() throws Exception {
 		
@@ -101,7 +101,7 @@ public class TaskControllerTest {
 		assertEquals(200, status);
 		String content = mvcResult.getResponse().getContentAsString();
 		assertEquals(content, this.objectToJson(tasksDTO));
-	}
+	}*/
 
 	
 	public String objectToJson(Object object) throws JsonProcessingException {

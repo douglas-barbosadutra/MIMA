@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import com.mima.converter.UserConverter;
 import com.mima.dao.UserDAO;
 import com.mima.dto.UserDTO;
-import com.mima.model.User;
 
 @Service
 public class LoginService {
