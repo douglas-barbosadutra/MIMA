@@ -25,5 +25,9 @@ public class MQTTService {
 	public boolean subscribeTopic() {
 		return mqttClient.subscribe();
 	}
+	
+	public String getMessage() {
+		return mqttClient.getMessage();
+	}
 
 }

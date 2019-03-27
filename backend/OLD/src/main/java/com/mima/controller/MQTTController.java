@@ -39,5 +39,10 @@ public class MQTTController {
 	public ResponseEntity<Boolean> subscribeTopic() {
 		return ResponseEntity.status(HttpStatus.OK).body(mqttService.subscribeTopic());
 	}
+	
+	@PostMapping("/getMessage")
+	public ResponseEntity<String> getMessage() {
+		return ResponseEntity.status(HttpStatus.OK).body(mqttService.getMessage());
+	}
 
 }

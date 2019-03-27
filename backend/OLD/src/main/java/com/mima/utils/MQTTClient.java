@@ -1,5 +1,8 @@
 package com.mima.utils;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttClient;
@@ -14,6 +17,8 @@ public class MQTTClient implements MqttCallback {
 	private String brokenURL;
 	private String topicID;
 	private int subQoS = 0;
+	
+	private Queue<String> queue = new LinkedList<String>();
 	
 	private MqttClient mqttClient;
 	private MqttConnectOptions connOpt;
@@ -35,6 +40,10 @@ public class MQTTClient implements MqttCallback {
 	}
 
 	public void messageArrived(String arg0, MqttMessage arg1) throws Exception {
+		
+		String message = new String(arg1.getPayload());
+		queue.add(message);
+		
 		System.out.println("-------------------------------------------------");
 		System.out.println("| Topic:" + arg0);
 		System.out.println("| Message: " + new String(arg1.getPayload()));
@@ -57,6 +66,17 @@ public class MQTTClient implements MqttCallback {
 		
 		System.out.println("Connesso con " + brokenURL);
 		topic = mqttClient.getTopic(topicID);
+		return true;
+	}
+	
+	public boolean disconnect() {
+		try {
+			mqttClient.disconnect();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}	
+		System.out.println("Disconnesso con " + brokenURL);
 		return true;
 	}
 	
@@ -91,16 +111,9 @@ public class MQTTClient implements MqttCallback {
 		System.out.println("Messaggio pubblicato \""+ message +"\" su \"" + topicID + "\" qos " + subQoS);
 		return true;
 	}
-		
-	public boolean disconnect() {
-		try {
-			mqttClient.disconnect();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}	
-		System.out.println("Disconnesso con " + brokenURL);
-		return true;
+	
+	public String getMessage(){
+		return queue.poll();
 	}
 	
 }
