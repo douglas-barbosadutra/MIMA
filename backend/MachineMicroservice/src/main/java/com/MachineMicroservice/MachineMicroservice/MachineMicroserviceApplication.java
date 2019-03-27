@@ -1,13 +1,13 @@
-package com.WbsMicroservice.WbsMicroservice;
+package com.MachineMicroservice.MachineMicroservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WbsMicroserviceApplication {
+public class MachineMicroserviceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(WbsMicroserviceApplication.class, args);
+		SpringApplication.run(MachineMicroserviceApplication.class, args);
 	}
 
 }
