@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SchedulingDTO } from 'src/dto/SchedulingDTO';
-import { MachineDTO } from 'src/dto/MachineDTO';
 import { Observable } from 'rxjs';
+import { ParamDTO } from 'src/dto/ParamDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -11,19 +11,19 @@ export class SchedulingService {
 
   constructor(private http: HttpClient) { }
 
-  insertScheduling(schedulingDTO: SchedulingDTO): Observable<SchedulingDTO>{
-    return this.http.post<SchedulingDTO>( 'http://localhost:8080/Scheduling/insertScheduling', schedulingDTO);
+  insertScheduling(paramDTO: ParamDTO): Observable<SchedulingDTO>{
+    return this.http.post<SchedulingDTO>( 'http://localhost:8082/Scheduling/insertScheduling', paramDTO);
   }
 
-  showScheduling(idMachine: number): Observable<Array<SchedulingDTO>>{
-    return this.http.get<Array<SchedulingDTO>>('http://localhost:8080/Scheduling/showScheduling?idMachine='+idMachine);
+  showScheduling(idMachine: number, jwt: string): Observable<Array<SchedulingDTO>>{
+    return this.http.get<Array<SchedulingDTO>>('http://localhost:8082/Scheduling/showScheduling?idMachine='+idMachine+'&jwt='+jwt);
   }
 
-  deleteScheduling(idScheduling: number){
-    return this.http.delete('http://localhost:8080/Scheduling/deleteScheduling?idScheduling='+idScheduling);
+  deleteScheduling(idScheduling: number, jwt: string){
+    return this.http.delete('http://localhost:8082/Scheduling/deleteScheduling?idScheduling='+idScheduling+'&jwt='+jwt);
   }
 
-  updateScheduling(schedulingDTO: SchedulingDTO): Observable<SchedulingDTO>{
-    return this.http.put<SchedulingDTO>( 'http://localhost:8080/Scheduling/insertScheduling', schedulingDTO);
+  updateScheduling(paramDTO: ParamDTO): Observable<SchedulingDTO>{
+    return this.http.put<SchedulingDTO>( 'http://localhost:8082/Scheduling/updateScheduling', paramDTO);
   }
 }

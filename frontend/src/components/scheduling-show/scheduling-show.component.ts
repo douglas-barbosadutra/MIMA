@@ -18,18 +18,19 @@ export class SchedulingShowComponent implements OnInit {
 
   ngOnInit() {
     this.checkMachine();
-    this.schedulingShow();
   }
 
   checkMachine(){
     if(sessionStorage.getItem("idMachine") == null){
-      alert("Devi prima selezionare un macchinario");
-      this.router.navigateByUrl("homeUser");
+      //alert("Devi prima selezionare un macchinario");
+      this.router.navigateByUrl("machineShow");
     }
+    else
+      this.schedulingShow();
   }
 
   schedulingShow(){
-      this.schedulingSerivce.showScheduling(parseInt(sessionStorage.getItem("idMachine"))).subscribe((data: any) =>{
+      this.schedulingSerivce.showScheduling(parseInt(sessionStorage.getItem("idMachine")), sessionStorage.getItem("userLogged")).subscribe((data: any) =>{
       if(data != null)
         this.schedulingList = data;
     });
@@ -42,7 +43,7 @@ export class SchedulingShowComponent implements OnInit {
   }
 
   deleteScheduling(idScheduling: number){
-    this.schedulingSerivce.deleteScheduling(idScheduling).subscribe((data: any) =>{
+    this.schedulingSerivce.deleteScheduling(idScheduling, sessionStorage.getItem("userLogged")).subscribe((data: any) =>{
       this.router.navigateByUrl("homeUser");
     });
   }

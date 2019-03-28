@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { SchedulingService } from 'src/services/scheduling.service';
 import { NgForm } from '@angular/forms';
 import { SchedulingDTO } from 'src/dto/SchedulingDTO';
+import { ParamDTO } from 'src/dto/ParamDTO';
 
 @Component({
   selector: 'app-scheduling-update',
@@ -11,6 +12,7 @@ import { SchedulingDTO } from 'src/dto/SchedulingDTO';
 })
 export class SchedulingUpdateComponent implements OnInit {
   public schedulingDTO: SchedulingDTO;
+  private paramDTO: ParamDTO;
 
   constructor(private router: Router, private schedulingSerivce: SchedulingService) { }
 
@@ -21,7 +23,10 @@ export class SchedulingUpdateComponent implements OnInit {
   schedulingUpdate(f: NgForm){
     this.schedulingDTO.setStartDate(new Date(f.value.startDate).toLocaleString());
     this.schedulingDTO.setEndDate(new Date(f.value.endDate).toLocaleString());
-    this.schedulingSerivce.insertScheduling(this.schedulingDTO).subscribe((data: any) =>{
+
+    this.paramDTO = new ParamDTO(sessionStorage.getItem("userLogged"),this.schedulingDTO);
+
+    this.schedulingSerivce.updateScheduling(this.paramDTO).subscribe((data: any) =>{
       if(data != null)
         alert("Aggiornamento effettuato");
       else
