@@ -38,15 +38,19 @@ public class WBSController {
 	@PostMapping("/insertWbs")
 	public ResponseEntity<WBSDTO> insertWbs(@RequestBody ParamDTO param) {
 
+		System.out.println(param);
 		LinkedHashMap wbs = (LinkedHashMap) param.getParam();
 		int rank;
-
+		int idUser = 1;
+		WBSDTO prova = new WBSDTO(0, wbs.get("name").toString(), idUser);
+		prova.setIdUser(idUser);
 		try {
 			rank = this.getRankFromJwt(param.getJwt());
 			if (rank == 0) {
-				return ResponseEntity.status(HttpStatus.OK).body(wbsService.insertWBS((WBSDTO) wbs.get(0)));
-			} else
+				return ResponseEntity.status(HttpStatus.OK).body(wbsService.insertWBS(prova));
+			} else {
 				return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
+			}
 		} catch (ExpiredJwtException | UnsupportedEncodingException e) {
 			return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
 		}

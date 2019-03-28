@@ -29,7 +29,7 @@ public class WBSService {
 	}
 	
 	public WBSDTO insertWBS(WBSDTO wbsDTO) { 
-		WBS wbs = WBSConverter.convertToEntity(wbsDTO);
+		WBS wbs = WBSConverter.convertToEntity(wbsDTO);		
 		wbs = wbsDao.saveAndFlush(wbs);
 		ItemDTO item = new ItemDTO();
 		item.setIdWBS(wbs.getId());

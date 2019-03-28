@@ -8,10 +8,10 @@
 		<version>2.1.3.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.WbsMicroservice</groupId>
-	<artifactId>WbsMicroservice</artifactId>
+	<groupId>com.WBSMicroservice</groupId>
+	<artifactId>WBSMicroservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>WbsMicroservice</name>
+	<name>WBSMicroservice</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

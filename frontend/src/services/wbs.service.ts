@@ -12,14 +12,14 @@ export class WbsService {
   constructor(private http: HttpClient) { }
 
   showWbs(jwt: string): Observable<Array<WBSDTO>>{
-    return this.http.get<Array<WBSDTO>>('http://localhost:8081/WBS/showWbs?jwt='+jwt);
+    return this.http.get<Array<WBSDTO>>('http://localhost:8083/WBS/showWbs?jwt='+jwt);
   }
 
   insertWbs(param: ParamDTO): Observable<WBSDTO>{
-    return this.http.post<WBSDTO>('http://localhost:8081/WBS/insertWbs', param);
+    return this.http.post<WBSDTO>('http://localhost:8083/WBS/insertWbs', param);
   }
 
   deleteWbs(jwt: string, idWbs: number){
-    return this.http.delete('http://localhost:8081/WBS/deleteWbs?jwt='+jwt+'&idWbs='+idWbs);
+    return this.http.delete('http://localhost:8083/WBS/deleteWbs?jwt='+jwt+'&idWbs='+idWbs);
   }
 }
