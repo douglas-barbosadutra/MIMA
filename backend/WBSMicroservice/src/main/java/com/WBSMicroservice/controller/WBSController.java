@@ -37,16 +37,15 @@ public class WBSController {
 
 	@PostMapping("/insertWbs")
 	public ResponseEntity<WBSDTO> insertWbs(@RequestBody ParamDTO param) {
-		
+
 		LinkedHashMap wbs = (LinkedHashMap) param.getParam();
 		int rank;
-		
+
 		try {
 			rank = this.getRankFromJwt(param.getJwt());
-			if(rank == 0) {
+			if (rank == 0) {
 				return ResponseEntity.status(HttpStatus.OK).body(wbsService.insertWBS((WBSDTO) wbs.get(0)));
-			}
-			else
+			} else
 				return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
 		} catch (ExpiredJwtException | UnsupportedEncodingException e) {
 			return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
@@ -57,21 +56,32 @@ public class WBSController {
 	public ResponseEntity<List<WBSDTO>> showWbs(@RequestParam(value = "jwt") String jwt)
 			throws ExpiredJwtException, UnsupportedEncodingException {
 		Map<String, Object> data = JwtUtils.jwt2Map(jwt);
-		int rank;
-		int idUser = Integer.parseInt(data.get("subject").toString());
-		return ResponseEntity.status(HttpStatus.OK).body(wbsService.showWBS(idUser));
-	}
-
-	@PostMapping("/deleteWbs")
-	public ResponseEntity<Boolean> deleteWbs(@RequestBody ParamDTO param) {
 		try {
-			int idWbs;
+			int rank = this.getRankFromJwt(jwt);
+			int idUser = Integer.parseInt(data.get("subject").toString());
+			if (rank == 0)
+				return ResponseEntity.status(HttpStatus.OK).body(wbsService.showWBS(idUser));
+			else
+				return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
 		} catch (ExpiredJwtException | UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
 		}
-		// return
-		// ResponseEntity.status(HttpStatus.OK).body(wbsService.deleteWBS(idWbs));
+
+	}
+
+	@DeleteMapping("/deleteWbs")
+	public ResponseEntity<Boolean> deleteWbs(@RequestParam(value = "jwt") String jwt,
+			@RequestParam(value = "idWbs") int idWbs) {
+		int rank;
+		try {
+			rank = this.getRankFromJwt(jwt);
+			if (rank == 0)
+				return ResponseEntity.status(HttpStatus.OK).body(wbsService.deleteWBS(idWbs));
+			else
+				return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
+		} catch (ExpiredJwtException | UnsupportedEncodingException e) {
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
+		}
 	}
 
 	private int getRankFromJwt(String jwt) throws ExpiredJwtException, UnsupportedEncodingException {

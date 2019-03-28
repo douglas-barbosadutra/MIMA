@@ -39,8 +39,10 @@ public class ItemService {
 		return true;
 	}
 	
-	public ItemDTO getItemByWBS(WBSDTO wbs){
-		List<ItemDTO> list = (ItemConverter.toListDTO(itemDAO.findAllByWbs(WBSConverter.convertToEntity(wbs))));
+	public ItemDTO getItemByWBS(int idWBS){
+		WBSDTO WBS = new WBSDTO();
+		WBS.setId(idWBS);
+		List<ItemDTO> list = (ItemConverter.toListDTO(itemDAO.findAllByWbs(WBSConverter.convertToEntity(WBS))));
 		for(ItemDTO item: list) {
 			if(item.getIdFather() == 0)
 				return item;
