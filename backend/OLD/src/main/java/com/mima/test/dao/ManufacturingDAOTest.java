@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.WBSMicroservice.model.Item;
 import com.mima.converter.InstructionConverter;
 import com.mima.converter.ItemConverter;
 import com.mima.converter.MachineConverter;

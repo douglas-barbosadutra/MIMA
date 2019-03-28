@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.WBSMicroservice.model.Item;
+import com.mima.model.Item;
 import com.mima.model.Manufacturing;
 import com.mima.model.WBS;
 

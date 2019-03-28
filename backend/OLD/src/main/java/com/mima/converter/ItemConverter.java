@@ -3,8 +3,8 @@ package com.mima.converter;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.WBSMicroservice.model.Item;
 import com.mima.dto.ItemDTO;
+import com.mima.model.Item;
 import com.mima.model.WBS;
 
 public class ItemConverter {

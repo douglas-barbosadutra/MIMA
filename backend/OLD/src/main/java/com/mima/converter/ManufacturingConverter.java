@@ -3,9 +3,9 @@ package com.mima.converter;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.WBSMicroservice.model.Item;
 import com.mima.dto.ManufacturingDTO;
 import com.mima.model.Instruction;
+import com.mima.model.Item;
 import com.mima.model.Manufacturing;
 
 public class  ManufacturingConverter{

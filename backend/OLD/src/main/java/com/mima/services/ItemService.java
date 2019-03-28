@@ -5,12 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.WBSMicroservice.model.Item;
 import com.mima.converter.ItemConverter;
 import com.mima.converter.WBSConverter;
 import com.mima.dao.ItemDAO;
 import com.mima.dto.ItemDTO;
 import com.mima.dto.WBSDTO;
+import com.mima.model.Item;
 
 
 @Service

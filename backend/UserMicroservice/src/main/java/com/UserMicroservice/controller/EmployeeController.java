@@ -93,7 +93,11 @@ public class EmployeeController {
 				idBusinessOwner = this.getIdUserFromJwt(paramDTO.getJwt());
 				
 				LinkedHashMap employee = (LinkedHashMap) paramDTO.getParam();
-				EmployeeDTO employeeDTO = new EmployeeDTO(Integer.parseInt(employee.get("id").toString()), null, Integer.parseInt(employee.get("idTask").toString()), idBusinessOwner);
+				LinkedHashMap user = (LinkedHashMap) employee.get("user");
+				UserDTO userDTO = new UserDTO();
+				userDTO.setId(Integer.parseInt(user.get("id").toString()));
+				EmployeeDTO employeeDTO = new EmployeeDTO(Integer.parseInt(employee.get("id").toString()), userDTO, Integer.parseInt(employee.get("idTask").toString()), idBusinessOwner);
+				
 				return ResponseEntity.status(HttpStatus.OK).body(employeeService.insertEmployee(employeeDTO));
 			}
 			
