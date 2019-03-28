@@ -1,5 +1,4 @@
-package com.mima.model;
-
+package com.WBSMicroservice.model;
 
 import java.util.List;
 
@@ -9,11 +8,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,33 +24,33 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="manufacturings")
+@Table(name="instructions")
 
 
-public class Manufacturing {
-
+public class Instruction {
+	
 	@Id
-	@Column(name = "id_manufacturing")
+	@Column(name = "id_instruction")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Column(name = "name")
+	@NotNull
+	private String name;
 	
 	@Column(name = "duration")
 	@NotNull
 	private Integer duration;
 	
-	@ManyToMany
-	@JoinTable(name="items_manufacturings",
-		joinColumns={@JoinColumn(name="id_item")},
-		inverseJoinColumns= {@JoinColumn(name="id_manufacturing")})
-	private List<Item> items;
-	
+	@Column(name = "gcode_file")
 	@NotNull
-	@ManyToOne
-	@JoinColumn(name="id_item")
-	private Item output;
+	private String gcodeFile;
 	
-	@NotNull
 	@ManyToOne
-	@JoinColumn(name="id_instruction")
-	private Instruction instruction;
+	@JoinColumn(name="id_task")
+	private Integer idTask;
+	
+	@OneToMany(mappedBy="instruction")
+	@OnDelete(action=OnDeleteAction.CASCADE)
+	private List<Manufacturing> manufacturing;
 }

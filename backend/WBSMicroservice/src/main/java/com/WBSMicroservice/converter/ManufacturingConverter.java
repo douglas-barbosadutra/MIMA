@@ -1,12 +1,13 @@
-package com.mima.converter;
+package com.WBSMicroservice.converter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.WBSMicroservice.dto.ManufacturingDTO;
+import com.WBSMicroservice.model.Instruction;
 import com.WBSMicroservice.model.Item;
-import com.mima.dto.ManufacturingDTO;
-import com.mima.model.Instruction;
-import com.mima.model.Manufacturing;
+import com.WBSMicroservice.model.Manufacturing;
+
 
 public class  ManufacturingConverter{
 	

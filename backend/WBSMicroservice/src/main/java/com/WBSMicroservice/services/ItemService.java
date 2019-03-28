@@ -1,4 +1,4 @@
-package com.mima.services;
+package com.WBSMicroservice.services;
 
 import java.util.List;
 
@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.WBSMicroservice.model.Item;
-import com.mima.converter.ItemConverter;
-import com.mima.converter.WBSConverter;
-import com.mima.dao.ItemDAO;
-import com.mima.dto.ItemDTO;
-import com.mima.dto.WBSDTO;
+import com.WBSMicroservice.converter.ItemConverter;
+import com.WBSMicroservice.converter.WBSConverter;
+import com.WBSMicroservice.dao.ItemDAO;
+import com.WBSMicroservice.dto.ItemDTO;
+import com.WBSMicroservice.dto.WBSDTO;
 
 
 @Service

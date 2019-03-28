@@ -1,4 +1,4 @@
-package com.mima.model;
+package com.WBSMicroservice.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +17,6 @@ import javax.persistence.Table;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.lang.Nullable;
-
-import com.mima.model.Manufacturing;
-import com.mima.model.TaskScheduled;
-import com.mima.model.WBS;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -60,9 +56,5 @@ public class Item {
 	@OneToMany(mappedBy="father")
 	@OnDelete(action=OnDeleteAction.CASCADE)
 	private List<Item> childsList=new ArrayList<>();
-	
-	@OneToMany(mappedBy="output")
-	@OnDelete(action=OnDeleteAction.CASCADE)
-	private List<TaskScheduled> listTaskScheduled;
 	
 }

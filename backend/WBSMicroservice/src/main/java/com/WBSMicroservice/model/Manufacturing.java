@@ -1,4 +1,4 @@
-package com.mima.model;
+package com.WBSMicroservice.model;
 
 
 import java.util.List;

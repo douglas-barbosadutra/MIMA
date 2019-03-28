@@ -1,11 +1,11 @@
-package com.mima.converter;
+package com.WBSMicroservice.converter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.WBSMicroservice.dto.ItemDTO;
 import com.WBSMicroservice.model.Item;
-import com.mima.dto.ItemDTO;
-import com.mima.model.WBS;
+import com.WBSMicroservice.model.WBS;
 
 public class ItemConverter {
 	

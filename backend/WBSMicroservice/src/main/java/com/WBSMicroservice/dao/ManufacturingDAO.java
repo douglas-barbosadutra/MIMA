@@ -1,12 +1,11 @@
-package com.mima.dao;
+package com.WBSMicroservice.dao;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.WBSMicroservice.model.Item;
-import com.mima.model.Instruction;
-import com.mima.model.Manufacturing;
+import com.WBSMicroservice.model.Manufacturing;
+import com.WBSMicroservice.model.Instruction;
 
 
 public interface ManufacturingDAO extends JpaRepository<Manufacturing, Integer>{

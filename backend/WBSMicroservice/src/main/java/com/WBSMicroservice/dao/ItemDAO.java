@@ -1,4 +1,4 @@
-package com.mima.dao;
+package com.WBSMicroservice.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -6,8 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.WBSMicroservice.model.Item;
-import com.mima.model.Manufacturing;
-import com.mima.model.WBS;
+import com.WBSMicroservice.model.WBS;
 
 import java.util.List;
 

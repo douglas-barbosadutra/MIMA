@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.WBSMicroservice.model.Item;
 import com.mima.converter.InstructionConverter;
 import com.mima.converter.ItemConverter;
 import com.mima.converter.MachineConverter;
@@ -35,7 +36,6 @@ import com.mima.dto.TaskDTO;
 import com.mima.dto.UserDTO;
 import com.mima.dto.WBSDTO;
 import com.mima.model.Instruction;
-import com.mima.model.Item;
 import com.mima.model.Manufacturing;
 import com.mima.model.WBS;
 
