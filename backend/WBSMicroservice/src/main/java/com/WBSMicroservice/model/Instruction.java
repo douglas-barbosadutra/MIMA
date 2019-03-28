@@ -46,7 +46,6 @@ public class Instruction {
 	@NotNull
 	private String gcodeFile;
 	
-	@ManyToOne
 	@JoinColumn(name="id_task")
 	private Integer idTask;
 	
