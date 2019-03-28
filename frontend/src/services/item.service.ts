@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ItemDTO } from 'src/dto/ItemDTO';
-import { WBSDTO } from 'src/dto/WBSDTO';
 import { Observable} from 'rxjs';
 import { InputDTO } from 'src/dto/InputDTO';
+import { ParamDTO } from 'src/dto/ParamDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -12,23 +12,23 @@ export class ItemService {
 
   constructor(private http: HttpClient) { }
 
-  insertItem(itemDto: ItemDTO): Observable<ItemDTO>{
-    return this.http.post<ItemDTO>('http://localhost:8080/Item/addNode', itemDto);
+  insertItem(param: ParamDTO): Observable<ItemDTO>{
+    return this.http.post<ItemDTO>('http://localhost:8081/Item/addNode', param);
   }
 
   insertInput(inputDTO: InputDTO){
-    return this.http.post('http://localhost:8080/Item/insertInput', inputDTO);
+    return this.http.post('http://localhost:8081/Item/insertInput', inputDTO);
   }
 
-  deleteItem(idItem: number){
-    return this.http.delete('http://localhost:8080/Item/removeNode?idItem=' + idItem);
+  deleteItem(jwt: string, idItem: number){
+    return this.http.delete('http://localhost:8081/Item/removeNode?jwt='+jwt+'&idItem=' + idItem);
   }
 
-  showItemTree(wbsDTO: WBSDTO): Observable<ItemDTO>{
-    return this.http.post<ItemDTO>('http://localhost:8080/Item/showNodes', wbsDTO);
+  showItemTree(jwt: string, idWbs: number): Observable<ItemDTO>{
+    return this.http.get<ItemDTO>('http://localhost:8081/Item/showNodes?jwt='+jwt+'&idWbs' + idWbs);
   }
 
   showItem(): Observable<Array<ItemDTO>>{
-    return this.http.get<Array<ItemDTO>>('http://localhost:8080/Item/showItem');
+    return this.http.get<Array<ItemDTO>>('http://localhost:8081/Item/showItem');
   }
 }

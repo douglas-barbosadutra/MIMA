@@ -20,24 +20,24 @@ export class InstructionShowComponent implements OnInit {
     this.checkTask();
   }
 
-  checkTask(){
-    if(sessionStorage.getItem("idTask") == null){
+  checkTask() {
+    if (sessionStorage.getItem("idTask") == null) {
       this.router.navigateByUrl("showTask");
     }
     else
       this.instructionShow();
   }
 
-  instructionShow(){
-    this.instructionService.showInstruction(parseInt(sessionStorage.getItem("idTask"))).subscribe((data: any) =>{
-    if(data != null)
-      this.instructionList = data;
+  instructionShow() {
+    this.instructionService.showInstruction(sessionStorage.getItem("userLogged"), parseInt(sessionStorage.getItem("idTask"))).subscribe((data: any) => {
+      if (data != null)
+        this.instructionList = data;
     })
   }
 
-  instructionDelete(idInstruction: number){
-    this.instructionService.deleteInstruction(idInstruction).subscribe((data: any) =>{
-      if(data)
+  instructionDelete(idInstruction: number) {
+    this.instructionService.deleteInstruction(sessionStorage.getItem("userLogged"), idInstruction).subscribe((data: any) => {
+      if (data)
         alert("Cancellazione effettuata");
       else
         alert("Cancellazione fallita");

@@ -10,8 +10,8 @@ export class ManufactoringService {
 
   constructor(private http: HttpClient) { }
 
-  showTime(idTask: number): Observable<Array<TimeDTO>>{
-    return this.http.get<Array<TimeDTO>>('http://localhost:8080/Manufacturing/showTime?idTask='+idTask);
+  showTime(jwt: string, idTask: number): Observable<Array<TimeDTO>>{
+    return this.http.get<Array<TimeDTO>>('http://localhost:8081/Manufacturing/showTime??jwt='+ jwt + 'idTask='+idTask);
   }
 
 }
