@@ -29,7 +29,6 @@ import lombok.ToString;
 @Entity
 @Table(name="items")
 @ToString
-
 public class Item {
 	
 	@Id

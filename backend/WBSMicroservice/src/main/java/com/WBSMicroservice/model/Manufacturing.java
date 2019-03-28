@@ -24,8 +24,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name="manufacturings")
-
-
 public class Manufacturing {
 
 	@Id
