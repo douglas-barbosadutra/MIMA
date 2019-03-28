@@ -36,7 +36,7 @@ export class InputOutputComponent implements OnInit {
   }
 
   insertOutput(idItem: number){
-    this.taskScheduledService.insertOutput(idItem,parseInt(sessionStorage.getItem("idOperationScheduling"))).subscribe((data: any) =>{
+    this.taskScheduledService.insertOutput(idItem,parseInt(sessionStorage.getItem("idOperationScheduling")), sessionStorage.getItem("userLogged")).subscribe((data: any) =>{
       if(data)
         alert("Inserimento effettuato");
       else

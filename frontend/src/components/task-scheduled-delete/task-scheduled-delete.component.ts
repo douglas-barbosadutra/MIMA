@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { TaskScheduledService } from 'src/services/task-scheduled.service';
 import { OperationSchedulingDTO } from 'src/dto/OperationSchedulingDTO';
 import { Router } from '@angular/router';
+import { ParamDTO } from 'src/dto/ParamDTO';
 
 @Component({
   selector: 'app-task-scheduled-delete',
@@ -16,6 +17,7 @@ export class TaskScheduledDeleteComponent implements OnInit {
   public taskScheduledListToUpdateFather: Array<TaskScheduledDTO>;
   public taskScheduledListToUpdateChild: Array<TaskScheduledDTO>;
   public taskScheduledList: Array<TaskScheduledDTO>;
+  private paramDTO: ParamDTO;
   osDTO: OperationSchedulingDTO = new OperationSchedulingDTO(0, 0, 0, 0);
   idFather: number;
   idChild: number;
@@ -30,7 +32,7 @@ export class TaskScheduledDeleteComponent implements OnInit {
     this.sub = this.dataService.currentDataChildren.subscribe(dataSource => {
       this.taskScheduledListToUpdateFather = dataSource;
     });
-    this.taskScheduledService.showTaskScheduled(parseInt(sessionStorage.getItem("idScheduling"))).subscribe((data) => {
+    this.taskScheduledService.showTaskScheduled(parseInt(sessionStorage.getItem("idScheduling")), sessionStorage.getItem("userLogged")).subscribe((data) => {
       if (data != null) {
         this.taskScheduledList = new Array();
         this.taskScheduledList = data;
@@ -43,14 +45,16 @@ export class TaskScheduledDeleteComponent implements OnInit {
     this.osDTO.idFather = this.idFather;
     this.osDTO.idChild = id;
     this.osDTO.idScheduling = parseInt(sessionStorage.getItem("idScheduling"));
-    this.taskScheduledService.insertOperationScheduling(this.osDTO).subscribe((data: any) => { });
+    this.paramDTO = new ParamDTO(sessionStorage.getItem("userLogged"),this.osDTO);
+    this.taskScheduledService.insertOperationScheduling(this.paramDTO).subscribe((data: any) => { });
   }
 
   addRelationFather(id: number) {
     this.osDTO.idFather = id;
     this.osDTO.idChild = this.idChild;
     this.osDTO.idScheduling = parseInt(sessionStorage.getItem("idScheduling"));
-    this.taskScheduledService.insertOperationScheduling(this.osDTO).subscribe((data: any) => { });
+    this.paramDTO = new ParamDTO(sessionStorage.getItem("userLogged"),this.osDTO);
+    this.taskScheduledService.insertOperationScheduling(this.paramDTO).subscribe((data: any) => { });
   }
 
   finish(){

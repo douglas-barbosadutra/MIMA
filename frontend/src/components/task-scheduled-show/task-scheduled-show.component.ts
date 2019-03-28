@@ -26,7 +26,7 @@ export class TaskScheduledShowComponent implements OnInit {
   }
 
   getTaskScheduledList(){
-    this.taskScheduledService.showTaskScheduled(parseInt(sessionStorage.getItem("idScheduling"))).subscribe((data) =>{
+    this.taskScheduledService.showTaskScheduled(parseInt(sessionStorage.getItem("idScheduling")), sessionStorage.getItem("userLogged")).subscribe((data) =>{
       if(data != null){
         this.taskScheduledList = new Array();
         this.taskScheduledList = data;  
