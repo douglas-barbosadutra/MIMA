@@ -126,14 +126,19 @@ public class TaskScheduledController {
 
 	@GetMapping("/showTaskScheduled")
 	public ResponseEntity<List<TaskScheduledDTO>> showTaskScheduled(@RequestParam(value = "idScheduling") int idScheduling, @RequestParam(value="jwt") String jwt) {
-		
+		System.out.println("ciao");
 		int rank;
 		
 		try {
 			rank = this.getRankFromJwt(jwt);
 			
-			if(rank == 0)
+			if(rank == 0) {
+				
+				List<TaskScheduledDTO> temp = taskScheduledService.getTaskScheduling(idScheduling);
+				System.out.println(temp);
 				return ResponseEntity.status(HttpStatus.OK).body(taskScheduledService.getTaskScheduling(idScheduling));
+			}
+				
 			else
 				return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
 			

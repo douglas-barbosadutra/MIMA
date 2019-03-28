@@ -12,6 +12,7 @@ import com.MachineMicroservice.dao.TaskScheduledDAO;
 import com.MachineMicroservice.dto.OperationSchedulingDTO;
 import com.MachineMicroservice.dto.SchedulingDTO;
 import com.MachineMicroservice.dto.TaskScheduledDTO;
+import com.MachineMicroservice.model.Scheduling;
 import com.MachineMicroservice.model.TaskScheduled;
 
 @Service
@@ -67,7 +68,10 @@ public class TaskScheduledService {
 	public List<TaskScheduledDTO> getTaskScheduling(int idScheduling) {
 		SchedulingDTO schedulingDTO = new SchedulingDTO();
 		schedulingDTO.setId(idScheduling);
-		return TaskScheduledConverter.toListDTO(taskScheduledDAO.findAllByScheduling(SchedulingConverter.convertToEntity(schedulingDTO)));
+		Scheduling scheduling = SchedulingConverter.convertToEntity(schedulingDTO);
+		List<TaskScheduled> ts = taskScheduledDAO.findAllByScheduling(scheduling);
+		List<TaskScheduledDTO> tsDTO = TaskScheduledConverter.toListDTO(ts);
+		return tsDTO;
 	}
 
 	public TaskScheduledDTO getTaskScheduledRoot(int idScheduling) {

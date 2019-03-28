@@ -68,6 +68,6 @@ public class TaskScheduled {
 	
 	@Nullable
 	@Column(name="id_item_output")
-	private int idItemOutput;
+	private Integer idItemOutput;
 
 }
