@@ -31,7 +31,7 @@ export class TaskShowComponent implements OnInit {
 
   taskShow(){
 
-    this.taskService.showTask(parseInt(sessionStorage.getItem("idMachine"))).subscribe((data: any) =>{
+    this.taskService.showTask(parseInt(sessionStorage.getItem("idMachine")), sessionStorage.getItem("userLogged")).subscribe((data: any) =>{
 
       if(data != null){
         this.taskList = data;
@@ -48,7 +48,7 @@ export class TaskShowComponent implements OnInit {
 
   deleteTask(idTask: number){
    
-    this.taskService.deleteTask(idTask).subscribe((data: any) =>{
+    this.taskService.deleteTask(idTask, sessionStorage.getItem("userLogged")).subscribe((data: any) =>{
 
       if(data)
         alert("Cancellazione effettuata");   

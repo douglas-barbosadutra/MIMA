@@ -22,18 +22,19 @@ export class AssignTaskComponent implements OnInit {
 
   ngOnInit() {
     this.checkMachine();
-    this.showTask();
   }
 
   checkMachine(){
     if(sessionStorage.getItem("idMachine") == null){
-      alert("Devi prima selezionare un macchinario");
+      //alert("Devi prima selezionare un macchinario");
       this.router.navigateByUrl("machineShow");
     }
+    else
+      this.showTask();
   }
 
   showTask(){
-    this.taskService.showTask(parseInt(sessionStorage.getItem("idMachine"))).subscribe((data: any) =>{
+    this.taskService.showTask(parseInt(sessionStorage.getItem("idMachine")), sessionStorage.getItem("userLogged")).subscribe((data: any) =>{
 
       if(data != null){
         this.taskList = data;

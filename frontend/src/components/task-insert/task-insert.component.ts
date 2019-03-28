@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { NgForm } from '@angular/forms';
 import { TaskDTO } from 'src/dto/TaskDTO';
 import { TaskService } from 'src/services/task.service';
+import { ParamDTO } from 'src/dto/ParamDTO';
 
 @Component({
   selector: 'app-task-insert',
@@ -12,6 +13,7 @@ import { TaskService } from 'src/services/task.service';
 export class TaskInsertComponent implements OnInit {
 
   public taskDTO: TaskDTO;
+  private paramDTO: ParamDTO;
 
   constructor(private router: Router, private taskService: TaskService) { }
 
@@ -21,12 +23,15 @@ export class TaskInsertComponent implements OnInit {
       this.router.navigateByUrl("machineShow");
       //alert("Devi prima selezionare un macchinario");
     }
-    this.taskDTO = new TaskDTO(0,"",parseInt(sessionStorage.getItem("idMachine")));
+    else
+      this.taskDTO = new TaskDTO(0,"",parseInt(sessionStorage.getItem("idMachine")));
   }
 
   insertTask(f: NgForm){
 
-      this.taskService.insertTask(this.taskDTO).subscribe((data: any) =>{
+    this.paramDTO = new ParamDTO(sessionStorage.getItem("userLogged"),this.taskDTO);
+  
+    this.taskService.insertTask(this.paramDTO).subscribe((data: any) =>{
 
       if(data != null)
         alert("Inserimento effettuato");
