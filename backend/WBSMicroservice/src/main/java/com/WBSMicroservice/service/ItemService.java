@@ -42,19 +42,21 @@ public class ItemService {
 	
 	public ItemDTO getItemByWBS(int idWBS){
 		try {
-		WBSDTO WBS = new WBSDTO();
-		WBS.setId(idWBS);
-		WBS ent	 = WBSConverter.convertToEntity(WBS);
-		System.out.println(ent);
-		List<Item> temp = itemDAO.findAllByWbs(ent);
-		System.out.println(temp);
-		List<ItemDTO> list = (ItemConverter.toListDTO(temp));
-		for(ItemDTO item: list) {
-			if(item.getIdFather() == 0)
-				return item;
+			WBSDTO WBS = new WBSDTO();
+			WBS.setId(idWBS);
+			WBS ent	 = WBSConverter.convertToEntity(WBS);
+			System.out.println(ent);
+			List<Item> temp = itemDAO.findAllByWbs(ent);
+			System.out.println(temp);
+			List<ItemDTO> list = (ItemConverter.toListDTO(temp));
+			for(ItemDTO item: list) {
+				if(item.getIdFather() == 0)
+					return item;
+			}
 		}
+		catch(Exception e) {
+			System.out.println(e.getMessage());
 		}
-		catch(Exception e) {System.out.println(e.getMessage());}
 		
 		return null;
 	}

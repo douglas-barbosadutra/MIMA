@@ -37,10 +37,11 @@ public class ItemController {
 	}
 
 	@GetMapping("/showNodes")
-	public ResponseEntity<ItemDTO> showNodes(@RequestParam(value = "jwt") String jwt,
-			@RequestParam(value = "idWBS") int idWBS) {
+	public ResponseEntity<ItemDTO> showNodes(@RequestParam(value = "jwt") String jwt, @RequestParam(value = "idWBS") int idWBS) {
+		
 		try {
 			int rank = this.getRankFromJwt(jwt);
+			
 			if (rank == 0)
 				return ResponseEntity.status(HttpStatus.OK).body(itemService.getItemByWBS(idWBS));
 			else

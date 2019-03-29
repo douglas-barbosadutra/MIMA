@@ -31,8 +31,8 @@ public class ManufacturingController {
 	}
 
 	@GetMapping("/showTime")
-	public ResponseEntity<List<TimeDTO>> showTime(@RequestParam(value = "jwt") String jwt,
-			@RequestParam(value = "idTask") int idTask) {
+	public ResponseEntity<List<TimeDTO>> showTime(@RequestParam(value = "jwt") String jwt,	@RequestParam(value = "idTask") int idTask) {
+		System.out.println("id: "+idTask);
 		try {
 			int rank = this.getRankFromJwt(jwt);
 			if (rank == 0)
@@ -42,6 +42,7 @@ public class ManufacturingController {
 		} catch (ExpiredJwtException | UnsupportedEncodingException e) {
 			return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
 		}
+		
 	}
 
 	private int getRankFromJwt(String jwt) throws ExpiredJwtException, UnsupportedEncodingException {

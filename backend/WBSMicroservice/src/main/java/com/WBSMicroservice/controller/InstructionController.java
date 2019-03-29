@@ -37,45 +37,64 @@ public class InstructionController {
 
 	@PostMapping("/insertInstruction")
 	public ResponseEntity<InstructionDTO> insertInstruction(@RequestBody ParamDTO param) {
-		LinkedHashMap instruction = (LinkedHashMap) param.getParam();
+		
 		int rank;
 		try {
 			rank = this.getRankFromJwt(param.getJwt());
-			if (rank == 0)
-				return ResponseEntity.status(HttpStatus.OK)
-						.body(istruzioneService.insertIstruzione((InstructionDTO) instruction.get(0)));
+			if (rank == 0) {
+				
+				LinkedHashMap instruction = (LinkedHashMap) param.getParam();
+				InstructionDTO instructionDTO = new InstructionDTO();
+				instructionDTO.setId(0);
+				instructionDTO.setCodex(instruction.get("codex").toString());
+				instructionDTO.setDuration(Integer.parseInt(instruction.get("duration").toString()));
+				instructionDTO.setIdTask(Integer.parseInt(instruction.get("idTask").toString()));
+				instructionDTO.setNameInstruction(instruction.get("nameInstruction").toString());
+				
+				return ResponseEntity.status(HttpStatus.OK).body(istruzioneService.insertIstruzione(instructionDTO));
+			}
+				
 			else
 				return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
+			
 		} catch (ExpiredJwtException | UnsupportedEncodingException e) {
+			
 			return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
 		}
 	}
 
 	@DeleteMapping("/deleteInstruction")
-	public ResponseEntity<Boolean> deleteInstruction(@RequestParam(value = "jwt") String jwt,
-			@RequestParam(value = "idInstruction") int idInstruction) {
+	public ResponseEntity<Boolean> deleteInstruction(@RequestParam(value = "jwt") String jwt, @RequestParam(value = "idInstruction") int idInstruction) {
+		
 		int rank;
+		
 		try {
 			rank = this.getRankFromJwt(jwt);
+			
 			if (rank == 0)
 				return ResponseEntity.status(HttpStatus.OK).body(istruzioneService.deleteIstruzione(idInstruction));
 			else
 				return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
+			
 		} catch (ExpiredJwtException | UnsupportedEncodingException e) {
+			
 			return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
 		}
 	}
 
 	@GetMapping("/showInstruction")
-	public ResponseEntity<List<InstructionDTO>> showInstruction(@RequestParam(value = "jwt") String jwt,
-			@RequestParam(value = "idTask") int idTask) {
+	public ResponseEntity<List<InstructionDTO>> showInstruction(@RequestParam(value = "jwt") String jwt, @RequestParam(value = "idTask") int idTask) {
+		
 		try {
 			int rank = this.getRankFromJwt(jwt);
+			
 			if (rank == 0)
 				return ResponseEntity.status(HttpStatus.OK).body(istruzioneService.getAllIstruzioniByIdTask(idTask));
 			else
 				return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
+			
 		} catch (ExpiredJwtException | UnsupportedEncodingException e) {
+			
 			return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
 		}
 
