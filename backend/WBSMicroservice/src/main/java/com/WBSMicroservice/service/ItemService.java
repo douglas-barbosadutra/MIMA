@@ -1,4 +1,4 @@
-package com.WBSMicroservice.services;
+package com.WBSMicroservice.service;
 
 import java.util.List;
 
@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.WBSMicroservice.model.Item;
+import com.WBSMicroservice.model.WBS;
 import com.WBSMicroservice.converter.ItemConverter;
 import com.WBSMicroservice.converter.WBSConverter;
 import com.WBSMicroservice.dao.ItemDAO;
@@ -40,13 +41,21 @@ public class ItemService {
 	}
 	
 	public ItemDTO getItemByWBS(int idWBS){
+		try {
 		WBSDTO WBS = new WBSDTO();
 		WBS.setId(idWBS);
-		List<ItemDTO> list = (ItemConverter.toListDTO(itemDAO.findAllByWbs(WBSConverter.convertToEntity(WBS))));
+		WBS ent	 = WBSConverter.convertToEntity(WBS);
+		System.out.println(ent);
+		List<Item> temp = itemDAO.findAllByWbs(ent);
+		System.out.println(temp);
+		List<ItemDTO> list = (ItemConverter.toListDTO(temp));
 		for(ItemDTO item: list) {
 			if(item.getIdFather() == 0)
 				return item;
 		}
+		}
+		catch(Exception e) {System.out.println(e.getMessage());}
+		
 		return null;
 	}
 	

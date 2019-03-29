@@ -17,14 +17,11 @@ export class WbsInsertComponent implements OnInit {
   constructor(private router: Router, private wbsService: WbsService) { }
 
   ngOnInit() {
-    this.wbsdto = new WBSDTO(0, "", parseInt(sessionStorage.getItem("idUser")));
+    this.wbsdto = new WBSDTO(0, "", 0);
   }
 
   insertWbs(f: NgForm) {
     this.paramDTO = new ParamDTO(sessionStorage.getItem("userLogged"), this.wbsdto);
-    console.log(this.wbsdto); 
-    console.log(this.paramDTO);
-
     this.wbsService.insertWbs(this.paramDTO).subscribe((data: any) => {
       if (data != null)
         alert("Inserimento effettuato");

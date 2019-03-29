@@ -11,7 +11,7 @@ export class ManufactoringService {
   constructor(private http: HttpClient) { }
 
   showTime(jwt: string, idTask: number): Observable<Array<TimeDTO>>{
-    return this.http.get<Array<TimeDTO>>('http://localhost:8081/Manufacturing/showTime??jwt='+ jwt + 'idTask='+idTask);
+    return this.http.get<Array<TimeDTO>>('http://localhost:8083/Manufacturing/showTime??jwt='+ jwt + 'idTask='+idTask);
   }
 
 }

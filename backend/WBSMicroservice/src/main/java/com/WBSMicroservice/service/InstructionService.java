@@ -1,4 +1,4 @@
-package com.WBSMicroservice.services;
+package com.WBSMicroservice.service;
 
 import java.util.*;
 

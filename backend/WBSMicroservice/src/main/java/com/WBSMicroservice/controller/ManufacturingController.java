@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.WBSMicroservice.dto.TimeDTO;
-import com.WBSMicroservice.services.TimeService;
+import com.WBSMicroservice.service.TimeService;
 import com.WBSMicroservice.utils.JwtUtils;
 
 import io.jsonwebtoken.ExpiredJwtException;

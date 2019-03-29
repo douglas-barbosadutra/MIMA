@@ -12,14 +12,14 @@ export class InstructionService {
   constructor(private http: HttpClient) { }
 
   insertInstruction(param: ParamDTO): Observable<InstructionDTO>{
-    return this.http.post<InstructionDTO>( 'http://localhost:8081/Instruction/insertInstruction', param);
+    return this.http.post<InstructionDTO>( 'http://localhost:8083/Instruction/insertInstruction', param);
   }
 
   showInstruction(jwt: string, idTask: number): Observable<Array<InstructionDTO>>{
-    return this.http.get<Array<InstructionDTO>>('http://localhost:8081/Instruction/showInstruction?jwt='+jwt+'&idTask='+idTask);
+    return this.http.get<Array<InstructionDTO>>('http://localhost:8083/Instruction/showInstruction?jwt='+jwt+'&idTask='+idTask);
   }
 
   deleteInstruction(jwt: string, idInstruction: number){
-    return this.http.delete('http://localhost:8081/Instruction/deleteInstruction?jwt='+jwt+'&idInstruction='+idInstruction);
+    return this.http.delete('http://localhost:8083/Instruction/deleteInstruction?jwt='+jwt+'&idInstruction='+idInstruction);
   }
 }

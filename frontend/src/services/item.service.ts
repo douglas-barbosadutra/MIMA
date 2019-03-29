@@ -13,22 +13,22 @@ export class ItemService {
   constructor(private http: HttpClient) { }
 
   insertItem(param: ParamDTO): Observable<ItemDTO>{
-    return this.http.post<ItemDTO>('http://localhost:8081/Item/addNode', param);
+    return this.http.post<ItemDTO>('http://localhost:8083/Item/addNode', param);
   }
 
   insertInput(inputDTO: InputDTO){
-    return this.http.post('http://localhost:8081/Item/insertInput', inputDTO);
+    return this.http.post('http://localhost:8083/Item/insertInput', inputDTO);
   }
 
   deleteItem(jwt: string, idItem: number){
-    return this.http.delete('http://localhost:8081/Item/removeNode?jwt='+jwt+'&idItem=' + idItem);
+    return this.http.delete('http://localhost:8083/Item/removeNode?jwt='+jwt+'&idItem=' + idItem);
   }
 
-  showItemTree(jwt: string, idWbs: number): Observable<ItemDTO>{
-    return this.http.get<ItemDTO>('http://localhost:8081/Item/showNodes?jwt='+jwt+'&idWbs' + idWbs);
+  showItemTree(jwt: string, idWBS: number): Observable<ItemDTO>{
+    return this.http.get<ItemDTO>('http://localhost:8083/Item/showNodes?jwt='+jwt+'&idWBS=' + idWBS);
   }
 
   showItem(): Observable<Array<ItemDTO>>{
-    return this.http.get<Array<ItemDTO>>('http://localhost:8081/Item/showItem');
+    return this.http.get<Array<ItemDTO>>('http://localhost:8083/Item/showItem');
   }
 }

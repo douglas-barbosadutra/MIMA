@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.WBSMicroservice.dto.InputDTO;
 import com.WBSMicroservice.dto.ItemDTO;
 import com.WBSMicroservice.dto.ParamDTO;
-import com.WBSMicroservice.services.ItemService;
+import com.WBSMicroservice.service.ItemService;
 import com.WBSMicroservice.utils.JwtUtils;
 
 import io.jsonwebtoken.ExpiredJwtException;

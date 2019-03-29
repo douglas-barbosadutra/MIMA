@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.WBSMicroservice.utils.JwtUtils;
 import com.WBSMicroservice.dto.ParamDTO;
 import com.WBSMicroservice.dto.WBSDTO;
-import com.WBSMicroservice.services.WBSService;
+import com.WBSMicroservice.service.WBSService;
 
 import io.jsonwebtoken.ExpiredJwtException;
 
@@ -37,15 +37,13 @@ public class WBSController {
 
 	@PostMapping("/insertWbs")
 	public ResponseEntity<WBSDTO> insertWbs(@RequestBody ParamDTO param) {
-
-		System.out.println(param);
 		LinkedHashMap wbs = (LinkedHashMap) param.getParam();
 		int rank;
-		int idUser = 1;
-		WBSDTO prova = new WBSDTO(0, wbs.get("name").toString(), idUser);
-		prova.setIdUser(idUser);
+		int idUser;
 		try {
 			rank = this.getRankFromJwt(param.getJwt());
+			idUser = this.getIdUserFromJwt(param.getJwt());
+			WBSDTO prova = new WBSDTO(0, wbs.get("name").toString(), idUser);
 			if (rank == 0) {
 				return ResponseEntity.status(HttpStatus.OK).body(wbsService.insertWBS(prova));
 			} else {
@@ -94,5 +92,13 @@ public class WBSController {
 		int rank = Integer.parseInt(data.get("scope").toString());
 
 		return rank;
+	}
+
+	private int getIdUserFromJwt(String jwt) throws ExpiredJwtException, UnsupportedEncodingException {
+
+		Map<String, Object> data = JwtUtils.jwt2Map(jwt);
+		int idUser = Integer.parseInt(data.get("subject").toString());
+
+		return idUser;
 	}
 }

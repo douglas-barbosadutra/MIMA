@@ -1,4 +1,4 @@
-package com.WBSMicroservice.services;
+package com.WBSMicroservice.service;
 
 import java.util.ArrayList;
 import java.util.List;
