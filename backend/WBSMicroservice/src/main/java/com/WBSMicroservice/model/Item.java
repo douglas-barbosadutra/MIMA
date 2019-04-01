@@ -30,6 +30,7 @@ import lombok.ToString;
 @Entity
 @Table(name="items")
 @ToString
+
 public class Item {
 	
 	@Id
@@ -49,12 +50,14 @@ public class Item {
 	private List<Manufacturing> manufacturings;
 	
 	@Nullable
-	@ManyToOne(cascade= {CascadeType.ALL})
-	@JoinColumn(name="id_father")
+	@ManyToOne(optional = true, fetch = FetchType.LAZY)
+	@JoinColumn(name="id_father", referencedColumnName = "id_item")
 	private Item father;
 	
-	@OneToMany(mappedBy="father")
-	@OnDelete(action=OnDeleteAction.CASCADE)
+	@OneToMany(cascade = {CascadeType.ALL},
+	        orphanRemoval = true,
+	        fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_father")
 	private List<Item> childsList=new ArrayList<Item>();
 	
 }

@@ -20,7 +20,12 @@ public interface ItemDAO extends JpaRepository<Item, Integer>{
 
 	@Modifying
 	@Transactional
-	@Query(value = "INSERT INTO items (name,id_father,id_wbs) VALUES (:name,:id_father,:id_wbs)", nativeQuery=true)
+	@Query(value = "SELECT * FROM items WHERE id_wbs = :id_wbs", nativeQuery=true)
+	public List<Item> getDaWbs(@Param("id_wbs") Integer id_wbs);
+	
+	@Modifying
+	@Transactional
+	@Query(value = "INSERT INTO items (name, id_father, id_wbs) VALUES (:name, :id_father, :id_wbs)", nativeQuery=true)
 	public int insertItem(@Param("name") String name, @Param("id_father") Integer id_father, @Param("id_wbs") Integer id_wbs);
 	
 	

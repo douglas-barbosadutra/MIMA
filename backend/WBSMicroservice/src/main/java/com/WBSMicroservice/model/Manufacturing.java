@@ -34,12 +34,12 @@ public class Manufacturing {
 	@Column(name = "duration")
 	@NotNull
 	private Integer duration;
-	
+	/*
 	@ManyToMany
 	@JoinTable(name="items_manufacturings",
 		joinColumns={@JoinColumn(name="id_item")},
 		inverseJoinColumns= {@JoinColumn(name="id_manufacturing")})
-	private List<Item> items;
+	private List<Item> items;*/
 	
 	@NotNull
 	@ManyToOne
