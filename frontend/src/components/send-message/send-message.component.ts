@@ -59,7 +59,7 @@ export class SendMessageComponent implements OnInit {
   
   
 subscribeTopic() {
-  this.sendmessageservice.subscribeTopic(boolean(sessionStorage.getsubscribeTopic("subscribeTopic")), sessionStorage.getsubscribeTopic("userLogged")).subscribe((data: any) => {
+  this.sendmessageservice.subscribeTopic(boolean(sessionStorage.getsubscribeTopic("subscribeTopic")), sessionStorage.getsubscribeTopic("subscribeTopic")).subscribe((data: any) => {
     if (data != null) {
       this.subscribeTopic = data;
   }
