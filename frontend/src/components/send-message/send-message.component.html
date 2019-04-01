@@ -1,3 +1,41 @@
-<p>
-  send-message works!
-</p>
+<app-menu-user></app-menu-user>
+
+<h1 class="title">Invio Messaggi</h1>
+		
+<div id="container">
+  
+  <table class="table table-striped">
+      <thead>
+        
+        <tr>
+          <th>Url connection</th>
+          <th>Topic</th>
+          <th>QOS</th>
+        </tr>
+        
+      </thead>
+      
+      <tbody>
+        <tr *ngFor="Message">			
+          <td >{{MQTT.brokenURL}}</td>
+          <td >{{MQTT.topic}}</td>
+          <td >{{MQTT.QOS}}</td>
+          <label>
+              Message:
+            </label>
+            <input type="text" [formControl]="message" />
+          <div class="form-group">
+              <button (click)="publishMessage()" class="btn btn-dark">Send</button>
+            </div>
+          <td>
+            <button class="btn btn-primary" (click)="connectMQTT(MQTT.connectMQTT)">Connect</button>
+            <button class="btn btn-primary" (click)="disconnectMQTT(MQTT.disconnectMQTT)">Disconnect</button>
+          </td>
+          <input type="text" [formControl]="message" />
+          <div class="form-group">
+            <button class="btn btn-primary" (click)="getMessage(MQTT.getMessage">Aggiorna</button>
+            </div>
+        </tr>
+      </tbody>
+      
+  </table>

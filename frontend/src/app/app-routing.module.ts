@@ -32,7 +32,7 @@ import { AssignTaskComponent } from 'src/components/assign-task/assign-task.comp
 import { InputOutputComponent } from 'src/components/input-output/input-output.component';
 import { TaskScheduledShowComponent } from 'src/components/task-scheduled-show/task-scheduled-show.component';
 import { TaskScheduledDeleteComponent } from 'src/components/task-scheduled-delete/task-scheduled-delete.component';
-
+import { SendMessageComponent } from 'src/components/send-message.component';
 
 const routes: Routes = [
 {path: '', redirectTo: '/login', pathMatch: 'full'},
