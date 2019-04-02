@@ -34,8 +34,8 @@ public class WBS {
 	@NotNull
 	private String name;
 	
-	@NotNull
 	@Column(name="id_user")
+	@NotNull
 	private Integer idUser;
 	
 	@OneToMany(mappedBy="wbs")

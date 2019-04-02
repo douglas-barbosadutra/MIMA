@@ -48,16 +48,18 @@ public class Item {
 	@OneToMany(mappedBy="output")
 	@OnDelete(action=OnDeleteAction.CASCADE)
 	private List<Manufacturing> manufacturings;
-	
+	/*
 	@Nullable
 	@ManyToOne(optional = true, fetch = FetchType.LAZY)
-	@JoinColumn(name="id_father", referencedColumnName = "id_item")
+	@JoinColumn(name="id_father", referencedColumnName = "id_item")*/
+	@Nullable
+	@Column(name = "id_father")
 	private Item father;
-	
+	/*
 	@OneToMany(cascade = {CascadeType.ALL},
 	        orphanRemoval = true,
 	        fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_father")
+	@JoinColumn(name = "id_father")*/
 	private List<Item> childsList=new ArrayList<Item>();
 	
 }

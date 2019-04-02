@@ -17,13 +17,13 @@ export class SendMessageComponent implements OnInit {
   constructor(private router: Router, private sendmessageservice: SendMessageService) { }
 
   ngOnInit() {
-    this.getconnectToMQTTClient();
+    /*this.getconnectToMQTTClient();
     this.getdisconnectToMQTTClient();
     this.getpublishMessage();
     this.getsubscribeTopic();
-    this.getMessage();
+    this.getMessage();*/
   }
-
+/*
   getconnectToMQTTClient() {
     this.sendMessageService.connectToMQTTClient(boolean(sessionStorage.getconnect("brokenURL")), sessionStorage.getconnectToMQTTClient("brokenUrl")).subscribe((data) => {
       if (data != null) {
@@ -70,5 +70,5 @@ subscribeTopic() {
       Message message = new Message();
       message.setMessage(message);
       return(mqttService.getMessage());
-  }
+  }*/
 }
