@@ -72,4 +72,3 @@ subscribeTopic() {
       return(mqttService.getMessage());
   }
 }
-
