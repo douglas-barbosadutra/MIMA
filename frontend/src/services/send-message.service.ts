@@ -17,7 +17,7 @@ export class SendMessageService {
   getdisconnectToMQTTClient(brockenUrl: number, jwt: string): Observable<boolean> {
     return this.http.get<boolean>('http://localhost:8080/MQTTService/disconnectMQTTService?brokenUrl=' + brockenUrl+'&jwt='+jwt);
   }
-
+/*
   publishMessage(mqttService: MQTTService ) {
     return this.http.post<boolean>('http://localhost:8080/MQTTService/publishMessage', mqttService);
   }
@@ -29,6 +29,6 @@ export class SendMessageService {
   getMessage(mqttService: MQTTService) {
     console.log(mqttService);
     return this.http.post<string>('http://localhost:8080/MQTTService/getMessage',mqttService);
-  }
+  }*/
 }
 

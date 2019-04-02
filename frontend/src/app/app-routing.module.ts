@@ -67,7 +67,8 @@ const routes: Routes = [
 {path: 'assignTask', component: AssignTaskComponent},
 {path: 'inputOutput', component: InputOutputComponent},
 {path: 'taskScheduledShow', component: TaskScheduledShowComponent},
-{path: 'TaskScheduledDelete', component: TaskScheduledDeleteComponent}];
+{path: 'TaskScheduledDelete', component: TaskScheduledDeleteComponent},
+{path: 'SendMessage', component: SendMessageComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {useHash: true, onSameUrlNavigation: 'reload'})],

@@ -52,6 +52,8 @@ import { InputOutputComponent } from 'src/components/input-output/input-output.c
 import { TaskScheduledShowComponent } from 'src/components/task-scheduled-show/task-scheduled-show.component';
 import { TaskScheduledDeleteComponent } from 'src/components/task-scheduled-delete/task-scheduled-delete.component';
 import { HttpConfigInterceptor } from './interceptor/httpconfig.interceptor';
+import { SendMessageComponent } from 'src/components/send-message/send-message.component';
+import { SendMessageService } from 'src/services/send-message.service';
 
 
 
@@ -90,7 +92,8 @@ import { HttpConfigInterceptor } from './interceptor/httpconfig.interceptor';
     EmployeeShowComponent,
     AssignTaskComponent,
     InputOutputComponent,
-    TaskScheduledShowComponent
+    TaskScheduledShowComponent,
+    SendMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -98,7 +101,7 @@ import { HttpConfigInterceptor } from './interceptor/httpconfig.interceptor';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [LoginService,UserService,MachineService,TaskService,InstructionService,SchedulingService,ManufactoringService, WbsService, ItemService, TaskScheduledService, EmployeeService, DataServiceService,
+  providers: [LoginService,UserService,MachineService,TaskService,InstructionService,SchedulingService,ManufactoringService, WbsService, ItemService, TaskScheduledService, EmployeeService, DataServiceService, SendMessageService,
     { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })

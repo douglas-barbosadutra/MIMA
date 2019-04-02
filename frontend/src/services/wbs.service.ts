@@ -12,6 +12,7 @@ export class WbsService {
   constructor(private http: HttpClient) { }
 
   showWbs(jwt: string): Observable<Array<WBSDTO>>{
+    console.log("stiamo partendo");
     return this.http.get<Array<WBSDTO>>('http://localhost:8083/WBS/showWbs?jwt='+jwt);
   }
 
