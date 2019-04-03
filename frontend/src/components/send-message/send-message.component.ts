@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { connect } from 'http2';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { FormControl, NgForm } from '@angular/forms';
 import { SendMessageService } from 'src/services/send-message.service';
