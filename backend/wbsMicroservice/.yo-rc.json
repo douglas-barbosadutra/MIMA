@@ -1,0 +1,34 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.mima.wbs"
+    },
+    "jhipsterVersion": "5.8.2",
+    "applicationType": "microservice",
+    "baseName": "wbsMicroservice",
+    "packageName": "com.mima.wbs",
+    "packageFolder": "com/mima/wbs",
+    "serverPort": "8082",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "consul",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "NjI0NmEwNjMzZGI3MTk5NWI1YWU4ODFiOTk3MjRiM2EzNjgwN2IxNTNmYzcxZjNiOGYzNTQxYzAwZjAwMDVlNGI2ZDM4MWVlMzAyZDEwYzI5MDBlNjI2MWU5NTE1MzMxODdmY2UyN2RiYmYzZjI0ZmVhZTczYzIyNTc3YTA5ZDE=",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "clientPackageManager": "npm",
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}
