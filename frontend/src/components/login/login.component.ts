@@ -48,18 +48,16 @@ export class LoginComponent implements OnInit {
     });
   }*/
 
-  public login() {
-    console.log(this.loginDTO);
-    return this.http.post("http://localhost:8080/api/authenticate", {
-        username: this.loginDTO.username,
-        password: this.loginDTO.password
-    }).pipe(map((response: any) => {
-        //console.log(response);
-        //localStorage.setItem("currentUser", JSON.stringify({ "authorization": response.id_token }));
-        localStorage.setItem("userLogged", JSON.stringify(response.id_token));
-        console.log(response);
-    })).subscribe(() =>{
+  login(f:NgForm): void{
+
+    this.loginService.login(this.loginDTO).subscribe((response: any) => {
+
+      //console.log(response);
+      localStorage.setItem("authorization", JSON.stringify(response.id_token));
       this.router.navigateByUrl("homeUser");
+
     });
-}
+    
+  }
+
 }
