@@ -26,5 +26,7 @@ export class LoginService {
 
   login(logindto: LoginDTO): Observable<UserLoggedDTO>{
     return this.http.post<UserLoggedDTO>('http://localhost:8080/Login/login', logindto);
+
+    
   }
 }

@@ -19,8 +19,8 @@ export class MachineShowComponent implements OnInit {
   constructor(private machineService: MachineService, private router:  Router) { }
 
   ngOnInit() {
-
-    this.machineService.showMachine(sessionStorage.getItem("userLogged")).subscribe((data: any) =>{
+    console.log(sessionStorage.getItem("userLogged"));
+    this.machineService.showMachine(localStorage.getItem("userLogged")).subscribe((data: any) =>{
 
       if(data != null){
         this.machineList = data;

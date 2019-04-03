@@ -5,6 +5,8 @@ import {LoginService} from "src/services/login.service";
 import { UserDTO } from 'src/dto/UserDTO';
 import { LoginDTO } from 'src/dto/LoginDTO';
 import { UserLoggedDTO } from 'src/dto/UserLoggedDTO';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -16,13 +18,13 @@ export class LoginComponent implements OnInit {
   private idUtenteLocale: number;
   public loginDTO: LoginDTO;
 
-  constructor(private loginService: LoginService, private router:  Router) { }
+  constructor(private loginService: LoginService, private router:  Router, private http: HttpClient) { }
 
   ngOnInit(){
     this.loginDTO = new LoginDTO("","");
   }
 
-  login(f:NgForm): void{
+  /*login(f:NgForm): void{
     this.loginService.login(this.loginDTO).subscribe((data: UserLoggedDTO) => {
 
       if(data != null){
@@ -44,5 +46,20 @@ export class LoginComponent implements OnInit {
         alert("user o pass errati");
       }
     });
-  }
+  }*/
+
+  public login() {
+    console.log(this.loginDTO);
+    return this.http.post("http://localhost:8080/api/authenticate", {
+        username: this.loginDTO.username,
+        password: this.loginDTO.password
+    }).pipe(map((response: any) => {
+        //console.log(response);
+        //localStorage.setItem("currentUser", JSON.stringify({ "authorization": response.id_token }));
+        localStorage.setItem("userLogged", JSON.stringify(response.id_token));
+        console.log(response);
+    })).subscribe(() =>{
+      this.router.navigateByUrl("homeUser");
+    });
+}
 }
