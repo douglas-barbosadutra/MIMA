@@ -1,0 +1,34 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.mima.machine"
+    },
+    "jhipsterVersion": "5.8.2",
+    "applicationType": "microservice",
+    "baseName": "machineMicroservice",
+    "packageName": "com.mima.machine",
+    "packageFolder": "com/mima/machine",
+    "serverPort": "8081",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "consul",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "YTMzYjc2YzhkZGQ1ZmVlMDVkOWY4NjA3NDQ1ODk5NmI2MjNhYjhmZmFlYTBhZWIxNzVhNzY2YThjMjMzYTg4Y2E2ODQ0OWE5OTk3ZWY1MTJjMzg0NDZlYTdkMGM2OGU0ZmJlOGQzN2Y1OTdjYWNkYjNlNTQ4MmExZDJlYWNmODM=",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "clientPackageManager": "npm",
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}
