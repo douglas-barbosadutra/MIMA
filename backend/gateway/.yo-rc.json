@@ -1,0 +1,35 @@
+{
+    "generator-jhipster": {
+        "promptValues": {
+            "packageName": "com.mima.gateway"
+        },
+        "jhipsterVersion": "5.8.2",
+        "applicationType": "gateway",
+        "baseName": "gateway",
+        "packageName": "com.mima.gateway",
+        "packageFolder": "com/mima/gateway",
+        "serverPort": "8080",
+        "authenticationType": "jwt",
+        "cacheProvider": "hazelcast",
+        "enableHibernateCache": false,
+        "websocket": false,
+        "databaseType": "sql",
+        "devDatabaseType": "h2Disk",
+        "prodDatabaseType": "mysql",
+        "searchEngine": false,
+        "messageBroker": false,
+        "serviceDiscoveryType": "consul",
+        "buildTool": "maven",
+        "enableSwaggerCodegen": false,
+        "jwtSecretKey": "MjZkMzcxODc1NjA5NTBjNjEzZDFmNWM5YTY4Y2IzZWRjYTEyYjFhZGFlNmY4NDY4NzRmZDQ0OTAyMTgzMjU4YTNkZDkzNjkzYmMzNjgxNDdjZmI4YzQ3MzBkNDI4YjU4YWY5ZWQyMTQ0ZWVkYjU2NWRjNTk1MGMzZjNmMzJkMTU=",
+        "clientFramework": "angularX",
+        "useSass": false,
+        "clientPackageManager": "npm",
+        "testFrameworks": [],
+        "jhiPrefix": "jhi",
+        "entitySuffix": "",
+        "dtoSuffix": "DTO",
+        "otherModules": [],
+        "enableTranslation": false
+    }
+}
