@@ -96,9 +96,13 @@ jhipster:
     http:
         version: V_1_1 # To use HTTP/2 you will need to activate TLS (see application-tls.yml)
     cache: # Cache configuration
-        ehcache: # Ehcache configuration
-            time-to-live-seconds: 3600 # By default objects stay 1 hour in the cache
-            max-entries: 100 # Number of objects in each cache entry
+        hazelcast: # Hazelcast distributed cache
+            time-to-live-seconds: 3600
+            backup-count: 1
+            management-center: # Full reference is available at: http://docs.hazelcast.org/docs/management-center/3.9/manual/html/Deploying_and_Starting.html
+                enabled: false
+                update-interval: 3
+                url: http://localhost:8180/mancenter
     # CORS is disabled by default on microservices, as you should access them through a gateway.
     # If you want to enable it, please uncomment the configuration below.
     # cors:
@@ -112,7 +116,7 @@ jhipster:
         authentication:
             jwt:
                 # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
-                base64-secret: NmQ4MzU4M2VhNjAyYTU0OTg1YmFlZTE3NzBjNmYxY2E1ZGM4MTc5OTVkODY1MDcwMGNiOTY1Zjk5MjQyMjJiODNjNzAyNjQ5NWM4OWRkZjJkODRjN2EyYzllNzk1YTk5NTZlNzVkYTFhN2NlNmU1ZDk1ZWJmOTA4NzJkN2VlNzY=
+                base64-secret: ZGYzY2ZjOThhOTZiMmE1NjZjN2JiZGYyMDc4MzVkNzc4Yzg2OTlkNGEyNWMzNzRkMGM5NGMzMzNmMWQzYzVlMWYzOWNlOTlkYWJhNjhiODIzMzZkZDgwZWM1Yzc0NjkwNDI5MjdmMWU0MTVjNzZiODY5MzdmZDJlMTg2NWFhNWM=
                 # Token is valid 24 hours
                 token-validity-in-seconds: 86400
                 token-validity-in-seconds-for-remember-me: 2592000
