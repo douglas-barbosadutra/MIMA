@@ -1,0 +1,33 @@
+{
+    "name": "Item",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "wbs",
+            "otherEntityName": "wBS",
+            "otherEntityRelationshipName": "item"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "father",
+            "otherEntityName": "item",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190403161424",
+    "entityTableName": "item",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "microserviceName": "wbsMicroservice"
+}

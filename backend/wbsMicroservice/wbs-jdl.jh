@@ -1,0 +1,48 @@
+entity WBS {
+	id Integer
+    name String
+    idUser Integer
+}
+
+entity Item{
+	id Integer
+    name String
+}
+
+entity Instruction{
+	id Integer
+    name String
+    duration Integer
+    gcodeFile String
+    idTask Integer
+}
+
+entity Manufacturing{
+	id Integer
+    duration Integer
+}
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	Item{wbs} to WBS
+	
+}
+
+relationship ManyToOne {
+	Item{father} to Item
+    Manufacturing{output} to Item
+    Manufacturing{instruction} to Instruction
+}
+
+// defining multiple oneToOne relationships
+
+// Set pagination options
+
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+// Set an angular suffix
+// angularSuffix * with mySuffix
