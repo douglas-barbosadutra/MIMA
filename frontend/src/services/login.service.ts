@@ -24,7 +24,25 @@ export class LoginService {
     };
   }
 
-  login(logindto: LoginDTO): Observable<UserLoggedDTO>{
-    return this.http.post<UserLoggedDTO>('http://localhost:8080/api/authenticate', logindto);
+  auth() {
+    var user = JSON.parse(localStorage.getItem("currentUser")) as UserDTO;
+    if(user) {
+        return "Bearer " + user.authorization;
+    } else {
+        return "";
+    }
   }
+
+  login(logindto: LoginDTO){
+    return this.http.post('http://localhost:8080/api/authenticate', logindto);
+  }
+
+  getUserLogged(username: string){
+    return this.http.get('http://localhost:8080/api/users/'+username, {
+      headers: {
+          "Authorization": this.auth()
+      }
+    });
+  }
+
 }
