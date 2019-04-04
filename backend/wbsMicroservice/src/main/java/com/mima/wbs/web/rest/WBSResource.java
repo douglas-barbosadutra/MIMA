@@ -116,9 +116,10 @@ public class WBSResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
     
-    @GetMapping("/showWBS/{idUser}")
+    @GetMapping("/wbsByUser/{id}")
     @Timed
-    public List<WBSDTO> showWBS(@PathVariable int idUser){
-    	return wBSService.getWBSByIdUser(idUser);
+    public List<WBSDTO> getWBSByIdUser(@PathVariable int id) {
+        log.debug("REST request to get WBS : {}", id);
+       return wBSService.getWBSByIdUser(id);
     }
 }

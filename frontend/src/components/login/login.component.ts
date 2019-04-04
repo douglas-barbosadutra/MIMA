@@ -53,9 +53,10 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.loginDTO).subscribe((response: any) => {
 
       //console.log(response);
-      localStorage.setItem("authorization", JSON.stringify(response.id_token));
+      localStorage.setItem("currentUser", JSON.stringify({ "authorization": response.id_token }));
+      var user = JSON.parse(localStorage.getItem("currentUser")) as UserDTO;
+      console.log("user: "+user);
       this.router.navigateByUrl("homeUser");
-
     });
     
   }

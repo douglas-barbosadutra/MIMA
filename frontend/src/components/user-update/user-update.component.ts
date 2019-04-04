@@ -19,7 +19,7 @@ export class UserUpdateComponent implements OnInit {
 
   ngOnInit() {
     //this.findUser();
-    this.userDTO = new UserDTO(parseInt(sessionStorage.getItem("idUser")),"","","","","","",0);
+    this.userDTO = new UserDTO(parseInt(sessionStorage.getItem("idUser")),"","","","","","",0,"");
   }
 
   updateUser(f: NgForm){

@@ -3,6 +3,7 @@ import { WBSDTO } from 'src/dto/WBSDTO';
 import { WbsService } from 'src/services/wbs.service';
 import { Router } from '@angular/router';
 import { UserDTO } from 'src/dto/UserDTO';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-wbs-show',
@@ -18,9 +19,9 @@ export class WbsShowComponent implements OnInit {
   constructor(private wbsService: WbsService, private router: Router) { }
 
   ngOnInit() {
-    this.wbsService.showWbs(sessionStorage.getItem("userLogged")).subscribe((data: any) => {
+    this.wbsService.showWbs(1).subscribe((data: HttpResponse<any>) => {
       if (data != null) {
-        this.wbsList = data;
+        this.wbsList = data.body;
       }
     });
   }
@@ -31,8 +32,7 @@ export class WbsShowComponent implements OnInit {
   }
 
   deleteWbs(idWbs: number) {
-    this.wbsService.deleteWbs(sessionStorage.getItem("userLogged"), idWbs).subscribe((data: any) => {
-      this.router.navigateByUrl("homeUser");
-    });
+    this.wbsService.deleteWbs(idWbs).subscribe();
+    this.router.navigateByUrl("homeUser");
   }
 }

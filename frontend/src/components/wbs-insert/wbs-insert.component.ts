@@ -4,6 +4,7 @@ import { NgForm } from "@angular/forms";
 import { WBSDTO } from 'src/dto/WBSDTO';
 import { WbsService } from "src/services/wbs.service";
 import { ParamDTO } from 'src/dto/ParamDTO';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-wbs-insert',
@@ -12,7 +13,6 @@ import { ParamDTO } from 'src/dto/ParamDTO';
 })
 export class WbsInsertComponent implements OnInit {
   public wbsdto: WBSDTO;
-  private paramDTO: ParamDTO;
 
   constructor(private router: Router, private wbsService: WbsService) { }
 
@@ -21,9 +21,9 @@ export class WbsInsertComponent implements OnInit {
   }
 
   insertWbs(f: NgForm) {
-    this.paramDTO = new ParamDTO(sessionStorage.getItem("userLogged"), this.wbsdto);
-    this.wbsService.insertWbs(this.paramDTO).subscribe((data: any) => {
-      if (data != null)
+
+    this.wbsService.insertWbs(this.wbsdto).subscribe((data: HttpResponse<any>) => {
+      if (data.body != null)
         alert("Inserimento effettuato");
       else
         alert("Inserimento fallito");

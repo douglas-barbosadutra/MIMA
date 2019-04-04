@@ -19,7 +19,7 @@ export class EmployeeInsertComponent implements OnInit {
   constructor(private employeeService: EmployeeService, private router: Router) { }
 
   ngOnInit() {
-    this.userDTO = new UserDTO(0,"","","","","","",0);
+    this.userDTO = new UserDTO(0,"","","","","","",0,"");
   }
 
   insertEmployee(){

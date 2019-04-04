@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { InstructionDTO } from 'src/dto/InstructionDTO';
 import { InstructionService } from 'src/services/instruction.service';
 import { ParamDTO } from 'src/dto/ParamDTO';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-instruction-insert',
@@ -13,7 +14,6 @@ import { ParamDTO } from 'src/dto/ParamDTO';
 export class InstructionInsertComponent implements OnInit {
 
   public instructionDTO: InstructionDTO;
-  private paramDTO: ParamDTO;
 
   constructor(private router: Router, private instructionService: InstructionService) { }
 
@@ -21,13 +21,12 @@ export class InstructionInsertComponent implements OnInit {
     if (sessionStorage.getItem("idTask") == null) {
       this.router.navigateByUrl("taskShow");
     }
-    this.instructionDTO = new InstructionDTO(0, 0, "", "", parseInt(sessionStorage.getItem("idTask")));
+    this.instructionDTO = new InstructionDTO(0, "", 0, "", parseInt(sessionStorage.getItem("idTask")));
   }
 
   insertInstruction(f: NgForm) {
-    this.paramDTO = new ParamDTO(sessionStorage.getItem("userLogged"), this.instructionDTO);
-    this.instructionService.insertInstruction(this.paramDTO).subscribe((data: any) => {
-      if (data != null)
+    this.instructionService.insertInstruction(this.instructionDTO).subscribe((data: HttpResponse<any>) => {
+      if (data.body != null)
         alert("Inserimento effettuato");
       else
         alert("Inserimento fallito");

@@ -7,9 +7,10 @@ export class UserDTO{
     email: string;
     phone: string;
     rank: number;
+    authorization: string;
 
 
-    constructor(id: number, username: string, password: string, name: string, surname: string, email: string, phone: string, rank: number){
+    constructor(id: number, username: string, password: string, name: string, surname: string, email: string, phone: string, rank: number, authorization: string){
         this.id = id;
         this.username = username;
         this.password = password;
@@ -18,5 +19,6 @@ export class UserDTO{
         this.email = email;
         this.phone = phone;
         this.rank = rank;
+        this.authorization = authorization;
     }
 }

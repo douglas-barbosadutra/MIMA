@@ -17,7 +17,7 @@ export class EmployeeUpdateComponent implements OnInit {
   constructor(private router: Router, private userSerivce: UserService) { }
 
   ngOnInit() {
-    this.userDTO = new UserDTO(0,"","","","","","",0);
+    this.userDTO = new UserDTO(0,"","","","","","",0,"");
   }
 
   updateUser(){

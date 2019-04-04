@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { InstructionDTO } from 'src/dto/InstructionDTO';
 import { Observable } from 'rxjs';
 import { ParamDTO } from 'src/dto/ParamDTO';
+import { UserDTO } from 'src/dto/UserDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -11,15 +12,36 @@ export class InstructionService {
 
   constructor(private http: HttpClient) { }
 
-  insertInstruction(param: ParamDTO): Observable<InstructionDTO>{
-    return this.http.post<InstructionDTO>( 'http://localhost:8083/Instruction/insertInstruction', param);
+  auth() {
+    var user = JSON.parse(localStorage.getItem("currentUser")) as UserDTO;
+    if(user) {
+        return "Bearer " + user.authorization;
+    } else {
+        return "";
+    }
   }
 
-  showInstruction(jwt: string, idTask: number): Observable<Array<InstructionDTO>>{
-    return this.http.get<Array<InstructionDTO>>('http://localhost:8083/Instruction/showInstruction?jwt='+jwt+'&idTask='+idTask);
+  insertInstruction(instructionDTO: InstructionDTO){
+    return this.http.post("http://localhost:8080/wbsMicroservice/api/instructions",instructionDTO, {
+      headers: {
+          "Authorization": this.auth()
+      }
+    });
   }
 
-  deleteInstruction(jwt: string, idInstruction: number){
-    return this.http.delete('http://localhost:8083/Instruction/deleteInstruction?jwt='+jwt+'&idInstruction='+idInstruction);
+  showInstruction(idTask: number){
+    return this.http.get("http://localhost:8080/wbsMicroservice/api/instructions/"+idTask, {
+      headers: {
+          "Authorization": this.auth()
+      }
+    });
+  }
+
+  deleteInstruction(idInstruction: number){
+    return this.http.get("http://localhost:8080/wbsMicroservice/api/instructions/"+idInstruction, {
+      headers: {
+          "Authorization": this.auth()
+      }
+    });
   }
 }

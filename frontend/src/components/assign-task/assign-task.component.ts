@@ -44,7 +44,7 @@ export class AssignTaskComponent implements OnInit {
 
   assignTask(idTask: number){
 
-    this.userDTO = new UserDTO(parseInt(sessionStorage.getItem("idUserEmployee")),"","","","","","",0);
+    this.userDTO = new UserDTO(parseInt(sessionStorage.getItem("idUserEmployee")),"","","","","","",0,"");
     this.employeeDTO = new EmployeeDTO(parseInt(sessionStorage.getItem("idEmployee")),this.userDTO,idTask,0);
     this.paramDTO = new ParamDTO(sessionStorage.getItem("userLogged"),this.employeeDTO);
 

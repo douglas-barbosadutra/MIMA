@@ -18,7 +18,7 @@ export class UserInsertComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
-    this.userDTO = new UserDTO(0,"","","","","","",0);
+    this.userDTO = new UserDTO(0,"","","","","","",0,"");
   }
 
     insertUser(f: NgForm){

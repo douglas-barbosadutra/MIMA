@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { TaskDTO } from 'src/dto/TaskDTO';
 import { InstructionService } from 'src/services/instruction.service';
 import { InstructionDTO } from 'src/dto/InstructionDTO';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-instruction-show',
@@ -29,20 +30,15 @@ export class InstructionShowComponent implements OnInit {
   }
 
   instructionShow() {
-    this.instructionService.showInstruction(sessionStorage.getItem("userLogged"), parseInt(sessionStorage.getItem("idTask"))).subscribe((data: any) => {
+    this.instructionService.showInstruction(parseInt(sessionStorage.getItem("idTask"))).subscribe((data: HttpResponse<any>) => {
       if (data != null)
-        this.instructionList = data;
+        this.instructionList = data.body;
     })
   }
 
   instructionDelete(idInstruction: number) {
-    this.instructionService.deleteInstruction(sessionStorage.getItem("userLogged"), idInstruction).subscribe((data: any) => {
-      if (data)
-        alert("Cancellazione effettuata");
-      else
-        alert("Cancellazione fallita");
-      this.router.navigateByUrl("homeUser");
-    })
+    this.instructionService.deleteInstruction(idInstruction).subscribe();
+    this.router.navigateByUrl("homeUser");
   }
 
 }
