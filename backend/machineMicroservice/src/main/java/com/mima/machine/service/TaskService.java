@@ -24,6 +24,13 @@ public interface TaskService {
      * @return the list of entities
      */
     List<TaskDTO> findAll();
+    
+    /**
+     * Get all the tasks of a machine.
+     *
+     * @return the list of entities
+     */
+    List<TaskDTO> findAllByIdMachine(int idMachine);
 
 
     /**

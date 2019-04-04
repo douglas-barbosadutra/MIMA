@@ -19,7 +19,8 @@ export class WbsShowComponent implements OnInit {
   constructor(private wbsService: WbsService, private router: Router) { }
 
   ngOnInit() {
-    this.wbsService.showWbs(1).subscribe((data: HttpResponse<any>) => {
+    this.userDTO = JSON.parse(localStorage.getItem("currentUserData"));
+    this.wbsService.showWbs(this.userDTO.id).subscribe((data: HttpResponse<any>) => {
       if (data != null) {
         this.wbsList = data.body;
       }

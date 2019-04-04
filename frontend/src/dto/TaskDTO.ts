@@ -1,11 +1,11 @@
 export class TaskDTO{
     private id: number;
     private description: string;
-    private idMachine: number;
+    private machineId: number;
 
-    constructor(id: number, descriprion: string, idMachine: number){
+    constructor(id: number, descriprion: string, machineId: number){
         this.id = id;
         this.description = descriprion;
-        this.idMachine = idMachine;
+        this.machineId = machineId;
     }
 }
