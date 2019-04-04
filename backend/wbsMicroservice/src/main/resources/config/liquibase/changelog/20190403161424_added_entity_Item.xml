@@ -26,6 +26,10 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="wbs_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
             <column name="father_id" type="bigint">
                 <constraints nullable="true" />
             </column>

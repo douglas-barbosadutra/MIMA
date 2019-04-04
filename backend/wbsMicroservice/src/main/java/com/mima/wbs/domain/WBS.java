@@ -1,10 +1,12 @@
 package com.mima.wbs.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -26,9 +28,8 @@ public class WBS implements Serializable {
     @Column(name = "id_user")
     private Integer idUser;
 
-    @ManyToOne
-    @JsonIgnoreProperties("wbs")
-    private Item item;
+    @OneToMany(mappedBy = "wbs")
+    private Set<Item> items = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -65,17 +66,29 @@ public class WBS implements Serializable {
         this.idUser = idUser;
     }
 
-    public Item getItem() {
-        return item;
+    public Set<Item> getItems() {
+        return items;
     }
 
-    public WBS item(Item item) {
-        this.item = item;
+    public WBS items(Set<Item> items) {
+        this.items = items;
         return this;
     }
 
-    public void setItem(Item item) {
-        this.item = item;
+    public WBS addItem(Item item) {
+        this.items.add(item);
+        item.setWbs(this);
+        return this;
+    }
+
+    public WBS removeItem(Item item) {
+        this.items.remove(item);
+        item.setWbs(null);
+        return this;
+    }
+
+    public void setItems(Set<Item> items) {
+        this.items = items;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

@@ -115,4 +115,12 @@ public class ItemResource {
         itemService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+    
+    @GetMapping("/itemGetRoot/{idWBS}")
+	@Timed
+	public ResponseEntity<ItemDTO> getRootByIdWBS(@PathVariable int idWBS) {
+		log.debug("REST request to get Item : {}", idWBS);
+		Optional<ItemDTO> itemDTO = itemService.findRootByWBS(idWBS);
+		return ResponseUtil.wrapOrNotFound(itemDTO);
+	}
 }

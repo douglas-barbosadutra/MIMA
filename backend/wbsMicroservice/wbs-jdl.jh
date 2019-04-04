@@ -23,14 +23,10 @@ entity Manufacturing{
 }
 // defining multiple OneToMany relationships with comments
 relationship OneToMany {
-	Item{wbs} to WBS
-	
-}
-
-relationship ManyToOne {
-	Item{father} to Item
-    Manufacturing{output} to Item
-    Manufacturing{instruction} to Instruction
+	WBS to Item{wbs}
+	Item to Item{father}
+	Item to Manufacturing{output}
+	Instruction to Manufacturing{instruction}
 }
 
 // defining multiple oneToOne relationships

@@ -8,13 +8,16 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity Item and its DTO ItemDTO.
  */
-@Mapper(componentModel = "spring", uses = {})
+@Mapper(componentModel = "spring", uses = {WBSMapper.class})
 public interface ItemMapper extends EntityMapper<ItemDTO, Item> {
 
+    @Mapping(source = "wbs.id", target = "wbsId")
     @Mapping(source = "father.id", target = "fatherId")
     ItemDTO toDto(Item item);
 
-    @Mapping(target = "wbs", ignore = true)
+    @Mapping(target = "items", ignore = true)
+    @Mapping(target = "manufacturings", ignore = true)
+    @Mapping(source = "wbsId", target = "wbs")
     @Mapping(source = "fatherId", target = "father")
     Item toEntity(ItemDTO itemDTO);
 

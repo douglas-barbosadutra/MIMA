@@ -1,5 +1,6 @@
 package com.mima.wbs.service;
 
+import com.mima.wbs.service.dto.InstructionDTO;
 import com.mima.wbs.service.dto.ManufacturingDTO;
 
 import java.util.List;
@@ -40,4 +41,7 @@ public interface ManufacturingService {
      * @param id the id of the entity
      */
     void delete(Long id);
+    
+    List<ManufacturingDTO> getManufacturingByInstruction(InstructionDTO instruction);
+
 }

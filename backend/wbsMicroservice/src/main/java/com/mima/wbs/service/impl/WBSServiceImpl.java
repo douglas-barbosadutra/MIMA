@@ -1,8 +1,10 @@
 package com.mima.wbs.service.impl;
 
+import com.mima.wbs.service.ItemService;
 import com.mima.wbs.service.WBSService;
 import com.mima.wbs.domain.WBS;
 import com.mima.wbs.repository.WBSRepository;
+import com.mima.wbs.service.dto.ItemDTO;
 import com.mima.wbs.service.dto.WBSDTO;
 import com.mima.wbs.service.mapper.WBSMapper;
 import org.slf4j.Logger;
@@ -27,8 +29,10 @@ public class WBSServiceImpl implements WBSService {
     private final WBSRepository wBSRepository;
 
     private final WBSMapper wBSMapper;
+    
+    private ItemService itemService;
 
-    public WBSServiceImpl(WBSRepository wBSRepository, WBSMapper wBSMapper) {
+    public WBSServiceImpl(WBSRepository wBSRepository, WBSMapper wBSMapper, ItemService itemService) {
         this.wBSRepository = wBSRepository;
         this.wBSMapper = wBSMapper;
     }
@@ -43,7 +47,11 @@ public class WBSServiceImpl implements WBSService {
     public WBSDTO save(WBSDTO wBSDTO) {
         log.debug("Request to save WBS : {}", wBSDTO);
         WBS wBS = wBSMapper.toEntity(wBSDTO);
-        wBS = wBSRepository.save(wBS);
+        wBS = wBSRepository.saveAndFlush(wBS);
+        ItemDTO item = new ItemDTO();
+		item.setWbsId(wBS.getId());
+		item.setName(wBS.getName());
+		item = itemService.save(item);
         return wBSMapper.toDto(wBS);
     }
 
@@ -86,4 +94,11 @@ public class WBSServiceImpl implements WBSService {
         log.debug("Request to delete WBS : {}", id);
         wBSRepository.deleteById(id);
     }
+
+	@Override
+	public List<WBSDTO> getWBSByIdUser(int idUser) {
+		return wBSRepository.findAllByIdUser(idUser).stream()
+	            .map(wBSMapper::toDto)
+	            .collect(Collectors.toCollection(LinkedList::new));
+	}
 }

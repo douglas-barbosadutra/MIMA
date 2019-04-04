@@ -8,13 +8,11 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity WBS and its DTO WBSDTO.
  */
-@Mapper(componentModel = "spring", uses = {ItemMapper.class})
+@Mapper(componentModel = "spring", uses = {})
 public interface WBSMapper extends EntityMapper<WBSDTO, WBS> {
 
-    @Mapping(source = "item.id", target = "itemId")
-    WBSDTO toDto(WBS wBS);
 
-    @Mapping(source = "itemId", target = "item")
+    @Mapping(target = "items", ignore = true)
     WBS toEntity(WBSDTO wBSDTO);
 
     default WBS fromId(Long id) {

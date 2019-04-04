@@ -1,6 +1,9 @@
 package com.mima.wbs.repository;
 
 import com.mima.wbs.domain.WBS;
+
+import java.util.List;
+
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
@@ -11,5 +14,5 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface WBSRepository extends JpaRepository<WBS, Long> {
-
+	public List<WBS> findAllByIdUser(Integer idUser);
 }

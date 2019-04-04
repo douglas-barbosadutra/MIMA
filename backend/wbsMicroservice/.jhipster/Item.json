@@ -9,9 +9,21 @@
     "relationships": [
         {
             "relationshipType": "one-to-many",
+            "relationshipName": "item",
+            "otherEntityName": "item",
+            "otherEntityRelationshipName": "father"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "manufacturing",
+            "otherEntityName": "manufacturing",
+            "otherEntityRelationshipName": "output"
+        },
+        {
+            "relationshipType": "many-to-one",
             "relationshipName": "wbs",
             "otherEntityName": "wBS",
-            "otherEntityRelationshipName": "item"
+            "otherEntityField": "id"
         },
         {
             "relationshipType": "many-to-one",

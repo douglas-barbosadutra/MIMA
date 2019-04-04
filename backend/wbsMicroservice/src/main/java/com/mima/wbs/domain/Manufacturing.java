@@ -24,11 +24,11 @@ public class Manufacturing implements Serializable {
     private Integer duration;
 
     @ManyToOne
-    @JsonIgnoreProperties("")
+    @JsonIgnoreProperties("manufacturings")
     private Item output;
 
     @ManyToOne
-    @JsonIgnoreProperties("")
+    @JsonIgnoreProperties("manufacturings")
     private Instruction instruction;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

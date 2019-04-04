@@ -18,7 +18,14 @@
             "fieldType": "Integer"
         }
     ],
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "manufacturing",
+            "otherEntityName": "manufacturing",
+            "otherEntityRelationshipName": "instruction"
+        }
+    ],
     "changelogDate": "20190403161425",
     "entityTableName": "instruction",
     "dto": "mapstruct",

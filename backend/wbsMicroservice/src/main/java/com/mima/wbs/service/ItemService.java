@@ -40,4 +40,6 @@ public interface ItemService {
      * @param id the id of the entity
      */
     void delete(Long id);
+    
+    Optional<ItemDTO> findRootByWBS(int idWBS);
 }

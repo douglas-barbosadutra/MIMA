@@ -1,9 +1,12 @@
 package com.mima.wbs.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -30,6 +33,9 @@ public class Instruction implements Serializable {
 
     @Column(name = "id_task")
     private Integer idTask;
+
+    @OneToMany(mappedBy = "instruction")
+    private Set<Manufacturing> manufacturings = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -90,6 +96,31 @@ public class Instruction implements Serializable {
 
     public void setIdTask(Integer idTask) {
         this.idTask = idTask;
+    }
+
+    public Set<Manufacturing> getManufacturings() {
+        return manufacturings;
+    }
+
+    public Instruction manufacturings(Set<Manufacturing> manufacturings) {
+        this.manufacturings = manufacturings;
+        return this;
+    }
+
+    public Instruction addManufacturing(Manufacturing manufacturing) {
+        this.manufacturings.add(manufacturing);
+        manufacturing.setInstruction(this);
+        return this;
+    }
+
+    public Instruction removeManufacturing(Manufacturing manufacturing) {
+        this.manufacturings.remove(manufacturing);
+        manufacturing.setInstruction(null);
+        return this;
+    }
+
+    public void setManufacturings(Set<Manufacturing> manufacturings) {
+        this.manufacturings = manufacturings;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

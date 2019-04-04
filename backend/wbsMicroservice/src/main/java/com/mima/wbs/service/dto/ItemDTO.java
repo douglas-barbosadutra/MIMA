@@ -12,6 +12,8 @@ public class ItemDTO implements Serializable {
 
     private String name;
 
+    private Long wbsId;
+
     private Long fatherId;
 
     public Long getId() {
@@ -28,6 +30,14 @@ public class ItemDTO implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Long getWbsId() {
+        return wbsId;
+    }
+
+    public void setWbsId(Long wBSId) {
+        this.wbsId = wBSId;
     }
 
     public Long getFatherId() {
@@ -64,6 +74,7 @@ public class ItemDTO implements Serializable {
         return "ItemDTO{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
+            ", wbs=" + getWbsId() +
             ", father=" + getFatherId() +
             "}";
     }

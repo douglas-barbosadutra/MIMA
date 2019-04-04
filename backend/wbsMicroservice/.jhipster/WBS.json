@@ -12,10 +12,10 @@
     ],
     "relationships": [
         {
+            "relationshipType": "one-to-many",
             "relationshipName": "item",
             "otherEntityName": "item",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id"
+            "otherEntityRelationshipName": "wbs"
         }
     ],
     "changelogDate": "20190403161423",

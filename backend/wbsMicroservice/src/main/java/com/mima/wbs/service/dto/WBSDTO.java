@@ -14,8 +14,6 @@ public class WBSDTO implements Serializable {
 
     private Integer idUser;
 
-    private Long itemId;
-
     public Long getId() {
         return id;
     }
@@ -38,14 +36,6 @@ public class WBSDTO implements Serializable {
 
     public void setIdUser(Integer idUser) {
         this.idUser = idUser;
-    }
-
-    public Long getItemId() {
-        return itemId;
-    }
-
-    public void setItemId(Long itemId) {
-        this.itemId = itemId;
     }
 
     @Override
@@ -75,7 +65,6 @@ public class WBSDTO implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", idUser=" + getIdUser() +
-            ", item=" + getItemId() +
             "}";
     }
 }

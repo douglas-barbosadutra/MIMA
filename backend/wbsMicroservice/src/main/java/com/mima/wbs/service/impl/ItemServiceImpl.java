@@ -4,7 +4,10 @@ import com.mima.wbs.service.ItemService;
 import com.mima.wbs.domain.Item;
 import com.mima.wbs.repository.ItemRepository;
 import com.mima.wbs.service.dto.ItemDTO;
+import com.mima.wbs.service.dto.WBSDTO;
 import com.mima.wbs.service.mapper.ItemMapper;
+import com.mima.wbs.service.mapper.WBSMapper;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,9 +31,12 @@ public class ItemServiceImpl implements ItemService {
 
     private final ItemMapper itemMapper;
 
-    public ItemServiceImpl(ItemRepository itemRepository, ItemMapper itemMapper) {
+    private final WBSMapper wbsMapper;
+
+    public ItemServiceImpl(ItemRepository itemRepository, ItemMapper itemMapper, WBSMapper wbsMapper) {
         this.itemRepository = itemRepository;
         this.itemMapper = itemMapper;
+        this.wbsMapper = wbsMapper;
     }
 
     /**
@@ -86,4 +92,20 @@ public class ItemServiceImpl implements ItemService {
         log.debug("Request to delete Item : {}", id);
         itemRepository.deleteById(id);
     }
+
+	@Override
+	public Optional<ItemDTO> findRootByWBS(int idWBS) {
+		WBSDTO wbs = new WBSDTO();
+		wbs.setId((long) idWBS);
+		List<ItemDTO> list = itemRepository.findAllByWbs(wbsMapper.toEntity(wbs)).stream()
+	            .map(itemMapper::toDto)
+	            .collect(Collectors.toCollection(LinkedList::new));
+		for(ItemDTO item: list) {
+			if(item.getFatherId() == 0) {
+				Optional<ItemDTO> result = Optional.of(item);
+				return result;
+			}
+		}
+		return null;
+	}
 }

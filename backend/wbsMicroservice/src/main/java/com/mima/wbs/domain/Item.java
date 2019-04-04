@@ -26,11 +26,18 @@ public class Item implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "item")
-    private Set<WBS> wbs = new HashSet<>();
+    @OneToMany(mappedBy = "father")
+    private Set<Item> items = new HashSet<>();
+
+    @OneToMany(mappedBy = "output")
+    private Set<Manufacturing> manufacturings = new HashSet<>();
 
     @ManyToOne
-    @JsonIgnoreProperties("")
+    @JsonIgnoreProperties("items")
+    private WBS wbs;
+
+    @ManyToOne
+    @JsonIgnoreProperties("items")
     private Item father;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -55,28 +62,66 @@ public class Item implements Serializable {
         this.name = name;
     }
 
-    public Set<WBS> getWbs() {
+    public Set<Item> getItems() {
+        return items;
+    }
+
+    public Item items(Set<Item> items) {
+        this.items = items;
+        return this;
+    }
+
+    public Item addItem(Item item) {
+        this.items.add(item);
+        item.setFather(this);
+        return this;
+    }
+
+    public Item removeItem(Item item) {
+        this.items.remove(item);
+        item.setFather(null);
+        return this;
+    }
+
+    public void setItems(Set<Item> items) {
+        this.items = items;
+    }
+
+    public Set<Manufacturing> getManufacturings() {
+        return manufacturings;
+    }
+
+    public Item manufacturings(Set<Manufacturing> manufacturings) {
+        this.manufacturings = manufacturings;
+        return this;
+    }
+
+    public Item addManufacturing(Manufacturing manufacturing) {
+        this.manufacturings.add(manufacturing);
+        manufacturing.setOutput(this);
+        return this;
+    }
+
+    public Item removeManufacturing(Manufacturing manufacturing) {
+        this.manufacturings.remove(manufacturing);
+        manufacturing.setOutput(null);
+        return this;
+    }
+
+    public void setManufacturings(Set<Manufacturing> manufacturings) {
+        this.manufacturings = manufacturings;
+    }
+
+    public WBS getWbs() {
         return wbs;
     }
 
-    public Item wbs(Set<WBS> wBS) {
+    public Item wbs(WBS wBS) {
         this.wbs = wBS;
         return this;
     }
 
-    public Item addWbs(WBS wBS) {
-        this.wbs.add(wBS);
-        wBS.setItem(this);
-        return this;
-    }
-
-    public Item removeWbs(WBS wBS) {
-        this.wbs.remove(wBS);
-        wBS.setItem(null);
-        return this;
-    }
-
-    public void setWbs(Set<WBS> wBS) {
+    public void setWbs(WBS wBS) {
         this.wbs = wBS;
     }
 
