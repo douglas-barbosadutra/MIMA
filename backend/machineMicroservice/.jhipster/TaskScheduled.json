@@ -1,0 +1,51 @@
+{
+    "name": "TaskScheduled",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "taskScheduled",
+            "otherEntityRelationshipName": "child",
+            "relationshipName": "father",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "scheduling",
+            "otherEntityRelationshipName": "taskScheduled",
+            "relationshipName": "scheduling",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "task",
+            "otherEntityRelationshipName": "taskScheduled",
+            "relationshipName": "task",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "taskScheduled",
+            "otherEntityRelationshipName": "father",
+            "relationshipName": "child",
+            "otherEntityField": "id",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20190404125432",
+    "entityTableName": "task_scheduled",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "machineMicroservice",
+    "applications": "*",
+    "microserviceName": "machineMicroservice"
+}

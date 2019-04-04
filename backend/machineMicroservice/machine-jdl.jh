@@ -1,0 +1,44 @@
+entity Machine {
+	id Integer
+    name String
+    model String
+    idUser Integer
+}
+
+entity Task {
+	id Integer
+    description String
+}
+
+entity Scheduling {
+	id Integer
+	name String
+	start String
+	finish String
+}
+
+entity TaskScheduled {
+	id Integer
+    name String
+}
+
+entity Employee {
+	id Integer
+    idUser Integer
+}
+
+relationship OneToMany {
+	Machine to Task{machine}
+    Machine to Scheduling{machine}
+    Scheduling to TaskScheduled{scheduling}
+    Task to TaskScheduled{task}
+    Task to Employee{task}
+}
+
+relationship ManyToMany {
+	TaskScheduled{father} to TaskScheduled{child}
+}
+
+dto * with mapstruct
+
+service all with serviceImpl

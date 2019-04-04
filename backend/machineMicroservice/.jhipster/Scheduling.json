@@ -1,0 +1,42 @@
+{
+    "name": "Scheduling",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "start",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "finish",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "taskScheduled",
+            "otherEntityRelationshipName": "scheduling",
+            "relationshipName": "taskScheduled"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "machine",
+            "otherEntityRelationshipName": "scheduling",
+            "relationshipName": "machine",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190404125431",
+    "entityTableName": "scheduling",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "machineMicroservice",
+    "applications": "*",
+    "microserviceName": "machineMicroservice"
+}

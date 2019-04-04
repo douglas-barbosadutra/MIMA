@@ -1,0 +1,28 @@
+{
+    "name": "Employee",
+    "fields": [
+        {
+            "fieldName": "idUser",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "task",
+            "otherEntityRelationshipName": "employee",
+            "relationshipName": "task",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190404125433",
+    "entityTableName": "employee",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "machineMicroservice",
+    "applications": "*",
+    "microserviceName": "machineMicroservice"
+}
