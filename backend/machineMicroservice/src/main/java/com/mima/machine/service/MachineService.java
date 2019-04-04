@@ -1,5 +1,6 @@
 package com.mima.machine.service;
 
+import com.mima.machine.domain.Machine;
 import com.mima.machine.service.dto.MachineDTO;
 
 import java.util.List;
@@ -40,4 +41,7 @@ public interface MachineService {
      * @param id the id of the entity
      */
     void delete(Long id);
+    
+    
+    List<MachineDTO> findAllMachineByIdUser(int idUser);
 }

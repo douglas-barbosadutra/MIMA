@@ -1,6 +1,9 @@
 package com.mima.machine.repository;
 
 import com.mima.machine.domain.Machine;
+
+import java.util.List;
+
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
@@ -11,5 +14,7 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface MachineRepository extends JpaRepository<Machine, Long> {
+	
+	public List<Machine> findAllByIdUser(int idUser);
 
 }
