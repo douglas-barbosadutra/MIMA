@@ -4,6 +4,8 @@ import { NgForm } from "@angular/forms";
 import { MachineDTO } from 'src/dto/MachineDTO';
 import {MachineService} from "src/services/machine.service";
 import { ParamDTO } from 'src/dto/ParamDTO';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { UserDTO } from 'src/dto/UserDTO';
 
 
 @Component({
@@ -13,30 +15,25 @@ import { ParamDTO } from 'src/dto/ParamDTO';
 })
 export class MachineInsertComponent implements OnInit {
   public machineDTO: MachineDTO;
-  private paramDTO: ParamDTO;
-  
+  public userDTO: UserDTO;
 
   constructor(private router: Router, private machineService: MachineService) { }
 
   ngOnInit() {
-    this.machineDTO = new MachineDTO(0,"","",0);
+    this.userDTO = JSON.parse(localStorage.getItem("currentUserData")) as UserDTO;
+    this.machineDTO = new MachineDTO(null,"","",this.userDTO.id);
   }
 
   insertMachine(f: NgForm){
 
-    this.paramDTO = new ParamDTO(sessionStorage.getItem("userLogged"),this.machineDTO);
+    console.log(this.machineDTO);
 
-    this.machineService.insertMachine(this.paramDTO).subscribe((data: any) => {
-      
-      if(data != null){
+    this.machineService.insertMachine(this.machineDTO).subscribe((response: HttpResponse<any>) => {
+
+        console.log(response);
         alert("Inserimento effettuato");
-        //console.log(data);
-      }
-        
-      else
-        alert("Inserimento fallito");
-
         this.router.navigateByUrl("/homeUser");
+
     })
   }
 

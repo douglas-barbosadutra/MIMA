@@ -87,4 +87,12 @@ public class MachineServiceImpl implements MachineService {
         log.debug("Request to delete Machine : {}", id);
         machineRepository.deleteById(id);
     }
+
+	@Override
+    @Transactional(readOnly = true)
+	public List<MachineDTO> findAllMachineByIdUser(int idUser) {
+		return machineRepository.findAllByIdUser(idUser).stream()
+	            .map(machineMapper::toDto)
+	            .collect(Collectors.toCollection(LinkedList::new));
+	}
 }

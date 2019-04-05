@@ -108,4 +108,10 @@ public class MachineResource {
         machineService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+    
+    @GetMapping("/allMachines/{id}")
+    public List<MachineDTO> getAllMachineById(@PathVariable int id) {
+        log.debug("REST request to get All Machine : {}", id);
+        return machineService.findAllMachineByIdUser(id);
+    }
 }
