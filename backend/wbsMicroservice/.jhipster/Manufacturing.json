@@ -1,0 +1,35 @@
+{
+    "name": "Manufacturing",
+    "fields": [
+        {
+            "fieldName": "duration",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "item",
+            "otherEntityRelationshipName": "manufacturing",
+            "relationshipName": "output",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "instruction",
+            "otherEntityRelationshipName": "manufacturing",
+            "relationshipName": "instruction",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190404162644",
+    "entityTableName": "manufacturing",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "wbsMicroservice",
+    "applications": "*",
+    "microserviceName": "wbsMicroservice"
+}

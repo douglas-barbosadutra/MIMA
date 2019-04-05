@@ -1,0 +1,39 @@
+{
+    "name": "Instruction",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "duration",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "gcodeFile",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "idTask",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "manufacturing",
+            "otherEntityRelationshipName": "instruction",
+            "relationshipName": "manufacturing"
+        }
+    ],
+    "changelogDate": "20190404162643",
+    "entityTableName": "instruction",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "wbsMicroservice",
+    "applications": "*",
+    "microserviceName": "wbsMicroservice"
+}

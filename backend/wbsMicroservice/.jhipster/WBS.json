@@ -1,0 +1,31 @@
+{
+    "name": "WBS",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "idUser",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "item",
+            "otherEntityRelationshipName": "wbs",
+            "relationshipName": "item"
+        }
+    ],
+    "changelogDate": "20190404162641",
+    "entityTableName": "wbs",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "wbsMicroservice",
+    "applications": "*",
+    "microserviceName": "wbsMicroservice"
+}
