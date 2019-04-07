@@ -1,6 +1,7 @@
 package com.mima.machine.service.impl;
 
 import com.mima.machine.service.TaskService;
+import com.mima.machine.domain.Machine;
 import com.mima.machine.domain.Task;
 import com.mima.machine.repository.TaskRepository;
 import com.mima.machine.service.dto.TaskDTO;
@@ -87,4 +88,15 @@ public class TaskServiceImpl implements TaskService {
         log.debug("Request to delete Task : {}", id);
         taskRepository.deleteById(id);
     }
+
+	@Override
+	public List<TaskDTO> findAllByIdMachine(long idMachine) {
+		Machine m = new Machine();
+		m.setId(idMachine);
+		
+		log.debug("Request to get all Tasks by Machine");
+        return taskRepository.findAllByMachine(m).stream()
+            .map(taskMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
+	}
 }

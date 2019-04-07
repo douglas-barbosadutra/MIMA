@@ -34,7 +34,7 @@ export class AssignTaskComponent implements OnInit {
   }
 
   showTask(){
-    this.taskService.showTask(parseInt(sessionStorage.getItem("idMachine")), sessionStorage.getItem("userLogged")).subscribe((data: any) =>{
+    this.taskService.showTask(parseInt(sessionStorage.getItem("idMachine"))).subscribe((data: Array<TaskDTO>) =>{
 
       if(data != null){
         this.taskList = data;

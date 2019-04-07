@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { TaskDTO } from 'src/dto/TaskDTO';
 import { TaskService } from 'src/services/task.service';
 import { ParamDTO } from 'src/dto/ParamDTO';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-task-insert',
@@ -13,7 +14,6 @@ import { ParamDTO } from 'src/dto/ParamDTO';
 export class TaskInsertComponent implements OnInit {
 
   public taskDTO: TaskDTO;
-  private paramDTO: ParamDTO;
 
   constructor(private router: Router, private taskService: TaskService) { }
 
@@ -28,10 +28,8 @@ export class TaskInsertComponent implements OnInit {
   }
 
   insertTask(f: NgForm){
-
-    this.paramDTO = new ParamDTO(sessionStorage.getItem("userLogged"),this.taskDTO);
   
-    this.taskService.insertTask(this.paramDTO).subscribe((data: any) =>{
+    this.taskService.insertTask(this.taskDTO).subscribe((data: TaskDTO) =>{
 
       if(data != null)
         alert("Inserimento effettuato");

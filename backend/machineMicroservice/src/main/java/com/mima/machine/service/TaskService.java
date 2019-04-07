@@ -30,7 +30,7 @@ public interface TaskService {
      *
      * @return the list of entities
      */
-    List<TaskDTO> findAllByIdMachine(int idMachine);
+    List<TaskDTO> findAllByIdMachine(long idMachine);
 
 
     /**

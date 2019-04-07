@@ -108,4 +108,10 @@ public class TaskResource {
         taskService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+    
+    @GetMapping("/tasksByMachine/{id}")
+    public List<TaskDTO> getAllTasksByIdMachine(@PathVariable Long idMachine) {
+        log.debug("REST request to get all Tasks");
+        return taskService.findAllByIdMachine(idMachine);
+    }
 }
