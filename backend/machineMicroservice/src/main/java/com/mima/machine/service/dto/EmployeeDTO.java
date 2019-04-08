@@ -11,8 +11,6 @@ public class EmployeeDTO implements Serializable {
 
     private Integer idUser;
 
-    private UserDTO user;
-
     private Long taskId;
 
     public Long getId() {
