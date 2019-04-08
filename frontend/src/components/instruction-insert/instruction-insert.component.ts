@@ -21,16 +21,18 @@ export class InstructionInsertComponent implements OnInit {
     if (sessionStorage.getItem("idTask") == null) {
       this.router.navigateByUrl("taskShow");
     }
-    this.instructionDTO = new InstructionDTO(0, "", 0, "", parseInt(sessionStorage.getItem("idTask")));
+    this.instructionDTO = new InstructionDTO(null, "", 0, "", parseInt(sessionStorage.getItem("idTask")));
   }
 
   insertInstruction(f: NgForm) {
-    this.instructionService.insertInstruction(this.instructionDTO).subscribe((data: HttpResponse<any>) => {
-      if (data.body != null)
-        alert("Inserimento effettuato");
-      else
+    this.instructionService.insertInstruction(this.instructionDTO).subscribe((data: InstructionDTO) => {
+      if (data != null)
+        this.router.navigateByUrl("instructionShow");
+      else{
         alert("Inserimento fallito");
-      this.router.navigateByUrl("homeUser");
+        this.router.navigateByUrl("homeUser");
+      }
+       
     })
 
   }

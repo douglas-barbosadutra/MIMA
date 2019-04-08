@@ -112,7 +112,7 @@ public class InstructionResource {
     
     @GetMapping("/instructions/{idTask}")
     @Timed
-    public List<InstructionDTO> showInstruction(@PathVariable int idTask){
+    public List<InstructionDTO> showInstruction(@PathVariable Long idTask){
     	return instructionService.getAllInstructionByIdTask(idTask);
     }
 }

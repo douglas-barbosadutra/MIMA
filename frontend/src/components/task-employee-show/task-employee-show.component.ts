@@ -35,7 +35,7 @@ export class TaskEmployeeShowComponent implements OnInit {
   }
 
   showTime(idTask: number){
-    this.manufactoringService.showTime(sessionStorage.getItem("userLogged"), idTask).subscribe((data: any) =>{
+    this.manufactoringService.showTime(idTask).subscribe((data: Array<TimeDTO>) =>{
       if(data != null)
         this.timeList = data;
     })

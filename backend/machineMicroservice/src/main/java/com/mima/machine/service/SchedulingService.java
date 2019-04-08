@@ -40,4 +40,6 @@ public interface SchedulingService {
      * @param id the id of the entity
      */
     void delete(Long id);
+    
+    List<SchedulingDTO> findAllByIdMachine(Long idMachine);
 }

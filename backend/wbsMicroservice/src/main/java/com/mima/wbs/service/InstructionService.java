@@ -41,5 +41,5 @@ public interface InstructionService {
      */
     void delete(Long id);
 
-	List<InstructionDTO> getAllInstructionByIdTask(int idTask);
+	List<InstructionDTO> getAllInstructionByIdTask(Long idTask);
 }

@@ -108,4 +108,10 @@ public class SchedulingResource {
         schedulingService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+    
+    @GetMapping("/schedulingsByIdMachine/{idMachine}")
+    public List<SchedulingDTO> getAllSchedulingsByIdMachine(@PathVariable Long idMachine) {
+        log.debug("REST request to get all Schedulings by Machine "+idMachine);
+        return schedulingService.findAllByIdMachine(idMachine);
+    }
 }

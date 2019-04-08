@@ -1,8 +1,11 @@
 package com.mima.wbs.web.rest;
 import com.mima.wbs.service.ManufacturingService;
+import com.mima.wbs.service.TimeService;
 import com.mima.wbs.web.rest.errors.BadRequestAlertException;
 import com.mima.wbs.web.rest.util.HeaderUtil;
 import com.mima.wbs.service.dto.ManufacturingDTO;
+import com.mima.wbs.service.dto.TimeDTO;
+
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,9 +30,11 @@ public class ManufacturingResource {
     private static final String ENTITY_NAME = "wbsMicroserviceManufacturing";
 
     private final ManufacturingService manufacturingService;
+    private final TimeService timeService;
 
-    public ManufacturingResource(ManufacturingService manufacturingService) {
+    public ManufacturingResource(ManufacturingService manufacturingService, TimeService timeService) {
         this.manufacturingService = manufacturingService;
+        this.timeService = timeService;
     }
 
     /**
@@ -107,5 +112,11 @@ public class ManufacturingResource {
         log.debug("REST request to delete Manufacturing : {}", id);
         manufacturingService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    }
+    
+    @GetMapping("/times/{idTask}")
+    public List<TimeDTO> getTimes(@PathVariable Long idTask) {
+        log.debug("REST request to get Times of a Task : {}", idTask);
+        return timeService.getTimes(idTask);
     }
 }

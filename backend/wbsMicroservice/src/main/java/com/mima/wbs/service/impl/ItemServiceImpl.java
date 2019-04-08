@@ -95,7 +95,7 @@ public class ItemServiceImpl implements ItemService {
     }
     
     @Override
-	public Optional<ItemDTO> findRootByWBS(int idWBS) {
+	public Optional<ItemDTO> findRootByWBS(Long idWBS) {
 		WBSDTO wbs = new WBSDTO();
 		wbs.setId((long) idWBS);
 		List<ItemDTO> list = itemRepository.findAllByWbs(wbsMapper.toEntity(wbs)).stream()

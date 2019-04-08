@@ -30,15 +30,15 @@ export class InstructionShowComponent implements OnInit {
   }
 
   instructionShow() {
-    this.instructionService.showInstruction(parseInt(sessionStorage.getItem("idTask"))).subscribe((data: HttpResponse<any>) => {
+    this.instructionService.showInstruction(parseInt(sessionStorage.getItem("idTask"))).subscribe((data: Array<InstructionDTO>) => {
       if (data != null)
-        this.instructionList = data.body;
+        this.instructionList = data;
     })
   }
 
   instructionDelete(idInstruction: number) {
     this.instructionService.deleteInstruction(idInstruction).subscribe();
-    this.router.navigateByUrl("homeUser");
+    location.reload(true);
   }
 
 }

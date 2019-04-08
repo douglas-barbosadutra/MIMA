@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TimeDTO } from 'src/dto/TimeDTO';
+import { UserDTO } from 'src/dto/UserDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,21 @@ export class ManufactoringService {
 
   constructor(private http: HttpClient) { }
 
-  showTime(jwt: string, idTask: number): Observable<Array<TimeDTO>>{
-    return this.http.get<Array<TimeDTO>>('http://localhost:8083/Manufacturing/showTime?jwt='+ jwt + '&idTask='+idTask);
+  auth() {
+    var user = JSON.parse(localStorage.getItem("currentUser")) as UserDTO;
+    if(user) {
+        return "Bearer " + user.authorization;
+    } else {
+        return "";
+    }
+  }
+
+  showTime(idTask: number): Observable<Array<TimeDTO>>{
+    return this.http.get<Array<TimeDTO>>("http://localhost:8080/wbsMicroservice/api/times/"+idTask, {
+      headers: {
+          "Authorization": this.auth()
+      }
+    });
   }
 
 }

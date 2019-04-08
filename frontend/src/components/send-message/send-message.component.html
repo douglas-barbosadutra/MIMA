@@ -1,40 +1,25 @@
-<app-menu-user></app-menu-user><!--
+<app-menu-user></app-menu-user>
+
 <h1 class="title">Invio Messaggi</h1>
-		
-<div id="container">
-  
-  <table class="table table-striped">
-      <thead>
-        
-        <tr>
-          <th>Url connection</th>
-          <th>Topic</th>
-          <th>QOS</th>
-        </tr>
-        
-      </thead>
-      
-      <tbody>
-        <tr *ngFor="Message">			
-          <td >{{MQTT.brokenURL}}</td>
-          <td >{{MQTT.topic}}</td>
-          <td >{{MQTT.QOS}}</td>
-          <label>
-              Message:
-            </label>
-            <input type="text" [formControl]="message" />
-          <div class="form-group">
-              <button (click)="publishMessage()" class="btn btn-dark">Send</button>
-            </div>
-          <td>
-            <button class="btn btn-primary" (click)="connectMQTT(MQTT.connectMQTT)">Connect</button>
-            <button class="btn btn-primary" (click)="disconnectMQTT(MQTT.disconnectMQTT)">Disconnect</button>
-          </td>
-          <input type="text" [formControl]="message" />
-          <div class="form-group">
-            <button class="btn btn-primary" (click)="getMessage(MQTT.getMessage">Aggiorna</button>
-            </div>
-        </tr>
-      </tbody>
-      
-  </table> -->
+
+<div style="padding-left: 20%; padding-right: 20%;">
+
+  <form #f="ngForm">
+
+    <div class="form-group">
+      <input type="text" class="form-control" name="brokenURL" placeholder="Inserisci l'URL del broken" [(ngModel)]="mqttDTO.brokenURL">  
+    </div>
+
+    <div class="form-group">
+      <input type="number" class="form-control" name="quos" placeholder="Inserisci il qos" [(ngModel)]="mqttDTO.qos">  
+    </div>
+
+    <div class="form-group">
+      <input type="text" class="form-control" name="topic" placeholder="Inserisci il topic" [(ngModel)]="mqttDTO.topic">  
+    </div>
+
+    <button type="submit" class="btn btn-primary" (click)="connect()" >Connetti</button>
+
+  </form>
+
+</div>

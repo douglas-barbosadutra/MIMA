@@ -41,5 +41,5 @@ public interface ItemService {
      */
     void delete(Long id);
 
-	Optional<ItemDTO> findRootByWBS(int idWBS);
+	Optional<ItemDTO> findRootByWBS(Long idWBS);
 }

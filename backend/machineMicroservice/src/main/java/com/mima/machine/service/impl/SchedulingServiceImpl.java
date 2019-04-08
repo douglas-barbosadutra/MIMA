@@ -1,6 +1,7 @@
 package com.mima.machine.service.impl;
 
 import com.mima.machine.service.SchedulingService;
+import com.mima.machine.domain.Machine;
 import com.mima.machine.domain.Scheduling;
 import com.mima.machine.repository.SchedulingRepository;
 import com.mima.machine.service.dto.SchedulingDTO;
@@ -87,4 +88,16 @@ public class SchedulingServiceImpl implements SchedulingService {
         log.debug("Request to delete Scheduling : {}", id);
         schedulingRepository.deleteById(id);
     }
+
+	@Override
+	public List<SchedulingDTO> findAllByIdMachine(Long idMachine) {
+		log.debug("Request to get all Schedulings by Machine");
+		
+		Machine m = new Machine();
+		m.setId(idMachine);
+		
+        return schedulingRepository.findAllByMachine(m).stream()
+            .map(schedulingMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
+	}
 }

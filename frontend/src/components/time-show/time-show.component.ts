@@ -28,10 +28,9 @@ export class TimeShowComponent implements OnInit {
   }
 
   timeShow(){
-    this.manufactoringService.showTime(sessionStorage.getItem("userLogged"), parseInt(sessionStorage.getItem("idTask"))).subscribe((data: Array<TimeDTO>) =>{
+    this.manufactoringService.showTime(parseInt(sessionStorage.getItem("idTask"))).subscribe((data: Array<TimeDTO>) =>{
       if(data != null){
         this.timeList = data;
-        console.log(data);
       }
     })
   }

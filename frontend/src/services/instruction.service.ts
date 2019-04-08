@@ -21,16 +21,16 @@ export class InstructionService {
     }
   }
 
-  insertInstruction(instructionDTO: InstructionDTO){
-    return this.http.post("http://localhost:8080/wbsMicroservice/api/instructions",instructionDTO, {
+  insertInstruction(instructionDTO: InstructionDTO): Observable<InstructionDTO>{
+    return this.http.post<InstructionDTO>("http://localhost:8080/wbsMicroservice/api/instructions",instructionDTO, {
       headers: {
           "Authorization": this.auth()
       }
     });
   }
 
-  showInstruction(idTask: number){
-    return this.http.get("http://localhost:8080/wbsMicroservice/api/instructions/"+idTask, {
+  showInstruction(idTask: number): Observable<Array<InstructionDTO>>{
+    return this.http.get<Array<InstructionDTO>>("http://localhost:8080/wbsMicroservice/api/instructions/"+idTask, {
       headers: {
           "Authorization": this.auth()
       }
