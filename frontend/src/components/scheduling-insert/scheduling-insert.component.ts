@@ -31,15 +31,14 @@ export class SchedulingInsertComponent implements OnInit {
     this.schedulingDTO.setStartDate(new Date(f.value.startDate).toLocaleString());
     this.schedulingDTO.setEndDate(new Date(f.value.endDate).toLocaleString());
 
-    this.paramDTO = new ParamDTO(sessionStorage.getItem("userLogged"),this.schedulingDTO);
-
-    this.schedulingService.insertScheduling(this.paramDTO).subscribe((data: any) =>{
+    this.schedulingService.insertScheduling(this.schedulingDTO).subscribe((data: SchedulingDTO) =>{
       if(data != null)
-        alert("Inserimento effettuato");
-      else
+        this.router.navigateByUrl("schedulingShow");
+      else{
         alert("Inserimento fallito");
-      this.router.navigateByUrl("homeUser");
-      
+        this.router.navigateByUrl("homeUser");
+      }
+        
     })
   }
 

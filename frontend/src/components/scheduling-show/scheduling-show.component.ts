@@ -30,7 +30,7 @@ export class SchedulingShowComponent implements OnInit {
   }
 
   schedulingShow(){
-      this.schedulingSerivce.showScheduling(parseInt(sessionStorage.getItem("idMachine")), sessionStorage.getItem("userLogged")).subscribe((data: any) =>{
+      this.schedulingSerivce.showScheduling(parseInt(sessionStorage.getItem("idMachine"))).subscribe((data: Array<SchedulingDTO>) =>{
       if(data != null)
         this.schedulingList = data;
     });
@@ -43,8 +43,8 @@ export class SchedulingShowComponent implements OnInit {
   }
 
   deleteScheduling(idScheduling: number){
-    this.schedulingSerivce.deleteScheduling(idScheduling, sessionStorage.getItem("userLogged")).subscribe((data: any) =>{
-      this.router.navigateByUrl("homeUser");
+    this.schedulingSerivce.deleteScheduling(idScheduling).subscribe((data: any) =>{
+      location.reload(true);
     });
   }
 

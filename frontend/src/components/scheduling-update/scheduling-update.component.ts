@@ -24,14 +24,14 @@ export class SchedulingUpdateComponent implements OnInit {
     this.schedulingDTO.setStartDate(new Date(f.value.startDate).toLocaleString());
     this.schedulingDTO.setEndDate(new Date(f.value.endDate).toLocaleString());
 
-    this.paramDTO = new ParamDTO(sessionStorage.getItem("userLogged"),this.schedulingDTO);
-
-    this.schedulingSerivce.updateScheduling(this.paramDTO).subscribe((data: any) =>{
+    this.schedulingSerivce.updateScheduling(this.schedulingDTO).subscribe((data: SchedulingDTO) =>{
       if(data != null)
-        alert("Aggiornamento effettuato");
-      else
+        this.router.navigateByUrl("schedulingShow");
+      else{
         alert("Aggiornamento fallito");
-      this.router.navigateByUrl("homeUser");
+        this.router.navigateByUrl("homeUser");
+      }
+        
     })
   }
 
