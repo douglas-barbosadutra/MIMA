@@ -32,22 +32,16 @@ export class MachineShowComponent implements OnInit {
   }
 
   chooseMachine(idMachine: number){
-    
     sessionStorage.setItem("idMachine",JSON.stringify(idMachine));
     alert("Macchinario selezionato");
-    this.router.navigateByUrl("homeUser");
+    this.router.navigateByUrl("machineShow");
   }
 
   deleteMachine(idMachine: number){
-    this.paramDTO = new ParamDTO(sessionStorage.getItem("userLogged"),idMachine);
-    this.machineService.deleteMachine(this.paramDTO).subscribe((data: any) =>{
 
-      if(data)
-        alert("Cancellazione effettuata");   
-      else
-        alert("Cancellazione fallita");
-
-      this.router.navigateByUrl("homeUser");
+    this.machineService.deleteMachine(idMachine).subscribe((response: HttpResponse<any>) => {
+      //alert("Cancellazione effettuata");   
+      location.reload();
     })
   }
 

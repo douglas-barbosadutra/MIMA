@@ -37,7 +37,11 @@ export class MachineService {
     });
   }
 
-  deleteMachine(paramDTO: ParamDTO){
-    return this.http.post('http://localhost:8082/Machine/deleteMachine',paramDTO);
+  deleteMachine(idMachine: number){
+    return this.http.delete('http://localhost:8080/machineMicroservice/api/machines/'+idMachine, {
+      headers: {
+          "Authorization": this.auth()
+      }
+    });
   }
 }

@@ -32,7 +32,7 @@ export class MachineInsertComponent implements OnInit {
 
         console.log(response);
         alert("Inserimento effettuato");
-        this.router.navigateByUrl("/homeUser");
+        this.router.navigateByUrl("/machineShow");
 
     })
   }
