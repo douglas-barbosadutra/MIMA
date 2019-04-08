@@ -1,22 +1,27 @@
 package com.mima.wbs.web.rest;
-import com.mima.wbs.service.ManufacturingService;
-import com.mima.wbs.service.TimeService;
-import com.mima.wbs.web.rest.errors.BadRequestAlertException;
-import com.mima.wbs.web.rest.util.HeaderUtil;
-import com.mima.wbs.service.dto.ManufacturingDTO;
-import com.mima.wbs.service.dto.TimeDTO;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Optional;
 
-import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.net.URI;
-import java.net.URISyntaxException;
+import com.mima.wbs.service.ManufacturingService;
+import com.mima.wbs.service.dto.ManufacturingDTO;
+import com.mima.wbs.web.rest.errors.BadRequestAlertException;
+import com.mima.wbs.web.rest.util.HeaderUtil;
 
-import java.util.List;
-import java.util.Optional;
+import io.github.jhipster.web.util.ResponseUtil;
 
 /**
  * REST controller for managing Manufacturing.
@@ -30,11 +35,9 @@ public class ManufacturingResource {
     private static final String ENTITY_NAME = "wbsMicroserviceManufacturing";
 
     private final ManufacturingService manufacturingService;
-    private final TimeService timeService;
 
-    public ManufacturingResource(ManufacturingService manufacturingService, TimeService timeService) {
+    public ManufacturingResource(ManufacturingService manufacturingService) {
         this.manufacturingService = manufacturingService;
-        this.timeService = timeService;
     }
 
     /**
@@ -114,9 +117,4 @@ public class ManufacturingResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
     
-    @GetMapping("/times/{idTask}")
-    public List<TimeDTO> getTimes(@PathVariable Long idTask) {
-        log.debug("REST request to get Times of a Task : {}", idTask);
-        return timeService.getTimes(idTask);
-    }
 }
