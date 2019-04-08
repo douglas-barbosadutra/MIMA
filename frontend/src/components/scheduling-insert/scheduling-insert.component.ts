@@ -23,8 +23,9 @@ export class SchedulingInsertComponent implements OnInit {
       this.router.navigateByUrl("machineShow");
     }
     else
-      this.schedulingDTO = new SchedulingDTO(0,"",null,null,parseInt(sessionStorage.getItem("idMachine")));
-  }
+      this.schedulingDTO = new SchedulingDTO(null,"",null,null,parseInt(sessionStorage.getItem("idMachine")));
+      console.log(this.schedulingDTO);
+    }
 
   schedulingInsert(f: NgForm){
 

@@ -87,4 +87,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         log.debug("Request to delete Employee : {}", id);
         employeeRepository.deleteById(id);
     }
+
+	@Override
+	public EmployeeDTO getEmployeeByIdUser(Integer idUser) {
+		log.debug("Request to get Employee by idUser : {}", idUser);
+		
+         return employeeMapper.toDto(employeeRepository.findEmployeeByIdUser(idUser));
+	}
 }

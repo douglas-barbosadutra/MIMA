@@ -24,7 +24,7 @@ export class TaskInsertComponent implements OnInit {
       //alert("Devi prima selezionare un macchinario");
     }
     else
-      this.taskDTO = new TaskDTO(0,"",parseInt(sessionStorage.getItem("idMachine")));
+      this.taskDTO = new TaskDTO(null,"",parseInt(sessionStorage.getItem("idMachine")));
   }
 
   insertTask(f: NgForm){

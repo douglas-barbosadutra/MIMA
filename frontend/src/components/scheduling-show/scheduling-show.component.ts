@@ -31,8 +31,11 @@ export class SchedulingShowComponent implements OnInit {
 
   schedulingShow(){
       this.schedulingSerivce.showScheduling(parseInt(sessionStorage.getItem("idMachine"))).subscribe((data: Array<SchedulingDTO>) =>{
-      if(data != null)
+      if(data != null){
         this.schedulingList = data;
+        console.log(data);
+      }
+        
     });
   }
 

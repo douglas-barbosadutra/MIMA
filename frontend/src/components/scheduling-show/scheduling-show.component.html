@@ -20,8 +20,8 @@
         <tr *ngFor="let schedulingList of schedulingList">			
           <td >{{schedulingList.id}}</td>
           <td >{{schedulingList.name}}</td>
-          <td >{{schedulingList.startDate}}</td>
-          <td >{{schedulingList.endDate}}</td>
+          <td >{{schedulingList.start}}</td>
+          <td >{{schedulingList.finish}}</td>
           <td>
             <button class="btn btn-primary" (click)="showGraph(schedulingList.id)">Visualizza grafo</button>
             <button class="btn btn-primary" (click)="deleteScheduling(schedulingList.id)">Elimina</button>
