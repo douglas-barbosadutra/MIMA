@@ -64,14 +64,11 @@ public class MQTTResource {
 	//test comunicazione tra microservizi
 	@GetMapping("/testComunication")
     public ResponseEntity<String> testComunication() {
-			
 		MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
 		headers.add("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTU1NDg4NjM5MX0.hh1C_2ONuDUi_JgSAa5ygn_0-ZtNRPtPKlwvr-O23hQxfthzceCc7dQB3iE6eBJOMOC3GQZki_V8X-vLWjmf-A");
-		
 		HttpEntity<?> request1 = new HttpEntity(String.class, headers);
 		ResponseEntity<String> responseEntity = new RestTemplate().exchange("http://localhost:8080/machineMicroservice/api/machines", HttpMethod.GET, request1, String.class);
 		return ResponseEntity.ok().body(responseEntity.getBody()); 
-
     }
 	
 }
