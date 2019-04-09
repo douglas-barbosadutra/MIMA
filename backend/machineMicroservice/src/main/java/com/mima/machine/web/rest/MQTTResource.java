@@ -70,7 +70,7 @@ public class MQTTResource {
 		
 		HttpEntity<?> request1 = new HttpEntity(String.class, headers);
 		ResponseEntity<String> responseEntity = new RestTemplate().exchange("http://localhost:8080/machineMicroservice/api/machines", HttpMethod.GET, request1, String.class);
-		return ResponseEntity.ok().body(responseEntity.getBody());
+		return ResponseEntity.ok().body(responseEntity.getBody()); 
 
     }
 	
