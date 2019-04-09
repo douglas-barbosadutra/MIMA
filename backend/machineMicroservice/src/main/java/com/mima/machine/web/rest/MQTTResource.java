@@ -33,9 +33,8 @@ public class MQTTResource {
 		return ResponseEntity.ok().body(result);
     }
 	
-	//non testato
 	@PostMapping("/publishMessage")
-    public ResponseEntity<Boolean> publishMessage(@RequestParam(value="message") String message) {
+    public ResponseEntity<Boolean> publishMessage(@RequestBody String message) {
 		boolean result = mqttService.publishMessage(message);
 		return ResponseEntity.ok().body(result);
     }

@@ -15,6 +15,7 @@ import { HttpResponse } from '@angular/common/http';
 export class SendMessageComponent implements OnInit {
 
   public mqttDTO: MqttDTO;
+  public message: string;
   private isConnected: boolean;
 
   constructor(private router: Router, private sendmessageservice: SendMessageService) { }
@@ -26,7 +27,33 @@ export class SendMessageComponent implements OnInit {
   connect(){
     console.log(this.mqttDTO);
     this.sendmessageservice.connect(this.mqttDTO).subscribe((isConnected: boolean) => {
-      console.log("connesso: " + isConnected);
+      if(isConnected){
+        document.getElementById("textarea").style.display = "block";
+        document.getElementById("textarea").style.marginLeft = "20%";
+        document.getElementById("textarea").style.marginRight = "20%";
+        document.getElementById("form").style.display = "none";
+      }
+        
+    })
+  }
+
+  disconnect(){
+    this.sendmessageservice.disconnect().subscribe((isDisconnected: boolean) =>{
+      if(isDisconnected){
+        document.getElementById("form").style.display = "block";
+        document.getElementById("form").style.marginLeft = "20%";
+        document.getElementById("form").style.marginRight = "20%";
+        document.getElementById("textarea").style.display = "none";
+      }
+    })
+  }
+
+  publishMessage(){
+    this.sendmessageservice.publishMessage(this.message).subscribe((messagePublished: boolean) =>{
+      if(messagePublished)
+        alert("Messaggio pubblicato");
+      else
+        alert("Pubblicazione fallita");
     })
   }
 
