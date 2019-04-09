@@ -31,7 +31,7 @@ export class SendMessageComponent implements OnInit {
         document.getElementById("textarea").style.display = "block";
         document.getElementById("textarea").style.marginLeft = "20%";
         document.getElementById("textarea").style.marginRight = "20%";
-        document.getElementById("form").style.display = "none";
+        document.getElementById("textarea").style.marginTop = "5%";
       }
         
     })
@@ -40,9 +40,6 @@ export class SendMessageComponent implements OnInit {
   disconnect(){
     this.sendmessageservice.disconnect().subscribe((isDisconnected: boolean) =>{
       if(isDisconnected){
-        document.getElementById("form").style.display = "block";
-        document.getElementById("form").style.marginLeft = "20%";
-        document.getElementById("form").style.marginRight = "20%";
         document.getElementById("textarea").style.display = "none";
       }
     })

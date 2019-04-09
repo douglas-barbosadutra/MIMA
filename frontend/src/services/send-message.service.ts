@@ -30,7 +30,7 @@ export class SendMessageService {
   }
 
   disconnect(): Observable<boolean>{
-    return this.http.post<boolean>("http://localhost:8080/machineMicroservice/api/disconnectMQTT", {
+    return this.http.post<boolean>("http://localhost:8080/machineMicroservice/api/disconnectMQTT", null, {
       headers: {
           "Authorization": this.auth()
       }
