@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeDTO } from 'src/dto/EmployeeDTO';
-import { UserDTO } from 'src/dto/UserDTO';
 import { TaskDTO } from 'src/dto/TaskDTO';
 import { TaskService } from 'src/services/task.service';
 import { Router } from '@angular/router';
