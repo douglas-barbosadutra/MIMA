@@ -126,13 +126,9 @@ public class ItemResource {
     
     @GetMapping("/itemGetRoot/{id}")
 	public ResponseEntity<ItemDTO> itemGetRoot(@PathVariable int id) {
-    	System.out.println("aaaaaaaaaaaaaaaaaa");
-    	System.out.println(id);
 		log.debug("REST request to get Item FROM wbs: {}", id);
 		Long idWBS = new Long(id);
-		System.out.println(idWBS);
 		Optional<ItemDTO> itemDTO = itemService.findRootByWBS(idWBS);
-		System.out.println(itemDTO);
 		return ResponseUtil.wrapOrNotFound(itemDTO);
 	}
     

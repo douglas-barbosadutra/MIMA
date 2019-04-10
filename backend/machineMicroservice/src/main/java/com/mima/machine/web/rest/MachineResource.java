@@ -114,4 +114,9 @@ public class MachineResource {
         log.debug("REST request to get All Machine : {}", id);
         return machineService.findAllMachineByIdUser(id);
     }
+    
+    @GetMapping("/findAllMachineByUserId/{idUser}")
+    public List<MachineDTO> findAllMachineByUserId(@PathVariable int idUser) {
+		return machineService.TESTfindAllMachineByUserId(idUser); 
+    }
 }

@@ -98,16 +98,14 @@ public class ItemServiceImpl implements ItemService {
 	public Optional<ItemDTO> findRootByWBS(Long idWBS) {
 		WBSDTO wbs = new WBSDTO();
 		wbs.setId((long) idWBS);
-		System.out.println(wbs);
 		
 		List<ItemDTO> list = itemRepository.findAllByWbs(wbsMapper.toEntity(wbs)).stream()
 	            .map(itemMapper::toDto)
 	            .collect(Collectors.toCollection(LinkedList::new));
-		System.out.println(list);
+
 		for(ItemDTO item: list) {
-			if(item.getFatherId() == 0) {
+			if(item.getFatherId() == null) {
 				Optional<ItemDTO> result = Optional.of(item);
-				System.out.println(result);
 				return result;
 			}
 		}

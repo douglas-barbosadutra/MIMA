@@ -95,4 +95,11 @@ public class MachineServiceImpl implements MachineService {
 	            .map(machineMapper::toDto)
 	            .collect(Collectors.toCollection(LinkedList::new));
 	}
+	
+	@Override
+	public List<MachineDTO> TESTfindAllMachineByUserId(int idUser) {
+		return machineRepository.TESTfindAllMachineByUserId(idUser).stream()
+				.map(machineMapper::toDto)
+				.collect(Collectors.toCollection(LinkedList::new));
+	}
 }
