@@ -7,8 +7,8 @@
       <thead>
         
         <tr>
-          <th>ID</th>
-          <th>Nome</th>
+          <th>ID employee</th>
+          <th>Name</th>
           <th>Task assegnato</th>
           <th>Opzioni</th>
         </tr>
@@ -16,13 +16,13 @@
       </thead>
       
       <tbody>
-        <tr *ngFor="let employeeList of employeeList">			
-          <td >{{employeeList.id}}</td>
-          <td >{{employeeList.user.name}}</td>
-          <td >{{employeeList.idTask}}</td>
+        <tr *ngFor="let employee of employeeShowList">			
+          <td >{{employee.id}}</td>
+          <td >{{employee.name}}</td>
+          <td >{{employee.descriptionTask}}</td>
           <td>
-            <button class="btn btn-primary" (click)="employeeDelete(employeeList.user.id)">Elimina</button>
-            <button class="btn btn-primary" (click)="assignTask(employeeList.id,employeeList.user.id)">Assegna task</button>
+            <button class="btn btn-primary" (click)="employeeDelete(employee.id,employee.idUser)">Elimina</button>
+            <button class="btn btn-primary" (click)="assignTask(employee.id)">Assegna task</button>
           </td>
         </tr>
       </tbody>

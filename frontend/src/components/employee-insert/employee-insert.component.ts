@@ -4,6 +4,7 @@ import { EmployeeService } from 'src/services/employee.service';
 import { Router } from '@angular/router';
 import { EmployeeDTO } from 'src/dto/EmployeeDTO';
 import { ParamDTO } from 'src/dto/ParamDTO';
+import { UserService } from 'src/services/user.service';
 
 @Component({
   selector: 'app-employee-insert',
@@ -12,27 +13,33 @@ import { ParamDTO } from 'src/dto/ParamDTO';
 })
 export class EmployeeInsertComponent implements OnInit {
 
-  public userDTO: UserDTO;
+  private userLoggedDTO: UserDTO;
   private employeeDTO: EmployeeDTO;
-  private paramDTO: ParamDTO;
+  public userDTO: UserDTO;
+  private authorities: Array<string>;
 
-  constructor(private employeeService: EmployeeService, private router: Router) { }
+  constructor(private userService: UserService, private employeeService: EmployeeService, private router: Router) { }
 
   ngOnInit() {
-    this.userDTO = new UserDTO(0,"","","","","","",0,"");
+    this.userLoggedDTO = JSON.parse(localStorage.getItem("currentUserData"));
+    this.employeeDTO = new EmployeeDTO(null,null,this.userLoggedDTO.id,null,null);
+    this.authorities = new Array<string>();
+    this.authorities.push("ROLE_USER")
+    this.authorities.push("ROLE_EMPLOYEE");
+    this.userDTO = new UserDTO(null,null,null,null,null,null,this.authorities);
   }
 
   insertEmployee(){
-      this.employeeDTO = new EmployeeDTO(0,this.userDTO,0,0);
-      this.paramDTO = new ParamDTO(sessionStorage.getItem("userLogged"),this.employeeDTO);
 
-      this.employeeService.insertEmployee(this.paramDTO).subscribe((data: any) =>{
-        if(data =! null)
-          alert("Inserimento effettuato");
-        else
-          alert("Inserimento fallito")
-        this.router.navigateByUrl("homeUser");
-      })
+    this.userService.insertEmployeeUser(this.userDTO).subscribe((response: UserDTO) =>{
+      if(response != null){
+        this.employeeDTO.setIdUser(response.id);
+        this.employeeDTO.setName(response.firstName);
+        this.employeeService.insertEmployee(this.employeeDTO).subscribe((response: EmployeeDTO) =>{
+          if(response != null)
+            this.router.navigateByUrl("employeeShow");
+        })
+      } 
+    })
   }
-
 }

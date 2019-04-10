@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { EmployeeDTO } from 'src/dto/EmployeeDTO';
 import { Observable } from 'rxjs';
 import { ParamDTO } from 'src/dto/ParamDTO';
+import { UserDTO } from 'src/dto/UserDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -11,23 +12,52 @@ export class EmployeeService {
 
   constructor(private http: HttpClient) { }
 
-  findEmployee(idUser: number): Observable<EmployeeDTO>{
-    return this.http.get<EmployeeDTO>('http://localhost:8080/Employee/findEmployee?idUser='+idUser);
+  auth() {
+    var user = JSON.parse(localStorage.getItem("currentUser")) as UserDTO;
+    if(user) {
+        return "Bearer " + user.authorities;
+    } else {
+        return "";
+    }
   }
 
-  insertEmployee(paramDTO: ParamDTO): Observable<EmployeeDTO>{
-    return this.http.post<EmployeeDTO>('http://localhost:8080/Employee/insertEmployee',paramDTO);
+  findEmployee(idEmployee: number): Observable<EmployeeDTO>{
+    return this.http.get<EmployeeDTO>("http://localhost:8080/machineMicroservice/api/employees/"+idEmployee, {
+      headers: {
+          "Authorization": this.auth()
+      }
+    });
   }
 
-  showEmployee(jwt: string): Observable<Array<EmployeeDTO>>{
-    return this.http.get<Array<EmployeeDTO>>('http://localhost:8080/Employee/showEmployee?jwt='+jwt);
+  insertEmployee(employeeDTO: EmployeeDTO): Observable<EmployeeDTO>{
+    return this.http.post<EmployeeDTO>("http://localhost:8080/machineMicroservice/api/employees",employeeDTO, {
+      headers: {
+          "Authorization": this.auth()
+      }
+    });
   }
 
-  deleteEmployee(paramDTO: ParamDTO){
-    return this.http.post('http://localhost:8080/Employee/deleteEmployee?',paramDTO);
+  showEmployee(idBusinessOwner: number): Observable<Array<EmployeeDTO>>{
+    return this.http.get<Array<EmployeeDTO>>("http://localhost:8080/machineMicroservice/api/employeesByBusinessOwner?id="+idBusinessOwner, {
+      headers: {
+          "Authorization": this.auth()
+      }
+    });
   }
 
-  assignTask(paramDTO: ParamDTO): Observable<EmployeeDTO>{
-    return this.http.put<EmployeeDTO>('http://localhost:8080/Employee/assignTask',paramDTO);
+  deleteEmployee(idEmployee: number): Observable<Boolean>{
+    return this.http.delete<Boolean>("http://localhost:8080/machineMicroservice/api/employees/"+idEmployee, {
+      headers: {
+          "Authorization": this.auth()
+      }
+    });
+  }
+
+  assignTask(employeeDTO: EmployeeDTO): Observable<EmployeeDTO>{
+    return this.http.put<EmployeeDTO>("http://localhost:8080/machineMicroservice/api/employees",employeeDTO, {
+      headers: {
+          "Authorization": this.auth()
+      }
+    });
   }
 }

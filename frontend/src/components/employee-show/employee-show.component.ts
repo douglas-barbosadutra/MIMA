@@ -3,6 +3,11 @@ import { EmployeeDTO } from 'src/dto/EmployeeDTO';
 import { EmployeeService } from 'src/services/employee.service';
 import { Router } from '@angular/router';
 import { ParamDTO } from 'src/dto/ParamDTO';
+import { UserDTO } from 'src/dto/UserDTO';
+import { EmployeeShowDTO } from 'src/dto/EmployeeShowDTO';
+import { TaskService } from 'src/services/task.service';
+import { TaskDTO } from 'src/dto/TaskDTO';
+import { UserService } from 'src/services/user.service';
 
 @Component({
   selector: 'app-employee-show',
@@ -10,39 +15,56 @@ import { ParamDTO } from 'src/dto/ParamDTO';
   styleUrls: ['./employee-show.component.css']
 })
 export class EmployeeShowComponent implements OnInit {
+  private userLoggedDTO: UserDTO;
+  public employeeShowList: Array<EmployeeShowDTO>;
   private employeeList: Array<EmployeeDTO>;
-  private paramDTO: ParamDTO;
 
-  constructor(private employeeService: EmployeeService, private router: Router) { }
+  constructor(private userService: UserService, private taskService: TaskService, private employeeService: EmployeeService, private router: Router) { }
 
   ngOnInit() {
-    this.employeeService.showEmployee(sessionStorage.getItem("userLogged")).subscribe((data: any) =>{
-      if(data != null){
-        this.employeeList = data;
+    this.employeeShowList = new Array<EmployeeShowDTO>();
+    this.userLoggedDTO = JSON.parse(localStorage.getItem("currentUserData"));
+
+    this.employeeService.showEmployee(this.userLoggedDTO.id).subscribe((response: Array<EmployeeDTO>) =>{
+      if(response != null){
+        this.employeeList = response;
+        this.showEmployee();
       }
-        
     })
   }
 
-  employeeDelete(idUser: number){
+  showEmployee(){
 
-    this.paramDTO = new ParamDTO(sessionStorage.getItem("userLogged"),idUser);
-
-    this.employeeService.deleteEmployee(this.paramDTO).subscribe((data: any) =>{
-      if(data)
-        alert("Cancellazione effettuata");
+    for(let employee of this.employeeList){
+      if(employee.taskId != null){
+        this.taskService.findOne(employee.taskId).subscribe((response: TaskDTO) =>{
+          if(response != null)
+          this.employeeShowList.push(new EmployeeShowDTO(employee.id,employee.idUser,employee.name,response.description));
+        })
+      }
       else
-        alert("Cancellazione fallita");
-    })
-    this.router.navigateByUrl("homeUser");
+        this.employeeShowList.push(new EmployeeShowDTO(employee.id,employee.idUser,employee.name,"Nessun task assegnato"));
+    }
+
   }
 
-  assignTask(idEmployee: number, idUser: number){
+  employeeDelete(idEmployee: number, idUser: number){
+
+    this.userService.deleteEmployeeUser(idUser).subscribe((response: boolean) =>{
+      if(response){
+        this.employeeService.deleteEmployee(idEmployee).subscribe((response2: boolean) =>{
+          if(response2)
+            location.reload(true);
+        })
+      }
+    })
+    
+  }
+
+  assignTask(idEmployee: number){
 
     sessionStorage.setItem("idEmployee",JSON.stringify(idEmployee));
-    sessionStorage.setItem("idUserEmployee",JSON.stringify(idUser));
     this.router.navigateByUrl("assignTask");
-    
   }
 
 }

@@ -14,7 +14,7 @@ export class WbsService {
   auth() {
     var user = JSON.parse(localStorage.getItem("currentUser")) as UserDTO;
     if(user) {
-        return "Bearer " + user.authorization;
+        return "Bearer " + user.authorities;
     } else {
         return "";
     }

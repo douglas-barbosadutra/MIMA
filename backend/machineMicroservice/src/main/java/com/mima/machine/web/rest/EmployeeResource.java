@@ -103,9 +103,15 @@ public class EmployeeResource {
      * @return the ResponseEntity with status 200 (OK)
      */
     @DeleteMapping("/employees/{id}")
-    public ResponseEntity<Void> deleteEmployee(@PathVariable Long id) {
+    public boolean deleteEmployee(@PathVariable Long id) {
         log.debug("REST request to delete Employee : {}", id);
-        employeeService.delete(id);
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+        return employeeService.delete(id);
     }
+    
+    @GetMapping("/employeesByBusinessOwner")
+    public List<EmployeeDTO> getAllEmployeesByBusinessOwner(@RequestParam(value="id") Integer id) {
+        log.debug("REST request to get all Employees by businessOwner: "+id);
+        return employeeService.findAllByBusinessOwner(id);
+    }
+    
 }

@@ -228,6 +228,11 @@ public class UserService {
             log.debug("Deleted User: {}", user);
         });
     }
+    
+    public boolean deleteUserById(Long id) {
+    	userRepository.deleteById(id);
+    	return !userRepository.findById(id).isPresent();
+    }
 
     public void changePassword(String currentClearTextPassword, String newPassword) {
         SecurityUtils.getCurrentUserLogin()

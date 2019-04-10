@@ -24,6 +24,10 @@ public class UserDTO {
     @Pattern(regexp = Constants.LOGIN_REGEX)
     @Size(min = 1, max = 50)
     private String login;
+    
+    @NotBlank
+    @Size(min = 1, max = 50)
+    private String password;
 
     @Size(max = 50)
     private String firstName;
@@ -89,6 +93,14 @@ public class UserDTO {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+    
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFirstName() {

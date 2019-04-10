@@ -39,7 +39,7 @@ public interface EmployeeService {
      *
      * @param id the id of the entity
      */
-    void delete(Long id);
+    boolean delete(Long id);
     
-    EmployeeDTO getEmployeeByIdUser(Integer idUser);
+    List<EmployeeDTO> findAllByBusinessOwner(Integer id);
 }

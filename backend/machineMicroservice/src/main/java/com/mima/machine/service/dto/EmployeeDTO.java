@@ -11,6 +11,11 @@ public class EmployeeDTO implements Serializable {
 
     private Integer idUser;
 
+    private String name;
+
+    private Integer idBusinessOwner;
+
+
     private Long taskId;
 
     public Long getId() {
@@ -27,6 +32,22 @@ public class EmployeeDTO implements Serializable {
 
     public void setIdUser(Integer idUser) {
         this.idUser = idUser;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getIdBusinessOwner() {
+        return idBusinessOwner;
+    }
+
+    public void setIdBusinessOwner(Integer idBusinessOwner) {
+        this.idBusinessOwner = idBusinessOwner;
     }
 
     public Long getTaskId() {
@@ -63,6 +84,8 @@ public class EmployeeDTO implements Serializable {
         return "EmployeeDTO{" +
             "id=" + getId() +
             ", idUser=" + getIdUser() +
+            ", name='" + getName() + "'" +
+            ", idBusinessOwner=" + getIdBusinessOwner() +
             ", task=" + getTaskId() +
             "}";
     }

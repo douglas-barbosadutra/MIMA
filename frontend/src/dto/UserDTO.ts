@@ -1,24 +1,20 @@
 export class UserDTO{
     id: number;
-    username: string;
+    login: string;
     password: string;
-    name: string;
-    surname: string;
+    firstName: string;
+    lastName: string;
     email: string;
-    phone: string;
-    rank: number;
-    authorization: string;
+    authorities: Array<string>;
 
 
-    constructor(id: number, username: string, password: string, name: string, surname: string, email: string, phone: string, rank: number, authorization: string){
+    constructor(id: number, login: string, password: string, firstName: string, lastName: string, email: string, authorities: Array<string>){
         this.id = id;
-        this.username = username;
+        this.login = login;
         this.password = password;
-        this.name = name;
-        this.surname = surname;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
-        this.phone = phone;
-        this.rank = rank;
-        this.authorization = authorization;
+        this.authorities = authorities;
     }
 }

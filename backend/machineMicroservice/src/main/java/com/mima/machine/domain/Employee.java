@@ -24,6 +24,12 @@ public class Employee implements Serializable {
     @Column(name = "id_user")
     private Integer idUser;
 
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "id_business_owner")
+    private Integer idBusinessOwner;
+
     @ManyToOne
     @JsonIgnoreProperties("employees")
     private Task task;
@@ -48,6 +54,32 @@ public class Employee implements Serializable {
 
     public void setIdUser(Integer idUser) {
         this.idUser = idUser;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Employee name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getIdBusinessOwner() {
+        return idBusinessOwner;
+    }
+
+    public Employee idBusinessOwner(Integer idBusinessOwner) {
+        this.idBusinessOwner = idBusinessOwner;
+        return this;
+    }
+
+    public void setIdBusinessOwner(Integer idBusinessOwner) {
+        this.idBusinessOwner = idBusinessOwner;
     }
 
     public Task getTask() {
@@ -89,6 +121,8 @@ public class Employee implements Serializable {
         return "Employee{" +
             "id=" + getId() +
             ", idUser=" + getIdUser() +
+            ", name='" + getName() + "'" +
+            ", idBusinessOwner=" + getIdBusinessOwner() +
             "}";
     }
 }

@@ -1,15 +1,30 @@
-import { UserDTO } from './UserDTO';
-
 export class EmployeeDTO{
-    private id: number;
-    private user: UserDTO;
-    private idTask: number;
-    private idBusinessOwner: number;
+    id: number;
+    idUser: number;
+    idBusinessOwner: number;
+    name: string;
+    taskId: number;
 
-    constructor(id: number, user: UserDTO, idTask: number, idBusinessOwner: number){
+    constructor(id: number, idUser: number, idBusinessOwner: number, name: string, taskId: number){
         this.id = id;
-        this.user = user;
-        this.idTask = idTask;
+        this.idUser = idUser;
         this.idBusinessOwner = idBusinessOwner;
+        this.name = name;
+        this.taskId = taskId;
+
+        
     }
+
+    public setIdUser(id: number){
+        this.idUser = id;
+    }
+
+    public setName(name: string){
+        this.name = name;
+    }
+
+    public setIdTask(taskId: number): void{
+        this.taskId = taskId;
+    }
+
 }

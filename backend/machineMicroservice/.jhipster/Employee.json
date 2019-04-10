@@ -1,28 +1,39 @@
 {
-    "name": "Employee",
-    "fields": [
-        {
-            "fieldName": "idUser",
-            "fieldType": "Integer"
-        }
-    ],
+    "fluentMethods": true,
+    "clientRootFolder": "machineMicroservice",
     "relationships": [
         {
             "relationshipType": "many-to-one",
             "otherEntityName": "task",
             "otherEntityRelationshipName": "employee",
             "relationshipName": "task",
-            "otherEntityField": "id"
+            "otherEntityField": "id",
+            "otherEntityRelationshipNameUndefined": false
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "idUser",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "idBusinessOwner",
+            "fieldType": "Integer",
+            "fieldValidateRules": []
         }
     ],
     "changelogDate": "20190404125433",
-    "entityTableName": "employee",
     "dto": "mapstruct",
-    "pagination": "no",
+    "searchEngine": false,
     "service": "serviceImpl",
+    "entityTableName": "employee",
+    "databaseType": "sql",
     "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "clientRootFolder": "machineMicroservice",
-    "applications": "*",
+    "pagination": "no",
     "microserviceName": "machineMicroservice"
 }

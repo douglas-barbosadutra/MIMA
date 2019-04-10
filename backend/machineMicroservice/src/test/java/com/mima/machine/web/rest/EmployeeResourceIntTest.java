@@ -46,6 +46,12 @@ public class EmployeeResourceIntTest {
     private static final Integer DEFAULT_ID_USER = 1;
     private static final Integer UPDATED_ID_USER = 2;
 
+    private static final String DEFAULT_NAME = "AAAAAAAAAA";
+    private static final String UPDATED_NAME = "BBBBBBBBBB";
+
+    private static final Integer DEFAULT_ID_BUSINESS_OWNER = 1;
+    private static final Integer UPDATED_ID_BUSINESS_OWNER = 2;
+
     @Autowired
     private EmployeeRepository employeeRepository;
 
@@ -94,7 +100,9 @@ public class EmployeeResourceIntTest {
      */
     public static Employee createEntity(EntityManager em) {
         Employee employee = new Employee()
-            .idUser(DEFAULT_ID_USER);
+            .idUser(DEFAULT_ID_USER)
+            .name(DEFAULT_NAME)
+            .idBusinessOwner(DEFAULT_ID_BUSINESS_OWNER);
         return employee;
     }
 
@@ -120,6 +128,8 @@ public class EmployeeResourceIntTest {
         assertThat(employeeList).hasSize(databaseSizeBeforeCreate + 1);
         Employee testEmployee = employeeList.get(employeeList.size() - 1);
         assertThat(testEmployee.getIdUser()).isEqualTo(DEFAULT_ID_USER);
+        assertThat(testEmployee.getName()).isEqualTo(DEFAULT_NAME);
+        assertThat(testEmployee.getIdBusinessOwner()).isEqualTo(DEFAULT_ID_BUSINESS_OWNER);
     }
 
     @Test
@@ -153,7 +163,9 @@ public class EmployeeResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(employee.getId().intValue())))
-            .andExpect(jsonPath("$.[*].idUser").value(hasItem(DEFAULT_ID_USER)));
+            .andExpect(jsonPath("$.[*].idUser").value(hasItem(DEFAULT_ID_USER)))
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+            .andExpect(jsonPath("$.[*].idBusinessOwner").value(hasItem(DEFAULT_ID_BUSINESS_OWNER)));
     }
     
     @Test
@@ -167,7 +179,9 @@ public class EmployeeResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(employee.getId().intValue()))
-            .andExpect(jsonPath("$.idUser").value(DEFAULT_ID_USER));
+            .andExpect(jsonPath("$.idUser").value(DEFAULT_ID_USER))
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
+            .andExpect(jsonPath("$.idBusinessOwner").value(DEFAULT_ID_BUSINESS_OWNER));
     }
 
     @Test
@@ -191,7 +205,9 @@ public class EmployeeResourceIntTest {
         // Disconnect from session so that the updates on updatedEmployee are not directly saved in db
         em.detach(updatedEmployee);
         updatedEmployee
-            .idUser(UPDATED_ID_USER);
+            .idUser(UPDATED_ID_USER)
+            .name(UPDATED_NAME)
+            .idBusinessOwner(UPDATED_ID_BUSINESS_OWNER);
         EmployeeDTO employeeDTO = employeeMapper.toDto(updatedEmployee);
 
         restEmployeeMockMvc.perform(put("/api/employees")
@@ -204,6 +220,8 @@ public class EmployeeResourceIntTest {
         assertThat(employeeList).hasSize(databaseSizeBeforeUpdate);
         Employee testEmployee = employeeList.get(employeeList.size() - 1);
         assertThat(testEmployee.getIdUser()).isEqualTo(UPDATED_ID_USER);
+        assertThat(testEmployee.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testEmployee.getIdBusinessOwner()).isEqualTo(UPDATED_ID_BUSINESS_OWNER);
     }
 
     @Test

@@ -83,15 +83,18 @@ public class EmployeeServiceImpl implements EmployeeService {
      * @param id the id of the entity
      */
     @Override
-    public void delete(Long id) {
+    public boolean delete(Long id) {
         log.debug("Request to delete Employee : {}", id);
         employeeRepository.deleteById(id);
+        return !employeeRepository.findById(id).isPresent();
     }
 
 	@Override
-	public EmployeeDTO getEmployeeByIdUser(Integer idUser) {
-		log.debug("Request to get Employee by idUser : {}", idUser);
+	public List<EmployeeDTO> findAllByBusinessOwner(Integer id) {
+		log.debug("Request to get all Employees by businessOwner: "+id);
 		
-         return employeeMapper.toDto(employeeRepository.findEmployeeByIdUser(idUser));
+        return employeeRepository.findAllByIdBusinessOwner(id).stream()
+            .map(employeeMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
 	}
 }

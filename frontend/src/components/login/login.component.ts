@@ -7,6 +7,7 @@ import { LoginDTO } from 'src/dto/LoginDTO';
 import { UserLoggedDTO } from 'src/dto/UserLoggedDTO';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { UserService } from 'src/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -52,14 +53,13 @@ export class LoginComponent implements OnInit {
 
     this.loginService.login(this.loginDTO).subscribe((response: any) => {
       console.log(response);
-      localStorage.setItem("currentUser", JSON.stringify({ "authorization": response.id_token }));
+      localStorage.setItem("currentUser", JSON.stringify({ "authorities": response.id_token }));
 
-      this.loginService.getUserLogged(this.loginDTO.username).subscribe((response: HttpResponse<any>) => {
+      this.loginService.getUserLogged(this.loginDTO.username).subscribe((response: UserDTO) => {
         console.log(response);
         localStorage.setItem("currentUserData", JSON.stringify(response));
+        this.router.navigateByUrl("homeUser");
       })
-
-      this.router.navigateByUrl("homeUser");
     });
     
   }

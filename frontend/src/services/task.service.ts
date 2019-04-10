@@ -15,7 +15,7 @@ export class TaskService {
   auth() {
     var user = JSON.parse(localStorage.getItem("currentUser")) as UserDTO;
     if(user) {
-        return "Bearer " + user.authorization;
+        return "Bearer " + user.authorities;
     } else {
         return "";
     }
@@ -31,6 +31,14 @@ export class TaskService {
 
   showTask(idMachine: number): Observable<Array<TaskDTO>>{
     return this.http.get<Array<TaskDTO>>("http://localhost:8080/machineMicroservice/api/tasksByMachine/"+idMachine, {
+      headers: {
+          "Authorization": this.auth()
+      }
+    });
+  }
+
+  findOne(id: number): Observable<TaskDTO>{
+    return this.http.get<TaskDTO>("http://localhost:8080/machineMicroservice/api/tasks/"+id, {
       headers: {
           "Authorization": this.auth()
       }

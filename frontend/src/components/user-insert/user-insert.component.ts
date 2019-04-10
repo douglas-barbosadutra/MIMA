@@ -18,14 +18,14 @@ export class UserInsertComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
-    this.userDTO = new UserDTO(0,"","","","","","",0,"");
+    //this.userDTO = new UserDTO(null,null,null,null,null,null,null);
   }
 
     insertUser(f: NgForm){
 
       this.paramDTO = new ParamDTO(sessionStorage.getItem("userLogged"),this.userDTO);
       
-    this.userService.insertUser(this.paramDTO).subscribe((data: any) => {
+    /*this.userService.insertUser(this.paramDTO).subscribe((data: any) => {
 
       if(data != null)
         alert("Inserimento effettuato");
@@ -33,7 +33,7 @@ export class UserInsertComponent implements OnInit {
         alert("Inserimento fallito");
 
         this.router.navigateByUrl("/homeAdmin");
-    })
+    })*/
   }
 
 }

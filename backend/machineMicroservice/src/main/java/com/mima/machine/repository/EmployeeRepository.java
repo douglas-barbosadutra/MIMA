@@ -1,6 +1,9 @@
 package com.mima.machine.repository;
 
 import com.mima.machine.domain.Employee;
+
+import java.util.List;
+
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
@@ -12,5 +15,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 	
-	public Employee findEmployeeByIdUser(Integer idUser);
+	List<Employee> findAllByIdBusinessOwner(Integer id);
 }

@@ -26,6 +26,14 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="id_business_owner" type="integer">
+                <constraints nullable="true" />
+            </column>
+
             <column name="task_id" type="bigint">
                 <constraints nullable="true" />
             </column>

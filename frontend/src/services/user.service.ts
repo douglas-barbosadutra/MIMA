@@ -12,8 +12,29 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  insertUser(paramDTO: ParamDTO): Observable<UserDTO> {
-    return this.http.post<UserDTO>( 'http://localhost:8080/User/insertUser', paramDTO);
+  auth() {
+    var user = JSON.parse(localStorage.getItem("currentUser")) as UserDTO;
+    if(user) {
+        return "Bearer " + user.authorities;
+    } else {
+        return "";
+    }
+  }
+
+  insertEmployeeUser(userDTO: UserDTO): Observable<UserDTO> {
+    return this.http.post<UserDTO>("http://localhost:8080/api/employees",userDTO, {
+      headers: {
+          "Authorization": this.auth()
+      }
+    });
+  }
+
+  deleteEmployeeUser(idUser: number): Observable<Boolean>{
+    return this.http.delete<Boolean>("http://localhost:8080/api/users/"+idUser, {
+      headers: {
+          "Authorization": this.auth()
+      }
+    });
   }
 
   showUser(jwt: string): Observable<Array<UserDTO>>{

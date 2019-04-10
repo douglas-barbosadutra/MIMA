@@ -104,6 +104,26 @@ public class UserResource {
                 .body(newUser);
         }
     }
+    
+    @PostMapping("/employees")
+    @PreAuthorize("hasRole(\"" + AuthoritiesConstants.USER + "\")")
+    public ResponseEntity<User> createEmployee(@Valid @RequestBody UserDTO userDTO) throws URISyntaxException {
+        log.debug("REST request to save User : {}", userDTO);
+
+        if (userDTO.getId() != null) {
+            throw new BadRequestAlertException("A new user cannot already have an ID", "userManagement", "idexists");
+            // Lowercase the user login before comparing with database
+        } else if (userRepository.findOneByLogin(userDTO.getLogin().toLowerCase()).isPresent()) {
+            throw new LoginAlreadyUsedException();
+        } else if (userRepository.findOneByEmailIgnoreCase(userDTO.getEmail()).isPresent()) {
+            throw new EmailAlreadyUsedException();
+        } else {
+            User newUser = userService.createUser(userDTO);
+            return ResponseEntity.created(new URI("/api/users/" + newUser.getLogin()))
+                .headers(HeaderUtil.createAlert( "A user is created with identifier " + newUser.getLogin(), newUser.getLogin()))
+                .body(newUser);
+        }
+    }
 
     /**
      * PUT /users : Updates an existing User.
@@ -179,5 +199,13 @@ public class UserResource {
         log.debug("REST request to delete User: {}", login);
         userService.deleteUser(login);
         return ResponseEntity.ok().headers(HeaderUtil.createAlert( "A user is deleted with identifier " + login, login)).build();
+    }
+    
+    @DeleteMapping("/users/{id}")
+    @PreAuthorize("hasRole(\"" + AuthoritiesConstants.USER + "\")")
+    public boolean deleteEmployee(@PathVariable Long id) {
+        log.debug("REST request to delete User: {}", id);
+        
+        return userService.deleteUserById(id);
     }
 }
