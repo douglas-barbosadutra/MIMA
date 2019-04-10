@@ -1,14 +1,23 @@
 package com.mima.wbs.web.rest;
+
 import com.codahale.metrics.annotation.Timed;
+import com.mima.wbs.security.SecurityUtils;
 import com.mima.wbs.service.ItemService;
 import com.mima.wbs.web.rest.errors.BadRequestAlertException;
 import com.mima.wbs.web.rest.util.HeaderUtil;
 import com.mima.wbs.service.dto.ItemDTO;
+import com.mima.wbs.service.dto.NodeDTO;
+
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -47,6 +56,11 @@ public class ItemResource {
             throw new BadRequestAlertException("A new item cannot already have an ID", ENTITY_NAME, "idexists");
         }
         ItemDTO result = itemService.save(itemDTO);
+        if (result != null) {
+        	Long l = new Long(1);
+    		NodeDTO node = new NodeDTO(l, "test");
+    		this.createNode(node);
+		}
         return ResponseEntity.created(new URI("/api/items/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -110,11 +124,25 @@ public class ItemResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
     
-    @GetMapping("/itemGetRoot/{idWBS}")
-	@Timed
-	public ResponseEntity<ItemDTO> getRootByIdWBS(@PathVariable Long idWBS) {
-		log.debug("REST request to get Item : {}", idWBS);
+    @GetMapping("/itemGetRoot/{id}")
+	public ResponseEntity<ItemDTO> itemGetRoot(@PathVariable int id) {
+    	System.out.println("aaaaaaaaaaaaaaaaaa");
+    	System.out.println(id);
+		log.debug("REST request to get Item FROM wbs: {}", id);
+		Long idWBS = new Long(id);
+		System.out.println(idWBS);
 		Optional<ItemDTO> itemDTO = itemService.findRootByWBS(idWBS);
+		System.out.println(itemDTO);
 		return ResponseUtil.wrapOrNotFound(itemDTO);
+	}
+    
+    public ResponseEntity<String> createNode(NodeDTO node) {
+		MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
+		headers.add("Authorization", "Bearer " + SecurityUtils.getCurrentUserJWT().get());
+		HttpEntity<?> request1 = new HttpEntity(node, headers);
+		ResponseEntity<String> responseEntity = new RestTemplate().exchange(
+				"http://localhost:8080/machineMicroservice/api/task-scheduleds/createNode", HttpMethod.POST, request1,
+				String.class);
+		return ResponseEntity.ok().body(responseEntity.getBody());
 	}
 }

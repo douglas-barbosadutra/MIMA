@@ -21,7 +21,8 @@ export class ItemShowComponent implements OnInit {
 
   ngOnInit() {
     this.wbsDto = new WBSDTO(parseInt(sessionStorage.getItem("idWbs")), "", 0);
-    this.itemService.showItemTree(sessionStorage.getItem("userLogged"), parseInt(sessionStorage.getItem("idWbs"))).subscribe((data: any) => {
+    console.log(parseInt(sessionStorage.getItem("idWbs")));
+    this.itemService.showItemTree(parseInt(sessionStorage.getItem("idWbs"))).subscribe((data: any) => {
       if (data != null) {
         this.father = data;
         this.list = this.father.itemChildrenDTO;
@@ -36,7 +37,7 @@ export class ItemShowComponent implements OnInit {
 
   deleteItem(idItem: number) {
     this.itemDto = new ItemDTO(idItem, "", 0, 0, null);
-    this.itemService.deleteItem(sessionStorage.getItem("userLogged"), idItem).subscribe((data: any) => {
+    this.itemService.deleteItem(idItem).subscribe((data: any) => {
     });
     window.location.reload();
   }

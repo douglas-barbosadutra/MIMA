@@ -2,6 +2,7 @@ package com.mima.machine.web.rest;
 import com.mima.machine.service.TaskScheduledService;
 import com.mima.machine.web.rest.errors.BadRequestAlertException;
 import com.mima.machine.web.rest.util.HeaderUtil;
+import com.mima.machine.service.dto.NodeDTO;
 import com.mima.machine.service.dto.TaskScheduledDTO;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -109,4 +110,13 @@ public class TaskScheduledResource {
         taskScheduledService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+    
+    @PostMapping("/task-scheduleds/createNode")
+    public ResponseEntity<NodeDTO> createNode(NodeDTO node) throws URISyntaxException{
+    	 log.debug("REST request to save TaskScheduled : {}", node);
+    	 return ResponseEntity.created(new URI("/api/task-scheduleds/" + node.getId()))
+    	            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, node.getId().toString()))
+    	            .body(node);
+    }
+    
 }

@@ -1,8 +1,10 @@
 package com.mima.wbs.service.impl;
 
+import com.mima.wbs.service.ItemService;
 import com.mima.wbs.service.WBSService;
 import com.mima.wbs.domain.WBS;
 import com.mima.wbs.repository.WBSRepository;
+import com.mima.wbs.service.dto.ItemDTO;
 import com.mima.wbs.service.dto.WBSDTO;
 import com.mima.wbs.service.mapper.WBSMapper;
 import org.slf4j.Logger;
@@ -28,10 +30,13 @@ public class WBSServiceImpl implements WBSService {
     private final WBSRepository wBSRepository;
 
     private final WBSMapper wBSMapper;
+    
+    private final ItemService itemService;
 
-    public WBSServiceImpl(WBSRepository wBSRepository, WBSMapper wBSMapper) {
+    public WBSServiceImpl(WBSRepository wBSRepository, WBSMapper wBSMapper, ItemService itemService) {
         this.wBSRepository = wBSRepository;
         this.wBSMapper = wBSMapper;
+        this.itemService = itemService;
     }
 
     /**
@@ -45,6 +50,10 @@ public class WBSServiceImpl implements WBSService {
         log.debug("Request to save WBS : {}", wBSDTO);
         WBS wBS = wBSMapper.toEntity(wBSDTO);
         wBS = wBSRepository.save(wBS);
+        ItemDTO itemDTO = new ItemDTO();
+        itemDTO.setName(wBS.getName());
+        itemDTO.setWbsId(wBS.getId());
+        itemService.save(itemDTO);
         return wBSMapper.toDto(wBS);
     }
 
