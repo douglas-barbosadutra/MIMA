@@ -12,6 +12,8 @@ public class InputDTO implements Serializable {
     private Integer idItem;
 
 
+    private Long taskScheduledId;
+
     public Long getId() {
         return id;
     }
@@ -26,6 +28,14 @@ public class InputDTO implements Serializable {
 
     public void setIdItem(Integer idItem) {
         this.idItem = idItem;
+    }
+
+    public Long getTaskScheduledId() {
+        return taskScheduledId;
+    }
+
+    public void setTaskScheduledId(Long taskScheduledId) {
+        this.taskScheduledId = taskScheduledId;
     }
 
     @Override
@@ -54,6 +64,7 @@ public class InputDTO implements Serializable {
         return "InputDTO{" +
             "id=" + getId() +
             ", idItem=" + getIdItem() +
+            ", taskScheduled=" + getTaskScheduledId() +
             "}";
     }
 }

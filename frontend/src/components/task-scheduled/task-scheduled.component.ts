@@ -167,7 +167,7 @@ export class TaskScheduledComponent implements OnInit {
   }
 
   insertTask(idTask: number, taskName: string) {
-    this.task = new TaskScheduledDTO(null,taskName,parseInt(sessionStorage.getItem("idScheduling")),idTask);
+    this.task = new TaskScheduledDTO(null,taskName,null,parseInt(sessionStorage.getItem("idScheduling")),idTask);
     this.taskScheduledService.insertTaskScheduled(this.task).subscribe((data: any) => { });
     window.location.reload();
   }

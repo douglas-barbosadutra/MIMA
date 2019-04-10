@@ -15,12 +15,12 @@
       </thead>
       
       <tbody>
-        <tr *ngFor="let itemList of itemList">			
-          <td >{{itemList.id}}</td>
-          <td >{{itemList.name}}</td>
+        <tr *ngFor="let item of itemList">			
+          <td >{{item.id}}</td>
+          <td >{{item.name}}</td>
           <td >
-            <button type="submit" class="btn btn-primary" (click)="insertInput(itemList.id)" >Inserisci come input</button>
-            <button type="submit" class="btn btn-primary" (click)="insertOutput(itemList.id)" >Inserisci come output</button>
+            <button type="submit" class="btn btn-primary" (click)="insertInput(item.id)" >Inserisci come input</button>
+            <button type="submit" class="btn btn-primary" (click)="insertOutput(item.id)" >Inserisci come output</button>
           </td>
 
         </tr>

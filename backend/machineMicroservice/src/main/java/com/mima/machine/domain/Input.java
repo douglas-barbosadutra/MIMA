@@ -1,6 +1,7 @@
 package com.mima.machine.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
@@ -23,6 +24,10 @@ public class Input implements Serializable {
     @Column(name = "id_item")
     private Integer idItem;
 
+    @ManyToOne
+    @JsonIgnoreProperties("inputs")
+    private TaskScheduled taskScheduled;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -43,6 +48,19 @@ public class Input implements Serializable {
 
     public void setIdItem(Integer idItem) {
         this.idItem = idItem;
+    }
+
+    public TaskScheduled getTaskScheduled() {
+        return taskScheduled;
+    }
+
+    public Input taskScheduled(TaskScheduled taskScheduled) {
+        this.taskScheduled = taskScheduled;
+        return this;
+    }
+
+    public void setTaskScheduled(TaskScheduled taskScheduled) {
+        this.taskScheduled = taskScheduled;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

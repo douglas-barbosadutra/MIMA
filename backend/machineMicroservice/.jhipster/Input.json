@@ -1,7 +1,16 @@
 {
     "fluentMethods": true,
     "clientRootFolder": "machineMicroservice",
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipName": "taskScheduled",
+            "otherEntityName": "taskScheduled",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "input",
+            "otherEntityRelationshipNameUndefined": true
+        }
+    ],
     "fields": [
         {
             "fieldName": "idItem",
