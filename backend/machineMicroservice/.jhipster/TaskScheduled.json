@@ -1,11 +1,6 @@
 {
-    "name": "TaskScheduled",
-    "fields": [
-        {
-            "fieldName": "name",
-            "fieldType": "String"
-        }
-    ],
+    "fluentMethods": true,
+    "clientRootFolder": "machineMicroservice",
     "relationships": [
         {
             "relationshipType": "many-to-many",
@@ -13,21 +8,24 @@
             "otherEntityRelationshipName": "child",
             "relationshipName": "father",
             "otherEntityField": "id",
-            "ownerSide": true
+            "ownerSide": true,
+            "otherEntityRelationshipNameUndefined": false
         },
         {
             "relationshipType": "many-to-one",
             "otherEntityName": "scheduling",
             "otherEntityRelationshipName": "taskScheduled",
             "relationshipName": "scheduling",
-            "otherEntityField": "id"
+            "otherEntityField": "id",
+            "otherEntityRelationshipNameUndefined": false
         },
         {
             "relationshipType": "many-to-one",
             "otherEntityName": "task",
             "otherEntityRelationshipName": "taskScheduled",
             "relationshipName": "task",
-            "otherEntityField": "id"
+            "otherEntityField": "id",
+            "otherEntityRelationshipNameUndefined": false
         },
         {
             "relationshipType": "many-to-many",
@@ -35,17 +33,30 @@
             "otherEntityRelationshipName": "father",
             "relationshipName": "child",
             "otherEntityField": "id",
-            "ownerSide": false
+            "ownerSide": false,
+            "otherEntityRelationshipNameUndefined": false
+        },
+        {
+            "relationshipName": "inputs",
+            "otherEntityName": "input",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "taskScheduled",
+            "otherEntityRelationshipNameUndefined": false
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20190404125432",
-    "entityTableName": "task_scheduled",
     "dto": "mapstruct",
-    "pagination": "no",
+    "searchEngine": false,
     "service": "serviceImpl",
+    "entityTableName": "task_scheduled",
+    "databaseType": "sql",
     "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "clientRootFolder": "machineMicroservice",
-    "applications": "*",
+    "pagination": "no",
     "microserviceName": "machineMicroservice"
 }

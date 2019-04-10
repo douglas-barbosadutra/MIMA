@@ -18,6 +18,7 @@ public interface TaskScheduledMapper extends EntityMapper<TaskScheduledDTO, Task
     @Mapping(source = "schedulingId", target = "scheduling")
     @Mapping(source = "taskId", target = "task")
     @Mapping(target = "children", ignore = true)
+    @Mapping(target = "inputs", ignore = true)
     TaskScheduled toEntity(TaskScheduledDTO taskScheduledDTO);
 
     default TaskScheduled fromId(Long id) {

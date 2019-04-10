@@ -45,6 +45,8 @@ public class TaskScheduled implements Serializable {
     @JsonIgnore
     private Set<TaskScheduled> children = new HashSet<>();
 
+    @OneToMany(mappedBy = "taskScheduled")
+    private Set<Input> inputs = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -141,6 +143,31 @@ public class TaskScheduled implements Serializable {
 
     public void setChildren(Set<TaskScheduled> taskScheduleds) {
         this.children = taskScheduleds;
+    }
+
+    public Set<Input> getInputs() {
+        return inputs;
+    }
+
+    public TaskScheduled inputs(Set<Input> inputs) {
+        this.inputs = inputs;
+        return this;
+    }
+
+    public TaskScheduled addInputs(Input input) {
+        this.inputs.add(input);
+        input.setTaskScheduled(this);
+        return this;
+    }
+
+    public TaskScheduled removeInputs(Input input) {
+        this.inputs.remove(input);
+        input.setTaskScheduled(null);
+        return this;
+    }
+
+    public void setInputs(Set<Input> inputs) {
+        this.inputs = inputs;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
