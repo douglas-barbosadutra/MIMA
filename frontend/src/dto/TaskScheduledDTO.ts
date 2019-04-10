@@ -1,17 +1,13 @@
 export class TaskScheduledDTO{
     id: number;
-    idTask: number;
-    hasFather: boolean;
     name: string;
-    idScheduling: number;
-    taskScheduledChildren: Array<TaskScheduledDTO>;
+    schedulingId: number;
+    taskId: number;
 
-    constructor(id: number, idTask: number, hasFather: boolean, name: string, idScheduling: number, taskScheduledChildren: Array<TaskScheduledDTO>){
+    constructor(id: number, name: string, schedulingId: number, taskId: number){
         this.id = id;
-        this.idTask = idTask;
-        this.hasFather = hasFather;
         this.name = name;
-        this.idScheduling = idScheduling;
-        this.taskScheduledChildren = taskScheduledChildren;
+        this.schedulingId = schedulingId;
+        this.taskId = taskId;
     }
 }

@@ -121,7 +121,7 @@ export class TaskScheduledComponent implements OnInit {
   }
 
   getTaskScheduledList() {
-    this.taskScheduledService.showTaskScheduled(parseInt(sessionStorage.getItem("idScheduling")), sessionStorage.getItem("userLogged")).subscribe((data) => {
+    this.taskScheduledService.showTaskScheduled(parseInt(sessionStorage.getItem("idScheduling"))).subscribe((data) => {
       if (data != null) {
         this.taskScheduledList = new Array();
         this.taskScheduledList = data;
@@ -167,7 +167,7 @@ export class TaskScheduledComponent implements OnInit {
   }
 
   insertTask(idTask: number, taskName: string) {
-    this.task = new TaskScheduledDTO(0, idTask, false, taskName, parseInt(sessionStorage.getItem("idScheduling")), null);
+    this.task = new TaskScheduledDTO(null,taskName,parseInt(sessionStorage.getItem("idScheduling")),idTask);
     this.taskScheduledService.insertTaskScheduled(this.task).subscribe((data: any) => { });
     window.location.reload();
   }

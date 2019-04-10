@@ -4,6 +4,7 @@ import { TaskScheduledDTO } from 'src/dto/TaskScheduledDTO';
 import { OperationSchedulingDTO } from 'src/dto/OperationSchedulingDTO';
 import { Observable} from 'rxjs';
 import { ParamDTO } from 'src/dto/ParamDTO';
+import { UserDTO } from 'src/dto/UserDTO';
 
 
 
@@ -14,8 +15,21 @@ export class TaskScheduledService {
 
   constructor(private http: HttpClient) { }
 
-  showTaskScheduled(idScheduling: number, jwt: string): Observable<Array<TaskScheduledDTO>>{
-    return this.http.get<Array<TaskScheduledDTO>>('http://localhost:8082/TaskScheduled/showTaskScheduled?idScheduling=' + idScheduling+'&jwt='+jwt);
+  auth() {
+    var user = JSON.parse(localStorage.getItem("currentUser")) as UserDTO;
+    if(user) {
+        return "Bearer " + user.authorities;
+    } else {
+        return "";
+    }
+  }
+
+  showTaskScheduled(idScheduling: number): Observable<Array<TaskScheduledDTO>>{
+    return this.http.get<Array<TaskScheduledDTO>>("http://localhost:8080/machineMicroservice/api/task-scheduledsByScheduling?id="+idScheduling, {
+      headers: {
+          "Authorization": this.auth()
+      }
+    });
   }
 
   showOperationScheduling(idScheduling: number, jwt: string): Observable<Array<OperationSchedulingDTO>>{
@@ -30,11 +44,18 @@ export class TaskScheduledService {
     return this.http.get('http://localhost:8082/TaskScheduled/insertOutput?idItem='+idItem+"&idOperationScheduling="+idOperationScheduling+'&jwt='+jwt);
   }
 
-  deleteTaskScheduled(idTaskScheduled: number){
-    return this.http.delete('http://localhost:8082/TaskScheduled/deleteTaskScheduled?idTaskScheduled=' + idTaskScheduled);
+  deleteTaskScheduled(idTaskScheduled: number): Observable<Boolean>{
+    return this.http.delete<Boolean>("http://localhost:8080/machineMicroservice/api/task-scheduleds/"+idTaskScheduled, {
+      headers: {
+          "Authorization": this.auth()
+      }
+    });
   }
-  insertTaskScheduled(taskScheduledDTO: TaskScheduledDTO) : any{
-    console.log(taskScheduledDTO);
-    return this.http.post('http://localhost:8082/TaskScheduled/insertTaskScheduled', taskScheduledDTO);
+  insertTaskScheduled(taskScheduledDTO: TaskScheduledDTO): Observable<TaskScheduledDTO>{
+    return this.http.post<TaskScheduledDTO>("http://localhost:8080/machineMicroservice/api/task-scheduleds",taskScheduledDTO, {
+      headers: {
+          "Authorization": this.auth()
+      }
+    });
   }
 }

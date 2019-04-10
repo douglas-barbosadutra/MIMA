@@ -51,6 +51,9 @@ public class TaskScheduledResourceIntTest {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
+    private static final Integer DEFAULT_ID_OUTPUT = 1;
+    private static final Integer UPDATED_ID_OUTPUT = 2;
+
     @Autowired
     private TaskScheduledRepository taskScheduledRepository;
 
@@ -105,7 +108,8 @@ public class TaskScheduledResourceIntTest {
      */
     public static TaskScheduled createEntity(EntityManager em) {
         TaskScheduled taskScheduled = new TaskScheduled()
-            .name(DEFAULT_NAME);
+            .name(DEFAULT_NAME)
+            .idOutput(DEFAULT_ID_OUTPUT);
         return taskScheduled;
     }
 
@@ -131,6 +135,7 @@ public class TaskScheduledResourceIntTest {
         assertThat(taskScheduledList).hasSize(databaseSizeBeforeCreate + 1);
         TaskScheduled testTaskScheduled = taskScheduledList.get(taskScheduledList.size() - 1);
         assertThat(testTaskScheduled.getName()).isEqualTo(DEFAULT_NAME);
+        assertThat(testTaskScheduled.getIdOutput()).isEqualTo(DEFAULT_ID_OUTPUT);
     }
 
     @Test
@@ -164,7 +169,8 @@ public class TaskScheduledResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(taskScheduled.getId().intValue())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+            .andExpect(jsonPath("$.[*].idOutput").value(hasItem(DEFAULT_ID_OUTPUT)));
     }
     
     @SuppressWarnings({"unchecked"})
@@ -211,7 +217,8 @@ public class TaskScheduledResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(taskScheduled.getId().intValue()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()));
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
+            .andExpect(jsonPath("$.idOutput").value(DEFAULT_ID_OUTPUT));
     }
 
     @Test
@@ -235,7 +242,8 @@ public class TaskScheduledResourceIntTest {
         // Disconnect from session so that the updates on updatedTaskScheduled are not directly saved in db
         em.detach(updatedTaskScheduled);
         updatedTaskScheduled
-            .name(UPDATED_NAME);
+            .name(UPDATED_NAME)
+            .idOutput(UPDATED_ID_OUTPUT);
         TaskScheduledDTO taskScheduledDTO = taskScheduledMapper.toDto(updatedTaskScheduled);
 
         restTaskScheduledMockMvc.perform(put("/api/task-scheduleds")
@@ -248,6 +256,7 @@ public class TaskScheduledResourceIntTest {
         assertThat(taskScheduledList).hasSize(databaseSizeBeforeUpdate);
         TaskScheduled testTaskScheduled = taskScheduledList.get(taskScheduledList.size() - 1);
         assertThat(testTaskScheduled.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testTaskScheduled.getIdOutput()).isEqualTo(UPDATED_ID_OUTPUT);
     }
 
     @Test

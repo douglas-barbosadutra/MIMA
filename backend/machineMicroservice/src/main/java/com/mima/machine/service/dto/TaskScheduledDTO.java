@@ -13,6 +13,8 @@ public class TaskScheduledDTO implements Serializable {
 
     private String name;
 
+    private Integer idOutput;
+
 
     private Set<TaskScheduledDTO> fathers = new HashSet<>();
 
@@ -34,6 +36,14 @@ public class TaskScheduledDTO implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getIdOutput() {
+        return idOutput;
+    }
+
+    public void setIdOutput(Integer idOutput) {
+        this.idOutput = idOutput;
     }
 
     public Set<TaskScheduledDTO> getFathers() {
@@ -86,6 +96,7 @@ public class TaskScheduledDTO implements Serializable {
         return "TaskScheduledDTO{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
+            ", idOutput=" + getIdOutput() +
             ", scheduling=" + getSchedulingId() +
             ", task=" + getTaskId() +
             "}";

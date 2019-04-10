@@ -26,16 +26,14 @@ export class TaskScheduledShowComponent implements OnInit {
   }
 
   getTaskScheduledList(){
-    this.taskScheduledService.showTaskScheduled(parseInt(sessionStorage.getItem("idScheduling")), sessionStorage.getItem("userLogged")).subscribe((data) =>{
-      if(data != null){
-        this.taskScheduledList = new Array();
-        this.taskScheduledList = data;  
+    this.taskScheduledService.showTaskScheduled(parseInt(sessionStorage.getItem("idScheduling"))).subscribe((response: Array<TaskScheduledDTO>) =>{
+      if(response != null){
+        this.taskScheduledList = response;  
       }
     });
   }
 
-  choose(idOperationScheduling: number, idTaskScheduled: number){
-    sessionStorage.setItem("idOperationScheduling",JSON.stringify(idOperationScheduling));
+  choose(idTaskScheduled: number){
     sessionStorage.setItem("idTaskScheduled",JSON.stringify(idTaskScheduled));
     this.router.navigateByUrl("inputOutput");
   }

@@ -32,7 +32,7 @@ export class TaskScheduledDeleteComponent implements OnInit {
     this.sub = this.dataService.currentDataChildren.subscribe(dataSource => {
       this.taskScheduledListToUpdateFather = dataSource;
     });
-    this.taskScheduledService.showTaskScheduled(parseInt(sessionStorage.getItem("idScheduling")), sessionStorage.getItem("userLogged")).subscribe((data) => {
+    this.taskScheduledService.showTaskScheduled(parseInt(sessionStorage.getItem("idScheduling"))).subscribe((data) => {
       if (data != null) {
         this.taskScheduledList = new Array();
         this.taskScheduledList = data;

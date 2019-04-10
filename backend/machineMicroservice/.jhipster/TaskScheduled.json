@@ -48,6 +48,10 @@
         {
             "fieldName": "name",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "idOutput",
+            "fieldType": "Integer"
         }
     ],
     "changelogDate": "20190404125432",

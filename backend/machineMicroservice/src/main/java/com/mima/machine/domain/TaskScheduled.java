@@ -27,6 +27,9 @@ public class TaskScheduled implements Serializable {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "id_output")
+    private Integer idOutput;
+
     @ManyToMany
     @JoinTable(name = "task_scheduled_father",
                joinColumns = @JoinColumn(name = "task_scheduled_id", referencedColumnName = "id"),
@@ -67,6 +70,19 @@ public class TaskScheduled implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getIdOutput() {
+        return idOutput;
+    }
+
+    public TaskScheduled idOutput(Integer idOutput) {
+        this.idOutput = idOutput;
+        return this;
+    }
+
+    public void setIdOutput(Integer idOutput) {
+        this.idOutput = idOutput;
     }
 
     public Set<TaskScheduled> getFathers() {
@@ -196,6 +212,7 @@ public class TaskScheduled implements Serializable {
         return "TaskScheduled{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
+            ", idOutput=" + getIdOutput() +
             "}";
     }
 }
