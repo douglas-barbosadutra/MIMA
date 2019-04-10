@@ -5,6 +5,8 @@ import com.mima.machine.domain.Machine;
 import com.mima.machine.repository.MachineRepository;
 import com.mima.machine.service.dto.MachineDTO;
 import com.mima.machine.service.mapper.MachineMapper;
+
+import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,12 +18,22 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 /**
  * Service Implementation for managing Machine.
  */
 @Service
 @Transactional
 public class MachineServiceImpl implements MachineService {
+	
+	//per criteria
+	@PersistenceContext
+	private EntityManager entityManager;
 
     private final Logger log = LoggerFactory.getLogger(MachineServiceImpl.class);
 
@@ -102,4 +114,21 @@ public class MachineServiceImpl implements MachineService {
 				.map(machineMapper::toDto)
 				.collect(Collectors.toCollection(LinkedList::new));
 	}
+
+	//test query con criteria
+	public String TEST2findAllMachineByUserId() {
+		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+		
+		//criteri selezione
+		CriteriaQuery<Machine> cr = cb.createQuery(Machine.class);
+		Root<Machine> root = cr.from(Machine.class);
+		cr.select(root);
+		 
+		//estrarre risultati
+		Query<Machine> query = (Query<Machine>) entityManager.createQuery(cr);
+		List<Machine> results = query.getResultList();
+		
+		return results.toString();
+	}
+
 }

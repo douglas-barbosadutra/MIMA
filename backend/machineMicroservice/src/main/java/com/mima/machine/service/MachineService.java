@@ -46,4 +46,6 @@ public interface MachineService {
     List<MachineDTO> findAllMachineByIdUser(int idUser);
 
 	List<MachineDTO> TESTfindAllMachineByUserId(int idUser);
+
+	String TEST2findAllMachineByUserId();
 }

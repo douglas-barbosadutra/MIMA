@@ -119,4 +119,9 @@ public class MachineResource {
     public List<MachineDTO> findAllMachineByUserId(@PathVariable int idUser) {
 		return machineService.TESTfindAllMachineByUserId(idUser); 
     }
+    
+    @GetMapping("/testCriteria")
+    public String testCriteria() {
+		return machineService.TEST2findAllMachineByUserId(); 
+    }
 }
