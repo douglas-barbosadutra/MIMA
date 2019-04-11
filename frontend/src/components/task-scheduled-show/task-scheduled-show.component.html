@@ -20,7 +20,8 @@
           <td>{{item.nameOutput}}</td>
           <td >{{item.descriptionTask}}</td>
           <td>
-            <button class="btn btn-primary" (click)="choose(item.id)">Seleziona</button>
+            <button class="btn btn-primary" (click)="choose(item.id)">Inserisci input/output</button>
+            <button style="margin-left:2%;" class="btn btn-primary" (click)="showInput(item.id)">Lista input</button>
           </td>
         </tr>
       </tbody>

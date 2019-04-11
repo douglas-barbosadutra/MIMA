@@ -55,6 +55,7 @@ import { TaskScheduledShowComponent } from 'src/components/task-scheduled-show/t
 import { TaskScheduledDeleteComponent } from 'src/components/task-scheduled-delete/task-scheduled-delete.component';
 import { HttpConfigInterceptor } from './interceptor/httpconfig.interceptor';
 import { SendMessageComponent } from 'src/components/send-message/send-message.component';
+import {InputShowComponent} from 'src/components/input-show/input-show.component';
 
 
 
@@ -94,7 +95,8 @@ import { SendMessageComponent } from 'src/components/send-message/send-message.c
     AssignTaskComponent,
     InputOutputComponent,
     TaskScheduledShowComponent,
-    SendMessageComponent
+    SendMessageComponent,
+    InputShowComponent
   ],
   imports: [
     BrowserModule,

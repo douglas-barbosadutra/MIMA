@@ -2,6 +2,7 @@ package com.mima.machine.service.impl;
 
 import com.mima.machine.service.InputService;
 import com.mima.machine.domain.Input;
+import com.mima.machine.domain.TaskScheduled;
 import com.mima.machine.repository.InputRepository;
 import com.mima.machine.service.dto.InputDTO;
 import com.mima.machine.service.mapper.InputMapper;
@@ -87,4 +88,16 @@ public class InputServiceImpl implements InputService {
         log.debug("Request to delete Input : {}", id);
         inputRepository.deleteById(id);
     }
+
+	@Override
+	public List<InputDTO> findAllByIdTaskScheduled(Long id) {
+		log.debug("Request to get all Inputs by taskScheduled: "+id);
+		
+		TaskScheduled t = new TaskScheduled();
+		t.setId(id);
+		
+        return inputRepository.findAllByTaskScheduled(t).stream()
+            .map(inputMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
+	}
 }

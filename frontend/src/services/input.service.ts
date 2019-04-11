@@ -36,4 +36,11 @@ export class InputService {
     });
   }
 
+  showInput(idTaskScheduled: number):Observable<Array<InputDTO>>{
+    return this.http.get<Array<InputDTO>>('http://localhost:8080/machineMicroservice/api/inputsByTaskScheduled?id='+ idTaskScheduled, {
+      headers: {
+          "Authorization": this.auth()
+      }
+    });
+  }
 }

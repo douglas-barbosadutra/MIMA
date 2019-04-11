@@ -40,4 +40,6 @@ public interface InputService {
      * @param id the id of the entity
      */
     void delete(Long id);
+    
+    List<InputDTO> findAllByIdTaskScheduled(Long id);
 }

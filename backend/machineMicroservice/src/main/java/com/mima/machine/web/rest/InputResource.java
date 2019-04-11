@@ -108,4 +108,10 @@ public class InputResource {
         inputService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+    
+    @GetMapping("/inputsByTaskScheduled")
+    public List<InputDTO> getAllInputsByTaskScheduled(@RequestParam(value="id") Long id) {
+        log.debug("REST request to get all Inputs by taskScheduled: "+id);
+        return inputService.findAllByIdTaskScheduled(id);
+    }
 }

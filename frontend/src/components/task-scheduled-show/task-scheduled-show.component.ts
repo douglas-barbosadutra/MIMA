@@ -72,4 +72,9 @@ export class TaskScheduledShowComponent implements OnInit {
     this.router.navigateByUrl("inputOutput");
   }
 
+  showInput(idTaskScheduled: number){
+    sessionStorage.setItem("idTaskScheduled",JSON.stringify(idTaskScheduled));
+    this.router.navigateByUrl("inputShow");
+  }
+
 }

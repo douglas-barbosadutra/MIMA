@@ -33,6 +33,8 @@ import { InputOutputComponent } from 'src/components/input-output/input-output.c
 import { TaskScheduledShowComponent } from 'src/components/task-scheduled-show/task-scheduled-show.component';
 import { TaskScheduledDeleteComponent } from 'src/components/task-scheduled-delete/task-scheduled-delete.component';
 import { SendMessageComponent } from 'src/components/send-message/send-message.component';
+import {InputShowComponent} from 'src/components/input-show/input-show.component';
+
 
 const routes: Routes = [
 {path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -68,7 +70,8 @@ const routes: Routes = [
 {path: 'inputOutput', component: InputOutputComponent},
 {path: 'taskScheduledShow', component: TaskScheduledShowComponent},
 {path: 'TaskScheduledDelete', component: TaskScheduledDeleteComponent},
-{path: 'sendMessage', component: SendMessageComponent}];
+{path: 'sendMessage', component: SendMessageComponent},
+{path: 'inputShow', component: InputShowComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {useHash: true, onSameUrlNavigation: 'reload'})],

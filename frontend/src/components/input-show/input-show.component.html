@@ -1,0 +1,26 @@
+<app-menu-user></app-menu-user>
+
+<h1 class="title">Lista macchinari</h1>
+		
+<div id="container">
+	
+	<table class="table table-striped">
+			<thead>
+				
+				<tr>
+					<th>ID</th>
+					<th>Nome</th>
+				</tr>
+				
+			</thead>
+			
+			<tbody>
+				<tr *ngFor="let input of inputShowList">			
+					<td >{{input.id}}</td>
+					<td >{{input.nameItem}}</td>
+				</tr>
+			</tbody>
+			
+	</table>
+		
+</div>
