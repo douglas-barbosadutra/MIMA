@@ -51,6 +51,8 @@ public class MQTTClient implements MqttCallback {
 	}
 	
 	public boolean connect() {
+		if(mqttClient != null && mqttClient.isConnected()) return true;
+		
 		connOpt = new MqttConnectOptions();
 		connOpt.setCleanSession(true);
 		connOpt.setKeepAliveInterval(30);

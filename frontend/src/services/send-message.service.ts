@@ -3,6 +3,7 @@ import {HttpClient}from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { UserDTO } from 'src/dto/UserDTO';
 import { MqttDTO } from 'src/dto/MqttDTO';
+import { MqttMessageDTO } from 'src/dto/MqttMessageDTO';
 
 
 @Injectable({
@@ -22,7 +23,7 @@ export class SendMessageService {
   }
 
   connect(mqttDTO: MqttDTO): Observable<boolean>{
-    return this.http.post<boolean>("http://localhost:8080/machineMicroservice/api/connectMQTT",mqttDTO, {
+    return this.http.post<boolean>("http://localhost:8080/machineMicroservice/api/connectMQTT", mqttDTO, {
       headers: {
           "Authorization": this.auth()
       }
@@ -38,7 +39,7 @@ export class SendMessageService {
   }
 
   publishMessage(message: string): Observable<boolean>{
-    return this.http.post<boolean>("http://localhost:8080/machineMicroservice/api/publishMessage",message, {
+    return this.http.post<boolean>("http://localhost:8080/machineMicroservice/api/publishMessage", message, {
       headers: {
           "Authorization": this.auth()
       }
@@ -46,18 +47,19 @@ export class SendMessageService {
   }
 
   subscribeTopic(): Observable<boolean>{
-    return this.http.post<boolean>("http://localhost:8080/machineMicroservice/api/subscribeTopic", {
+    return this.http.post<boolean>("http://localhost:8080/machineMicroservice/api/subscribeTopic", null, {
       headers: {
           "Authorization": this.auth()
       }
     });
   }
 
-  getMessage(): Observable<string>{
-    return this.http.post<string>("http://localhost:8080/machineMicroservice/api/getMessage", {
+  getMessage(): Observable<MqttMessageDTO>{
+    return this.http.post<MqttMessageDTO>("http://localhost:8080/machineMicroservice/api/getMessage", null, {
       headers: {
           "Authorization": this.auth()
-      }
+      },
+      
     });
   }
 }

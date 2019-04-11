@@ -1,6 +1,8 @@
 package com.mima.machine.web.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.configurationprocessor.json.JSONException;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpRequest;
@@ -57,9 +59,9 @@ public class MQTTResource {
 	
 	//non testato
 	@PostMapping("/getMessage")
-    public ResponseEntity<String> getMessage() {
+    public String getMessage() throws JSONException {
 		String result = mqttService.getMessage();
-		return ResponseEntity.ok().body(result);
+		return new JSONObject().put("message", result).toString();
     }
 	
 	//test comunicazione tra microservizi
