@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.mima.machine.security.SecurityUtils;
+import com.mima.machine.service.dto.MachineDTO;
 import com.mima.machine.service.dto.MqttDTO;
 import com.mima.machine.service.impl.MQTTServiceImpl;
 import com.netflix.ribbon.proxy.annotation.Http;
@@ -71,10 +72,16 @@ public class MQTTResource {
 		MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
 		headers.add("Authorization", "Bearer " + SecurityUtils.getCurrentUserJWT().get());
 		
-		HttpEntity<?> request1 = new HttpEntity(String.class, headers);
-		ResponseEntity<String> responseEntity = new RestTemplate().exchange("http://localhost:8080/machineMicroservice/api/machines", HttpMethod.GET, request1, String.class);
+		MachineDTO machineDTO = new MachineDTO();
+		machineDTO.setId(null);
+		machineDTO.setIdUser(4);
+		machineDTO.setName("nome");
+		machineDTO.setModel("modello");
 		
-		return ResponseEntity.ok().body(responseEntity.getBody()); 
+		HttpEntity<MachineDTO> request1 = new HttpEntity<MachineDTO>(machineDTO, headers);
+		ResponseEntity<MachineDTO> responseEntity = new RestTemplate().exchange("http://localhost:8080/machineMicroservice/api/machines", HttpMethod.POST, request1, MachineDTO.class);
+		
+		return ResponseEntity.ok().body(responseEntity.getBody().toString()); 
     }
 	
 }
