@@ -1,5 +1,6 @@
 package com.mima.machine.repository;
 
+import com.mima.machine.domain.Scheduling;
 import com.mima.machine.domain.TaskScheduled;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,4 +28,5 @@ public interface TaskScheduledRepository extends JpaRepository<TaskScheduled, Lo
     @Query("select task_scheduled from TaskScheduled task_scheduled left join fetch task_scheduled.fathers where task_scheduled.id =:id")
     Optional<TaskScheduled> findOneWithEagerRelationships(@Param("id") Long id);
 
+    List<TaskScheduled> findAllByScheduling(Scheduling s);
 }

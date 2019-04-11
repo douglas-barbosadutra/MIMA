@@ -30,8 +30,8 @@ export class ItemService {
     });
   }
 
-  insertInput(inputDTO: InputDTO){
-    return this.http.post('http://localhost:8080/wbsMicroservice/api/items', inputDTO, {
+  findOne(id: number): Observable<ItemDTO>{
+    return this.http.get<ItemDTO>('http://localhost:8080/wbsMicroservice/api/findOne?id='+id, {
       headers: {
           "Authorization": this.auth()
       }
@@ -56,7 +56,7 @@ export class ItemService {
   }
 
   showItem(): Observable<Array<ItemDTO>>{
-    return this.http.get<Array<ItemDTO>>('http://localhost:8080/wbsMicroservice/api/items/showItem', {
+    return this.http.get<Array<ItemDTO>>('http://localhost:8080/wbsMicroservice/api/items', {
       headers: {
           "Authorization": this.auth()
       }

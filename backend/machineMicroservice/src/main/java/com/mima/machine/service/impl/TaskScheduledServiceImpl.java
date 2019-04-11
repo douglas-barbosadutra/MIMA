@@ -1,6 +1,7 @@
 package com.mima.machine.service.impl;
 
 import com.mima.machine.service.TaskScheduledService;
+import com.mima.machine.domain.Scheduling;
 import com.mima.machine.domain.TaskScheduled;
 import com.mima.machine.repository.TaskScheduledRepository;
 import com.mima.machine.service.dto.TaskScheduledDTO;
@@ -98,4 +99,16 @@ public class TaskScheduledServiceImpl implements TaskScheduledService {
         log.debug("Request to delete TaskScheduled : {}", id);
         taskScheduledRepository.deleteById(id);
     }
+
+	@Override
+	public List<TaskScheduledDTO> findAllByIdScheduling(Long id) {
+		log.debug("Request to get all TaskScheduleds by scheduling: "+id);
+		
+		Scheduling s = new Scheduling();
+		s.setId(id);
+		
+        return taskScheduledRepository.findAllByScheduling(s).stream()
+            .map(taskScheduledMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
+	}
 }

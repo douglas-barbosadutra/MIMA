@@ -109,4 +109,10 @@ public class TaskScheduledResource {
         taskScheduledService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+    
+    @GetMapping("/taskScheduledsByScheduling")
+    public List<TaskScheduledDTO> getAllTaskScheduledsByIdScheduling(@RequestParam(value="id") Long id) {
+        log.debug("REST request to get all TaskScheduleds by scheduling: "+id);
+        return taskScheduledService.findAllByIdScheduling(id);
+    }
 }

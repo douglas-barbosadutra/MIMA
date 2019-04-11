@@ -12,17 +12,18 @@ import { ParamDTO } from 'src/dto/ParamDTO';
 })
 export class ItemInsertComponent implements OnInit {
 
-  private itemDto: ItemDTO;
+  public itemDTO: ItemDTO;
   private paramDTO: ParamDTO;
 
   constructor(private router: Router, private itemService: ItemService) { }
 
   ngOnInit() {
+    this.itemDTO = new ItemDTO(null, "",parseInt(sessionStorage.getItem("idWbs")), parseInt(sessionStorage.getItem("idFather")));
+    
   }
 
   insertItem(f: NgForm) {
-    this.itemDto = new ItemDTO(0, f.value.nome, parseInt(sessionStorage.getItem("idFather")), parseInt(sessionStorage.getItem("idWbs")), null);
-    this.paramDTO = new ParamDTO(sessionStorage.getItem("userLogged"), this.itemDto);
+
     this.itemService.insertItem(this.paramDTO).subscribe((data: any) => {
       this.router.navigateByUrl("/itemShow");
     });

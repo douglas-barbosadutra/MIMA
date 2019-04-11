@@ -17,6 +17,8 @@ import {ItemService} from 'src/services/item.service';
 import {TaskScheduledService} from 'src/services/task-scheduled.service';
 import {EmployeeService} from 'src/services/employee.service';
 import { DataServiceService } from 'src/services/data-service.service';
+import { SendMessageService } from 'src/services/send-message.service';
+import {InputService} from 'src/services/input.service';
 
 import {HomeAdminComponent} from 'src/components/home-admin/home-admin.component';
 import {HomeUserComponent} from 'src/components/home-user/home-user.component';
@@ -53,7 +55,6 @@ import { TaskScheduledShowComponent } from 'src/components/task-scheduled-show/t
 import { TaskScheduledDeleteComponent } from 'src/components/task-scheduled-delete/task-scheduled-delete.component';
 import { HttpConfigInterceptor } from './interceptor/httpconfig.interceptor';
 import { SendMessageComponent } from 'src/components/send-message/send-message.component';
-import { SendMessageService } from 'src/services/send-message.service';
 
 
 
@@ -101,7 +102,7 @@ import { SendMessageService } from 'src/services/send-message.service';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [LoginService,UserService,MachineService,TaskService,InstructionService,SchedulingService,ManufactoringService, WbsService, ItemService, TaskScheduledService, EmployeeService, DataServiceService, SendMessageService,
+  providers: [LoginService,UserService,MachineService,TaskService,InstructionService,SchedulingService,ManufactoringService, WbsService, ItemService, TaskScheduledService, EmployeeService, DataServiceService, SendMessageService, InputService,
     { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })

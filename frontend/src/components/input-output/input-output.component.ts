@@ -4,6 +4,7 @@ import { ItemService } from 'src/services/item.service';
 import { InputDTO } from 'src/dto/InputDTO';
 import { TaskScheduledService } from 'src/services/task-scheduled.service';
 import { TaskScheduledDTO } from 'src/dto/TaskScheduledDTO';
+import { InputService } from 'src/services/input.service';
 
 @Component({
   selector: 'app-input-output',
@@ -14,33 +15,38 @@ export class InputOutputComponent implements OnInit {
 
   public itemList: Array<ItemDTO>;
   private inputDTO: InputDTO;
-  private taskScheduledDTO: TaskScheduledDTO;
+  private oldTaskScheduled: TaskScheduledDTO;
+  private newTaskScheduled: TaskScheduledDTO;
 
-  constructor(private itemService: ItemService, private taskScheduledService: TaskScheduledService) { }
+  constructor(private itemService: ItemService, private taskScheduledService: TaskScheduledService, private inputService: InputService) { }
 
   ngOnInit() {
-    this.itemService.showItem().subscribe((data: any) =>{
+    this.itemService.showItem().subscribe((data: Array<ItemDTO>) =>{
       if(data != null)
         this.itemList = data;
+    })
+
+    this.taskScheduledService.findOne(parseInt(sessionStorage.getItem("idTaskScheduled"))).subscribe((response: TaskScheduledDTO) =>{
+      if(response != null)
+        this.oldTaskScheduled = response;
     })
   }
 
   insertInput(idItem: number){
-    this.inputDTO = new InputDTO(idItem,parseInt(sessionStorage.getItem("idTaskScheduled")));
-    this.itemService.insertInput(this.inputDTO).subscribe((data: any) =>{
-      if(data)
+    this.inputDTO = new InputDTO(null,idItem,parseInt(sessionStorage.getItem("idTaskScheduled")));
+    this.inputService.insertInput(this.inputDTO).subscribe((response: InputDTO) =>{
+      if(response != null)
         alert("Inserimento effettuato");
-      else
-        alert("Inserimento fallito");
     })
   }
 
   insertOutput(idItem: number){
-    this.taskScheduledService.insertOutput(idItem,parseInt(sessionStorage.getItem("idOperationScheduling")), sessionStorage.getItem("userLogged")).subscribe((data: any) =>{
-      if(data)
+    
+    this.newTaskScheduled = new TaskScheduledDTO(this.oldTaskScheduled.id,this.oldTaskScheduled.name,idItem,this.oldTaskScheduled.schedulingId,this.oldTaskScheduled.taskId);
+
+    this.taskScheduledService.insertOutput(this.newTaskScheduled).subscribe((data: TaskScheduledDTO) =>{
+      if(data != null)
         alert("Inserimento effettuato");
-      else
-        alert("Inserimento fallito");
     })
   }
 

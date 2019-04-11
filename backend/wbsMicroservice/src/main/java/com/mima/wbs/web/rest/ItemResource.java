@@ -104,8 +104,8 @@ public class ItemResource {
      * @param id the id of the itemDTO to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the itemDTO, or with status 404 (Not Found)
      */
-    @GetMapping("/items/{id}")
-    public ResponseEntity<ItemDTO> getItem(@PathVariable Long id) {
+    @GetMapping("/findOne")
+    public ResponseEntity<ItemDTO> getItem(@RequestParam(value="id") Long id) {
         log.debug("REST request to get Item : {}", id);
         Optional<ItemDTO> itemDTO = itemService.findOne(id);
         return ResponseUtil.wrapOrNotFound(itemDTO);

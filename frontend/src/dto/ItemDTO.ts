@@ -1,15 +1,13 @@
 export class ItemDTO{
     id: number;
-    name: String;
-    idFather: number;
-    idWBS: number;
-    public itemChildrenDTO: Array<ItemDTO>;
+    name: string;
+    wbsId: number;
+    fatherId: number;
 
-    constructor(id: number, name: string, idFather: number, idWbs: number, itemChildrenDTO: Array<ItemDTO>){
+    constructor(id: number, name: string, wbsId: number, fatherId: number){
         this.id = id;
         this.name = name;
-        this.idFather = idFather;
-        this.idWBS = idWbs;
-        this.itemChildrenDTO = itemChildrenDTO;
+        this.fatherId = fatherId;
+        this.wbsId = wbsId;
     }
 }

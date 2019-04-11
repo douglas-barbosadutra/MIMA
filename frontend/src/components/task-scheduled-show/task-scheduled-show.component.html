@@ -8,15 +8,17 @@
         <tr>
           <th>ID</th>
           <th>Nome</th>
-          <th>ID Task</th>
+          <th>Output</th>
+          <th>Task</th>
           <th>Opzioni</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of taskScheduledList">
+        <tr *ngFor="let item of taskScheduledShowList">
           <td >{{item.id}}</td>
           <td>{{item.name}}</td>
-          <td >{{item.taskId}}</td>
+          <td>{{item.nameOutput}}</td>
+          <td >{{item.descriptionTask}}</td>
           <td>
             <button class="btn btn-primary" (click)="choose(item.id)">Seleziona</button>
           </td>

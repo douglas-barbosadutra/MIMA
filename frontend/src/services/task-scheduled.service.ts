@@ -24,8 +24,16 @@ export class TaskScheduledService {
     }
   }
 
+  findOne(id: number): Observable<TaskScheduledDTO>{
+    return this.http.get<TaskScheduledDTO>("http://localhost:8080/machineMicroservice/api/task-scheduleds/"+id, {
+      headers: {
+          "Authorization": this.auth()
+      }
+    });
+  }
+
   showTaskScheduled(idScheduling: number): Observable<Array<TaskScheduledDTO>>{
-    return this.http.get<Array<TaskScheduledDTO>>("http://localhost:8080/machineMicroservice/api/task-scheduledsByScheduling?id="+idScheduling, {
+    return this.http.get<Array<TaskScheduledDTO>>("http://localhost:8080/machineMicroservice/api/taskScheduledsByScheduling?id="+idScheduling, {
       headers: {
           "Authorization": this.auth()
       }
@@ -40,8 +48,12 @@ export class TaskScheduledService {
     return this.http.post('http://localhost:8082/TaskScheduled/insertOperationScheduling', paramDTO);
   }
 
-  insertOutput(idItem: number, idOperationScheduling: number, jwt: string){
-    return this.http.get('http://localhost:8082/TaskScheduled/insertOutput?idItem='+idItem+"&idOperationScheduling="+idOperationScheduling+'&jwt='+jwt);
+  insertOutput(taskScheduledDTO: TaskScheduledDTO): Observable<TaskScheduledDTO>{
+    return this.http.put<TaskScheduledDTO>("http://localhost:8080/machineMicroservice/api/task-scheduleds",taskScheduledDTO, {
+      headers: {
+          "Authorization": this.auth()
+      }
+    });
   }
 
   deleteTaskScheduled(idTaskScheduled: number): Observable<Boolean>{

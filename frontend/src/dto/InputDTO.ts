@@ -1,9 +1,10 @@
 export class InputDTO{
-    private idItem: number;
-    private idTask: number;
+    id: number
+    idItem: number;
+    taskScheduledId: number;
 
-    constructor(idItem: number, idTask: number){
+    constructor(id: number, idItem: number, taskScheduledId: number){
         this.idItem = idItem;
-        this.idTask = idTask;
+        this.taskScheduledId = taskScheduledId;
     }
 }
