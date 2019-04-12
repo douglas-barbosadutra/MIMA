@@ -1,6 +1,7 @@
 package com.mima.wbs.service.impl;
 
 import com.mima.wbs.service.ItemService;
+import com.mima.wbs.converter.ItemConverter;
 import com.mima.wbs.domain.Item;
 import com.mima.wbs.repository.ItemRepository;
 import com.mima.wbs.service.dto.ItemDTO;
@@ -99,10 +100,11 @@ public class ItemServiceImpl implements ItemService {
 		WBSDTO wbs = new WBSDTO();
 		wbs.setId((long) idWBS);
 		
-		List<ItemDTO> list = itemRepository.findAllByWbs(wbsMapper.toEntity(wbs)).stream()
+		List<ItemDTO> list = ItemConverter.toDto(itemRepository.findAllByWbs(wbsMapper.toEntity(wbs)));
+				/*itemRepository.findAllByWbs(wbsMapper.toEntity(wbs)).stream()
 	            .map(itemMapper::toDto)
-	            .collect(Collectors.toCollection(LinkedList::new));
-
+	            .collect(Collectors.toCollection(LinkedList::new));*/
+		System.out.println(list);
 		for(ItemDTO item: list) {
 			if(item.getFatherId() == null) {
 				Optional<ItemDTO> result = Optional.of(item);

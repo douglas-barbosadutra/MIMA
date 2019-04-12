@@ -3,6 +3,9 @@ package com.mima.wbs.service.mapper;
 import com.mima.wbs.domain.*;
 import com.mima.wbs.service.dto.ItemDTO;
 
+import java.util.List;
+import java.util.Set;
+
 import org.mapstruct.*;
 
 /**
@@ -20,7 +23,7 @@ public interface ItemMapper extends EntityMapper<ItemDTO, Item> {
     @Mapping(source = "wbsId", target = "wbs")
     @Mapping(source = "fatherId", target = "father")
     Item toEntity(ItemDTO itemDTO);
-
+    
     default Item fromId(Long id) {
         if (id == null) {
             return null;

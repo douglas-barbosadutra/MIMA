@@ -1,6 +1,9 @@
 package com.mima.machine.service.dto;
 
-public class NodeDTO {
+import java.io.Serializable;
+import java.util.Objects;
+
+public class NodeDTO implements Serializable{
 
 	private Long id;
 
@@ -26,4 +29,17 @@ public class NodeDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	@Override
+    public int hashCode() {
+        return Objects.hashCode(getId());
+    }
+
+    @Override
+    public String toString() {
+    	return "NodeDTO{" +
+    			"id=" + getId() +
+    			", name='" + getName() +
+    			"}";
+    }
 }

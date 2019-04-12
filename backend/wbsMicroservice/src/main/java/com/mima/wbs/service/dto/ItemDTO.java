@@ -1,5 +1,7 @@
 package com.mima.wbs.service.dto;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -11,11 +13,12 @@ public class ItemDTO implements Serializable {
 
     private String name;
 
-
     private Long wbsId;
 
     private Long fatherId;
 
+    private List<ItemDTO> items = new ArrayList<ItemDTO>();
+    
     public Long getId() {
         return id;
     }
@@ -48,6 +51,14 @@ public class ItemDTO implements Serializable {
         this.fatherId = itemId;
     }
 
+    public List<ItemDTO> getItems(){
+    	return this.items;
+    }
+    
+    public void setItems(List<ItemDTO> list) {
+    	this.items = list;
+    }
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -76,6 +87,7 @@ public class ItemDTO implements Serializable {
             ", name='" + getName() + "'" +
             ", wbs=" + getWbsId() +
             ", father=" + getFatherId() +
+            //", items=" + items.toString() +
             "}";
     }
 }

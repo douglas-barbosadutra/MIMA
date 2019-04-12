@@ -7,12 +7,18 @@ import com.mima.wbs.web.rest.errors.BadRequestAlertException;
 import com.mima.wbs.web.rest.util.HeaderUtil;
 import com.mima.wbs.service.dto.ItemDTO;
 import com.mima.wbs.service.dto.NodeDTO;
+import com.mima.wbs.service.dto.TaskDTO;
 
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cloud.cloudfoundry.com.fasterxml.jackson.core.JsonProcessingException;
+import org.springframework.cloud.cloudfoundry.com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.cloud.cloudfoundry.com.fasterxml.jackson.databind.ObjectWriter;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -21,7 +27,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,19 +54,23 @@ public class ItemResource {
      * @param itemDTO the itemDTO to create
      * @return the ResponseEntity with status 201 (Created) and with body the new itemDTO, or with status 400 (Bad Request) if the item has already an ID
      * @throws URISyntaxException if the Location URI syntax is incorrect
+     * @throws JsonProcessingException 
      */
     @PostMapping("/items")
-    public ResponseEntity<ItemDTO> createItem(@RequestBody ItemDTO itemDTO) throws URISyntaxException {
+    public ResponseEntity<ItemDTO> createItem(@RequestBody ItemDTO itemDTO) throws URISyntaxException, JsonProcessingException {
         log.debug("REST request to save Item : {}", itemDTO);
         if (itemDTO.getId() != null) {
             throw new BadRequestAlertException("A new item cannot already have an ID", ENTITY_NAME, "idexists");
         }
         ItemDTO result = itemService.save(itemDTO);
-        if (result != null) {
+        /*if (result != null) {
         	Long l = new Long(1);
-    		NodeDTO node = new NodeDTO(l, "test");
+        	TaskDTO node = new TaskDTO();
+        	node.setId(l);
+        	node.setMachineId(l);
+        	node.setDescription("test");
     		this.createNode(node);
-		}
+		}*/
         return ResponseEntity.created(new URI("/api/items/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -132,13 +142,19 @@ public class ItemResource {
 		return ResponseUtil.wrapOrNotFound(itemDTO);
 	}
     
-    public ResponseEntity<String> createNode(NodeDTO node) {
+    public ResponseEntity<String> createNode(TaskDTO node) throws JsonProcessingException {
+    	
 		MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
 		headers.add("Authorization", "Bearer " + SecurityUtils.getCurrentUserJWT().get());
-		HttpEntity<?> request1 = new HttpEntity(node, headers);
-		ResponseEntity<String> responseEntity = new RestTemplate().exchange(
+		
+		HttpEntity<TaskDTO> request1 = new HttpEntity<TaskDTO>(node, headers);
+		ResponseEntity<TaskDTO> responseEntity = new RestTemplate().exchange(
 				"http://localhost:8080/machineMicroservice/api/task-scheduleds/createNode", HttpMethod.POST, request1,
-				String.class);
-		return ResponseEntity.ok().body(responseEntity.getBody());
+				TaskDTO.class);
+		
+		
+    	System.out.println(4);
+    	System.out.println(responseEntity.toString());
+		return ResponseEntity.ok().body(responseEntity.getBody().toString());
 	}
 }

@@ -36,7 +36,7 @@ public class Item implements Serializable {
     private WBS wbs;
 
     @ManyToOne
-    @JsonIgnoreProperties("items")
+    //@JsonIgnoreProperties("items")
     private Item father;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

@@ -25,7 +25,7 @@ export class ItemShowComponent implements OnInit {
     this.itemService.showItemTree(parseInt(sessionStorage.getItem("idWbs"))).subscribe((data: any) => {
       if (data != null) {
         this.father = data;
-        //this.list = this.father.itemChildrenDTO;
+        this.list = this.father.items;
       }
     });
   }
@@ -36,7 +36,7 @@ export class ItemShowComponent implements OnInit {
   }
 
   deleteItem(idItem: number) {
-    this.itemDto = new ItemDTO(idItem, "", 0, 0);
+    this.itemDto = new ItemDTO(idItem, "", 0, 0, null);
     this.itemService.deleteItem(idItem).subscribe((data: any) => {
     });
     window.location.reload();

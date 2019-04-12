@@ -4,6 +4,7 @@ package com.mima.machine.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import javax.annotation.Nullable;
 import javax.persistence.*;
 
 import java.io.Serializable;
@@ -31,6 +32,7 @@ public class Task implements Serializable {
     private Set<TaskScheduled> taskScheduleds = new HashSet<>();
     @OneToMany(mappedBy = "task")
     private Set<Employee> employees = new HashSet<>();
+    @Nullable
     @ManyToOne
     @JsonIgnoreProperties("tasks")
     private Machine machine;
