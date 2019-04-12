@@ -23,6 +23,7 @@ export class ItemService {
   }
 
   insertItem(itemDTO: ItemDTO): Observable<ItemDTO>{
+    console.log(itemDTO);
     return this.http.post<ItemDTO>('http://localhost:8080/wbsMicroservice/api/items', itemDTO, {
       headers: {
           "Authorization": this.auth()

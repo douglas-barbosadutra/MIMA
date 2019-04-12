@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -27,7 +30,7 @@ public class Item implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "father")
+    @OneToMany(mappedBy = "father", cascade = CascadeType.REMOVE)
     private Set<Item> items = new HashSet<>();
     @OneToMany(mappedBy = "output")
     private Set<Manufacturing> manufacturings = new HashSet<>();
@@ -36,6 +39,7 @@ public class Item implements Serializable {
     private WBS wbs;
 
     @ManyToOne
+    @OnDelete(action=OnDeleteAction.CASCADE)
     //@JsonIgnoreProperties("items")
     private Item father;
 

@@ -51,8 +51,12 @@ public class ItemServiceImpl implements ItemService {
     public ItemDTO save(ItemDTO itemDTO) {
         log.debug("Request to save Item : {}", itemDTO);
         Item item = itemMapper.toEntity(itemDTO);
+        
+        //itemRepository.insertItem(itemDTO.getName(), itemDTO.getFatherId(), itemDTO.getWbsId());
+       
         item = itemRepository.save(item);
         return itemMapper.toDto(item);
+        //return itemDTO;
     }
 
     /**

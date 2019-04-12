@@ -23,7 +23,7 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 
 	@Modifying
 	@Transactional
-	@Query(value = "INSERT INTO items (name, id_father, id_wbs) VALUES (:name, :id_father, :id_wbs)", nativeQuery = true)
-	public int insertItem(@Param("name") String name, @Param("id_father") Integer id_father,
-			@Param("id_wbs") Integer id_wbs);
+	@Query(value = "INSERT INTO item (name, father_id, wbs_id) VALUES (:name, :id_father, :id_wbs)", nativeQuery = true)
+	public void insertItem(@Param("name") String name, @Param("id_father") Long long1,
+			@Param("id_wbs") Long long2);
 }
