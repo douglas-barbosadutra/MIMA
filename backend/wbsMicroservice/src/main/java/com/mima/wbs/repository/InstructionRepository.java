@@ -15,5 +15,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface InstructionRepository extends JpaRepository<Instruction, Long> {
 
-	public List<Instruction> findAllByIdTask(Long idTask);
+	public List<Instruction> findAllByIdTask(Integer idTask);
 }

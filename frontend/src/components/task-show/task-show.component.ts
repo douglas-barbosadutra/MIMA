@@ -1,32 +1,53 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { Router } from "@angular/router";
-import { MachineDTO } from 'src/dto/MachineDTO';
 import { TaskService } from 'src/services/task.service';
 import { TaskDTO } from 'src/dto/TaskDTO';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Subject } from 'rxjs';
+declare var $;
 
 @Component({
   selector: 'app-task-show',
   templateUrl: './task-show.component.html',
-  styleUrls: ['./task-show.component.css']
+  styleUrls: ['./task-show.component.css'],
+  providers: [NgbModalConfig, NgbModal]
 })
-export class TaskShowComponent implements OnInit {
+export class TaskShowComponent implements OnInit,OnDestroy {
 
-  private machineDTO: MachineDTO;
-  private taskDTO: TaskDTO;
-  private taskList: Array<TaskDTO>;
+  public taskDTO: TaskDTO;
+  taskList: TaskDTO[] = [];
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<TaskDTO> = new Subject();
 
-  constructor(private router: Router, private taskService: TaskService) { }
+  constructor(private config: NgbModalConfig, private modalService: NgbModal, private router: Router, private taskService: TaskService) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+   }
 
   ngOnInit() {
+
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 10
+    };
+
     this.checkMachineSelected();
+  }
+
+  ngOnDestroy(): void {
+    // Do not forget to unsubscribe the event
+    this.dtTrigger.unsubscribe();
   }
 
   checkMachineSelected(){
     if(sessionStorage.getItem("idMachine") == null){
       this.router.navigateByUrl("machineShow");
     }
-    else
+    else{
+      this.taskDTO = new TaskDTO(null,null,parseInt(sessionStorage.getItem("idMachine")));
       this.taskShow();
+    }
+      
   }
 
   taskShow(){
@@ -35,6 +56,7 @@ export class TaskShowComponent implements OnInit {
 
       if(data != null){
         this.taskList = data;
+        this.dtTrigger.next();
       }
     })
   }
@@ -43,20 +65,30 @@ export class TaskShowComponent implements OnInit {
     
     sessionStorage.setItem("idTask",JSON.stringify(idTask));
     alert("Task selezionato");
-    this.router.navigateByUrl("homeUser");
   }
 
   deleteTask(idTask: number){
    
     this.taskService.deleteTask(idTask).subscribe((data: any) =>{
-
-      if(data)
-        alert("Cancellazione effettuata");   
-      else
-        alert("Cancellazione fallita");
-
-      this.router.navigateByUrl("homeUser");
+        location.reload(true);
     })
+  }
+
+  insertTask(){
+  
+    this.taskService.insertTask(this.taskDTO).subscribe((data: TaskDTO) =>{
+      if(data != null)
+        location.reload(true);
+    })
+  }
+
+  timeShow(idTask: number){
+    localStorage.setItem("idTask",JSON.stringify(idTask));
+    this.router.navigateByUrl("timeShow");
+  }
+
+  open(content) {
+    this.modalService.open(content);
   }
 
 }

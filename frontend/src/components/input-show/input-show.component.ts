@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { InputDTO } from 'src/dto/InputDTO';
 import { InputService } from 'src/services/input.service';
 import { InputShowDTO } from 'src/dto/InputShowDTO';
 import { ItemService } from 'src/services/item.service';
 import { ItemDTO } from 'src/dto/ItemDTO';
+import { Subject } from 'rxjs';
+declare var $;
 
 @Component({
   selector: 'app-input-show',
@@ -14,11 +16,18 @@ import { ItemDTO } from 'src/dto/ItemDTO';
 export class InputShowComponent implements OnInit {
   
   private inputList: Array<InputDTO>;
-  private inputShowList: Array<InputShowDTO>;
+  inputShowList: InputShowDTO[] = [];
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<InputShowDTO> = new Subject();
 
   constructor(private router: Router, private inputService: InputService, private itemService: ItemService) { }
 
   ngOnInit() {
+
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 10
+    };
 
     this.inputShowList = new Array<InputShowDTO>();
 
@@ -42,8 +51,7 @@ export class InputShowComponent implements OnInit {
           this.inputShowList.push(new InputShowDTO(input.id,response.name));
       })
     }
-    console.log(this.inputShowList);
+    this.dtTrigger.next();
   }
-
 
 }

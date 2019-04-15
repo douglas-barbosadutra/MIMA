@@ -29,6 +29,14 @@ export class EmployeeService {
     });
   }
 
+  findEmployeeByIdUser(idUser: number): Observable<EmployeeDTO>{
+    return this.http.get<EmployeeDTO>("http://localhost:8080/machineMicroservice/api/employeesByIdUserOwner?id="+idUser, {
+      headers: {
+          "Authorization": this.auth()
+      }
+    });
+  }
+
   insertEmployee(employeeDTO: EmployeeDTO): Observable<EmployeeDTO>{
     return this.http.post<EmployeeDTO>("http://localhost:8080/machineMicroservice/api/employees",employeeDTO, {
       headers: {

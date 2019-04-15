@@ -34,9 +34,6 @@ export class SendMessageComponent implements OnInit {
     this.sendmessageservice.connect(this.mqttDTO).subscribe((isConnected: boolean) => {
       if(isConnected){
         document.getElementById("textarea").style.display = "block";
-        document.getElementById("textarea").style.marginLeft = "20%";
-        document.getElementById("textarea").style.marginRight = "20%";
-        document.getElementById("textarea").style.marginTop = "5%";
       }      
     })
   }
@@ -55,10 +52,6 @@ export class SendMessageComponent implements OnInit {
     this.sendmessageservice.subscribeTopic().subscribe((undersigned: boolean) =>{
       if(undersigned){
         document.getElementById("textarea2").style.display = "block";
-        document.getElementById("textarea2").style.marginLeft = "20%";
-        document.getElementById("textarea2").style.marginRight = "20%";
-        document.getElementById("textarea2").style.marginTop = "5%";
-
         this.startEventRequest();
       }
     })

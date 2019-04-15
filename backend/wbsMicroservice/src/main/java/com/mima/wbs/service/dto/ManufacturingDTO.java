@@ -11,7 +11,6 @@ public class ManufacturingDTO implements Serializable {
 
     private Integer duration;
 
-
     private Long outputId;
 
     private Long instructionId;

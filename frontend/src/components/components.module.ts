@@ -5,25 +5,17 @@ import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { HomeUserComponent } from './home-user/home-user.component';
 import { HomeEmployeeComponent } from './home-employee/home-employee.component';
 import { MenuUserComponent } from './menu-user/menu-user.component';
-import { MachineInsertComponent } from './machine-insert/machine-insert.component';
 import { MachineShowComponent } from './machine-show/machine-show.component';
-import { SchedulingInsertComponent } from './scheduling-insert/scheduling-insert.component';
 import { SchedulingShowComponent } from './scheduling-show/scheduling-show.component';
-import { TaskInsertComponent } from './task-insert/task-insert.component';
 import { TaskShowComponent } from './task-show/task-show.component';
-import { InstructionInsertComponent } from './instruction-insert/instruction-insert.component';
 import { InstructionShowComponent } from './instruction-show/instruction-show.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
-import { WbsInsertComponent } from './wbs-insert/wbs-insert.component';
 import { WbsShowComponent } from './wbs-show/wbs-show.component';
 import { ItemInsertComponent } from './item-insert/item-insert.component';
 import { ItemShowComponent } from './item-show/item-show.component';
-import { SchedulingUpdateComponent } from './scheduling-update/scheduling-update.component';
 import { TimeShowComponent } from './time-show/time-show.component';
 import { TaskScheduledComponent } from './task-scheduled/task-scheduled.component';
 import { TaskEmployeeShowComponent } from './task-employee-show/task-employee-show.component';
-import { EmployeeUpdateComponent } from './employee-update/employee-update.component';
-import { EmployeeInsertComponent } from './employee-insert/employee-insert.component';
 import { EmployeeShowComponent } from './employee-show/employee-show.component';
 import { AssignTaskComponent } from './assign-task/assign-task.component';
 import { InputOutputComponent } from './input-output/input-output.component';
@@ -34,7 +26,7 @@ import { InputShowComponent } from './input-show/input-show.component';
 
 @NgModule({
 // tslint:disable-next-line: max-line-length
-  declarations: [LoginComponent, HomeAdminComponent, HomeUserComponent, HomeEmployeeComponent, MenuUserComponent, MachineInsertComponent, MachineShowComponent, SchedulingInsertComponent, SchedulingShowComponent, TaskInsertComponent, TaskShowComponent, InstructionInsertComponent, InstructionShowComponent, UserUpdateComponent, WbsInsertComponent, WbsShowComponent, ItemInsertComponent, ItemShowComponent, SchedulingUpdateComponent, TimeShowComponent, TaskScheduledComponent, TaskEmployeeShowComponent, EmployeeUpdateComponent, EmployeeInsertComponent, EmployeeShowComponent, AssignTaskComponent, InputOutputComponent, TaskScheduledShowComponent, TaskScheduledDeleteComponent, SendMessageComponent, InputShowComponent],
+  declarations: [LoginComponent, HomeAdminComponent, HomeUserComponent, HomeEmployeeComponent, MenuUserComponent, MachineShowComponent, SchedulingShowComponent, TaskShowComponent, InstructionShowComponent, UserUpdateComponent, WbsShowComponent, ItemInsertComponent, ItemShowComponent, TimeShowComponent, TaskScheduledComponent, TaskEmployeeShowComponent, EmployeeShowComponent, AssignTaskComponent, InputOutputComponent, TaskScheduledShowComponent, TaskScheduledDeleteComponent, SendMessageComponent, InputShowComponent],
   imports: [
     CommonModule
   ]

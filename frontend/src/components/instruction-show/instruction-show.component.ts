@@ -1,21 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild, ElementRef } from '@angular/core';
 import { Router } from "@angular/router";
-import { TaskDTO } from 'src/dto/TaskDTO';
 import { InstructionService } from 'src/services/instruction.service';
 import { InstructionDTO } from 'src/dto/InstructionDTO';
-import { HttpResponse } from '@angular/common/http';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+declare var $;
 
 @Component({
   selector: 'app-instruction-show',
   templateUrl: './instruction-show.component.html',
-  styleUrls: ['./instruction-show.component.css']
+  styleUrls: ['./instruction-show.component.css'],
+  providers: [NgbModalConfig, NgbModal]
 })
 export class InstructionShowComponent implements OnInit {
 
-  private instructionDTO: InstructionDTO;
+  public instructionDTO: InstructionDTO;
   private instructionList: Array<InstructionDTO>;
 
-  constructor(private router: Router, private instructionService: InstructionService) { }
+  @ViewChild('dataTable') table: ElementRef;
+  dataTable: any;
+
+  constructor(private config: NgbModalConfig, private modalService: NgbModal, private router: Router, private instructionService: InstructionService) { 
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
 
   ngOnInit() {
     this.checkTask();
@@ -23,10 +30,13 @@ export class InstructionShowComponent implements OnInit {
 
   checkTask() {
     if (sessionStorage.getItem("idTask") == null) {
-      this.router.navigateByUrl("showTask");
+      this.router.navigateByUrl("taskShow");
     }
-    else
+    else{
+      this.instructionDTO = new InstructionDTO(null,null,null,null,parseInt(sessionStorage.getItem("idTask")));
       this.instructionShow();
+    }
+      
   }
 
   instructionShow() {
@@ -34,11 +44,30 @@ export class InstructionShowComponent implements OnInit {
       if (data != null)
         this.instructionList = data;
     })
+    this.createDataTable();
+  }
+
+  createDataTable(){
+    this.dataTable = $(this.table.nativeElement);
+    this.dataTable.dataTable();
   }
 
   instructionDelete(idInstruction: number) {
-    this.instructionService.deleteInstruction(idInstruction).subscribe();
-    location.reload(true);
+    this.instructionService.deleteInstruction(idInstruction).subscribe((response: any) =>{
+      location.reload(true);
+    });
+    
+  }
+
+  instructionInsert() {
+    this.instructionService.insertInstruction(this.instructionDTO).subscribe((data: InstructionDTO) => {
+      if (data != null)
+        location.reload(true);       
+    })
+  }
+
+  open(content) {
+    this.modalService.open(content);
   }
 
 }

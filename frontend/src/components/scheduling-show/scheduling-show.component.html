@@ -3,7 +3,7 @@
 		
 <div id="container">
   
-  <table class="table table-striped">
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
       <thead>
         
         <tr>
@@ -17,19 +17,84 @@
       </thead>
       
       <tbody>
-        <tr *ngFor="let schedulingList of schedulingList">			
-          <td >{{schedulingList.id}}</td>
-          <td >{{schedulingList.name}}</td>
-          <td >{{schedulingList.start}}</td>
-          <td >{{schedulingList.finish}}</td>
+        <tr *ngFor="let scheduling of schedulingList">			
+          <td >{{scheduling.id}}</td>
+          <td >{{scheduling.name}}</td>
+          <td >{{scheduling.start}}</td>
+          <td >{{scheduling.finish}}</td>
           <td>
-            <button class="btn btn-primary" (click)="showGraph(schedulingList.id)">Visualizza grafo</button>
-            <button class="btn btn-primary" (click)="deleteScheduling(schedulingList.id)">Elimina</button>
-            <button class="btn btn-primary" (click)="updateScheduling(schedulingList.id,schedulingList.name)">Modifica</button>
+            <i (click)="showGraph(scheduling.id)" style="color:green" class='fas fa-check icon'></i>
+						<i (click)="deleteScheduling(scheduling.id)" style="color:black; margin-left:2%;" class='far fa-trash-alt icon'></i>
+            <i (click)="updateModal(scheduling.id,scheduling.name,content2)" style="color:yellow; margin-left:2%;" class="fas fa-pencil-alt icon"></i>
           </td>
         </tr>
       </tbody>
+
+      <tfoot>
+        
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Data inizio</th>
+            <th>Data fine</th>
+            <th>Opzioni</th>
+          </tr>
+          
+        </tfoot>
       
   </table>
-    
+  <button (click)="open(content)" style="margin-left:45%;" class="btn btn-primary">Inserisci</button>
 </div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title title" id="modal-basic-title">Inserimento scheduling</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+    <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label class="col-form-label">Nome</label>
+      <input type="text" class="form-control" name="name" [(ngModel)]="schedulingDTO.name">
+    </div>
+
+    <div class="form-group">
+        <label class="col-form-label">Data inizio</label>
+      <input type="datetime-local" class="form-control" name="startDate" [(ngModel)]="schedulingDTO.start">
+    </div>
+
+    <div class="form-group">
+        <label class="col-form-label">Data fine</label>
+      <input type="datetime-local" class="form-control" name="endDate" [(ngModel)]="schedulingDTO.finish">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="d('Cross click')">Chiudi</button>
+    <button type="submit" class="btn btn-primary" (click)="insertScheduling()" >Inserisci</button>	
+  </div>
+</ng-template>
+
+<ng-template #content2 let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title title" id="modal-basic-title">Aggiornamento scheduling</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+    <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label class="col-form-label">Data inizio</label>
+      <input type="datetime-local" class="form-control" name="startDate" [(ngModel)]="schedulingDTO.start">
+    </div>
+
+    <div class="form-group">
+        <label class="col-form-label">Data fine</label>
+      <input type="datetime-local" class="form-control" name="endDate" [(ngModel)]="schedulingDTO.finish">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="d('Cross click')">Chiudi</button>
+    <button type="submit" class="btn btn-primary" (click)="updateScheduling()" >Aggiorna</button>	
+  </div>
+</ng-template>

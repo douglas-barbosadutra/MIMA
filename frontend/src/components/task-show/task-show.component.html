@@ -2,7 +2,7 @@
 <h1 class="title">Lista task</h1>
 
 <div id="container">
-  <table class="table table-striped">
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
     <thead>
       
       <tr>
@@ -14,15 +14,45 @@
     </thead>
     
     <tbody>
-      <tr *ngFor="let taskList of taskList">			
-        <td >{{taskList.id}}</td>
-        <td >{{taskList.description}}</td>
+      <tr *ngFor="let task of taskList">			
+        <td >{{task.id}}</td>
+        <td >{{task.description}}</td>
         <td>
-          <button class="btn btn-primary" (click)="chooseTask(taskList.id)">Seleziona</button>
-          <button class="btn btn-primary" (click)="deleteTask(taskList.id)">Elimina</button>
+            <i (click)="chooseTask(task.id)" style="color:green" class='fas fa-check icon'></i>
+            <i (click)="deleteTask(task.id)" style="color:black; margin-left:2%;" class='far fa-trash-alt icon'></i>  
+            <i (click)="timeShow(task.id)" style="color:black; margin-left:2%;" class="far fa-eye icon"></i> 
         </td>
       </tr>
     </tbody>
+
+    <tfoot>
+      
+        <tr>
+          <th>ID</th>
+          <th>Descrizione</th>
+          <th>Opzioni</th>
+        </tr>
+        
+      </tfoot>
     
   </table>
+  <button (click)="open(content)" style="margin-left:45%;" class="btn btn-primary">Inserisci</button>
 </div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title title" id="modal-basic-title">Inserimento task</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+    <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <div class="form-group">
+        <input type="text" class="form-control" name="description" placeholder="Inserisci la descrizione" [(ngModel)]="taskDTO.description">
+      </div>			
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="d('Cross click')">Chiudi</button>
+    <button type="submit" class="btn btn-primary" (click)="insertTask()" >Inserisci</button>	
+  </div>
+</ng-template>

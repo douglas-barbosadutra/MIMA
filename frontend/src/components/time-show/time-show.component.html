@@ -3,7 +3,7 @@
 		
 <div id="container">
   
-  <table class="table">
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
       <thead>
         
         <tr>
@@ -21,6 +21,16 @@
           <td >{{timeList.expectedDuration}}</td>
         </tr>
       </tbody>
+
+      <tfoot>
+        
+        <tr>
+          <th>Nome Istruzione</th>
+          <th>Tempi effettivi</th>
+          <th>Tempi previsti</th>
+        </tr>
+          
+      </tfoot>
       
   </table>
     

@@ -14,10 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mima.wbs.service.ManufacturingService;
+import com.mima.wbs.service.TimeService;
 import com.mima.wbs.service.dto.ManufacturingDTO;
+import com.mima.wbs.service.dto.TimeDTO;
 import com.mima.wbs.web.rest.errors.BadRequestAlertException;
 import com.mima.wbs.web.rest.util.HeaderUtil;
 
@@ -35,9 +38,12 @@ public class ManufacturingResource {
     private static final String ENTITY_NAME = "wbsMicroserviceManufacturing";
 
     private final ManufacturingService manufacturingService;
+    
+    private final TimeService timeService;
 
-    public ManufacturingResource(ManufacturingService manufacturingService) {
+    public ManufacturingResource(ManufacturingService manufacturingService, TimeService timeService) {
         this.manufacturingService = manufacturingService;
+        this.timeService = timeService;
     }
 
     /**
@@ -115,6 +121,13 @@ public class ManufacturingResource {
         log.debug("REST request to delete Manufacturing : {}", id);
         manufacturingService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    }
+    
+    @GetMapping("/times")
+    public List<TimeDTO> showTimeByIdTask(@RequestParam(value="id") Integer id) {
+        log.debug("REST request to show times by task : "+ id);
+        
+        return timeService.showTimeByIdTask(id);
     }
     
 }

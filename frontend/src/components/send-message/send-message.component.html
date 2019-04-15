@@ -2,7 +2,7 @@
 
 <h1 class="title">Invio Messaggi</h1>
 
-<div style="padding-left: 20%; padding-right: 20%;" id="form">
+<div id="container" class="contenitore">
 
   <form #f="ngForm">
 
@@ -26,7 +26,7 @@
 
 </div>
 
-<div id="container" style="display:none;" id="textarea2">
+<div style="display:none;" id="textarea2" class="contenitore">
 
   <div class="form-group">
     <textarea disabled class="form-control" rows="5" id="comment2" [(ngModel)]="message2"></textarea>
@@ -34,7 +34,7 @@
 
 </div>
 
-<div id="container" style="display:none;" id="textarea">
+<div style="display:none;" id="textarea" class="contenitore">
 
   <div class="form-group">
     <textarea class="form-control" rows="5" id="comment" placeholder="Inserisci il tuo messaggio" [(ngModel)]="message"></textarea>

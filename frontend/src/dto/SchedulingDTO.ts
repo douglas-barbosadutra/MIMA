@@ -13,11 +13,28 @@ export class SchedulingDTO{
         this.machineId = machineId;
     }
 
-    public setStartDate(start: string){
+    public setId(id: number){
+        this.id = id;
+    }
+
+    public setName(name: string){
+        this.name = name;
+    }
+
+    public getStart(): string{
+        return this.start;
+    }
+
+    public getFinish(): string{
+        return this.finish;
+    }
+
+    public setStart(start: string){
         this.start = start;
     }
 
-    public setEndDate(finish: string){
+    public setFinish(finish: string){
         this.finish = finish;
     }
+
 }

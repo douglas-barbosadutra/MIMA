@@ -42,4 +42,6 @@ public interface EmployeeService {
     boolean delete(Long id);
     
     List<EmployeeDTO> findAllByBusinessOwner(Integer id);
+    
+    EmployeeDTO findByIdUser(Integer idUser);
 }

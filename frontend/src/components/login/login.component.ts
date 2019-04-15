@@ -25,30 +25,6 @@ export class LoginComponent implements OnInit {
     this.loginDTO = new LoginDTO("","");
   }
 
-  /*login(f:NgForm): void{
-    this.loginService.login(this.loginDTO).subscribe((data: UserLoggedDTO) => {
-
-      if(data != null){
-        console.log(data.jwt)
-
-        sessionStorage.setItem("userLogged",data.jwt);
-
-        if(data.rank == 0)
-          this.router.navigateByUrl("/homeUser");
-
-        else if(data.rank == 1)
-          this.router.navigateByUrl("/homeAdmin");
-
-        else
-          this.router.navigateByUrl("/homeEmployee");
-            
-      }
-      else{
-        alert("user o pass errati");
-      }
-    });
-  }*/
-
   login(f:NgForm): void{
 
     this.loginService.login(this.loginDTO).subscribe((response: any) => {
@@ -58,6 +34,10 @@ export class LoginComponent implements OnInit {
       this.loginService.getUserLogged(this.loginDTO.username).subscribe((response: UserDTO) => {
         console.log(response);
         localStorage.setItem("currentUserData", JSON.stringify(response));
+
+        if(response.authorities.includes("ROLE_EMPLOYEE"))
+          this.router.navigateByUrl("homeEmployee");
+        else
         this.router.navigateByUrl("homeUser");
       })
     });

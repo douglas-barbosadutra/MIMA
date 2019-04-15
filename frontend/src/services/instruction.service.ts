@@ -30,7 +30,7 @@ export class InstructionService {
   }
 
   showInstruction(idTask: number): Observable<Array<InstructionDTO>>{
-    return this.http.get<Array<InstructionDTO>>("http://localhost:8080/wbsMicroservice/api/instructions/"+idTask, {
+    return this.http.get<Array<InstructionDTO>>("http://localhost:8080/wbsMicroservice/api/instructionsByTask?id="+idTask, {
       headers: {
           "Authorization": this.auth()
       }
@@ -38,7 +38,7 @@ export class InstructionService {
   }
 
   deleteInstruction(idInstruction: number){
-    return this.http.get("http://localhost:8080/wbsMicroservice/api/instructions/"+idInstruction, {
+    return this.http.delete("http://localhost:8080/wbsMicroservice/api/instructions/"+idInstruction, {
       headers: {
           "Authorization": this.auth()
       }

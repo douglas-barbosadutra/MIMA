@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -110,9 +110,9 @@ public class InstructionResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
     
-    @GetMapping("/instructions/{idTask}")
-    @Timed
-    public List<InstructionDTO> showInstruction(@PathVariable Long idTask){
+    @GetMapping("/instructionsByTask")
+    public List<InstructionDTO> showInstruction(@RequestParam(value="id") Integer idTask){
+    	log.debug("REST request to get all instruction by task: "+ idTask);
     	return instructionService.getAllInstructionByIdTask(idTask);
     }
 }

@@ -89,8 +89,11 @@ public class InstructionServiceImpl implements InstructionService {
     }
 
     @Override
-	public List<InstructionDTO> getAllInstructionByIdTask(Long idTask) {
-		return instructionRepository.findAllByIdTask(idTask).stream().map(instructionMapper::toDto)
-				.collect(Collectors.toCollection(LinkedList::new));
+	public List<InstructionDTO> getAllInstructionByIdTask(Integer idTask) {
+    	 log.debug("Request to get all Instructions by task: "+idTask);
+         
+    	 return instructionRepository.findAllByIdTask(idTask).stream()
+             .map(instructionMapper::toDto)
+             .collect(Collectors.toCollection(LinkedList::new));
 	}
 }

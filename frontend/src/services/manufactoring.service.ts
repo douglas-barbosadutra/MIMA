@@ -21,7 +21,7 @@ export class ManufactoringService {
   }
 
   showTime(idTask: number): Observable<Array<TimeDTO>>{
-    return this.http.get<Array<TimeDTO>>("http://localhost:8080/wbsMicroservice/api/times/"+idTask, {
+    return this.http.get<Array<TimeDTO>>("http://localhost:8080/wbsMicroservice/api/times?id="+idTask, {
       headers: {
           "Authorization": this.auth()
       }

@@ -1,33 +1,56 @@
 <app-menu-user></app-menu-user>
 
 <h1 class="title">Lista macchinari</h1>
-		
+	
+
 <div id="container">
 	
-	<table class="table table-striped">
-			<thead>
-				
-				<tr>
-					<th>ID</th>
-					<th>Nome</th>
-					<th>Modello</th>
-					<th>Opzioni</th>
-				</tr>
-				
-			</thead>
+	<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+		<thead>
 			
-			<tbody>
-				<tr *ngFor="let machineList of machineList">			
-					<td >{{machineList.id}}</td>
-					<td >{{machineList.name}}</td>
-					<td >{{machineList.model}}</td>
-					<td>
-						<button class="btn btn-primary" (click)="chooseMachine(machineList.id)">Seleziona</button>
-						<button class="btn btn-primary" (click)="deleteMachine(machineList.id)">Elimina</button>
-					</td>
-				</tr>
-			</tbody>
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Modello</th>
+				<th>Opzioni</th>
+			</tr>
 			
-	</table>
+		</thead>
 		
+		<tbody>
+			<tr *ngFor="let machine of machines">			
+				<td >{{machine.id}}</td>
+				<td >{{machine.name}}</td>
+				<td >{{machine.model}}</td>
+				<td>
+					<i (click)="chooseMachine(machine.id)" style="color:green" class='fas fa-check icon'></i>
+					<i (click)="deleteMachine(machine.id)" style="color:black; margin-left:2%;" class='far fa-trash-alt icon'></i>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<button (click)="open(content)" style="margin-left:45%;" class="btn btn-primary">Inserisci</button>
 </div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+	<div class="modal-header">
+		<h4 class="modal-title title" id="modal-basic-title">Inserimento macchinario</h4>
+		<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+		<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<div class="form-group">
+			<input type="text" class="form-control" name="name" placeholder="Inserisci il nome" [(ngModel)]="machineDTO.name">				
+		</div>
+				
+		<div class="form-group">
+			<input type="text" class="form-control" name="model" placeholder="Inserisci il modello" [(ngModel)]="machineDTO.model">				
+		</div>			
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-primary" (click)="d('Cross click')">Chiudi</button>
+		<button type="submit" class="btn btn-primary" (click)="insertMachine()" >Inserisci</button>	
+	</div>
+</ng-template>
+  

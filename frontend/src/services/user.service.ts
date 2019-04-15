@@ -45,8 +45,12 @@ export class UserService {
     return this.http.post('http://localhost:8080/User/deleteUser', paramDTO);
   }
 
-  updateUser(paramDTO: ParamDTO): Observable<UserDTO> {
-    return this.http.put<UserDTO>( 'http://localhost:8080/User/updateUser', paramDTO);
+  updateUser(userDTO: UserDTO): Observable<UserDTO> {
+    return this.http.put<UserDTO>("http://localhost:8080/api/users",userDTO, {
+      headers: {
+          "Authorization": this.auth()
+      }
+    });
   }
 
   findUser(jwt: string): Observable<UserDTO>{

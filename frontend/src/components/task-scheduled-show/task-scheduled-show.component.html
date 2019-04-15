@@ -3,27 +3,36 @@
 <h1 class="title">Task Schedulati</h1>
 <div id="container">
 
-  <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nome</th>
-          <th>Output</th>
-          <th>Task</th>
-          <th>Opzioni</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of taskScheduledShowList">
-          <td >{{item.id}}</td>
-          <td>{{item.name}}</td>
-          <td>{{item.nameOutput}}</td>
-          <td >{{item.descriptionTask}}</td>
-          <td>
-            <button class="btn btn-primary" (click)="choose(item.id)">Inserisci input/output</button>
-            <button style="margin-left:2%;" class="btn btn-primary" (click)="showInput(item.id)">Lista input</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover" >
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Output</th>
+        <th>Task</th>
+        <th>Opzioni</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of taskScheduledShowList">
+        <td >{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.output}}</td>
+        <td >{{item.descriptionTask}}</td>
+        <td>
+          <i (click)="choose(item.id)" style="color:green" class='fas fa-check icon'></i>
+          <i (click)="showInput(item.id)" style="color:black; margin-left:2%;" class="far fa-eye icon"></i>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Output</th>
+        <th>Task</th>
+        <th>Opzioni</th>
+      </tr>
+    </tfoot>
+  </table>
 </div>

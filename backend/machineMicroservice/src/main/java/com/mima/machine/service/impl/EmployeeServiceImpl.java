@@ -97,4 +97,10 @@ public class EmployeeServiceImpl implements EmployeeService {
             .map(employeeMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
 	}
+
+	@Override
+	public EmployeeDTO findByIdUser(Integer idUser) {
+		log.debug("Request to get Employee by idUser: "+idUser);
+		return employeeMapper.toDto(employeeRepository.findByIdUser(idUser));
+	}
 }

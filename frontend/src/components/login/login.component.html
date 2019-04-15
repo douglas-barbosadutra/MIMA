@@ -1,25 +1,31 @@
 <body>
 
-  <div class="container">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9">
+                <img src="../../assets/images/Sfondo.png" height="100%" width="100%" id="sfondo">
+            </div>
+            
+            <div class="col-sm-3">
+                <div id="contenitore">
+                    <h2 class="title">MIMA</h2>
+                    <p>Is the future</p>
+                </div>
 
-    <h1 class="title">MIMA</h1>
-
-    <form #f="ngForm">
-
-      <div class="form-group">
-        <label class="col-form-label">Username</label>
-        <input type="text" class="form-control" name="username" placeholder="Inserisci Username" [(ngModel)]="loginDTO.username">
-
-        <label class="col-form-label">Password</label>
-        <input type="password" class="form-control" name="password" placeholder="Inserisci Password" [(ngModel)]="loginDTO.password">
-      </div>
-
-      <div class="form-group">
-        <button style="margin-top:2%" class="btn btn-primary" type="submit" (click)="login()">Login</button>
-      </div>
-
-    </form>
-
-  </div>
+                <form class="form-horizontal" action="Login.php" method = "POST">
+                    <div class="input-container">
+                        <i class="fa fa-user icon"></i>
+                        <input type="textarea" class="form-control" name = "username" placeholder="Enter username" [(ngModel)]="loginDTO.username">
+                    </div>
+                    
+                    <div class="input-container">
+                        <i class="fa fa-key icon"></i>
+                        <input type="password" class="form-control" name = "password" placeholder="Enter password" [(ngModel)]="loginDTO.password">
+                    </div>
+                    <button id="login" class="btn btn-primary" (click)="login()">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
 </body>

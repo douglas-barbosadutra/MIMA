@@ -114,4 +114,10 @@ public class EmployeeResource {
         return employeeService.findAllByBusinessOwner(id);
     }
     
+    @GetMapping("/employeesByIdUserOwner")
+    public EmployeeDTO getAllEmployeesByIdUser(@RequestParam(value="id") Integer id) {
+        log.debug("REST request to get Employees by idUser: "+id);
+        return employeeService.findByIdUser(id);
+    }
+    
 }
