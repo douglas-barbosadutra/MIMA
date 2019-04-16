@@ -1,0 +1,35 @@
+{
+    "name": "Matrix",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "numColumns",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "numRows",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "blackBox",
+            "otherEntityRelationshipName": "matrix",
+            "relationshipName": "blackBox"
+        }
+    ],
+    "changelogDate": "20190416082858",
+    "entityTableName": "matrix",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "matrix",
+    "applications": "*",
+    "microserviceName": "matrix"
+}

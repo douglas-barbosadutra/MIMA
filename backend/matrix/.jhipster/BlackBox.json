@@ -1,0 +1,32 @@
+{
+    "name": "BlackBox",
+    "fields": [
+        {
+            "fieldName": "column",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "row",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "matrix",
+            "otherEntityRelationshipName": "blackBox",
+            "relationshipName": "matrix",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190416082859",
+    "entityTableName": "black_box",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "matrix",
+    "applications": "*",
+    "microserviceName": "matrix"
+}
