@@ -1,7 +1,7 @@
 package com.mima.machine.service.dto;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -15,12 +15,11 @@ public class TaskScheduledDTO implements Serializable {
 
     private Integer idOutput;
 
-
-    private Set<TaskScheduledDTO> fathers = new HashSet<>();
-
     private Long schedulingId;
 
     private Long taskId;
+    
+    private List<TaskScheduledDTO> taskScheduledList = new ArrayList<TaskScheduledDTO>();
 
     public Long getId() {
         return id;
@@ -46,12 +45,12 @@ public class TaskScheduledDTO implements Serializable {
         this.idOutput = idOutput;
     }
 
-    public Set<TaskScheduledDTO> getFathers() {
-        return fathers;
+    public List<TaskScheduledDTO> getTaskScheduledList() {
+        return this.taskScheduledList;
     }
 
-    public void setFathers(Set<TaskScheduledDTO> taskScheduleds) {
-        this.fathers = taskScheduleds;
+    public void setTaskScheduledList(List<TaskScheduledDTO> taskScheduleds) {
+        this.taskScheduledList = taskScheduleds;
     }
 
     public Long getSchedulingId() {
