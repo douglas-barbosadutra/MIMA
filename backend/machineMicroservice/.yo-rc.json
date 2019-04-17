@@ -21,7 +21,7 @@
     "serviceDiscoveryType": "consul",
     "buildTool": "maven",
     "enableSwaggerCodegen": false,
-    "jwtSecretKey": "ODZjYWYwYmE4MDgzMWE5MDg4NjgxMTU4ZjgyMDU3MzMyMDc5OGIwYjVkMTc2MDlhM2FkMjlmZDQyNTViMGQ3NTk5YzZiNmE5NTM2MmFkNWNmNTc2MjNlZDIyMjkyN2E5MGY3ZDIxODBlNmEyMDU1NzQ0ZDE2OWM0M2UzM2JkYTg=",
+    "jwtSecretKey": "ZDUwZDMyNmU4ZjZjOGE5MjRmODYwMDJiY2M4OTVlM2M1OTQ4ZGJjY2M2Y2NiYjA5YjY0NzZlNmRmZjQyNTI3YzJkN2MxMjE5ZjYxODg1ZjRjNjM4Y2Y4ZWE4YWIxOWNiMDFkMmNkMjJjMjQwM2Q3Y2I0ZDY5NDcwY2NkYjNhMDc=",
     "testFrameworks": [],
     "jhiPrefix": "jhi",
     "entitySuffix": "",

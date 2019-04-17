@@ -20,14 +20,22 @@ entity Scheduling {
 entity TaskScheduled {
 	id Integer
     name String
+    idOutput Integer
 }
 
 entity Employee {
 	id Integer
     idUser Integer
+    name String
+    idBusinessOwner Integer
 }
 
 entity TaskScheduledRelation {
+}
+
+entity Input{
+	id Integer
+    idItem Integer
 }
 
 relationship OneToMany {
@@ -38,6 +46,7 @@ relationship OneToMany {
     Task to Employee{task}
     TaskScheduled to TaskScheduledRelation{nodeOne}
     TaskScheduled to TaskScheduledRelation{nodeTwo}
+    TaskScheduled to Input{taskScheduled}
 }
 
 dto * with mapstruct
