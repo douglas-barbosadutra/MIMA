@@ -1,0 +1,11 @@
+<app-menu-user></app-menu-user>
+<h1 class="title">Mapper</h1>
+
+<div id="container" class="contenitore">
+
+  <img id="image_map" src="assets/images/piantina.png" usemap="#piantina" style="height:500px;width:830px;">
+  <map id="piantina_image_map" name="piantina">
+    <area *ngFor="let area of areas" (click)="getAreaClick(area)" shape="rect" coords="{{area.x}},{{area.y}},{{area.x1}},{{area.y1}}" href="#/mapper" >
+  </map>
+  
+</div>

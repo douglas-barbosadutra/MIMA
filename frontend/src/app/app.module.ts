@@ -53,6 +53,7 @@ import { TaskScheduledDeleteComponent } from 'src/components/task-scheduled-dele
 import { HttpConfigInterceptor } from './interceptor/httpconfig.interceptor';
 import { SendMessageComponent } from 'src/components/send-message/send-message.component';
 import {InputShowComponent} from 'src/components/input-show/input-show.component';
+import { MapperComponent } from 'src/components/mapper/mapper.component';
 
 
 
@@ -86,7 +87,8 @@ import {InputShowComponent} from 'src/components/input-show/input-show.component
     TaskScheduledShowComponent,
     SendMessageComponent,
     InputShowComponent,
-    EmployeeUpdateComponent
+    EmployeeUpdateComponent,
+    MapperComponent
   ],
   imports: [
     BrowserModule,
