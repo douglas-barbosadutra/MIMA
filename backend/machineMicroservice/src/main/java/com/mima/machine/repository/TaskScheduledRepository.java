@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,4 +30,9 @@ public interface TaskScheduledRepository extends JpaRepository<TaskScheduled, Lo
     Optional<TaskScheduled> findOneWithEagerRelationships(@Param("id") Long id);
 
     List<TaskScheduled> findAllByScheduling(Scheduling s);
+    
+    @Modifying
+	@Transactional
+	@Query(value = "INSERT INTO task_scheduled_father (father_id, task_scheduled_id) VALUES (:father_id, :task_scheduled_id)", nativeQuery=true)
+	public int insertScheduledRelations(@Param("father_id") Long father_id, @Param("task_scheduled_id") Long task_scheduled_id);
 }

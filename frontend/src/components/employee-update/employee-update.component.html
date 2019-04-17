@@ -1,0 +1,32 @@
+<app-menu-employee></app-menu-employee>
+<h1 class="title">Aggiornamento info profilo</h1>
+
+<div id="container">
+
+	<form #f="ngForm">
+
+		<div class="form-group">
+			<input type="text" class="form-control" name="username" placeholder="Inserisci l'username" [(ngModel)]="userDTO.login">
+		</div>
+
+		<div class="form-group">
+			<input type="password" class="form-control" name="password" placeholder="Inserisci la password" [(ngModel)]="userDTO.password">
+		</div>
+
+		<div class="form-group">
+			<input type="text" class="form-control" name="name" placeholder="Inserisci il nome" [(ngModel)]="userDTO.firstName">
+		</div>
+
+		<div class="form-group">
+			<input type="text" class="form-control" name="surname" placeholder="Inserisci il cognome" [(ngModel)]="userDTO.lastName">
+		</div>
+
+		<div class="form-group">
+			<input type="email" class="form-control" name="email" placeholder="Inserisci l'email" [(ngModel)]="userDTO.email">
+		</div>
+
+		<button style="margin-top:2%; margin-left: 40%;" type="submit" class="btn btn-primary" (click)="updateUser(f)" >Aggiorna</button>
+
+	</form>
+
+</div>

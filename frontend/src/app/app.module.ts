@@ -45,6 +45,7 @@ import { TimeShowComponent } from 'src/components/time-show/time-show.component'
 import{TaskScheduledComponent} from 'src/components/task-scheduled/task-scheduled.component';
 import { TaskEmployeeShowComponent } from 'src/components/task-employee-show/task-employee-show.component';
 import { EmployeeShowComponent } from 'src/components/employee-show/employee-show.component';
+import {EmployeeUpdateComponent} from 'src/components/employee-update/employee-update.component';
 import { AssignTaskComponent } from 'src/components/assign-task/assign-task.component';
 import { InputOutputComponent } from 'src/components/input-output/input-output.component';
 import { TaskScheduledShowComponent } from 'src/components/task-scheduled-show/task-scheduled-show.component';
@@ -84,7 +85,8 @@ import {InputShowComponent} from 'src/components/input-show/input-show.component
     InputOutputComponent,
     TaskScheduledShowComponent,
     SendMessageComponent,
-    InputShowComponent
+    InputShowComponent,
+    EmployeeUpdateComponent
   ],
   imports: [
     BrowserModule,

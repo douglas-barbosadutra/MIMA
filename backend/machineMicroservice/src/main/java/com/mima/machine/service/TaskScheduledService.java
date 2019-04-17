@@ -1,5 +1,6 @@
 package com.mima.machine.service;
 
+import com.mima.machine.service.dto.OperationSchedulingDTO;
 import com.mima.machine.service.dto.TaskScheduledDTO;
 
 import org.springframework.data.domain.Page;
@@ -51,4 +52,8 @@ public interface TaskScheduledService {
     void delete(Long id);
     
     List<TaskScheduledDTO> findAllByIdScheduling(Long id);
+    
+    List<OperationSchedulingDTO> findAllOperationScheduling(Long idScheduling);
+    
+    void inserOperationScheduling(OperationSchedulingDTO os);
 }

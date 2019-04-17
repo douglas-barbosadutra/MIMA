@@ -23,10 +23,11 @@ import { TaskScheduledShowComponent } from './task-scheduled-show/task-scheduled
 import { TaskScheduledDeleteComponent } from './task-scheduled-delete/task-scheduled-delete.component';
 import { SendMessageComponent } from './send-message/send-message.component';
 import { InputShowComponent } from './input-show/input-show.component';
+import { EmployeeUpdateComponent } from './employee-update/employee-update.component';
 
 @NgModule({
 // tslint:disable-next-line: max-line-length
-  declarations: [LoginComponent, HomeAdminComponent, HomeUserComponent, HomeEmployeeComponent, MenuUserComponent, MachineShowComponent, SchedulingShowComponent, TaskShowComponent, InstructionShowComponent, UserUpdateComponent, WbsShowComponent, ItemInsertComponent, ItemShowComponent, TimeShowComponent, TaskScheduledComponent, TaskEmployeeShowComponent, EmployeeShowComponent, AssignTaskComponent, InputOutputComponent, TaskScheduledShowComponent, TaskScheduledDeleteComponent, SendMessageComponent, InputShowComponent],
+  declarations: [LoginComponent, HomeAdminComponent, HomeUserComponent, HomeEmployeeComponent, MenuUserComponent, MachineShowComponent, SchedulingShowComponent, TaskShowComponent, InstructionShowComponent, UserUpdateComponent, WbsShowComponent, ItemInsertComponent, ItemShowComponent, TimeShowComponent, TaskScheduledComponent, TaskEmployeeShowComponent, EmployeeShowComponent, AssignTaskComponent, InputOutputComponent, TaskScheduledShowComponent, TaskScheduledDeleteComponent, SendMessageComponent, InputShowComponent, EmployeeUpdateComponent],
   imports: [
     CommonModule
   ]

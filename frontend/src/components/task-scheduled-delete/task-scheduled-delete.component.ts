@@ -45,16 +45,18 @@ export class TaskScheduledDeleteComponent implements OnInit {
     this.osDTO.idFather = this.idFather;
     this.osDTO.idChild = id;
     this.osDTO.idScheduling = parseInt(sessionStorage.getItem("idScheduling"));
-    this.paramDTO = new ParamDTO(sessionStorage.getItem("userLogged"),this.osDTO);
-    this.taskScheduledService.insertOperationScheduling(this.paramDTO).subscribe((data: any) => { });
+    this.taskScheduledService.insertOperationScheduling(this.osDTO).subscribe((data: any) => { 
+      location.reload(true);
+    });
   }
 
   addRelationFather(id: number) {
     this.osDTO.idFather = id;
     this.osDTO.idChild = this.idChild;
     this.osDTO.idScheduling = parseInt(sessionStorage.getItem("idScheduling"));
-    this.paramDTO = new ParamDTO(sessionStorage.getItem("userLogged"),this.osDTO);
-    this.taskScheduledService.insertOperationScheduling(this.paramDTO).subscribe((data: any) => { });
+    this.taskScheduledService.insertOperationScheduling(this.osDTO).subscribe((data: any) => {
+      location.reload(true);
+     });
   }
 
   finish(){

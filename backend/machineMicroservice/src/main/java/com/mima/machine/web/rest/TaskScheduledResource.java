@@ -3,6 +3,7 @@ import com.mima.machine.service.TaskScheduledService;
 import com.mima.machine.web.rest.errors.BadRequestAlertException;
 import com.mima.machine.web.rest.util.HeaderUtil;
 import com.mima.machine.service.dto.NodeDTO;
+import com.mima.machine.service.dto.OperationSchedulingDTO;
 import com.mima.machine.service.dto.TaskDTO;
 import com.mima.machine.service.dto.TaskScheduledDTO;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -124,5 +125,19 @@ public class TaskScheduledResource {
     	 return ResponseEntity.created(new URI("/api/task-scheduleds/" + node.getId()))
     	            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, node.getId().toString()))
     	            .body(node.toString());
+    }
+    
+    @GetMapping("/operationScheduling")
+    public List<OperationSchedulingDTO> showOperationScheduling(@RequestParam(value="id") Long idScheduling) {
+        log.debug("REST request to get all operationScheduling by scheduling: "+idScheduling);
+        
+        return taskScheduledService.findAllOperationScheduling(idScheduling);
+    }
+    
+    @PostMapping("/operationScheduling")
+    public void insertOperationScheduling(@RequestBody OperationSchedulingDTO osDTO) {
+        log.debug("REST request to insert OperationScheduling: "+osDTO);
+        
+        taskScheduledService.inserOperationScheduling(osDTO);
     }
 }

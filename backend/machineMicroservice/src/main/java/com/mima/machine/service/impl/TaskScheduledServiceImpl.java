@@ -1,9 +1,11 @@
 package com.mima.machine.service.impl;
 
 import com.mima.machine.service.TaskScheduledService;
+import com.mima.machine.converter.TaskScheduledConverter;
 import com.mima.machine.domain.Scheduling;
 import com.mima.machine.domain.TaskScheduled;
 import com.mima.machine.repository.TaskScheduledRepository;
+import com.mima.machine.service.dto.OperationSchedulingDTO;
 import com.mima.machine.service.dto.TaskScheduledDTO;
 import com.mima.machine.service.mapper.TaskScheduledMapper;
 import org.slf4j.Logger;
@@ -14,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -107,8 +110,67 @@ public class TaskScheduledServiceImpl implements TaskScheduledService {
 		Scheduling s = new Scheduling();
 		s.setId(id);
 		
-        return taskScheduledRepository.findAllByScheduling(s).stream()
-            .map(taskScheduledMapper::toDto)
-            .collect(Collectors.toCollection(LinkedList::new));
+        return TaskScheduledConverter.toListDTO(taskScheduledRepository.findAllByScheduling(s));
+	}
+
+	@Override
+	public List<OperationSchedulingDTO> findAllOperationScheduling(Long idScheduling) {
+		log.debug("Request to get all operationScheduling by scheduling: "+idScheduling);
+		
+		List<TaskScheduledDTO> list = this.findAllByIdScheduling(idScheduling);
+		List<OperationSchedulingDTO> result = new ArrayList<>();
+		for (TaskScheduledDTO task : list) {
+			if (task.getTaskScheduledList() != null) {
+				for (TaskScheduledDTO child : task.getTaskScheduledList()) {
+					OperationSchedulingDTO temp = new OperationSchedulingDTO(task.getId(), child.getId(), 0, 0);
+					result.add(temp);
+				}
+			}
+		}
+		return result;
+	}
+
+	@Override
+	public void inserOperationScheduling(OperationSchedulingDTO osDTO) {
+		log.debug("Request to save OperationScheduling : "+ osDTO);
+		
+		Optional<TaskScheduled> fatherOptional = taskScheduledRepository.findById(osDTO.getIdFather());
+		Optional<TaskScheduled> childOptional = taskScheduledRepository.findById(osDTO.getIdChild());
+		TaskScheduled father;
+		TaskScheduled child;
+		
+		if(fatherOptional.isPresent() && childOptional.isPresent()) {
+			
+			father = fatherOptional.get();
+			child = childOptional.get();
+			
+			TaskScheduledDTO fatherDTO = TaskScheduledConverter.toDto(father);
+			TaskScheduledDTO childDTO = TaskScheduledConverter.toDto(child);
+
+			if (osDTO.getIdTask() == 0) {
+
+				if (searchLoop(childDTO, osDTO.getIdFather())) {
+					if (searchLoop(fatherDTO, osDTO.getIdChild())) {
+						return;
+					}
+					Long id = osDTO.getIdChild();
+					osDTO.setIdChild(osDTO.getIdFather());
+					osDTO.setIdFather(id);
+				}
+			}
+			Long idChild = osDTO.getIdChild();
+			taskScheduledRepository.insertScheduledRelations(idChild, osDTO.getIdFather());
+		}
+		
+	}
+	
+	private boolean searchLoop(TaskScheduledDTO task, Long id) {
+		if (task.getId() == id)
+			return true;
+		boolean result = false;
+		for (TaskScheduledDTO child : task.getTaskScheduledList()) {
+			result = result | searchLoop(child, id);
+		}
+		return result;
 	}
 }

@@ -40,12 +40,20 @@ export class TaskScheduledService {
     });
   }
 
-  showOperationScheduling(idScheduling: number, jwt: string): Observable<Array<OperationSchedulingDTO>>{
-    return this.http.get<Array<OperationSchedulingDTO>>('http://localhost:8082/TaskScheduled/showOperationScheduling?idScheduling=' + idScheduling+'&jwt='+jwt);
+  showOperationScheduling(idScheduling: number): Observable<Array<OperationSchedulingDTO>>{
+    return this.http.get<Array<OperationSchedulingDTO>>('http://localhost:8080/machineMicroservice/api/operationScheduling?id=' + idScheduling, {
+      headers: {
+          "Authorization": this.auth()
+      }
+    });
   }
 
-  insertOperationScheduling(paramDTO: ParamDTO){
-    return this.http.post('http://localhost:8082/TaskScheduled/insertOperationScheduling', paramDTO);
+  insertOperationScheduling(osDTO: OperationSchedulingDTO){
+    return this.http.post("http://localhost:8080/machineMicroservice/api/operationScheduling",osDTO, {
+      headers: {
+          "Authorization": this.auth()
+      }
+    });
   }
 
   insertOutput(taskScheduledDTO: TaskScheduledDTO): Observable<TaskScheduledDTO>{
