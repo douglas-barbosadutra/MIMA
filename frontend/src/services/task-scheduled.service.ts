@@ -64,8 +64,8 @@ export class TaskScheduledService {
     });
   }
 
-  deleteTaskScheduled(idTaskScheduled: number): Observable<Boolean>{
-    return this.http.delete<Boolean>("http://localhost:8080/machineMicroservice/api/task-scheduleds/"+idTaskScheduled, {
+  deleteTaskScheduled(id: number){
+    return this.http.delete("http://localhost:8080/machineMicroservice/api/task-scheduleds/"+id, {
       headers: {
           "Authorization": this.auth()
       }

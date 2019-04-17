@@ -27,16 +27,17 @@ entity Employee {
     idUser Integer
 }
 
+entity TaskScheduledRelation {
+}
+
 relationship OneToMany {
 	Machine to Task{machine}
     Machine to Scheduling{machine}
     Scheduling to TaskScheduled{scheduling}
     Task to TaskScheduled{task}
     Task to Employee{task}
-}
-
-relationship ManyToMany {
-	TaskScheduled{father} to TaskScheduled{child}
+    TaskScheduled to TaskScheduledRelation{nodeOne}
+    TaskScheduled to TaskScheduledRelation{nodeTwo}
 }
 
 dto * with mapstruct

@@ -219,6 +219,8 @@ export class TaskScheduledComponent implements OnInit,OnDestroy {
     this.dataService.sendTaskScheduledChildren(this.taskScheduledListToUpdateChild);
     this.dataService.sendTaskScheduledFathers(this.taskScheduledListToUpdateFather);
     this.taskScheduledService.deleteTaskScheduled(idTaskScheduled).subscribe((data: any) => { });
+    console.log(this.taskScheduledListToUpdateChild);
+    console.log(this.taskScheduledListToUpdateFather);
     this.router.navigateByUrl("/TaskScheduledDelete");
   }
 
