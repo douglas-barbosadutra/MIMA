@@ -11,7 +11,6 @@ import { TaskShowComponent } from './task-show/task-show.component';
 import { InstructionShowComponent } from './instruction-show/instruction-show.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
 import { WbsShowComponent } from './wbs-show/wbs-show.component';
-import { ItemInsertComponent } from './item-insert/item-insert.component';
 import { ItemShowComponent } from './item-show/item-show.component';
 import { TimeShowComponent } from './time-show/time-show.component';
 import { TaskScheduledComponent } from './task-scheduled/task-scheduled.component';
@@ -28,7 +27,7 @@ import { MapperComponent } from './mapper/mapper.component';
 
 @NgModule({
 // tslint:disable-next-line: max-line-length
-  declarations: [LoginComponent, HomeAdminComponent, HomeUserComponent, HomeEmployeeComponent, MenuUserComponent, MachineShowComponent, SchedulingShowComponent, TaskShowComponent, InstructionShowComponent, UserUpdateComponent, WbsShowComponent, ItemInsertComponent, ItemShowComponent, TimeShowComponent, TaskScheduledComponent, TaskEmployeeShowComponent, EmployeeShowComponent, AssignTaskComponent, InputOutputComponent, TaskScheduledShowComponent, TaskScheduledDeleteComponent, SendMessageComponent, InputShowComponent, EmployeeUpdateComponent, MapperComponent],
+  declarations: [LoginComponent, HomeAdminComponent, HomeUserComponent, HomeEmployeeComponent, MenuUserComponent, MachineShowComponent, SchedulingShowComponent, TaskShowComponent, InstructionShowComponent, UserUpdateComponent, WbsShowComponent, ItemShowComponent, TimeShowComponent, TaskScheduledComponent, TaskEmployeeShowComponent, EmployeeShowComponent, AssignTaskComponent, InputOutputComponent, TaskScheduledShowComponent, TaskScheduledDeleteComponent, SendMessageComponent, InputShowComponent, EmployeeUpdateComponent, MapperComponent],
   imports: [
     CommonModule
   ]

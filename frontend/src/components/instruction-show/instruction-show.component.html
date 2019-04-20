@@ -1,10 +1,10 @@
 <app-menu-user></app-menu-user>
 
-<h1 class="title">Lista istruzioni</h1>
+<h1 class="title">Lista istruzioni del task {{descriptionTask}}</h1>
 		
 <div id="container">
   
-  <table #dataTable class="display table table-striped">
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
       <thead>
         
         <tr>
@@ -24,7 +24,7 @@
           <td >{{instruction.gcodeFile}}</td>
           <td >{{instruction.duration}}</td>
           <td>
-              <i (click)="instructionDelete(instruction.id)" style="color:black; margin-left:2%;" class='far fa-trash-alt icon'></i>
+              <i [ngbTooltip]="delete" (click)="instructionDelete(instruction.id)" style="color:black; margin-left:2%;" class='far fa-trash-alt icon'></i>
           </td>
         </tr>
       </tbody>
@@ -44,6 +44,9 @@
   </table>
   <button (click)="open(content)" style="margin-left:45%;" class="btn btn-primary">Inserisci</button>
 </div>
+
+
+<ng-template #delete>Elimina</ng-template>
 
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">

@@ -25,7 +25,7 @@ export class EmployeeShowComponent implements OnInit,OnDestroy {
   private employeeDTO: EmployeeDTO;
   private authorities: Array<string>;
   dtOptions: DataTables.Settings = {};
-  dtTrigger: Subject<EmployeeShowDTO> = new Subject();
+  dtTrigger: Subject<any> = new Subject();
 
   constructor(private config: NgbModalConfig, private modalService: NgbModal, private userService: UserService, private taskService: TaskService, private employeeService: EmployeeService, private router: Router) {
     config.backdrop = 'static';
@@ -38,6 +38,8 @@ export class EmployeeShowComponent implements OnInit,OnDestroy {
   }
 
   ngOnInit() {
+
+    
 
     this.dtOptions = {
       pagingType: 'full_numbers',
@@ -54,7 +56,9 @@ export class EmployeeShowComponent implements OnInit,OnDestroy {
 
     this.employeeService.showEmployee(this.userLoggedDTO.id).subscribe((response: Array<EmployeeDTO>) =>{
       if(response != null){
+        this.dtTrigger.next();
         this.employeeList = response;
+        
         this.showEmployee();
       }
     })
@@ -71,7 +75,6 @@ export class EmployeeShowComponent implements OnInit,OnDestroy {
       }
       else
         this.employeeShowList.push(new EmployeeShowDTO(employee.id,employee.idUser,employee.name,"Nessun task assegnato"));
-      this.dtTrigger.next();
     }
     
   }
@@ -89,9 +92,9 @@ export class EmployeeShowComponent implements OnInit,OnDestroy {
     
   }
 
-  assignTask(idEmployee: number){
-
+  assignTask(idEmployee: number, nameEmployee: string){
     sessionStorage.setItem("idEmployee",JSON.stringify(idEmployee));
+    sessionStorage.setItem("nameEmployee",nameEmployee);
     this.router.navigateByUrl("assignTask");
   }
 

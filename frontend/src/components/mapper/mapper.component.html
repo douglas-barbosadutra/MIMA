@@ -3,7 +3,12 @@
 
 <div id="container" class="contenitore">
 
-  <img id="image_map" src="assets/images/piantina.png" usemap="#piantina" style="height:500px;width:830px;">
+  <input type="file" accept="image/png, image/jpeg" (change)="onFileSelected($event)">
+  Risoluzione: <input type="number" [(ngModel)]="resolutionInput">
+  <input type="button" value="Genera" (click)="generate()">
+  <br><br>
+
+  <img id="image_map" [src]="imageURL" *ngIf="imageURL" usemap="#piantina">
   <map id="piantina_image_map" name="piantina">
     <area *ngFor="let area of areas" (click)="getAreaClick(area)" shape="rect" coords="{{area.x}},{{area.y}},{{area.x1}},{{area.y1}}" href="#/mapper" >
   </map>

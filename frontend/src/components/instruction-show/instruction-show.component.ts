@@ -1,9 +1,9 @@
-import { Component, OnInit,ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit,ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { Router } from "@angular/router";
 import { InstructionService } from 'src/services/instruction.service';
 import { InstructionDTO } from 'src/dto/InstructionDTO';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-declare var $;
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-instruction-show',
@@ -11,13 +11,13 @@ declare var $;
   styleUrls: ['./instruction-show.component.css'],
   providers: [NgbModalConfig, NgbModal]
 })
-export class InstructionShowComponent implements OnInit {
+export class InstructionShowComponent implements OnInit,OnDestroy {
 
   public instructionDTO: InstructionDTO;
-  private instructionList: Array<InstructionDTO>;
-
-  @ViewChild('dataTable') table: ElementRef;
-  dataTable: any;
+  public descriptionTask: string;
+  instructionList: InstructionDTO[] = [];
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject();
 
   constructor(private config: NgbModalConfig, private modalService: NgbModal, private router: Router, private instructionService: InstructionService) { 
     config.backdrop = 'static';
@@ -25,6 +25,12 @@ export class InstructionShowComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 10
+    };
+
     this.checkTask();
   }
 
@@ -33,6 +39,7 @@ export class InstructionShowComponent implements OnInit {
       this.router.navigateByUrl("taskShow");
     }
     else{
+      this.descriptionTask = sessionStorage.getItem("descriptionTask");
       this.instructionDTO = new InstructionDTO(null,null,null,null,parseInt(sessionStorage.getItem("idTask")));
       this.instructionShow();
     }
@@ -43,19 +50,20 @@ export class InstructionShowComponent implements OnInit {
     this.instructionService.showInstruction(parseInt(sessionStorage.getItem("idTask"))).subscribe((data: Array<InstructionDTO>) => {
       if (data != null)
         this.instructionList = data;
+        this.dtTrigger.next();
     })
-    this.createDataTable();
   }
 
-  createDataTable(){
-    this.dataTable = $(this.table.nativeElement);
-    this.dataTable.dataTable();
+  ngOnDestroy(): void {
+    // Do not forget to unsubscribe the event
+    this.dtTrigger.unsubscribe();
   }
 
   instructionDelete(idInstruction: number) {
-    this.instructionService.deleteInstruction(idInstruction).subscribe((response: any) =>{
-      location.reload(true);
-    });
+    if(confirm("Hai già cancellato tutte le entità associate a questa istruzione?"))
+      this.instructionService.deleteInstruction(idInstruction).subscribe((response: any) =>{
+        location.reload(true);
+      });
     
   }
 

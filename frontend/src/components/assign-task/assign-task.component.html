@@ -1,5 +1,5 @@
 <app-menu-user></app-menu-user>
-<h1 class="title">Assegnazione task</h1>
+<h1 class="title">Assegnazione task all'employee {{nameEmployee}}</h1>
 
 <div id="container" >
   <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
@@ -18,7 +18,7 @@
         <td >{{taskList.id}}</td>
         <td >{{taskList.description}}</td>
         <td>
-          <i (click)="assignTask(taskList.id)" style="color:green" class='fas fa-check icon'></i>
+          <i [ngbTooltip]="select" (click)="assignTask(taskList.id)" style="color:green" class='fas fa-check icon'></i>
         </td>
       </tr>
     </tbody>
@@ -35,3 +35,5 @@
     
   </table>
 </div>
+
+<ng-template #select>Seleziona</ng-template>

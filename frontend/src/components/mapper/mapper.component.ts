@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-declare var $: any;
-
 @Component({
   selector: 'app-mapper',
   templateUrl: './mapper.component.html',
@@ -10,13 +8,21 @@ declare var $: any;
 export class MapperComponent implements OnInit {
 
   public areas = [];
+  public imageInput: File;
+  public imageURL: any;
+  public resolutionInput = 20;
+
   private selectedAreas = [];
 
   constructor() {
 
-    let width = 818;
-    let height = 500;
-    let resolution = 20;
+  }
+
+  ngOnInit() {
+
+  }
+
+  private generateAreas(width: number, height: number, resolution: number){
 
     let indice = 0;
     for (let i=0; i < width; i+=resolution) {
@@ -25,10 +31,6 @@ export class MapperComponent implements OnInit {
         indice++;
       }
     }
-
-  }
-
-  ngOnInit() {
 
   }
 
@@ -45,6 +47,30 @@ export class MapperComponent implements OnInit {
 
     console.log(data);
     console.log(this.selectedAreas);
+  }
+
+  public generate(){
+
+    let width = 818;
+    let height = 500;
+
+    /*if(this.imageInput != undefined){
+      console.log(this.imageInput);
+      this.imagePath = this.imageInput;
+    }*/
+
+    this.generateAreas(width, height, this.resolutionInput);
+  }
+
+  public onFileSelected(event: any){
+    //console.log(event.target.files[0]);
+    this.imageInput = event.target.files[0];
+
+    var reader = new FileReader();
+    reader.readAsDataURL(this.imageInput); 
+    reader.onload = (_event) => { 
+      this.imageURL = reader.result;
+    }
   }
 
 }

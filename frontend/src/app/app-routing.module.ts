@@ -14,7 +14,6 @@ import {WbsShowComponent} from 'src/components/wbs-show/wbs-show.component';
 import {MenuAdminComponent} from 'src/components/menu-admin/menu-admin.component';
 import {UserInsertComponent} from 'src/components/user-insert/user-insert.component';
 import {UserShowComponent} from 'src/components/user-show/user-show.component';
-import { ItemInsertComponent } from 'src/components/item-insert/item-insert.component';
 import { ItemShowComponent } from 'src/components/item-show/item-show.component';
 import { TimeShowComponent } from 'src/components/time-show/time-show.component';
 import { TaskScheduledComponent } from 'src/components/task-scheduled/task-scheduled.component';
@@ -46,7 +45,6 @@ const routes: Routes = [
 {path: 'menuAdmin', component: MenuAdminComponent},
 {path: 'userInsert', component: UserInsertComponent},
 {path: 'userShow', component: UserShowComponent},
-{path: 'itemInsert', component: ItemInsertComponent},
 {path: 'itemShow', component: ItemShowComponent},
 {path: 'timeShow', component: TimeShowComponent},
 {path: 'TaskScheduled', component: TaskScheduledComponent},

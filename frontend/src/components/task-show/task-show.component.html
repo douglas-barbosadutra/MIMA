@@ -1,5 +1,5 @@
 <app-menu-user></app-menu-user>
-<h1 class="title">Lista task</h1>
+<h1 class="title">Lista task del macchinario {{nameMachine}}</h1>
 
 <div id="container">
   <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
@@ -18,9 +18,9 @@
         <td >{{task.id}}</td>
         <td >{{task.description}}</td>
         <td>
-            <i (click)="chooseTask(task.id)" style="color:green" class='fas fa-check icon'></i>
-            <i (click)="deleteTask(task.id)" style="color:black; margin-left:2%;" class='far fa-trash-alt icon'></i>  
-            <i (click)="timeShow(task.id)" style="color:black; margin-left:2%;" class="far fa-eye icon"></i> 
+            <i [ngbTooltip]="select" (click)="chooseTask(task.id,task.description)" style="color:green" class='fas fa-check icon'></i>
+            <i [ngbTooltip]="delete" (click)="deleteTask(task.id)" style="color:black; margin-left:2%;" class='far fa-trash-alt icon'></i>  
+            <i [ngbTooltip]="show" (click)="timeShow(task.id)" style="color:black; margin-left:2%;" class="far fa-eye icon"></i> 
         </td>
       </tr>
     </tbody>
@@ -38,6 +38,10 @@
   </table>
   <button (click)="open(content)" style="margin-left:45%;" class="btn btn-primary">Inserisci</button>
 </div>
+
+<ng-template #select>Seleziona</ng-template>
+<ng-template #delete>Elimina</ng-template>
+<ng-template #show>Visualizza tempi</ng-template>
 
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">

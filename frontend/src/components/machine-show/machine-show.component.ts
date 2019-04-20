@@ -3,11 +3,8 @@ import { Router } from "@angular/router";
 import {MachineDTO} from 'src/dto/MachineDTO';
 import {MachineService} from 'src/services/machine.service';
 import { UserDTO } from 'src/dto/UserDTO';
-import { HttpResponse } from '@angular/common/http';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subject } from 'rxjs';
-
-declare var $;
 
 @Component({
   selector: 'app-machine-show',
@@ -21,7 +18,7 @@ export class MachineShowComponent implements OnInit, OnDestroy {
   public userDTO: UserDTO;
 
   dtOptions: DataTables.Settings = {};
-  dtTrigger: Subject<MachineDTO> = new Subject();
+  dtTrigger: Subject<any> = new Subject();
   machines: MachineDTO[] = [];
   // We use this trigger because fetching the list of persons can be quite long,
   // thus we ensure the data is fetched before rendering
@@ -54,17 +51,19 @@ export class MachineShowComponent implements OnInit, OnDestroy {
     this.dtTrigger.unsubscribe();
   }
 
-  chooseMachine(idMachine: number){
+  chooseMachine(idMachine: number, nameMachine: string){
     sessionStorage.setItem("idMachine",JSON.stringify(idMachine));
+    sessionStorage.setItem("nameMachine",nameMachine);
+    console.log(nameMachine);
     alert("Macchinario selezionato");
-    this.router.navigateByUrl("machineShow");
   }
 
   deleteMachine(idMachine: number){
 
-    this.machineService.deleteMachine(idMachine).subscribe((response: HttpResponse<any>) => {   
-      location.reload(true);
-    })
+    if(confirm("Hai già cancellato tutte le entità associate a questo macchinario?"))
+      this.machineService.deleteMachine(idMachine).subscribe((response: any) => {   
+        location.reload(true);
+      })
   }
 
   open(content) {

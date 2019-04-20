@@ -1,5 +1,5 @@
 <app-menu-user></app-menu-user>
-<h1 class="title">Lista scheduling</h1>
+<h1 class="title">Lista scheduling del macchinario {{nameMachine}}</h1>
 		
 <div id="container">
   
@@ -23,9 +23,9 @@
           <td >{{scheduling.start}}</td>
           <td >{{scheduling.finish}}</td>
           <td>
-            <i (click)="showGraph(scheduling.id)" style="color:green" class='fas fa-check icon'></i>
-						<i (click)="deleteScheduling(scheduling.id)" style="color:black; margin-left:2%;" class='far fa-trash-alt icon'></i>
-            <i (click)="updateModal(scheduling.id,scheduling.name,content2)" style="color:yellow; margin-left:2%;" class="fas fa-pencil-alt icon"></i>
+            <i [ngbTooltip]="show" (click)="showGraph(scheduling.id,scheduling.name)" style="color:green" class='fas fa-check icon'></i>
+						<i [ngbTooltip]="delete" (click)="deleteScheduling(scheduling.id)" style="color:black; margin-left:2%;" class='far fa-trash-alt icon'></i>
+            <i [ngbTooltip]="update" (click)="updateModal(scheduling.id,scheduling.name,content2)" style="color:yellow; margin-left:2%;" class="fas fa-pencil-alt icon"></i>
           </td>
         </tr>
       </tbody>
@@ -45,6 +45,10 @@
   </table>
   <button (click)="open(content)" style="margin-left:45%;" class="btn btn-primary">Inserisci</button>
 </div>
+
+<ng-template #show>Visualizza grafo</ng-template>
+<ng-template #delete>Elimina</ng-template>
+<ng-template #update>Modifica</ng-template>
 
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">

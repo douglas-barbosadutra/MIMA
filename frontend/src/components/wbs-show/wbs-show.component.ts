@@ -48,15 +48,17 @@ export class WbsShowComponent implements OnInit,OnDestroy {
     this.dtTrigger.unsubscribe();
   }
 
-  chooseWbs(idWbs: number) {
+  chooseWbs(idWbs: number, nameWbs: string) {
     sessionStorage.setItem("idWbs", JSON.stringify(idWbs));
+    sessionStorage.setItem("nameWbs",nameWbs);
     this.router.navigateByUrl("/itemShow");
   }
 
   deleteWbs(idWbs: number) {
-    this.wbsService.deleteWbs(idWbs).subscribe((response: any) =>{
-      location.reload(true);
-    });
+    if(confirm("Hai già cancellato tutte le entità associate a questa WBS?"))
+      this.wbsService.deleteWbs(idWbs).subscribe((response: any) =>{
+        location.reload(true);
+      });
     
   }
 
