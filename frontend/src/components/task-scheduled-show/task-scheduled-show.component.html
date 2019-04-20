@@ -1,6 +1,6 @@
 <app-menu-user></app-menu-user>
 
-<h1 class="title">Task Schedulati</h1>
+<h1 class="title">Task schedulati dello scheduling {{nameScheduling}}</h1>
 <div id="container">
 
   <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover" >
@@ -20,8 +20,8 @@
         <td>{{item.output}}</td>
         <td >{{item.descriptionTask}}</td>
         <td>
-          <i (click)="choose(item.id)" style="color:green" class='fas fa-check icon'></i>
-          <i (click)="showInput(item.id)" style="color:black; margin-left:2%;" class="far fa-eye icon"></i>
+          <i [ngbTooltip]="insert" (click)="choose(item.id,item.name)" style="color:green" class='fas fa-check icon'></i>
+          <i [ngbTooltip]="show" (click)="showInput(item.id)" style="color:black; margin-left:2%;" class="far fa-eye icon"></i>
         </td>
       </tr>
     </tbody>
@@ -36,3 +36,6 @@
     </tfoot>
   </table>
 </div>
+
+<ng-template #insert>Inserisci input/output</ng-template>
+<ng-template #show>Visualizza inputs</ng-template>

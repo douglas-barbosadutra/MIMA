@@ -7,6 +7,7 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DataTablesModule } from 'angular-datatables';
+import {MatTreeModule} from '@angular/material/tree';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -39,7 +40,6 @@ import {UserInsertComponent} from 'src/components/user-insert/user-insert.compon
 import {UserShowComponent} from 'src/components/user-show/user-show.component';
 import {MenuAdminComponent} from 'src/components/menu-admin/menu-admin.component';
 import { UserService } from 'src/services/user.service';
-import { ItemInsertComponent } from 'src/components/item-insert/item-insert.component';
 import { ItemShowComponent } from 'src/components/item-show/item-show.component';
 import { TimeShowComponent } from 'src/components/time-show/time-show.component';
 import{TaskScheduledComponent} from 'src/components/task-scheduled/task-scheduled.component';
@@ -74,7 +74,6 @@ import { MapperComponent } from 'src/components/mapper/mapper.component';
     UserInsertComponent,
     UserShowComponent,
     MenuAdminComponent,
-    ItemInsertComponent,
     ItemShowComponent,
     MenuEmployeeComponent,
     TimeShowComponent,
@@ -102,7 +101,8 @@ import { MapperComponent } from 'src/components/mapper/mapper.component';
     MatInputModule,
     MatButtonModule,
     MatAutocompleteModule,
-    DataTablesModule
+    DataTablesModule,
+    MatTreeModule
   ],
   providers: [LoginService,UserService,MachineService,TaskService,InstructionService,SchedulingService,ManufactoringService, WbsService, ItemService, TaskScheduledService, EmployeeService, DataServiceService, SendMessageService, InputService,
     { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true }],

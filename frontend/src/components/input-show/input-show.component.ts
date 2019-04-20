@@ -16,6 +16,7 @@ declare var $;
 export class InputShowComponent implements OnInit {
   
   private inputList: Array<InputDTO>;
+  public nameTaskScheduled: string;
   inputShowList: InputShowDTO[] = [];
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<InputShowDTO> = new Subject();
@@ -35,6 +36,7 @@ export class InputShowComponent implements OnInit {
       this.router.navigateByUrl("taskScheduledShow");
     
     else{
+      this.nameTaskScheduled = sessionStorage.getItem("nameTaskScheduled");
       this.inputService.showInput(parseInt(sessionStorage.getItem("idTaskScheduled"))).subscribe((response: Array<InputDTO>) =>{
         if(response != null){
           this.inputList = response;

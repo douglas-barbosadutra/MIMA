@@ -4,6 +4,8 @@ import { TaskService } from 'src/services/task.service';
 import { TaskDTO } from 'src/dto/TaskDTO';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subject } from 'rxjs';
+import { MachineDTO } from 'src/dto/MachineDTO';
+import { MachineService } from 'src/services/machine.service';
 declare var $;
 
 @Component({
@@ -15,6 +17,7 @@ declare var $;
 export class TaskShowComponent implements OnInit,OnDestroy {
 
   public taskDTO: TaskDTO;
+  public nameMachine: string;
   taskList: TaskDTO[] = [];
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<TaskDTO> = new Subject();
@@ -44,6 +47,7 @@ export class TaskShowComponent implements OnInit,OnDestroy {
       this.router.navigateByUrl("machineShow");
     }
     else{
+      this.nameMachine = sessionStorage.getItem("nameMachine");
       this.taskDTO = new TaskDTO(null,null,parseInt(sessionStorage.getItem("idMachine")));
       this.taskShow();
     }
@@ -61,17 +65,18 @@ export class TaskShowComponent implements OnInit,OnDestroy {
     })
   }
 
-  chooseTask(idTask: number){
-    
+  chooseTask(idTask: number, descriptionTask: string){
     sessionStorage.setItem("idTask",JSON.stringify(idTask));
+    sessionStorage.setItem("descriptionTask",descriptionTask);
     alert("Task selezionato");
   }
 
   deleteTask(idTask: number){
-   
-    this.taskService.deleteTask(idTask).subscribe((data: any) =>{
-        location.reload(true);
-    })
+    
+    if(confirm("Hai già cancellato tutte le entità associate a questo task?"))
+      this.taskService.deleteTask(idTask).subscribe((data: any) =>{
+          location.reload(true);
+      })
   }
 
   insertTask(){

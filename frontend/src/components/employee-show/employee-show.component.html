@@ -21,8 +21,8 @@
           <td >{{employee.name}}</td>
           <td >{{employee.descriptionTask}}</td>
           <td>
-              <i (click)="assignTask(employee.id)" style="color:green" class='fas fa-check icon'></i>
-              <i (click)="employeeDelete(employee.id,employee.idUser)" style="color:black; margin-left:2%;" class='far fa-trash-alt icon'></i>
+              <i [ngbTooltip]="select" (click)="assignTask(employee.id,employee.name)" style="color:green" class='fas fa-check icon'></i>
+              <i [ngbTooltip]="delete" (click)="employeeDelete(employee.id,employee.idUser)" style="color:black; margin-left:2%;" class='far fa-trash-alt icon'></i>
           </td>
         </tr>
       </tbody>
@@ -41,6 +41,9 @@
   </table>
   <button (click)="open(content)" style="margin-left:45%;" class="btn btn-primary">Inserisci</button>
 </div>
+
+<ng-template #select>Assegna un task</ng-template>
+<ng-template #delete>Elimina</ng-template>
 
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">

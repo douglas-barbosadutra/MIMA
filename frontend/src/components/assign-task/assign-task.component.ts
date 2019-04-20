@@ -14,6 +14,7 @@ declare var $;
 })
 export class AssignTaskComponent implements OnInit,OnDestroy {
   private oldEmployee: EmployeeDTO;
+  public nameEmployee: string;
   private newEmployee: EmployeeDTO;
   taskList: TaskDTO[] = [];
   dtOptions: DataTables.Settings = {};
@@ -43,6 +44,7 @@ export class AssignTaskComponent implements OnInit,OnDestroy {
       this.router.navigateByUrl("machineShow");
     }
     else{
+      this.nameEmployee = sessionStorage.getItem("nameEmployee");
       this.showTask();
       this.findEmployee();
     }

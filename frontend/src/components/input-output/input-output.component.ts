@@ -16,6 +16,7 @@ declare var $;
 export class InputOutputComponent implements OnInit,OnDestroy {
 
   itemList: ItemDTO[] = [];
+  public nameTaskScheduled: string;
   private inputDTO: InputDTO;
   private oldTaskScheduled: TaskScheduledDTO;
   private newTaskScheduled: TaskScheduledDTO;
@@ -25,6 +26,7 @@ export class InputOutputComponent implements OnInit,OnDestroy {
   constructor(private itemService: ItemService, private taskScheduledService: TaskScheduledService, private inputService: InputService) { }
 
   ngOnInit() {
+    this.nameTaskScheduled = sessionStorage.getItem("nameTaskScheduled");
 
     this.dtOptions = {
       pagingType: 'full_numbers',

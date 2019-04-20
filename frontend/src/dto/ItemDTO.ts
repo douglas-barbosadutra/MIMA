@@ -13,4 +13,8 @@ export class ItemDTO{
         this.wbsId = wbsId;
         this.items = items;
     }
+
+    public setFatherId(fatherId: number){
+        this.fatherId = fatherId;
+    }
 }

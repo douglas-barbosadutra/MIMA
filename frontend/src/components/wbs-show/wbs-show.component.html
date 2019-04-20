@@ -20,8 +20,8 @@
 					<td >{{wbs.id}}</td>
 					<td >{{wbs.name}}</td>
 					<td>
-							<i (click)="chooseWbs(wbs.id)" style="color:green" class='fas fa-check icon'></i>
-							<i (click)="deleteWbs(wbs.id)" style="color:black; margin-left:2%;" class='far fa-trash-alt icon'></i>
+							<i [ngbTooltip]="show" (click)="chooseWbs(wbs.id,wbs.name)" style="color:green" class='fas fa-check icon'></i>
+							<i [ngbTooltip]="delete" (click)="deleteWbs(wbs.id)" style="color:black; margin-left:2%;" class='far fa-trash-alt icon'></i>
 					</td>
 				</tr>
 			</tbody>
@@ -39,6 +39,9 @@
 	</table>
 		<button (click)="open(content)" style="margin-left:45%;" class="btn btn-primary">Inserisci</button>
 </div>
+
+<ng-template #show>Visualizza albero</ng-template>
+<ng-template #delete>Elimina</ng-template>
 
 <ng-template #content let-c="close" let-d="dismiss">
 	<div class="modal-header">

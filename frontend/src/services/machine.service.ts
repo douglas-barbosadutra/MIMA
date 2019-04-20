@@ -21,8 +21,16 @@ export class MachineService {
     }
   }
 
-  insertMachine(machineDTO: MachineDTO){
-    return this.http.post('http://localhost:8080/machineMicroservice/api/machines', machineDTO, {
+  findOne(idMachine: number):Observable<MachineDTO>{
+    return this.http.get<MachineDTO>('http://localhost:8080/machineMicroservice/api/machines/'+idMachine, {
+      headers: {
+          "Authorization": this.auth()
+      }
+    });
+  }
+
+  insertMachine(machineDTO: MachineDTO): Observable<MachineDTO>{
+    return this.http.post<MachineDTO>('http://localhost:8080/machineMicroservice/api/machines', machineDTO, {
       headers: {
           "Authorization": this.auth()
       }

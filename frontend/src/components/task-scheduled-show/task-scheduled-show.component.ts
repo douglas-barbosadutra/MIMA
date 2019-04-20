@@ -17,6 +17,7 @@ declare var $;
 })
 export class TaskScheduledShowComponent implements OnInit,OnDestroy {
   private taskScheduledList: Array<TaskScheduledDTO>;
+  public nameScheduling: string;
   taskScheduledShowList: TaskScheduledShowDTO[] = [];
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<TaskScheduledShowDTO> = new Subject();
@@ -43,8 +44,11 @@ export class TaskScheduledShowComponent implements OnInit,OnDestroy {
     if(sessionStorage.getItem("idScheduling") == null){
       this.router.navigateByUrl("schedulingShow");
     }
-    else
+    else{
+      this.nameScheduling = sessionStorage.getItem("nameScheduling");
       this.getTaskScheduledList();
+    }
+      
   }
 
   getTaskScheduledList(){
@@ -79,8 +83,9 @@ export class TaskScheduledShowComponent implements OnInit,OnDestroy {
     this.dtTrigger.next();
   }
 
-  choose(idTaskScheduled: number){
+  choose(idTaskScheduled: number, nameTaskScheduled: string){
     sessionStorage.setItem("idTaskScheduled",JSON.stringify(idTaskScheduled));
+    sessionStorage.setItem("nameTaskScheduled",nameTaskScheduled);
     this.router.navigateByUrl("inputOutput");
   }
 

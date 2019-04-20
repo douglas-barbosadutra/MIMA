@@ -12,6 +12,7 @@ declare var $;
 })
 export class TimeShowComponent implements OnInit,OnDestroy {
 
+  public descriptionTask: string;
   timeList: TimeDTO[] = [];
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<TimeDTO> = new Subject();
@@ -37,8 +38,11 @@ export class TimeShowComponent implements OnInit,OnDestroy {
     if(sessionStorage.getItem("idTask") == null){
       this.router.navigateByUrl("taskShow");
     }
-    else
+    else{
+      this.descriptionTask = sessionStorage.getItem("descriptionTask");
       this.timeShow();
+    }
+      
   }
 
   timeShow(){

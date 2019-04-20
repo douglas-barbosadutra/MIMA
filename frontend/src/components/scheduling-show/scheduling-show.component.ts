@@ -5,8 +5,6 @@ import { SchedulingDTO } from 'src/dto/SchedulingDTO';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TaskDTO } from 'src/dto/TaskDTO';
 import { Subject } from 'rxjs';
-declare var $;
-
 
 @Component({
   selector: 'app-scheduling-show',
@@ -16,13 +14,11 @@ declare var $;
 })
 export class SchedulingShowComponent implements OnInit {
   public schedulingDTO: SchedulingDTO;
+  public nameMachine: string;
   schedulingList: SchedulingDTO[] = [];
   public taskDTO: TaskDTO;
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<SchedulingDTO> = new Subject();
-
-  @ViewChild('dataTable') table: ElementRef;
-  dataTable: any;
 
   constructor(private config: NgbModalConfig, private modalService: NgbModal, private router: Router, private schedulingSerivce: SchedulingService) { 
     config.backdrop = 'static';
@@ -46,6 +42,7 @@ export class SchedulingShowComponent implements OnInit {
       this.router.navigateByUrl("machineShow");
     }
     else{
+      this.nameMachine = sessionStorage.getItem("nameMachine");
       this.schedulingDTO = new SchedulingDTO(null,null,null,null,parseInt(sessionStorage.getItem("idMachine")));
       this.schedulingShow();
     }
@@ -59,11 +56,6 @@ export class SchedulingShowComponent implements OnInit {
         this.dtTrigger.next();
       }
     });
-  }
-
-  createDataTable(){
-    this.dataTable = $(this.table.nativeElement);
-    this.dataTable.dataTable();
   }
 
   updateScheduling(){
@@ -83,9 +75,10 @@ export class SchedulingShowComponent implements OnInit {
   }
 
   deleteScheduling(idScheduling: number){
-    this.schedulingSerivce.deleteScheduling(idScheduling).subscribe((data: any) =>{
-      location.reload(true);
-    });
+    if(confirm("Hai già cancellato tutte le entità associate a questo scheduling?"))
+      this.schedulingSerivce.deleteScheduling(idScheduling).subscribe((data: any) =>{
+        location.reload(true);
+      });
   }
 
   insertScheduling(){
@@ -100,8 +93,9 @@ export class SchedulingShowComponent implements OnInit {
     })
   }
 
-  showGraph(idScheduling: number){
+  showGraph(idScheduling: number, nameScheduling){
     sessionStorage.setItem("idScheduling",JSON.stringify(idScheduling));
+    sessionStorage.setItem("nameScheduling",nameScheduling);
     this.router.navigateByUrl("/TaskScheduled");
   }
 

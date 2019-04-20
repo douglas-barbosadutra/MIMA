@@ -10,4 +10,8 @@ export class MachineDTO{
         this.model = model;
         this.name = name;
     }
+
+    public getId(): number{
+        return this.id;
+    }
 }

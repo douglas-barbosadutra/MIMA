@@ -3,7 +3,7 @@
 
 <div class="container">
   <div class="split2">
-      <div>
+      <div style="width:30%;">
         <input style="width:50%;" id="task-selected" type="text" class="form-control" placeholder="Task selezionato" #taskSelected disabled>
         <button style="margin-top:2%;" class="btn btn-primary button" (click)="chooseFather(taskSelected.value)">Inserisci Task padre </button><br>
         <button class="btn btn-primary button" (click)="chooseChild(taskSelected.value)">Inserisci Task figlio</button><br>
@@ -19,8 +19,8 @@
         </form>
       </div>
 
-      <div>
-        <canvas id="viewport" style="width:100%; height: 100%;"></canvas>
+      <div style="width:70%;">
+        <canvas id="viewport" style="width:60%; height: 60%;"></canvas>
       </div>
   </div>
   <div class="wide"></div>
@@ -44,7 +44,7 @@
           <td >{{task.id}}</td>
           <td >{{task.description}}</td>
           <td>
-            <button class="btn btn-primary" mar (click)="insertTask(task.id, task.description)">Inserisci Task nello Scheduling</button>
+            <i [ngbTooltip]="insert" (click)="insertTask(task.id, task.description)" style="color:green" class='fas fa-check icon'></i>
           </td>
         </tr>
       </tbody>
@@ -59,3 +59,5 @@
 
     </table>
 </div>
+
+<ng-template #insert>Inserisci nello scheduling</ng-template>
