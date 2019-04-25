@@ -1,0 +1,32 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "machineMicroservice",
+    "relationships": [
+        {
+            "relationshipName": "taskScheduledFirst",
+            "otherEntityName": "taskScheduled",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "taskScheduledRelation",
+            "otherEntityRelationshipNameUndefined": false
+        },
+        {
+            "relationshipName": "taskScheduledSecond",
+            "otherEntityName": "taskScheduled",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "taskScheduledRelation",
+            "otherEntityRelationshipNameUndefined": true
+        }
+    ],
+    "fields": [],
+    "changelogDate": "20190417145402",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceImpl",
+    "entityTableName": "task_scheduled_relation",
+    "databaseType": "sql",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no",
+    "microserviceName": "machineMicroservice"
+}

@@ -1,0 +1,62 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "machineMicroservice",
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "input",
+            "otherEntityRelationshipName": "taskScheduled",
+            "relationshipName": "input",
+            "otherEntityRelationshipNameUndefined": false
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "scheduling",
+            "otherEntityRelationshipName": "taskScheduled",
+            "relationshipName": "scheduling",
+            "otherEntityField": "id",
+            "otherEntityRelationshipNameUndefined": false
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "task",
+            "otherEntityRelationshipName": "taskScheduled",
+            "relationshipName": "task",
+            "otherEntityField": "id",
+            "otherEntityRelationshipNameUndefined": false
+        },
+        {
+            "relationshipName": "taskScheduledRelation",
+            "otherEntityName": "taskScheduledRelation",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "taskScheduledFirst",
+            "otherEntityRelationshipNameUndefined": false
+        },
+        {
+            "relationshipName": "taskScheduledRelationTwo",
+            "otherEntityName": "taskScheduledRelation",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "taskScheduledSecond",
+            "otherEntityRelationshipNameUndefined": false
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "idOutput",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20190417145400",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceImpl",
+    "entityTableName": "task_scheduled",
+    "databaseType": "sql",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no",
+    "microserviceName": "machineMicroservice"
+}

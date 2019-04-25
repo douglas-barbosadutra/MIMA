@@ -1,0 +1,28 @@
+{
+    "name": "Input",
+    "fields": [
+        {
+            "fieldName": "idItem",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "taskScheduled",
+            "otherEntityRelationshipName": "input",
+            "relationshipName": "taskScheduled",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190417145403",
+    "entityTableName": "input",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "machineMicroservice",
+    "applications": "*",
+    "microserviceName": "machineMicroservice"
+}
