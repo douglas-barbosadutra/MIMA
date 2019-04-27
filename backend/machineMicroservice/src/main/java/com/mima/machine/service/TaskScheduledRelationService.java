@@ -1,9 +1,9 @@
 package com.mima.machine.service;
 
+import com.mima.machine.service.dto.TaskScheduledRelationDTO;
+
 import java.util.List;
 import java.util.Optional;
-
-import com.mima.machine.service.dto.TaskScheduledRelationDTO;
 
 /**
  * Service Interface for managing TaskScheduledRelation.

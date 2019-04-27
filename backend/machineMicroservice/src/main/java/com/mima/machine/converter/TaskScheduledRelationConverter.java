@@ -1,4 +1,4 @@
-package com.mima.converter;
+package com.mima.machine.converter;
 
 import java.util.ArrayList;
 import java.util.List;

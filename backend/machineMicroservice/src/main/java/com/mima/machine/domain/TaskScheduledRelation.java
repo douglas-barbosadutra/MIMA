@@ -21,12 +21,12 @@ public class TaskScheduledRelation implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JsonIgnoreProperties("taskScheduledRelations")
     private TaskScheduled taskScheduledFirst;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("taskScheduledRelations")
+    @ManyToOne
+    @JsonIgnoreProperties("taskScheduledRelationTwos")
     private TaskScheduled taskScheduledSecond;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

@@ -1,7 +1,7 @@
 package com.mima.machine.service.impl;
 
 import com.mima.machine.service.TaskScheduledService;
-import com.mima.converter.TaskScheduledConverter;
+import com.mima.machine.converter.TaskScheduledConverter;
 import com.mima.machine.domain.Scheduling;
 import com.mima.machine.domain.TaskScheduled;
 import com.mima.machine.repository.TaskScheduledRepository;
@@ -64,6 +64,7 @@ public class TaskScheduledServiceImpl implements TaskScheduledService {
             .collect(Collectors.toCollection(LinkedList::new));
     }
 
+
     /**
      * Get one taskScheduled by id.
      *
@@ -90,13 +91,14 @@ public class TaskScheduledServiceImpl implements TaskScheduledService {
     }
     
     @Override
-	public List<TaskScheduledDTO> findAllByIdScheduling(Long id) {
-		log.debug("Request to get all TaskScheduleds by scheduling: "+id);
-		Scheduling s = new Scheduling();
-		s.setId(id);
-        return TaskScheduledConverter.toListDTO(taskScheduledRepository.findAllByScheduling(s));
-	}
-/*
+   	public List<TaskScheduledDTO> findAllByIdScheduling(Long id) {
+   		log.debug("Request to get all TaskScheduleds by scheduling: "+id);
+   		Scheduling s = new Scheduling();
+   		s.setId(id);
+           return TaskScheduledConverter.toListDTO(taskScheduledRepository.findAllByScheduling(s));
+   	}
+    
+    /*
 	@Override
 	public List<OperationSchedulingDTO> findAllOperationScheduling(Long idScheduling) {
 		log.debug("Request to get all operationScheduling by scheduling: "+idScheduling);

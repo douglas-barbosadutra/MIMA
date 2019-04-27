@@ -42,5 +42,4 @@ public interface TaskScheduledService {
     void delete(Long id);
     
     List<TaskScheduledDTO> findAllByIdScheduling(Long id);
-    
 }

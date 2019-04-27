@@ -20,7 +20,7 @@
         }
     ],
     "fields": [],
-    "changelogDate": "20190417145402",
+    "changelogDate": "20190427082827",
     "dto": "mapstruct",
     "searchEngine": false,
     "service": "serviceImpl",

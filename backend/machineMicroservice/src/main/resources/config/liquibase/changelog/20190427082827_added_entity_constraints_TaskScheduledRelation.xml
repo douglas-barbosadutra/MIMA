@@ -6,7 +6,7 @@
     <!--
         Added the constraints for entity TaskScheduledRelation.
     -->
-    <changeSet id="20190417145402-2" author="jhipster">
+    <changeSet id="20190427082827-2" author="jhipster">
         
         <addForeignKeyConstraint baseColumnNames="task_scheduled_first_id"
                                  baseTableName="task_scheduled_relation"

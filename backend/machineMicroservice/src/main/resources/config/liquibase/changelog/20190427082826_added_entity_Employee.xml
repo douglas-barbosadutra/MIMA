@@ -15,18 +15,26 @@
     <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
 
     <!--
-        Added the entity Input.
+        Added the entity Employee.
     -->
-    <changeSet id="20190417145403-1" author="jhipster">
-        <createTable tableName="input">
+    <changeSet id="20190427082826-1" author="jhipster">
+        <createTable tableName="employee">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="id_item" type="integer">
+            <column name="id_user" type="integer">
                 <constraints nullable="true" />
             </column>
 
-            <column name="task_scheduled_id" type="bigint">
+            <column name="name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="id_business_owner" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="task_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 

@@ -28,7 +28,7 @@
             "relationshipName": "scheduling"
         }
     ],
-    "changelogDate": "20190417145357",
+    "changelogDate": "20190427082822",
     "entityTableName": "machine",
     "dto": "mapstruct",
     "pagination": "no",

@@ -17,8 +17,6 @@
 spring:
     application:
         name: machineMicroservice
-    cache:
-        type: simple
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:h2:mem:machineMicroservice;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
@@ -84,7 +82,7 @@ jhipster:
         authentication:
             jwt:
                 # This token must be encoded using Base64 (you can type `echo 'secret-key'|base64` on your command line)
-                base64-secret: ZDUwZDMyNmU4ZjZjOGE5MjRmODYwMDJiY2M4OTVlM2M1OTQ4ZGJjY2M2Y2NiYjA5YjY0NzZlNmRmZjQyNTI3YzJkN2MxMjE5ZjYxODg1ZjRjNjM4Y2Y4ZWE4YWIxOWNiMDFkMmNkMjJjMjQwM2Q3Y2I0ZDY5NDcwY2NkYjNhMDc=
+                base64-secret: MmNjNmQ4NTZlZjVkM2RmM2E5NWM4N2JjM2UzZDNlYWY5MzkwZmNhY2FmOTk4YWQxMDFiNDc0NjdhZGExNTA4NGZhYTkyY2YxM2I2ZjQ1MTg3MWE3ODJkNjFlYjFmYjdlZDUzNjQ0MDcwMjE4OTc2ZWVlYjMwNzkxZDFlN2M2NWE=
                 # Token is valid 24 hours
                 token-validity-in-seconds: 86400
     metrics:

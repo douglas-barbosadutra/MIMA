@@ -88,7 +88,7 @@ public class SchedulingServiceImpl implements SchedulingService {
         log.debug("Request to delete Scheduling : {}", id);
         schedulingRepository.deleteById(id);
     }
-
+    
     @Override
 	public List<SchedulingDTO> findAllByIdMachine(Long idMachine) {
 		log.debug("Request to get all Schedulings by Machine");

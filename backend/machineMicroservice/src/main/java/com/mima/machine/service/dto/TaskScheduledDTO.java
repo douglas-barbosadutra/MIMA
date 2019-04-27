@@ -14,6 +14,7 @@ public class TaskScheduledDTO implements Serializable {
 
     private Integer idOutput;
 
+
     private Long schedulingId;
 
     private Long taskId;

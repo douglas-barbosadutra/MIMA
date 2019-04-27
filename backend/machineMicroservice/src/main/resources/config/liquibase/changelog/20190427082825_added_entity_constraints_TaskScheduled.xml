@@ -6,7 +6,7 @@
     <!--
         Added the constraints for entity TaskScheduled.
     -->
-    <changeSet id="20190417145400-2" author="jhipster">
+    <changeSet id="20190427082825-2" author="jhipster">
         
         <addForeignKeyConstraint baseColumnNames="scheduling_id"
                                  baseTableName="task_scheduled"

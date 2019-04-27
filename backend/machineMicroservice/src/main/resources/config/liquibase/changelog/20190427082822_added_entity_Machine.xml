@@ -15,18 +15,22 @@
     <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
 
     <!--
-        Added the entity TaskScheduledRelation.
+        Added the entity Machine.
     -->
-    <changeSet id="20190417145402-1" author="jhipster">
-        <createTable tableName="task_scheduled_relation">
+    <changeSet id="20190427082822-1" author="jhipster">
+        <createTable tableName="machine">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="task_scheduled_first_id" type="bigint">
+            <column name="name" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
-            <column name="task_scheduled_second_id" type="bigint">
+            <column name="model" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="id_user" type="integer">
                 <constraints nullable="true" />
             </column>
 

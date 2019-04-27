@@ -88,8 +88,8 @@ public class TaskServiceImpl implements TaskService {
         log.debug("Request to delete Task : {}", id);
         taskRepository.deleteById(id);
     }
-
-	@Override
+    
+    @Override
 	public List<TaskDTO> findAllByIdMachine(long idMachine) {
 		Machine m = new Machine();
 		m.setId(idMachine);

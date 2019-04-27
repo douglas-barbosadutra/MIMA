@@ -4,13 +4,13 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
     <!--
-        Added the constraints for entity Task.
+        Added the constraints for entity Scheduling.
     -->
-    <changeSet id="20190417145358-2" author="jhipster">
+    <changeSet id="20190427082824-2" author="jhipster">
         
         <addForeignKeyConstraint baseColumnNames="machine_id"
-                                 baseTableName="task"
-                                 constraintName="fk_task_machine_id"
+                                 baseTableName="scheduling"
+                                 constraintName="fk_scheduling_machine_id"
                                  referencedColumnNames="id"
                                  referencedTableName="machine"/>
 

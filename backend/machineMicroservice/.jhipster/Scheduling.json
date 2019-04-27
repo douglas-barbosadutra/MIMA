@@ -29,7 +29,7 @@
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20190417145359",
+    "changelogDate": "20190427082824",
     "entityTableName": "scheduling",
     "dto": "mapstruct",
     "pagination": "no",

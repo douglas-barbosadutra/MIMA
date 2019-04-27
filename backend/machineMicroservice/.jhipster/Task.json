@@ -27,7 +27,7 @@
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20190417145358",
+    "changelogDate": "20190427082823",
     "entityTableName": "task",
     "dto": "mapstruct",
     "pagination": "no",

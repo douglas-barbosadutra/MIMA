@@ -23,7 +23,7 @@
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20190417145401",
+    "changelogDate": "20190427082826",
     "entityTableName": "employee",
     "dto": "mapstruct",
     "pagination": "no",

@@ -50,7 +50,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20190417145400",
+    "changelogDate": "20190427082825",
     "dto": "mapstruct",
     "searchEngine": false,
     "service": "serviceImpl",
