@@ -61,7 +61,7 @@ export class InputOutputComponent implements OnInit,OnDestroy {
 
   insertOutput(idItem: number){
     
-    this.newTaskScheduled = new TaskScheduledDTO(this.oldTaskScheduled.id,this.oldTaskScheduled.name,idItem,this.oldTaskScheduled.schedulingId,this.oldTaskScheduled.taskId);
+    this.newTaskScheduled = new TaskScheduledDTO(this.oldTaskScheduled.id,this.oldTaskScheduled.name,idItem,this.oldTaskScheduled.schedulingId,this.oldTaskScheduled.taskId,this.oldTaskScheduled.taskScheduledRelationList);
 
     this.taskScheduledService.insertOutput(this.newTaskScheduled).subscribe((data: TaskScheduledDTO) =>{
       if(data != null)

@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -40,9 +43,10 @@ public class TaskScheduled implements Serializable {
     @JsonIgnoreProperties("taskScheduleds")
     private Task task;
 
-    @OneToMany(mappedBy = "taskScheduledFirst")
+    @OneToMany(mappedBy = "taskScheduledFirst", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<TaskScheduledRelation> taskScheduledRelations = new HashSet<>();
-    @OneToMany(mappedBy = "taskScheduledSecond")
+   
+    @OneToMany(mappedBy = "taskScheduledSecond", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<TaskScheduledRelation> taskScheduledRelationTwos = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {

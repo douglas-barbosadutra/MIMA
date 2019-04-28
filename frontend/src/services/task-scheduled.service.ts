@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TaskScheduledDTO } from 'src/dto/TaskScheduledDTO';
-import { OperationSchedulingDTO } from 'src/dto/OperationSchedulingDTO';
 import { Observable} from 'rxjs';
-import { ParamDTO } from 'src/dto/ParamDTO';
 import { UserDTO } from 'src/dto/UserDTO';
+import { TaskScheduledRelationDTO } from 'src/dto/TaskScheduledRelationDTO';
 
 
 
@@ -40,22 +39,6 @@ export class TaskScheduledService {
     });
   }
 
-  showOperationScheduling(idScheduling: number): Observable<Array<OperationSchedulingDTO>>{
-    return this.http.get<Array<OperationSchedulingDTO>>('http://localhost:8080/machineMicroservice/api/operationScheduling?id=' + idScheduling, {
-      headers: {
-          "Authorization": this.auth()
-      }
-    });
-  }
-
-  insertOperationScheduling(osDTO: OperationSchedulingDTO){
-    return this.http.post("http://localhost:8080/machineMicroservice/api/operationScheduling",osDTO, {
-      headers: {
-          "Authorization": this.auth()
-      }
-    });
-  }
-
   insertOutput(taskScheduledDTO: TaskScheduledDTO): Observable<TaskScheduledDTO>{
     return this.http.put<TaskScheduledDTO>("http://localhost:8080/machineMicroservice/api/task-scheduleds",taskScheduledDTO, {
       headers: {
@@ -71,8 +54,17 @@ export class TaskScheduledService {
       }
     });
   }
+
   insertTaskScheduled(taskScheduledDTO: TaskScheduledDTO): Observable<TaskScheduledDTO>{
     return this.http.post<TaskScheduledDTO>("http://localhost:8080/machineMicroservice/api/task-scheduleds",taskScheduledDTO, {
+      headers: {
+          "Authorization": this.auth()
+      }
+    });
+  }
+
+  insertTaskScheduledRelation(taskScheduledRelationDTO: TaskScheduledRelationDTO): Observable<TaskScheduledRelationDTO>{
+    return this.http.post<TaskScheduledRelationDTO>("http://localhost:8080/machineMicroservice/api/task-scheduled-relations",taskScheduledRelationDTO, {
       headers: {
           "Authorization": this.auth()
       }
