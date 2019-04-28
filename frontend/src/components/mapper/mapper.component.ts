@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AreasInterface } from 'src/interfaces/AreasInterface';
+import { Areas } from 'src/classes/Areas';
+import { BlackBox } from 'src/classes/BlackBox';
 
 @Component({
   selector: 'app-mapper',
@@ -7,12 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapperComponent implements OnInit {
 
-  public areas = [];
+  public areas: Areas[] = [];
   public imageInput: File;
   public imageURL: any;
   public resolutionInput = 20;
 
-  private selectedAreas = [];
+  private selectedAreas: BlackBox[] = [];
 
   constructor() {
 
@@ -27,37 +30,38 @@ export class MapperComponent implements OnInit {
     let indice = 0;
     for (let i=0; i < width; i+=resolution) {
       for (let j=0; j < height; j+=resolution) {
-        this.areas[indice] = {x: i, y: j, x1: (i+resolution), y1: (j+resolution)};
+        this.areas[indice] = new Areas(i, j, (i+resolution), (j+resolution));
         indice++;
       }
     }
 
   }
 
-  public getAreaClick(data: any) {
+  public getAreaClick(data: AreasInterface) {
 
-    let index = this.selectedAreas.indexOf(data);
+
+    let row = data.y/this.resolutionInput;
+    let column = data.x/this.resolutionInput;
+    console.log(row + " - " + column);
+    let blackbox = new BlackBox(row,column);
+
+    let index = this.selectedAreas.findIndex((bb)=>bb.column === blackbox.column && bb.row === blackbox.row);
     if(index != -1){
       console.log("rimosso");
       this.selectedAreas.splice(index, 1);
     }else{
       console.log("aggiunto");
-      this.selectedAreas.push(data);  
+      this.selectedAreas.push(blackbox);  
     }
 
-    console.log(data);
+    console.log(blackbox);
     console.log(this.selectedAreas);
   }
 
   public generate(){
 
-    let width = 818;
+    let width = 800;
     let height = 500;
-
-    /*if(this.imageInput != undefined){
-      console.log(this.imageInput);
-      this.imagePath = this.imageInput;
-    }*/
 
     this.generateAreas(width, height, this.resolutionInput);
   }
@@ -69,8 +73,14 @@ export class MapperComponent implements OnInit {
     var reader = new FileReader();
     reader.readAsDataURL(this.imageInput); 
     reader.onload = (_event) => { 
-      this.imageURL = reader.result;
+      let myBase64 = reader.result;
+      this.imageURL = myBase64;
+      //console.log(myBase64); //immagine
     }
+  }
+
+  public sendToServer(){
+    console.log("ok");
   }
 
 }
