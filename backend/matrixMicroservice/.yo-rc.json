@@ -1,0 +1,35 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.mima.matrix"
+    },
+    "jhipsterVersion": "5.8.2",
+    "applicationType": "microservice",
+    "baseName": "matrixMicroservice",
+    "packageName": "com.mima.matrix",
+    "packageFolder": "com/mima/matrix",
+    "serverPort": "8083",
+    "authenticationType": "jwt",
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "consul",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "N2ZhOGZmOGRhZjRmOTFlZjhmMDNiNTkzMmMxZWU1Njg5M2YwYzE4MzhiZWJlNTU1ZWJhZWMyNzBjMWNkMDU4NzVmMmQ0ZWNlYjY1NjQ1MmNmMzViYTkzNjU4ZjgwNjFkMzQ1YzJmYzk1MWU5MzYwNGYyOTgyMjkwNmRlY2QzMTc=",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "clientPackageManager": "npm",
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}

@@ -3,13 +3,15 @@ import { AreasInterface } from 'src/interfaces/AreasInterface';
 import { Areas } from 'src/classes/Areas';
 import { BlackBox } from 'src/classes/BlackBox';
 
+declare var $ : any;
+
 @Component({
   selector: 'app-mapper',
   templateUrl: './mapper.component.html',
   styleUrls: ['./mapper.component.css']
 })
 export class MapperComponent implements OnInit {
-
+  $ : any;
   public areas: Areas[] = [];
   public imageInput: File;
   public imageURL: any;
@@ -23,6 +25,31 @@ export class MapperComponent implements OnInit {
 
   ngOnInit() {
 
+    // var basic_opts = {
+    //   mapKey: 'state'
+    // };
+
+    // var initial_opts = $.extend({},basic_opts, 
+    //   { 
+    //       staticState: true,
+    //       fill: false,
+    //       stroke: true,
+    //       strokeWidth: 2,
+    //       strokeColor: 'ff0000'
+    //   });
+  
+  // $('img').mapster(initial_opts)
+  //     .mapster('set',true,'CA', {
+  //         fill: true,
+  //         fillColor: '00ff00'
+  //     })
+  //     .mapster('snapshot')
+  //     .mapster('rebind',basic_opts);
+  // }
+
+   $('img').mapster({
+          mapkey: 'id'
+      })
   }
 
   private generateAreas(width: number, height: number, resolution: number){
@@ -39,7 +66,11 @@ export class MapperComponent implements OnInit {
 
   public getAreaClick(data: AreasInterface) {
 
-
+    let area = document.getElementById(data.x+"_"+data.y+"_"+data.x1+"_"+data.y1);
+    
+    alert(area.style.backgroundColor);
+    area.style.backgroundColor = "blue";
+    alert(area.style.backgroundColor);
     let row = data.y/this.resolutionInput;
     let column = data.x/this.resolutionInput;
     console.log(row + " - " + column);

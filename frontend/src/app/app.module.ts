@@ -24,6 +24,7 @@ import {EmployeeService} from 'src/services/employee.service';
 import { DataServiceService } from 'src/services/data-service.service';
 import { SendMessageService } from 'src/services/send-message.service';
 import {InputService} from 'src/services/input.service';
+import {MapperService} from 'src/services/mapper.service';
 
 import {HomeAdminComponent} from 'src/components/home-admin/home-admin.component';
 import {HomeUserComponent} from 'src/components/home-user/home-user.component';
@@ -104,7 +105,7 @@ import { MapperComponent } from 'src/components/mapper/mapper.component';
     DataTablesModule,
     MatTreeModule
   ],
-  providers: [LoginService,UserService,MachineService,TaskService,InstructionService,SchedulingService,ManufactoringService, WbsService, ItemService, TaskScheduledService, EmployeeService, DataServiceService, SendMessageService, InputService,
+  providers: [MapperService,LoginService,UserService,MachineService,TaskService,InstructionService,SchedulingService,ManufactoringService, WbsService, ItemService, TaskScheduledService, EmployeeService, DataServiceService, SendMessageService, InputService,
     { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })

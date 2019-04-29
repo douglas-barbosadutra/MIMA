@@ -10,7 +10,9 @@
 
   <img id="image_map" [src]="imageURL" *ngIf="imageURL" usemap="#piantina" width="800px" height="500px">
   <map id="piantina_image_map" name="piantina">
-    <area *ngFor="let area of areas" (click)="getAreaClick(area)" shape="rect" coords="{{area.x}},{{area.y}},{{area.x1}},{{area.y1}}" href="#/mapper" >
+    <!-- <area id="{{area.x}}_{{area.y}}_{{area.x1}}_{{area.y1}}" *ngFor="let area of areas" (click)="getAreaClick(area)" shape="rect" coords="{{area.x}},{{area.y}},{{area.x1}},{{area.y1}}" href="#/mapper" >-->
+    <area id="{{area.x}}_{{area.y}}_{{area.x1}}_{{area.y1}}" *ngFor="let area of areas" shape="rect" coords="{{area.x}},{{area.y}},{{area.x1}},{{area.y1}}" href="#/mapper" > 
+  
   </map>
   
   <button (click)="sendToServer()">FINE</button>
