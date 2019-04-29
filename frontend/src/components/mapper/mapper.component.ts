@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AreasInterface } from 'src/interfaces/AreasInterface';
 import { Areas } from 'src/classes/Areas';
 import { BlackBox } from 'src/classes/BlackBox';
+import { MatrixDTO } from 'src/dto/MatrixDTO';
+import { MapperService } from 'src/services/mapper.service';
 
 declare var $ : any;
 
@@ -18,8 +20,10 @@ export class MapperComponent implements OnInit {
   public resolutionInput = 20;
 
   private selectedAreas: BlackBox[] = [];
+  private id: number = 0;
+  private matrixDTO: MatrixDTO;
 
-  constructor() {
+  constructor(private mapperService: MapperService) {
 
   }
 
@@ -111,7 +115,17 @@ export class MapperComponent implements OnInit {
   }
 
   public sendToServer(){
-    console.log("ok");
+    this.matrixDTO = new MatrixDTO(0, this.imageURL, this.resolutionInput);
+    this.mapperService.insertMatrix(this.matrixDTO).subscribe((data:MatrixDTO) => {
+      if(data != null)
+        this.id = data.id;
+      else
+        alert("fallito");
+    });
+  }
+  
+  public sendToServer2(){
+    
   }
 
 }
