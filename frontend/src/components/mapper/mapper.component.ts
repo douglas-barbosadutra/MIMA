@@ -4,6 +4,7 @@ import { Areas } from 'src/classes/Areas';
 import { BlackBox } from 'src/classes/BlackBox';
 import { MatrixDTO } from 'src/dto/MatrixDTO';
 import { MapperService } from 'src/services/mapper.service';
+import { BlackBoxDTO } from 'src/dto/BlackBoxDTO';
 
 declare var $ : any;
 
@@ -22,6 +23,7 @@ export class MapperComponent implements OnInit {
   private selectedAreas: BlackBox[] = [];
   private id: number = 0;
   private matrixDTO: MatrixDTO;
+  private blackboxDTO: BlackBoxDTO[] = [];
 
   constructor(private mapperService: MapperService) {
 
@@ -125,7 +127,17 @@ export class MapperComponent implements OnInit {
   }
   
   public sendToServer2(){
-    
+    for(let blackbox of this.selectedAreas){
+      this.blackboxDTO.push(new BlackBoxDTO(this.id, blackbox.row, blackbox.column));
+    }
+
+    this.mapperService.insertBlackBox(this.blackboxDTO).subscribe((data:any) => {
+      if(data != null)
+         alert("ok");
+      else
+        alert("fallito");
+    });
+
   }
 
 }
