@@ -11,7 +11,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of taskScheduledListToUpdateChild">
+        <tr *ngFor="let item of taskScheduledListToUpdate">
           <td>{{item.id}}</td>
           <td>{{item.name}}</td>
           <td>
@@ -27,7 +27,7 @@
     </table>
 
 </div>
-
+<!--
 <div id="container">
   <h1 class="title">Task Padri</h1>
 
@@ -55,7 +55,7 @@
         </tr>
       </tbody>
     </table>
-</div>
+</div>-->
 <button class="btn btn-primary" style="margin-top:2%; margin-left:57%;" type="submit" (click)="finish()">Fine</button>
 
 <ng-template #select>Inserisci relazione</ng-template>

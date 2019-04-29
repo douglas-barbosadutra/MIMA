@@ -20,8 +20,8 @@ declare var arbor: any;
 export class TaskScheduledComponent implements OnInit,OnDestroy {
 
   taskList: TaskDTO[] = [];
-  public taskScheduledListToUpdateFather: Array<TaskScheduledDTO>;
-  public taskScheduledListToUpdateChild: Array<TaskScheduledDTO>;
+  public taskScheduledListToUpdate: Array<TaskScheduledDTO>;
+  public taskScheduledList: Array<TaskScheduledDTO>;
   public idTaskDeleted: number;
   task: TaskScheduledDTO;
   public idFather: number;
@@ -134,7 +134,7 @@ export class TaskScheduledComponent implements OnInit,OnDestroy {
         
         sessionStorage.setItem("taskScheduledListLength", JSON.stringify(data.length));
         sessionStorage.setItem("taskScheduledList", JSON.stringify(data));
-
+        this.taskScheduledList = data;
         for (let task of data) {
           this.sys.addNode(task.id, { name: task.name, nodecolor: "#0000ff" });
         }
@@ -182,14 +182,15 @@ export class TaskScheduledComponent implements OnInit,OnDestroy {
 
   delete(idTaskScheduled: number) {
 
-    this.taskScheduledListToUpdateFather = new Array<TaskScheduledDTO>();
-    this.taskScheduledListToUpdateChild = new Array<TaskScheduledDTO>();
-    let taskScheduledList: TaskScheduledDTO[] = JSON.parse(sessionStorage.getItem("taskScheduledList"));
-
-    for(let taskScheduled of taskScheduledList){
-      let taskScheduledRelationList: TaskScheduledRelationDTO[] = taskScheduled.taskScheduledRelationList;
-
-      for (let row of taskScheduledRelationList) {
+    this.taskScheduledListToUpdate = new Array<TaskScheduledDTO>();
+    //let taskScheduledList: TaskScheduledDTO[] = JSON.parse(sessionStorage.getItem("taskScheduledList"));
+    let task : TaskScheduledDTO;
+    for(let taskScheduled of this.taskScheduledList){
+      if(taskScheduled.id == idTaskScheduled)
+        task = taskScheduled;
+      //let taskScheduledRelationList: TaskScheduledRelationDTO[] = taskScheduled.taskScheduledRelationList;
+      /*
+      for (let row of taskScheduledRelationList) { 
         if (row.taskScheduledFirstId == idTaskScheduled) {
           if (row.taskScheduledSecondId == taskScheduled.id)
               this.taskScheduledListToUpdateFather.push(taskScheduled);
@@ -198,14 +199,23 @@ export class TaskScheduledComponent implements OnInit,OnDestroy {
           if (row.taskScheduledFirstId == taskScheduled.id)
               this.taskScheduledListToUpdateChild.push(taskScheduled);
         }
+      }*/
+    }
+    for(let taskScheduledRelation of task.taskScheduledRelationList){
+      for(let taskScheduled of this.taskScheduledList){
+        if(((taskScheduledRelation.taskScheduledFirstId != idTaskScheduled) && (taskScheduledRelation.taskScheduledFirstId == taskScheduled.id)) || 
+          ((taskScheduledRelation.taskScheduledSecondId != idTaskScheduled) && (taskScheduledRelation.taskScheduledSecondId == taskScheduled.id))){
+          this.taskScheduledListToUpdate.push(taskScheduled);
+        }
       }
     }
-
-    this.dataService.sendTaskScheduledChildren(this.taskScheduledListToUpdateChild);
-    this.dataService.sendTaskScheduledFathers(this.taskScheduledListToUpdateFather);
+    let index = this.taskScheduledList.findIndex((a) => a.id == idTaskScheduled);
+    if(index != -1){
+      this.taskScheduledList.splice(index, 1);
+    }
+    this.dataService.sendTaskScheduledList(this.taskScheduledList);
+    this.dataService.sendTaskScheduledToUpdate(this.taskScheduledListToUpdate);
     this.taskScheduledService.deleteTaskScheduled(idTaskScheduled).subscribe((data: any) => { });
-    console.log(this.taskScheduledListToUpdateChild);
-    console.log(this.taskScheduledListToUpdateFather);
     this.router.navigateByUrl("/TaskScheduledDelete");
   }
 

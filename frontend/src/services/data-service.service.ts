@@ -8,20 +8,20 @@ import { TaskScheduledDTO } from 'src/dto/TaskScheduledDTO';
 })
 export class DataServiceService {
 
-  private dataSourceChildren = new BehaviorSubject<Array<TaskScheduledDTO>>([]);
-  currentDataChildren = this.dataSourceChildren.asObservable();
+  private dataSourceList = new BehaviorSubject<Array<TaskScheduledDTO>>([]);
+  currentDataList = this.dataSourceList.asObservable();
 
-  private dataSourceFather = new BehaviorSubject<Array<TaskScheduledDTO>>([]);
-  currentDataFather = this.dataSourceFather.asObservable();
+  private dataSourceListToUpdate = new BehaviorSubject<Array<TaskScheduledDTO>>([]);
+  currentDataListToUpdate = this.dataSourceListToUpdate.asObservable();
 
   constructor() { }
 
-  public sendTaskScheduledChildren(taskScheduledList: Array<TaskScheduledDTO>){
-    return this.dataSourceChildren.next(taskScheduledList);
+  public sendTaskScheduledList(taskScheduledList: Array<TaskScheduledDTO>){
+    return this.dataSourceList.next(taskScheduledList);
   }
 
-  public sendTaskScheduledFathers(taskScheduledList: Array<TaskScheduledDTO>){
-    return this.dataSourceFather.next(taskScheduledList);
+  public sendTaskScheduledToUpdate(taskScheduledList: Array<TaskScheduledDTO>){
+    return this.dataSourceListToUpdate.next(taskScheduledList);
   }
   
 }

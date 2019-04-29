@@ -13,8 +13,7 @@ import { TaskScheduledRelationDTO } from 'src/dto/TaskScheduledRelationDTO';
 })
 export class TaskScheduledDeleteComponent implements OnInit {
 
-  taskScheduledListToUpdateFather: TaskScheduledDTO[]=[];
-  taskScheduledListToUpdateChild: TaskScheduledDTO[]=[];
+  taskScheduledListToUpdate: Array<TaskScheduledDTO>;
   public taskScheduledList: Array<TaskScheduledDTO>;
   idFather: number;
   idChild: number;
@@ -24,28 +23,30 @@ export class TaskScheduledDeleteComponent implements OnInit {
 
   ngOnInit() {
 
-    this.sub = this.dataService.currentDataFather.subscribe(dataSource => {
-      this.taskScheduledListToUpdateChild = dataSource;
-    });
-
-    this.sub = this.dataService.currentDataChildren.subscribe(dataSource => {
-      this.taskScheduledListToUpdateFather = dataSource;
-    });
-
-    this.taskScheduledService.showTaskScheduled(parseInt(sessionStorage.getItem("idScheduling"))).subscribe((data: TaskScheduledDTO[]) => {
+    this.sub = this.dataService.currentDataListToUpdate.subscribe(dataSource => {
+      this.taskScheduledListToUpdate = dataSource;
+    }); 
+    this.sub = this.dataService.currentDataList.subscribe(dataSource => {
+      this.taskScheduledList = dataSource;
+    }); 
+    /*
+    this.taskScheduledService.showTaskScheduled(parseInt(sessionStorage.getItem("idScheduling"))).subscribe((data: Array<TaskScheduledDTO>) => {
       if (data != null) {
         this.taskScheduledList = new Array();
         this.taskScheduledList = data; 
       }
-    });
+    });*/
+    console.log(this.taskScheduledListToUpdate);
+    console.log(this.taskScheduledList);
   }
 
   addRelationChild(id: number) {
     
     let taskScheduledRelationDTO: TaskScheduledRelationDTO = new TaskScheduledRelationDTO(null,this.idFather,id);
     this.taskScheduledService.insertTaskScheduledRelation(taskScheduledRelationDTO).subscribe((data: TaskScheduledRelationDTO) => { 
-      location.reload(true);
+      
     });
+    //location.reload(true);
   }
 
   addRelationFather(id: number) {
